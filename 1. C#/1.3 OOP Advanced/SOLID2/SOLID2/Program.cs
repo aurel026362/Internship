@@ -6,7 +6,11 @@ namespace SOLID2
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            OCP ocp = new OCP();
+
+            ISP isp = new ISP();
+
+            LCP lcp = new LCP();
         }
     }
 }

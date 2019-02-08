@@ -4,16 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SOLID
+namespace SOLID2
 {
+
     //ISP
+
     public interface ICalling{
         void Call();
     }
 
     public interface IPhoto
     {
-        void Take_photo();
+        void TakePhoto();
     }
 
     public class Landline:ICalling
@@ -31,7 +33,7 @@ namespace SOLID
             Console.WriteLine("The SmartPhone can to call");
         }
 
-        public void Take_photo()
+        public void TakePhoto()
         {
             Console.WriteLine("And this can to take photo");
         }

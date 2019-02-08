@@ -6,16 +6,14 @@ namespace _4._0_Language_Basics
 {
     class Howdy
     {
-
+        // static constructor
         static Howdy()
-            // static constructor
         {
-
-            String s= "Hello World!";
-            hi(s);
+            string s = "Hello World!";
+            Hi(s);
         }
 
-        static void hi(String say)
+        static void Hi(string say)
         {
             Console.WriteLine(say);
         }

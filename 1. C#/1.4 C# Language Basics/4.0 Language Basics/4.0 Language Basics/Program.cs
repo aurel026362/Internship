@@ -14,15 +14,15 @@ namespace _4._0_Language_Basics
 
             //Using boxing/unboxing
             //instances of value types and reference types
-            array ar = new array();
+            Example ar = new Example();
 
             //Threading
             Console.WriteLine();
             Console.WriteLine("THREADING...");
-            Threading_test test1 = new Threading_test("-------- ",9);
-            Threading_test test2 = new Threading_test("|||||||| ",9);
-            Threading_test test3 = new Threading_test("//////// ", 9);
-            Threading_test test4 = new Threading_test("++++++++ ", 9);
+            ThreadingTest test1 = new ThreadingTest("-------- ",9);
+            ThreadingTest test2 = new ThreadingTest("|||||||| ",9);
+            ThreadingTest test3 = new ThreadingTest("//////// ", 9);
+            ThreadingTest test4 = new ThreadingTest("++++++++ ", 9);
 
             Console.ReadKey();
         }

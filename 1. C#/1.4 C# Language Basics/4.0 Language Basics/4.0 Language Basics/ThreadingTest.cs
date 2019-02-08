@@ -5,18 +5,20 @@ using System.Threading;
 
 namespace _4._0_Language_Basics
 {
-    class Threading_test
+    class ThreadingTest
     {
-        public Threading_test(String name, int n)
+        public ThreadingTest(String name, int n)
         {
-            Thread mythread = new Thread(test);
+            Thread mythread = new Thread(Test);
             mythread.Name = name;
             mythread.Start(n);
         }
 
-        private void test(object n)
+        private void Test(object n)
         {
-            for (int i = 0; i < (int) n; i++)
+            int m = (int) n;
+
+            for (int i = 0; i < m; i++)
             {
                 Console.WriteLine(Thread.CurrentThread.Name+" "+(i+1)+" ");
                 Thread.Sleep(0);

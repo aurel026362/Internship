@@ -4,9 +4,9 @@ using System.Text;
 
 namespace _4._0_Language_Basics
 {
-    class array
-{
-        public  array()
+    class Example
+    {
+        public  Example()
         {
             int[] v = { 1, 2, 3, 4 };
 
@@ -16,7 +16,7 @@ namespace _4._0_Language_Basics
                 Console.Write(v[i] + " ");
             }
 
-            initialize(ref v);
+            Initialize(ref v);
 
             Console.WriteLine();
             Console.WriteLine("Modified array: ");
@@ -28,19 +28,20 @@ namespace _4._0_Language_Basics
             Console.WriteLine();
 
             int s;
-            out_example(out s, v);
+            OutExample(out s, v);
             Console.WriteLine("Sum at modified array = " + s);
 
         }
 
-        private void initialize(ref int[] vec) {
-            // Ref type
+        // Ref type
+        private void Initialize(ref int[] vec)
+        {
 
-            object n = vec.Length;
             //Boxing 
+            object n = vec.Length;
 
-            int m = (int) n;
             //Unboxing 
+            int m = (int) n;
 
             for (int i = 0; i < m; i++)
             {
@@ -48,19 +49,17 @@ namespace _4._0_Language_Basics
             }
         }
 
-        private void out_example(out int sum, int [] vec)
+
+        // Function with out parameter
+        private void OutExample(out int sum, int [] vec)
         {
-            // Function with out parameter
             int n = vec.Length;
             sum = 0;
             for (int i = 0; i < n; i++)
             {
                 sum += vec[i];
             }
-
         }
-
-      
-
+       
     }
 }

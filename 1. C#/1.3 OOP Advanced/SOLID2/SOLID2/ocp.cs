@@ -4,31 +4,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SOLID
+namespace SOLID2
 {
     //OCP
 
-    class ocp
+    class OCP
     {
 
         
-        public virtual void move()
+        public virtual void Move()
         {
            // To move at general
         }
     }
 
-    class car : ocp
+    class Car : OCP
     {
-        public override void move()
+        public override void Move()
         {
             //Drive
         }
     }
 
-    class plane : ocp
+    class Plane : OCP
     {
-        public override void move()
+        public override void Move()
         {
             //Fly
         }

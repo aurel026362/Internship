@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SOLID
+namespace SOLID2
 {
     //ICP
 
@@ -56,7 +56,7 @@ namespace SOLID
         }
     }
 
-    class lcp
+    class LCP
     {
         Pelican pelican = new Pelican();
         Human human = new Human();
