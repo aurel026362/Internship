@@ -1,0 +1,11 @@
+C:\Users\aurel.starciuc\Desktop\ProiectGit\amdaris\SOLID2\SOLID2\bin\Debug\netcoreapp2.0\SOLID2.deps.json
+C:\Users\aurel.starciuc\Desktop\ProiectGit\amdaris\SOLID2\SOLID2\bin\Debug\netcoreapp2.0\SOLID2.runtimeconfig.json
+C:\Users\aurel.starciuc\Desktop\ProiectGit\amdaris\SOLID2\SOLID2\bin\Debug\netcoreapp2.0\SOLID2.runtimeconfig.dev.json
+C:\Users\aurel.starciuc\Desktop\ProiectGit\amdaris\SOLID2\SOLID2\bin\Debug\netcoreapp2.0\SOLID2.dll
+C:\Users\aurel.starciuc\Desktop\ProiectGit\amdaris\SOLID2\SOLID2\bin\Debug\netcoreapp2.0\SOLID2.pdb
+C:\Users\aurel.starciuc\Desktop\ProiectGit\amdaris\SOLID2\SOLID2\obj\Debug\netcoreapp2.0\SOLID2.csprojAssemblyReference.cache
+C:\Users\aurel.starciuc\Desktop\ProiectGit\amdaris\SOLID2\SOLID2\obj\Debug\netcoreapp2.0\SOLID2.csproj.CoreCompileInputs.cache
+C:\Users\aurel.starciuc\Desktop\ProiectGit\amdaris\SOLID2\SOLID2\obj\Debug\netcoreapp2.0\SOLID2.AssemblyInfoInputs.cache
+C:\Users\aurel.starciuc\Desktop\ProiectGit\amdaris\SOLID2\SOLID2\obj\Debug\netcoreapp2.0\SOLID2.AssemblyInfo.cs
+C:\Users\aurel.starciuc\Desktop\ProiectGit\amdaris\SOLID2\SOLID2\obj\Debug\netcoreapp2.0\SOLID2.dll
+C:\Users\aurel.starciuc\Desktop\ProiectGit\amdaris\SOLID2\SOLID2\obj\Debug\netcoreapp2.0\SOLID2.pdb
