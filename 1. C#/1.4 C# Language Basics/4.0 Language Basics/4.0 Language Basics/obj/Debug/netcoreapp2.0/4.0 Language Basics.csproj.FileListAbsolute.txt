@@ -1,0 +1,22 @@
+C:\Users\aurel.starciuc\source\repos\4.0 Language Basics\4.0 Language Basics\bin\Debug\netcoreapp2.0\4.0 Language Basics.deps.json
+C:\Users\aurel.starciuc\source\repos\4.0 Language Basics\4.0 Language Basics\bin\Debug\netcoreapp2.0\4.0 Language Basics.runtimeconfig.json
+C:\Users\aurel.starciuc\source\repos\4.0 Language Basics\4.0 Language Basics\bin\Debug\netcoreapp2.0\4.0 Language Basics.runtimeconfig.dev.json
+C:\Users\aurel.starciuc\source\repos\4.0 Language Basics\4.0 Language Basics\bin\Debug\netcoreapp2.0\4.0 Language Basics.dll
+C:\Users\aurel.starciuc\source\repos\4.0 Language Basics\4.0 Language Basics\bin\Debug\netcoreapp2.0\4.0 Language Basics.pdb
+C:\Users\aurel.starciuc\source\repos\4.0 Language Basics\4.0 Language Basics\obj\Debug\netcoreapp2.0\4.0 Language Basics.csprojAssemblyReference.cache
+C:\Users\aurel.starciuc\source\repos\4.0 Language Basics\4.0 Language Basics\obj\Debug\netcoreapp2.0\4.0 Language Basics.csproj.CoreCompileInputs.cache
+C:\Users\aurel.starciuc\source\repos\4.0 Language Basics\4.0 Language Basics\obj\Debug\netcoreapp2.0\4.0 Language Basics.AssemblyInfoInputs.cache
+C:\Users\aurel.starciuc\source\repos\4.0 Language Basics\4.0 Language Basics\obj\Debug\netcoreapp2.0\4.0 Language Basics.AssemblyInfo.cs
+C:\Users\aurel.starciuc\source\repos\4.0 Language Basics\4.0 Language Basics\obj\Debug\netcoreapp2.0\4.0 Language Basics.dll
+C:\Users\aurel.starciuc\source\repos\4.0 Language Basics\4.0 Language Basics\obj\Debug\netcoreapp2.0\4.0 Language Basics.pdb
+C:\Users\aurel.starciuc\Desktop\ProiectGit\classdiagram\1. C#\1.4 C# Language Basics\4.0 Language Basics\4.0 Language Basics\bin\Debug\netcoreapp2.0\4.0 Language Basics.deps.json
+C:\Users\aurel.starciuc\Desktop\ProiectGit\classdiagram\1. C#\1.4 C# Language Basics\4.0 Language Basics\4.0 Language Basics\bin\Debug\netcoreapp2.0\4.0 Language Basics.runtimeconfig.json
+C:\Users\aurel.starciuc\Desktop\ProiectGit\classdiagram\1. C#\1.4 C# Language Basics\4.0 Language Basics\4.0 Language Basics\bin\Debug\netcoreapp2.0\4.0 Language Basics.runtimeconfig.dev.json
+C:\Users\aurel.starciuc\Desktop\ProiectGit\classdiagram\1. C#\1.4 C# Language Basics\4.0 Language Basics\4.0 Language Basics\bin\Debug\netcoreapp2.0\4.0 Language Basics.dll
+C:\Users\aurel.starciuc\Desktop\ProiectGit\classdiagram\1. C#\1.4 C# Language Basics\4.0 Language Basics\4.0 Language Basics\bin\Debug\netcoreapp2.0\4.0 Language Basics.pdb
+C:\Users\aurel.starciuc\Desktop\ProiectGit\classdiagram\1. C#\1.4 C# Language Basics\4.0 Language Basics\4.0 Language Basics\obj\Debug\netcoreapp2.0\4.0 Language Basics.csprojAssemblyReference.cache
+C:\Users\aurel.starciuc\Desktop\ProiectGit\classdiagram\1. C#\1.4 C# Language Basics\4.0 Language Basics\4.0 Language Basics\obj\Debug\netcoreapp2.0\4.0 Language Basics.csproj.CoreCompileInputs.cache
+C:\Users\aurel.starciuc\Desktop\ProiectGit\classdiagram\1. C#\1.4 C# Language Basics\4.0 Language Basics\4.0 Language Basics\obj\Debug\netcoreapp2.0\4.0 Language Basics.AssemblyInfoInputs.cache
+C:\Users\aurel.starciuc\Desktop\ProiectGit\classdiagram\1. C#\1.4 C# Language Basics\4.0 Language Basics\4.0 Language Basics\obj\Debug\netcoreapp2.0\4.0 Language Basics.AssemblyInfo.cs
+C:\Users\aurel.starciuc\Desktop\ProiectGit\classdiagram\1. C#\1.4 C# Language Basics\4.0 Language Basics\4.0 Language Basics\obj\Debug\netcoreapp2.0\4.0 Language Basics.dll
+C:\Users\aurel.starciuc\Desktop\ProiectGit\classdiagram\1. C#\1.4 C# Language Basics\4.0 Language Basics\4.0 Language Basics\obj\Debug\netcoreapp2.0\4.0 Language Basics.pdb
