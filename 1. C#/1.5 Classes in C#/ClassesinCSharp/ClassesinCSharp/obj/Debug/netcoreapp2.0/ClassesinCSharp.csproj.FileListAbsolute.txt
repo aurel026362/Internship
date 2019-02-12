@@ -9,3 +9,14 @@ C:\Users\aurel.starciuc\source\repos\ClassesinCSharp\ClassesinCSharp\bin\Debug\n
 C:\Users\aurel.starciuc\source\repos\ClassesinCSharp\ClassesinCSharp\bin\Debug\netcoreapp2.0\ClassesinCSharp.pdb
 C:\Users\aurel.starciuc\source\repos\ClassesinCSharp\ClassesinCSharp\obj\Debug\netcoreapp2.0\ClassesinCSharp.dll
 C:\Users\aurel.starciuc\source\repos\ClassesinCSharp\ClassesinCSharp\obj\Debug\netcoreapp2.0\ClassesinCSharp.pdb
+D:\Git\classdiagram\1. C#\1.5 Classes in C#\ClassesinCSharp\ClassesinCSharp\bin\Debug\netcoreapp2.0\ClassesinCSharp.deps.json
+D:\Git\classdiagram\1. C#\1.5 Classes in C#\ClassesinCSharp\ClassesinCSharp\bin\Debug\netcoreapp2.0\ClassesinCSharp.runtimeconfig.json
+D:\Git\classdiagram\1. C#\1.5 Classes in C#\ClassesinCSharp\ClassesinCSharp\bin\Debug\netcoreapp2.0\ClassesinCSharp.runtimeconfig.dev.json
+D:\Git\classdiagram\1. C#\1.5 Classes in C#\ClassesinCSharp\ClassesinCSharp\bin\Debug\netcoreapp2.0\ClassesinCSharp.dll
+D:\Git\classdiagram\1. C#\1.5 Classes in C#\ClassesinCSharp\ClassesinCSharp\bin\Debug\netcoreapp2.0\ClassesinCSharp.pdb
+D:\Git\classdiagram\1. C#\1.5 Classes in C#\ClassesinCSharp\ClassesinCSharp\obj\Debug\netcoreapp2.0\ClassesinCSharp.csprojAssemblyReference.cache
+D:\Git\classdiagram\1. C#\1.5 Classes in C#\ClassesinCSharp\ClassesinCSharp\obj\Debug\netcoreapp2.0\ClassesinCSharp.csproj.CoreCompileInputs.cache
+D:\Git\classdiagram\1. C#\1.5 Classes in C#\ClassesinCSharp\ClassesinCSharp\obj\Debug\netcoreapp2.0\ClassesinCSharp.AssemblyInfoInputs.cache
+D:\Git\classdiagram\1. C#\1.5 Classes in C#\ClassesinCSharp\ClassesinCSharp\obj\Debug\netcoreapp2.0\ClassesinCSharp.AssemblyInfo.cs
+D:\Git\classdiagram\1. C#\1.5 Classes in C#\ClassesinCSharp\ClassesinCSharp\obj\Debug\netcoreapp2.0\ClassesinCSharp.dll
+D:\Git\classdiagram\1. C#\1.5 Classes in C#\ClassesinCSharp\ClassesinCSharp\obj\Debug\netcoreapp2.0\ClassesinCSharp.pdb

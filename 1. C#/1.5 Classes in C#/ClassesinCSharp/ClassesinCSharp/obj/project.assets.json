@@ -670,11 +670,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\aurel.starciuc\\source\\repos\\ClassesinCSharp\\ClassesinCSharp\\ClassesinCSharp.csproj",
+      "projectUniqueName": "D:\\Git\\classdiagram\\1. C#\\1.5 Classes in C#\\ClassesinCSharp\\ClassesinCSharp\\ClassesinCSharp.csproj",
       "projectName": "ClassesinCSharp",
-      "projectPath": "C:\\Users\\aurel.starciuc\\source\\repos\\ClassesinCSharp\\ClassesinCSharp\\ClassesinCSharp.csproj",
+      "projectPath": "D:\\Git\\classdiagram\\1. C#\\1.5 Classes in C#\\ClassesinCSharp\\ClassesinCSharp\\ClassesinCSharp.csproj",
       "packagesPath": "C:\\Users\\aurel.starciuc\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\aurel.starciuc\\source\\repos\\ClassesinCSharp\\ClassesinCSharp\\obj\\",
+      "outputPath": "D:\\Git\\classdiagram\\1. C#\\1.5 Classes in C#\\ClassesinCSharp\\ClassesinCSharp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

@@ -670,11 +670,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\aurel.starciuc\\source\\repos\\ArrayAndString\\ArrayAndString\\ArrayAndString.csproj",
+      "projectUniqueName": "D:\\Git\\classdiagram\\1. C#\\1.6 Array and String\\ArrayAndString\\ArrayAndString\\ArrayAndString.csproj",
       "projectName": "ArrayAndString",
-      "projectPath": "C:\\Users\\aurel.starciuc\\source\\repos\\ArrayAndString\\ArrayAndString\\ArrayAndString.csproj",
+      "projectPath": "D:\\Git\\classdiagram\\1. C#\\1.6 Array and String\\ArrayAndString\\ArrayAndString\\ArrayAndString.csproj",
       "packagesPath": "C:\\Users\\aurel.starciuc\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\aurel.starciuc\\source\\repos\\ArrayAndString\\ArrayAndString\\obj\\",
+      "outputPath": "D:\\Git\\classdiagram\\1. C#\\1.6 Array and String\\ArrayAndString\\ArrayAndString\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

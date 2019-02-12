@@ -9,3 +9,14 @@ C:\Users\aurel.starciuc\source\repos\ArrayAndString\ArrayAndString\obj\Debug\net
 C:\Users\aurel.starciuc\source\repos\ArrayAndString\ArrayAndString\obj\Debug\netcoreapp2.0\ArrayAndString.AssemblyInfo.cs
 C:\Users\aurel.starciuc\source\repos\ArrayAndString\ArrayAndString\obj\Debug\netcoreapp2.0\ArrayAndString.dll
 C:\Users\aurel.starciuc\source\repos\ArrayAndString\ArrayAndString\obj\Debug\netcoreapp2.0\ArrayAndString.pdb
+D:\Git\classdiagram\1. C#\1.6 Array and String\ArrayAndString\ArrayAndString\bin\Debug\netcoreapp2.0\ArrayAndString.deps.json
+D:\Git\classdiagram\1. C#\1.6 Array and String\ArrayAndString\ArrayAndString\bin\Debug\netcoreapp2.0\ArrayAndString.runtimeconfig.json
+D:\Git\classdiagram\1. C#\1.6 Array and String\ArrayAndString\ArrayAndString\bin\Debug\netcoreapp2.0\ArrayAndString.runtimeconfig.dev.json
+D:\Git\classdiagram\1. C#\1.6 Array and String\ArrayAndString\ArrayAndString\bin\Debug\netcoreapp2.0\ArrayAndString.dll
+D:\Git\classdiagram\1. C#\1.6 Array and String\ArrayAndString\ArrayAndString\bin\Debug\netcoreapp2.0\ArrayAndString.pdb
+D:\Git\classdiagram\1. C#\1.6 Array and String\ArrayAndString\ArrayAndString\obj\Debug\netcoreapp2.0\ArrayAndString.csprojAssemblyReference.cache
+D:\Git\classdiagram\1. C#\1.6 Array and String\ArrayAndString\ArrayAndString\obj\Debug\netcoreapp2.0\ArrayAndString.csproj.CoreCompileInputs.cache
+D:\Git\classdiagram\1. C#\1.6 Array and String\ArrayAndString\ArrayAndString\obj\Debug\netcoreapp2.0\ArrayAndString.AssemblyInfoInputs.cache
+D:\Git\classdiagram\1. C#\1.6 Array and String\ArrayAndString\ArrayAndString\obj\Debug\netcoreapp2.0\ArrayAndString.AssemblyInfo.cs
+D:\Git\classdiagram\1. C#\1.6 Array and String\ArrayAndString\ArrayAndString\obj\Debug\netcoreapp2.0\ArrayAndString.dll
+D:\Git\classdiagram\1. C#\1.6 Array and String\ArrayAndString\ArrayAndString\obj\Debug\netcoreapp2.0\ArrayAndString.pdb

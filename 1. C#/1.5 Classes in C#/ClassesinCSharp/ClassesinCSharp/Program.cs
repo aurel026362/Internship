@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace ClassesinCSharp
 {
@@ -7,7 +8,7 @@ namespace ClassesinCSharp
         static void Main(string[] args)
         {
             Employer boss = new Employer("Alexandru","Chiorescu");
-
+            
             boss.ModifyStage(3);
 
             Console.WriteLine("DATA BOSS");
