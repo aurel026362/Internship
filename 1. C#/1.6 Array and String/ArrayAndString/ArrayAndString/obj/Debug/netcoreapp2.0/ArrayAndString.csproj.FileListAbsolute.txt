@@ -1,0 +1,11 @@
+C:\Users\aurel.starciuc\source\repos\ArrayAndString\ArrayAndString\bin\Debug\netcoreapp2.0\ArrayAndString.deps.json
+C:\Users\aurel.starciuc\source\repos\ArrayAndString\ArrayAndString\bin\Debug\netcoreapp2.0\ArrayAndString.runtimeconfig.json
+C:\Users\aurel.starciuc\source\repos\ArrayAndString\ArrayAndString\bin\Debug\netcoreapp2.0\ArrayAndString.runtimeconfig.dev.json
+C:\Users\aurel.starciuc\source\repos\ArrayAndString\ArrayAndString\bin\Debug\netcoreapp2.0\ArrayAndString.dll
+C:\Users\aurel.starciuc\source\repos\ArrayAndString\ArrayAndString\bin\Debug\netcoreapp2.0\ArrayAndString.pdb
+C:\Users\aurel.starciuc\source\repos\ArrayAndString\ArrayAndString\obj\Debug\netcoreapp2.0\ArrayAndString.csprojAssemblyReference.cache
+C:\Users\aurel.starciuc\source\repos\ArrayAndString\ArrayAndString\obj\Debug\netcoreapp2.0\ArrayAndString.csproj.CoreCompileInputs.cache
+C:\Users\aurel.starciuc\source\repos\ArrayAndString\ArrayAndString\obj\Debug\netcoreapp2.0\ArrayAndString.AssemblyInfoInputs.cache
+C:\Users\aurel.starciuc\source\repos\ArrayAndString\ArrayAndString\obj\Debug\netcoreapp2.0\ArrayAndString.AssemblyInfo.cs
+C:\Users\aurel.starciuc\source\repos\ArrayAndString\ArrayAndString\obj\Debug\netcoreapp2.0\ArrayAndString.dll
+C:\Users\aurel.starciuc\source\repos\ArrayAndString\ArrayAndString\obj\Debug\netcoreapp2.0\ArrayAndString.pdb

@@ -1,0 +1,11 @@
+C:\Users\aurel.starciuc\source\repos\ClassesinCSharp\ClassesinCSharp\obj\Debug\netcoreapp2.0\ClassesinCSharp.csprojAssemblyReference.cache
+C:\Users\aurel.starciuc\source\repos\ClassesinCSharp\ClassesinCSharp\obj\Debug\netcoreapp2.0\ClassesinCSharp.csproj.CoreCompileInputs.cache
+C:\Users\aurel.starciuc\source\repos\ClassesinCSharp\ClassesinCSharp\obj\Debug\netcoreapp2.0\ClassesinCSharp.AssemblyInfoInputs.cache
+C:\Users\aurel.starciuc\source\repos\ClassesinCSharp\ClassesinCSharp\obj\Debug\netcoreapp2.0\ClassesinCSharp.AssemblyInfo.cs
+C:\Users\aurel.starciuc\source\repos\ClassesinCSharp\ClassesinCSharp\bin\Debug\netcoreapp2.0\ClassesinCSharp.deps.json
+C:\Users\aurel.starciuc\source\repos\ClassesinCSharp\ClassesinCSharp\bin\Debug\netcoreapp2.0\ClassesinCSharp.runtimeconfig.json
+C:\Users\aurel.starciuc\source\repos\ClassesinCSharp\ClassesinCSharp\bin\Debug\netcoreapp2.0\ClassesinCSharp.runtimeconfig.dev.json
+C:\Users\aurel.starciuc\source\repos\ClassesinCSharp\ClassesinCSharp\bin\Debug\netcoreapp2.0\ClassesinCSharp.dll
+C:\Users\aurel.starciuc\source\repos\ClassesinCSharp\ClassesinCSharp\bin\Debug\netcoreapp2.0\ClassesinCSharp.pdb
+C:\Users\aurel.starciuc\source\repos\ClassesinCSharp\ClassesinCSharp\obj\Debug\netcoreapp2.0\ClassesinCSharp.dll
+C:\Users\aurel.starciuc\source\repos\ClassesinCSharp\ClassesinCSharp\obj\Debug\netcoreapp2.0\ClassesinCSharp.pdb
