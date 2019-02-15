@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ClassesinCSharp
+namespace SOLID2.ISP
 {
-    interface IWorking
+    interface IPhoto
     {
-        void Work();
+        void TakePhoto();
     }
 }

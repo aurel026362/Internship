@@ -20,6 +20,24 @@ namespace ArrayAndString
                     new string[,] { { "Ion", "Gosa" }, { "Kiril", "Mihai"}, { "Jora", "Dima" } }
             };
 
+            Console.Write("\' Escape \a");
+            Console.WriteLine(@" Caracters");
+
+            //Pad Left
+            Console.WriteLine(jag[0][0, 0].PadLeft(5,'.'));
+
+            //Pad Right
+            Console.WriteLine(jag[0][0, 1].PadRight(6, '-'));
+
+            //Pad Left Default
+            Console.WriteLine(jag[0][0,1].PadLeft(7));
+
+            //ToUpper
+            Console.WriteLine(jag[1][0, 1].ToUpper());
+
+            //ToLower
+            Console.WriteLine(jag[1][0, 1].ToLower());
+
             //Split function
             string text = "era odata ca niciodata o prea frumoasa fata";
             string[] t = text.Split(' ');
@@ -49,43 +67,18 @@ namespace ArrayAndString
         {
             foreach (string[,] s in jag)
             {
-                PrintBiArray(s);
+                for (int i = 0; i < s.GetLength(0); i++)
+                {
+                    for (int j = 0; j < s.GetLength(1); j++)
+                    {
+                        Console.Write(s[i, j] + " ");
+                    }
+
+                    Console.WriteLine();
+                }
                 Console.WriteLine("=========");
             }
             Console.WriteLine();
-        }
-
-        private static int getBiArrayRowLen(string[,] str)
-        {
-            int n = 0;
-            string temp;
-            bool a = true;
-            while (a)
-            {
-                try
-                {
-                    temp = str[n, 0];
-                    n++;
-                }
-                catch
-                {
-                    a = false;
-                }
-            }
-            return n;
-        }
-
-        public static void PrintBiArray(string[,] str)
-        {
-            int arrayRowLen = getBiArrayRowLen(str);
-            for (int i = 0; i < arrayRowLen; i++)
-            {
-                for (int j = 0; j < str.Length / arrayRowLen; j++)
-                {
-                    Console.Write(str[i, j] + " ");
-                }
-                Console.WriteLine();
-            }
         }
     }
 }

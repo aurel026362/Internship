@@ -1,0 +1,7 @@
+C:\Users\aurel.starciuc\source\repos\1.7OverloadingInterfaces\1.7OverloadingInterfaces\bin\Debug\1.7OverloadingInterfaces.exe.config
+C:\Users\aurel.starciuc\source\repos\1.7OverloadingInterfaces\1.7OverloadingInterfaces\bin\Debug\1.7OverloadingInterfaces.exe
+C:\Users\aurel.starciuc\source\repos\1.7OverloadingInterfaces\1.7OverloadingInterfaces\bin\Debug\1.7OverloadingInterfaces.pdb
+C:\Users\aurel.starciuc\source\repos\1.7OverloadingInterfaces\1.7OverloadingInterfaces\obj\Debug\1.7OverloadingInterfaces.csprojAssemblyReference.cache
+C:\Users\aurel.starciuc\source\repos\1.7OverloadingInterfaces\1.7OverloadingInterfaces\obj\Debug\1.7OverloadingInterfaces.csproj.CoreCompileInputs.cache
+C:\Users\aurel.starciuc\source\repos\1.7OverloadingInterfaces\1.7OverloadingInterfaces\obj\Debug\1.7OverloadingInterfaces.exe
+C:\Users\aurel.starciuc\source\repos\1.7OverloadingInterfaces\1.7OverloadingInterfaces\obj\Debug\1.7OverloadingInterfaces.pdb

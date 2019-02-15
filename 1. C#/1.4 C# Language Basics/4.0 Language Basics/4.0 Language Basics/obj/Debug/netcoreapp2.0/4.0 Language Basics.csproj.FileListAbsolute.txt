@@ -20,3 +20,14 @@ C:\Users\aurel.starciuc\Desktop\ProiectGit\classdiagram\1. C#\1.4 C# Language Ba
 C:\Users\aurel.starciuc\Desktop\ProiectGit\classdiagram\1. C#\1.4 C# Language Basics\4.0 Language Basics\4.0 Language Basics\obj\Debug\netcoreapp2.0\4.0 Language Basics.AssemblyInfo.cs
 C:\Users\aurel.starciuc\Desktop\ProiectGit\classdiagram\1. C#\1.4 C# Language Basics\4.0 Language Basics\4.0 Language Basics\obj\Debug\netcoreapp2.0\4.0 Language Basics.dll
 C:\Users\aurel.starciuc\Desktop\ProiectGit\classdiagram\1. C#\1.4 C# Language Basics\4.0 Language Basics\4.0 Language Basics\obj\Debug\netcoreapp2.0\4.0 Language Basics.pdb
+D:\Git\classdiagram\1. C#\1.4 C# Language Basics\4.0 Language Basics\4.0 Language Basics\bin\Debug\netcoreapp2.0\4.0 Language Basics.deps.json
+D:\Git\classdiagram\1. C#\1.4 C# Language Basics\4.0 Language Basics\4.0 Language Basics\bin\Debug\netcoreapp2.0\4.0 Language Basics.runtimeconfig.json
+D:\Git\classdiagram\1. C#\1.4 C# Language Basics\4.0 Language Basics\4.0 Language Basics\bin\Debug\netcoreapp2.0\4.0 Language Basics.runtimeconfig.dev.json
+D:\Git\classdiagram\1. C#\1.4 C# Language Basics\4.0 Language Basics\4.0 Language Basics\bin\Debug\netcoreapp2.0\4.0 Language Basics.dll
+D:\Git\classdiagram\1. C#\1.4 C# Language Basics\4.0 Language Basics\4.0 Language Basics\bin\Debug\netcoreapp2.0\4.0 Language Basics.pdb
+D:\Git\classdiagram\1. C#\1.4 C# Language Basics\4.0 Language Basics\4.0 Language Basics\obj\Debug\netcoreapp2.0\4.0 Language Basics.csprojAssemblyReference.cache
+D:\Git\classdiagram\1. C#\1.4 C# Language Basics\4.0 Language Basics\4.0 Language Basics\obj\Debug\netcoreapp2.0\4.0 Language Basics.csproj.CoreCompileInputs.cache
+D:\Git\classdiagram\1. C#\1.4 C# Language Basics\4.0 Language Basics\4.0 Language Basics\obj\Debug\netcoreapp2.0\4.0 Language Basics.AssemblyInfoInputs.cache
+D:\Git\classdiagram\1. C#\1.4 C# Language Basics\4.0 Language Basics\4.0 Language Basics\obj\Debug\netcoreapp2.0\4.0 Language Basics.AssemblyInfo.cs
+D:\Git\classdiagram\1. C#\1.4 C# Language Basics\4.0 Language Basics\4.0 Language Basics\obj\Debug\netcoreapp2.0\4.0 Language Basics.dll
+D:\Git\classdiagram\1. C#\1.4 C# Language Basics\4.0 Language Basics\4.0 Language Basics\obj\Debug\netcoreapp2.0\4.0 Language Basics.pdb

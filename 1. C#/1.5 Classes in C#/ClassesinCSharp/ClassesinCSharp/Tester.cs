@@ -6,41 +6,14 @@ namespace ClassesinCSharp
 {
     class Tester : Worker
     {
-        readonly private int t = 10;
-        public Tester(string name, string function) : base(name, function)
+        public Tester(string name, int salary) : base(name, salary)
         {
 
         }
 
         public override void Work()
         {
-
+            Console.WriteLine("Tester work");
         }
     }
-
-    //class A
-    //{
-    //    int a;
-    //    public virtual void Move()
-    //    {
-
-    //    }
-    //}
-
-    //class B : A
-    //{
-    //    public sealed override void Move()
-    //    {
-    //        //asdsadsa
-    //    }
-    //}
-
-    //class C : B
-    //{
-    //    public C()
-    //    {
-    //        Move();
-    //    }
-    //}
-
 }

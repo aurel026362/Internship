@@ -1,4 +1,7 @@
-﻿using System;
+﻿using SOLID2.ISP;
+using SOLID2.LCP;
+using SOLID2.OCP;
+using System;
 
 namespace SOLID2
 {
@@ -6,11 +9,30 @@ namespace SOLID2
     {
         static void Main(string[] args)
         {
-            OCP ocp = new OCP();
+            //ISP
+            Landline landline = new Landline();
+            landline.Call();
 
-            ISP isp = new ISP();
+            SmartPhone smartPhone = new SmartPhone();
+            smartPhone.Call();
+            smartPhone.TakePhoto();
 
-            LCP lcp = new LCP();
+            //LCP
+            Horse horse = new Horse();
+            horse.Run();
+
+            Pelican pelican = new Pelican();
+            pelican.Fly();
+            pelican.Swim();
+
+            //OCP
+            Transport car = new Car();
+            car.Move();
+
+            Transport plane = new Plane();
+            plane.Move();
+
+            Console.ReadKey();
         }
     }
 }

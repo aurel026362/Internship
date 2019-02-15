@@ -6,14 +6,14 @@ namespace ClassesinCSharp
 {
     class Programmer:Worker
     {
-        public Programmer(string name, string function):base(name, function)
+        public Programmer(string name, int salary):base(name, salary)
         {
 
         }
 
         public override void Work()
         {
-
+            Console.WriteLine("Programmer work");
         }
     }
 }

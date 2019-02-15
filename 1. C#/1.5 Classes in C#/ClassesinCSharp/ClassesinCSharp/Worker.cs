@@ -4,18 +4,19 @@ using System.Text;
 
 namespace ClassesinCSharp
 {
-    class Worker:Person, IWorking
+    abstract class Worker:Person, IWork
     {
-        public string functionWorker;
+        public int salary;
 
-        public Worker(string name, string function):base(name)
+        public Worker(string name, int salary):base(name)
         {
-            functionWorker = function;
+            this.salary = salary;
         }
 
         public virtual void Work()
         {
-            Console.WriteLine("Working");
+            Console.WriteLine("Worker work");
         }
+
     }
 }

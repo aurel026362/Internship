@@ -6,10 +6,13 @@ namespace _4._0_Language_Basics
 {
     class Howdy
     {
+        
+        static string s;
+
         // static constructor
         static Howdy()
         {
-            string s = "Hello World!";
+            s = "Hello World!";
             Hi(s);
         }
 

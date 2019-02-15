@@ -50,7 +50,7 @@ namespace ArrayAndString
 
             Show(a);
 
-            Console.WriteLine("Afiseaza elementul cu index-ul 2 este " + Array.IndexOf(a, 2));
+            Console.WriteLine("Afiseaza elementul cu index-ul 2 este " + Array.IndexOf(a, 3));
 
             int[] el = Array.FindAll(a, element => element > 0);
             Console.Write("Elementele mai mari ca 0 sunt: ");

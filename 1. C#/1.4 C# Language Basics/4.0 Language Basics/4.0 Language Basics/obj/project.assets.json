@@ -670,11 +670,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\aurel.starciuc\\Desktop\\ProiectGit\\classdiagram\\1. C#\\1.4 C# Language Basics\\4.0 Language Basics\\4.0 Language Basics\\4.0 Language Basics.csproj",
+      "projectUniqueName": "D:\\Git\\classdiagram\\1. C#\\1.4 C# Language Basics\\4.0 Language Basics\\4.0 Language Basics\\4.0 Language Basics.csproj",
       "projectName": "4.0 Language Basics",
-      "projectPath": "C:\\Users\\aurel.starciuc\\Desktop\\ProiectGit\\classdiagram\\1. C#\\1.4 C# Language Basics\\4.0 Language Basics\\4.0 Language Basics\\4.0 Language Basics.csproj",
+      "projectPath": "D:\\Git\\classdiagram\\1. C#\\1.4 C# Language Basics\\4.0 Language Basics\\4.0 Language Basics\\4.0 Language Basics.csproj",
       "packagesPath": "C:\\Users\\aurel.starciuc\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\aurel.starciuc\\Desktop\\ProiectGit\\classdiagram\\1. C#\\1.4 C# Language Basics\\4.0 Language Basics\\4.0 Language Basics\\obj\\",
+      "outputPath": "D:\\Git\\classdiagram\\1. C#\\1.4 C# Language Basics\\4.0 Language Basics\\4.0 Language Basics\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
