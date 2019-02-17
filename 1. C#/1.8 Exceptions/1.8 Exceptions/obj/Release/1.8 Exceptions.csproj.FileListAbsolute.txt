@@ -1,0 +1,6 @@
+C:\Users\Aurel\source\repos\1.8 Exceptions\1.8 Exceptions\bin\Release\1.8 Exceptions.exe.config
+C:\Users\Aurel\source\repos\1.8 Exceptions\1.8 Exceptions\bin\Release\1.8 Exceptions.exe
+C:\Users\Aurel\source\repos\1.8 Exceptions\1.8 Exceptions\bin\Release\1.8 Exceptions.pdb
+C:\Users\Aurel\source\repos\1.8 Exceptions\1.8 Exceptions\obj\Release\1.8 Exceptions.csproj.CoreCompileInputs.cache
+C:\Users\Aurel\source\repos\1.8 Exceptions\1.8 Exceptions\obj\Release\1.8 Exceptions.exe
+C:\Users\Aurel\source\repos\1.8 Exceptions\1.8 Exceptions\obj\Release\1.8 Exceptions.pdb
