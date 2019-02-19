@@ -48,6 +48,10 @@
     <Compile Include="Generics\SampleOperation.cs" />
     <Compile Include="Generics\Student.cs" />
     <Compile Include="Generics\Teacher.cs" />
+    <Compile Include="Nullable\BookEqualityComparer.cs" />
+    <Compile Include="Nullable\ComparerByPage.cs" />
+    <Compile Include="Nullable\NullableOp.cs" />
+    <Compile Include="Nullable\Book.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

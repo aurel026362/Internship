@@ -5,3 +5,10 @@ C:\Users\Aurel\source\repos\1.8 Exceptions\1.8 Exceptions\bin\Debug\1.8 Exceptio
 C:\Users\Aurel\source\repos\1.8 Exceptions\1.8 Exceptions\bin\Debug\1.8 Exceptions.pdb
 C:\Users\Aurel\source\repos\1.8 Exceptions\1.8 Exceptions\obj\Debug\1.8 Exceptions.exe
 C:\Users\Aurel\source\repos\1.8 Exceptions\1.8 Exceptions\obj\Debug\1.8 Exceptions.pdb
+D:\Git\Internship\1. C#\1.8 Exceptions\1.8 Exceptions\bin\Debug\1.8 Exceptions.exe.config
+D:\Git\Internship\1. C#\1.8 Exceptions\1.8 Exceptions\bin\Debug\1.8 Exceptions.exe
+D:\Git\Internship\1. C#\1.8 Exceptions\1.8 Exceptions\bin\Debug\1.8 Exceptions.pdb
+D:\Git\Internship\1. C#\1.8 Exceptions\1.8 Exceptions\obj\Debug\1.8 Exceptions.csprojAssemblyReference.cache
+D:\Git\Internship\1. C#\1.8 Exceptions\1.8 Exceptions\obj\Debug\1.8 Exceptions.csproj.CoreCompileInputs.cache
+D:\Git\Internship\1. C#\1.8 Exceptions\1.8 Exceptions\obj\Debug\1.8 Exceptions.exe
+D:\Git\Internship\1. C#\1.8 Exceptions\1.8 Exceptions\obj\Debug\1.8 Exceptions.pdb

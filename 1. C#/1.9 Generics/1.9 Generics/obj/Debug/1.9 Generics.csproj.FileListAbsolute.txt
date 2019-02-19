@@ -5,3 +5,10 @@ C:\Users\Aurel\source\repos\1.9 Generics\1.9 Generics\obj\Debug\1.9 Generics.csp
 C:\Users\Aurel\source\repos\1.9 Generics\1.9 Generics\obj\Debug\1.9 Generics.csproj.CoreCompileInputs.cache
 C:\Users\Aurel\source\repos\1.9 Generics\1.9 Generics\obj\Debug\1.9 Generics.exe
 C:\Users\Aurel\source\repos\1.9 Generics\1.9 Generics\obj\Debug\1.9 Generics.pdb
+D:\Git\Internship\1. C#\1.9 Generics\1.9 Generics\bin\Debug\1.9 Generics.exe.config
+D:\Git\Internship\1. C#\1.9 Generics\1.9 Generics\bin\Debug\1.9 Generics.exe
+D:\Git\Internship\1. C#\1.9 Generics\1.9 Generics\bin\Debug\1.9 Generics.pdb
+D:\Git\Internship\1. C#\1.9 Generics\1.9 Generics\obj\Debug\1.9 Generics.csprojAssemblyReference.cache
+D:\Git\Internship\1. C#\1.9 Generics\1.9 Generics\obj\Debug\1.9 Generics.csproj.CoreCompileInputs.cache
+D:\Git\Internship\1. C#\1.9 Generics\1.9 Generics\obj\Debug\1.9 Generics.exe
+D:\Git\Internship\1. C#\1.9 Generics\1.9 Generics\obj\Debug\1.9 Generics.pdb

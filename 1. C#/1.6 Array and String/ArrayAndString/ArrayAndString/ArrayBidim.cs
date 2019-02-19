@@ -20,8 +20,6 @@ namespace ArrayAndString
                 {4, 5, 6}
             };
 
-            int[] a = new int[] { 1, 2, 3, 4 };
-
             Show(mat, 2, 3);
         }
 

@@ -18,7 +18,7 @@ namespace ArrayAndString
                 Console.WriteLine("---------------------------");
                 Console.Write("Alege operatiunea: ");
                 n = Convert.ToInt16(Console.ReadLine());
-
+                Console.Clear();
                 switch (n)
                 {
                     case 1: Arrays ar = new Arrays(); break;

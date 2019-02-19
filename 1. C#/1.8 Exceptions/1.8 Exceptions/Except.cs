@@ -71,9 +71,11 @@ namespace _1._8_Exceptions
             {
                 Console.WriteLine(fileEx.Message);
             }
-            catch (Exception ex) when (fileStream == null)
+            catch (Exception ex) when (fileStream != null)
             {
                 Console.WriteLine(ex.Message);
+                //Rethrow
+                throw new Exception();
             }
             finally
             {
@@ -93,10 +95,9 @@ namespace _1._8_Exceptions
                 else
                     throw new ArgumentException();
             }
-            catch (ArgumentException ae)
+            catch (Exception ae)
             {
                 Console.WriteLine("Argument exception: " + ae.Message);
-                throw new ArgumentException();
             }
         }
 

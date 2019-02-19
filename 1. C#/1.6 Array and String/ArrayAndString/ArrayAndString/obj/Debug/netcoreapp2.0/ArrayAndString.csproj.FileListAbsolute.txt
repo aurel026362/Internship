@@ -20,3 +20,14 @@ D:\Git\classdiagram\1. C#\1.6 Array and String\ArrayAndString\ArrayAndString\obj
 D:\Git\classdiagram\1. C#\1.6 Array and String\ArrayAndString\ArrayAndString\obj\Debug\netcoreapp2.0\ArrayAndString.AssemblyInfo.cs
 D:\Git\classdiagram\1. C#\1.6 Array and String\ArrayAndString\ArrayAndString\obj\Debug\netcoreapp2.0\ArrayAndString.dll
 D:\Git\classdiagram\1. C#\1.6 Array and String\ArrayAndString\ArrayAndString\obj\Debug\netcoreapp2.0\ArrayAndString.pdb
+D:\Git\Internship\1. C#\1.6 Array and String\ArrayAndString\ArrayAndString\bin\Debug\netcoreapp2.0\ArrayAndString.deps.json
+D:\Git\Internship\1. C#\1.6 Array and String\ArrayAndString\ArrayAndString\bin\Debug\netcoreapp2.0\ArrayAndString.runtimeconfig.json
+D:\Git\Internship\1. C#\1.6 Array and String\ArrayAndString\ArrayAndString\bin\Debug\netcoreapp2.0\ArrayAndString.runtimeconfig.dev.json
+D:\Git\Internship\1. C#\1.6 Array and String\ArrayAndString\ArrayAndString\bin\Debug\netcoreapp2.0\ArrayAndString.dll
+D:\Git\Internship\1. C#\1.6 Array and String\ArrayAndString\ArrayAndString\bin\Debug\netcoreapp2.0\ArrayAndString.pdb
+D:\Git\Internship\1. C#\1.6 Array and String\ArrayAndString\ArrayAndString\obj\Debug\netcoreapp2.0\ArrayAndString.csprojAssemblyReference.cache
+D:\Git\Internship\1. C#\1.6 Array and String\ArrayAndString\ArrayAndString\obj\Debug\netcoreapp2.0\ArrayAndString.csproj.CoreCompileInputs.cache
+D:\Git\Internship\1. C#\1.6 Array and String\ArrayAndString\ArrayAndString\obj\Debug\netcoreapp2.0\ArrayAndString.AssemblyInfoInputs.cache
+D:\Git\Internship\1. C#\1.6 Array and String\ArrayAndString\ArrayAndString\obj\Debug\netcoreapp2.0\ArrayAndString.AssemblyInfo.cs
+D:\Git\Internship\1. C#\1.6 Array and String\ArrayAndString\ArrayAndString\obj\Debug\netcoreapp2.0\ArrayAndString.dll
+D:\Git\Internship\1. C#\1.6 Array and String\ArrayAndString\ArrayAndString\obj\Debug\netcoreapp2.0\ArrayAndString.pdb

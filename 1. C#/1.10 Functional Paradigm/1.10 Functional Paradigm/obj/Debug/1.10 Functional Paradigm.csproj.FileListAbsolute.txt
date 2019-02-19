@@ -1,0 +1,7 @@
+C:\Users\aurel.starciuc\source\repos\1.10 Functional Paradigm\1.10 Functional Paradigm\bin\Debug\1.10 Functional Paradigm.exe.config
+C:\Users\aurel.starciuc\source\repos\1.10 Functional Paradigm\1.10 Functional Paradigm\bin\Debug\1.10 Functional Paradigm.exe
+C:\Users\aurel.starciuc\source\repos\1.10 Functional Paradigm\1.10 Functional Paradigm\bin\Debug\1.10 Functional Paradigm.pdb
+C:\Users\aurel.starciuc\source\repos\1.10 Functional Paradigm\1.10 Functional Paradigm\obj\Debug\1.10 Functional Paradigm.csprojAssemblyReference.cache
+C:\Users\aurel.starciuc\source\repos\1.10 Functional Paradigm\1.10 Functional Paradigm\obj\Debug\1.10 Functional Paradigm.csproj.CoreCompileInputs.cache
+C:\Users\aurel.starciuc\source\repos\1.10 Functional Paradigm\1.10 Functional Paradigm\obj\Debug\1.10 Functional Paradigm.exe
+C:\Users\aurel.starciuc\source\repos\1.10 Functional Paradigm\1.10 Functional Paradigm\obj\Debug\1.10 Functional Paradigm.pdb

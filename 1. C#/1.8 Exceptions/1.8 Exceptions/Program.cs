@@ -14,8 +14,6 @@ namespace _1._8_Exceptions
             var e = new Except();
 #elif RELEASE
             Console.WriteLine("This is RELEASE!");
-#else
-            Console.WriteLine("This isn't Debug!");
 #endif
             Console.ReadKey();
         }
