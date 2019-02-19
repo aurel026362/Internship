@@ -42,11 +42,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="OperationTech\Hardware.cs" />
-    <Compile Include="OperationTech\PC.cs" />
-    <Compile Include="OperationTech\SmartPhone.cs" />
-    <Compile Include="OperationTech\Technology.cs" />
-    <Compile Include="OperationTech\TechnologyOp.cs" />
+    <Compile Include="OperationTech\JoiningOp\Joining.cs" />
+    <Compile Include="OperationTech\JoiningOp\Student.cs" />
+    <Compile Include="OperationTech\JoiningOp\StudentsNotes.cs" />
+    <Compile Include="OperationTech\Projection.cs" />
+    <Compile Include="OperationTech\Tools\Hardware.cs" />
+    <Compile Include="OperationTech\Tools\PC.cs" />
+    <Compile Include="OperationTech\Tools\SmartPhone.cs" />
+    <Compile Include="OperationTech\Tools\Technology.cs" />
+    <Compile Include="OperationTech\Filtering.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

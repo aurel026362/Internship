@@ -9,9 +9,70 @@ namespace _1._11_LinqAdv
 {
     class Program
     {
+        
         static void Main(string[] args)
         {
-            new TechnologyOp();
+            List<PC> listPC = new List<PC>();
+            listPC.AddRange(new List<PC>
+            {
+                new PC{ company = "Acer", warranty = 2, listH = new List<Hardware>{
+                    new Hardware { type = "motherboard", name = "asus moth"},
+                    new Hardware { type = "cpu", name = "amd fx"},
+                    new Hardware { type = "gpu", name = "geForce 990"}
+                    }
+                },
+                new PC{ company = "Lenovo", warranty = 3, listH = new List<Hardware>{
+                    new Hardware { type = "powersupply", name = "fr-432"}
+                    }
+                },
+                new PC{ company = "Dell", warranty = 6, listH = new List<Hardware>{
+                    new Hardware { type = "ram", name = "kingstone"}
+                    }
+                },
+                new PC{ company = "Asus", warranty = 4 , listH = new List<Hardware>{
+                    new Hardware { type = "rom", name = "samsung" },
+                    new Hardware { type = "cpu", name = "intel" }
+                    }
+                }
+            }
+           );
+
+            List<Technology> listT = new List<Technology>();
+            listT.AddRange(new List<Technology>
+            {
+                new PC{ company = "Acer", warranty = 2 },
+                new PC{ company = "Lenovo", warranty = 3 },
+                new SmartPhone{ company = "Xiaomi", warranty = 5},
+                new PC{ company = "Dell", warranty = 6 },
+                new SmartPhone{ company = "Samsung", warranty = 4},
+                new SmartPhone{ company = "IPhone", warranty = 3},
+                new PC{ company = "Asus", warranty = 4 },
+            }
+            );
+            int n = -1;
+            while ( n!=0 )
+            {
+                Console.WriteLine("   Menu");
+                Console.WriteLine("1 - Filtering");
+                Console.WriteLine("2 - Projection");
+                Console.WriteLine("3 - Joining");
+                Console.WriteLine("0 - Exit");
+                Console.WriteLine("---------------");
+                Console.Write("Chose operation:");
+
+                n = Convert.ToInt32(Console.ReadLine());
+                Console.Clear();
+
+                switch ( n )
+                {
+                    case 1: new Filtering(listT); break;
+                    case 2: new Projection(listPC); break;
+                    case 3: new Joining(); break;
+                    case 0: Console.WriteLine("Exit!"); break;
+                    default:break;
+                }
+            }
+
             Console.ReadKey();
         }
     }
