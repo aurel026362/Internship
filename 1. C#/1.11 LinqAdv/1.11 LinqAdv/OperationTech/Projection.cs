@@ -22,11 +22,11 @@ namespace _1._11_LinqAdv.OperationTech
             }
 
             //select many
-            var result1 = listT.SelectMany(x => x.listH);
+            var result1 = listT.SelectMany(x => x.listH).Reverse();
             Console.WriteLine("Show all hardware elements:");
             ShowData(result1);
 
-            var res = listT.SelectMany(x => x.listH, (parent, child) => new { parent.company, child.name});
+            var res = listT.SelectMany(x => x.listH, (parent, child) => new { parent.company, child.name}).OrderByDescending(x => x.company).ThenBy(x => x.name);
             Console.WriteLine("Show Select Many:");
             foreach (var item in res)
             {

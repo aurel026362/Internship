@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{838F3D9E-CD74-4335-BF99-FA1063830E63}</ProjectGuid>
+    <ProjectGuid>{BFC7B08F-B3A6-4F90-9450-5B30AC6B3ADD}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>_1._11_LinqAdv</RootNamespace>
-    <AssemblyName>1.11 LinqAdv</AssemblyName>
+    <RootNamespace>_1._12_Events</RootNamespace>
+    <AssemblyName>1.12 Events</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,20 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="OperationTech\ClausuresOp.cs" />
-    <Compile Include="OperationTech\DefaultDel.cs" />
-    <Compile Include="OperationTech\Grouping.cs" />
-    <Compile Include="OperationTech\JoiningOp\Joining.cs" />
-    <Compile Include="OperationTech\JoiningOp\Student.cs" />
-    <Compile Include="OperationTech\JoiningOp\StudentsNotes.cs" />
-    <Compile Include="OperationTech\Projection.cs" />
-    <Compile Include="OperationTech\Tools\Hardware.cs" />
-    <Compile Include="OperationTech\Tools\PC.cs" />
-    <Compile Include="OperationTech\Tools\SmartPhone.cs" />
-    <Compile Include="OperationTech\Tools\Technology.cs" />
-    <Compile Include="OperationTech\Filtering.cs" />
+    <Compile Include="Events.cs" />
+    <Compile Include="MovingEventArgs.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Student.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

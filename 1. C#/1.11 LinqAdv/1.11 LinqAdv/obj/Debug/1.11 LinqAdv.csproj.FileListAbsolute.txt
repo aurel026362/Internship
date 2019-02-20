@@ -5,3 +5,10 @@ C:\Users\Aurel\Desktop\Got\Internship\1. C#\1.11 LinqAdv\1.11 LinqAdv\obj\Debug\
 C:\Users\Aurel\Desktop\Got\Internship\1. C#\1.11 LinqAdv\1.11 LinqAdv\obj\Debug\1.11 LinqAdv.csproj.CoreCompileInputs.cache
 C:\Users\Aurel\Desktop\Got\Internship\1. C#\1.11 LinqAdv\1.11 LinqAdv\obj\Debug\1.11 LinqAdv.exe
 C:\Users\Aurel\Desktop\Got\Internship\1. C#\1.11 LinqAdv\1.11 LinqAdv\obj\Debug\1.11 LinqAdv.pdb
+D:\Git\Internship\1. C#\1.11 LinqAdv\1.11 LinqAdv\bin\Debug\1.11 LinqAdv.exe.config
+D:\Git\Internship\1. C#\1.11 LinqAdv\1.11 LinqAdv\bin\Debug\1.11 LinqAdv.exe
+D:\Git\Internship\1. C#\1.11 LinqAdv\1.11 LinqAdv\bin\Debug\1.11 LinqAdv.pdb
+D:\Git\Internship\1. C#\1.11 LinqAdv\1.11 LinqAdv\obj\Debug\1.11 LinqAdv.csprojAssemblyReference.cache
+D:\Git\Internship\1. C#\1.11 LinqAdv\1.11 LinqAdv\obj\Debug\1.11 LinqAdv.csproj.CoreCompileInputs.cache
+D:\Git\Internship\1. C#\1.11 LinqAdv\1.11 LinqAdv\obj\Debug\1.11 LinqAdv.exe
+D:\Git\Internship\1. C#\1.11 LinqAdv\1.11 LinqAdv\obj\Debug\1.11 LinqAdv.pdb
