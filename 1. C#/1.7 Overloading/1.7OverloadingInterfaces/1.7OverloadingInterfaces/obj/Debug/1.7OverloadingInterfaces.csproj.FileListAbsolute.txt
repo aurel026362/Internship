@@ -5,3 +5,10 @@ C:\Users\aurel.starciuc\source\repos\1.7OverloadingInterfaces\1.7OverloadingInte
 C:\Users\aurel.starciuc\source\repos\1.7OverloadingInterfaces\1.7OverloadingInterfaces\obj\Debug\1.7OverloadingInterfaces.csproj.CoreCompileInputs.cache
 C:\Users\aurel.starciuc\source\repos\1.7OverloadingInterfaces\1.7OverloadingInterfaces\obj\Debug\1.7OverloadingInterfaces.exe
 C:\Users\aurel.starciuc\source\repos\1.7OverloadingInterfaces\1.7OverloadingInterfaces\obj\Debug\1.7OverloadingInterfaces.pdb
+D:\Git\Internship\1. C#\1.7 Overloading\1.7OverloadingInterfaces\1.7OverloadingInterfaces\bin\Debug\1.7OverloadingInterfaces.exe.config
+D:\Git\Internship\1. C#\1.7 Overloading\1.7OverloadingInterfaces\1.7OverloadingInterfaces\bin\Debug\1.7OverloadingInterfaces.exe
+D:\Git\Internship\1. C#\1.7 Overloading\1.7OverloadingInterfaces\1.7OverloadingInterfaces\bin\Debug\1.7OverloadingInterfaces.pdb
+D:\Git\Internship\1. C#\1.7 Overloading\1.7OverloadingInterfaces\1.7OverloadingInterfaces\obj\Debug\1.7OverloadingInterfaces.csprojAssemblyReference.cache
+D:\Git\Internship\1. C#\1.7 Overloading\1.7OverloadingInterfaces\1.7OverloadingInterfaces\obj\Debug\1.7OverloadingInterfaces.csproj.CoreCompileInputs.cache
+D:\Git\Internship\1. C#\1.7 Overloading\1.7OverloadingInterfaces\1.7OverloadingInterfaces\obj\Debug\1.7OverloadingInterfaces.exe
+D:\Git\Internship\1. C#\1.7 Overloading\1.7OverloadingInterfaces\1.7OverloadingInterfaces\obj\Debug\1.7OverloadingInterfaces.pdb

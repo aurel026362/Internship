@@ -12,8 +12,13 @@ namespace _1._12_Events
         {
             Student student = new Student("Aurel", 320);
 
-            student.Actions += ShowAction;
+            EventForMe me = new EventForMe();
+            EventForBank bank = new EventForBank();
             
+            student.Notificator += me.Notify;
+
+            student.Notificator += bank.Notify; 
+
             student.Move(10);
 
             student.Read("Goat with 3 kids");
@@ -23,6 +28,8 @@ namespace _1._12_Events
             student.AddMoney(25);
 
             student.MoneyData();
+
+            student.Notificator -= bank.Notify;
 
             student.SpendMoney(145);
 
@@ -34,9 +41,9 @@ namespace _1._12_Events
             
         }
 
-        private void ShowAction(object sender, MovingEventArgs e)
-        {
-            Console.WriteLine(e.Message);
-        }
+        //private void ShowAction(object sender, MovingEventArgs e)
+        //{
+        //    Console.WriteLine(e.Message);
+        //}
     }
 }

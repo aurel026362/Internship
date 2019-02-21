@@ -5,3 +5,10 @@ C:\Users\aurel.starciuc\source\repos\1.12 Events\1.12 Events\bin\Debug\1.12 Even
 C:\Users\aurel.starciuc\source\repos\1.12 Events\1.12 Events\bin\Debug\1.12 Events.pdb
 C:\Users\aurel.starciuc\source\repos\1.12 Events\1.12 Events\obj\Debug\1.12 Events.exe
 C:\Users\aurel.starciuc\source\repos\1.12 Events\1.12 Events\obj\Debug\1.12 Events.pdb
+D:\Git\Internship\1. C#\1.12 Events\1.12 Events\bin\Debug\1.12 Events.exe.config
+D:\Git\Internship\1. C#\1.12 Events\1.12 Events\bin\Debug\1.12 Events.exe
+D:\Git\Internship\1. C#\1.12 Events\1.12 Events\bin\Debug\1.12 Events.pdb
+D:\Git\Internship\1. C#\1.12 Events\1.12 Events\obj\Debug\1.12 Events.csprojAssemblyReference.cache
+D:\Git\Internship\1. C#\1.12 Events\1.12 Events\obj\Debug\1.12 Events.csproj.CoreCompileInputs.cache
+D:\Git\Internship\1. C#\1.12 Events\1.12 Events\obj\Debug\1.12 Events.exe
+D:\Git\Internship\1. C#\1.12 Events\1.12 Events\obj\Debug\1.12 Events.pdb

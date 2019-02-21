@@ -1,0 +1,7 @@
+c:\users\aurel.starciuc\source\repos\1.14EvolutionCSharp\1.14EvolutionCSharp\bin\Debug\1.14EvolutionCSharp.exe.config
+c:\users\aurel.starciuc\source\repos\1.14EvolutionCSharp\1.14EvolutionCSharp\bin\Debug\1.14EvolutionCSharp.exe
+c:\users\aurel.starciuc\source\repos\1.14EvolutionCSharp\1.14EvolutionCSharp\bin\Debug\1.14EvolutionCSharp.pdb
+c:\users\aurel.starciuc\source\repos\1.14EvolutionCSharp\1.14EvolutionCSharp\obj\Debug\1.14EvolutionCSharp.csprojAssemblyReference.cache
+c:\users\aurel.starciuc\source\repos\1.14EvolutionCSharp\1.14EvolutionCSharp\obj\Debug\1.14EvolutionCSharp.csproj.CoreCompileInputs.cache
+c:\users\aurel.starciuc\source\repos\1.14EvolutionCSharp\1.14EvolutionCSharp\obj\Debug\1.14EvolutionCSharp.exe
+c:\users\aurel.starciuc\source\repos\1.14EvolutionCSharp\1.14EvolutionCSharp\obj\Debug\1.14EvolutionCSharp.pdb

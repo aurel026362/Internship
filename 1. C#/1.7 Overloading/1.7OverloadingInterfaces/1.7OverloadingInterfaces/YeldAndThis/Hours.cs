@@ -15,14 +15,30 @@ namespace _1._7OverloadingInterfaces.YeldAndThis
 
         public IEnumerator GetEnumerator()
         {
-            //Show only 2 and 3-th elements
-            yield return hours[3];
-            yield return hours[2];
+            return new MyEnumerator();
+            //Show only 2-th and 3-th elements
+            //yield return hours[3];
+            //yield return hours[2];
 
             //for (int i = 0; i < hours.Length; i++)
             //{
             //    yield return hours[i];
             //}
+        }
+
+        class MyEnumerator : IEnumerator
+        {
+            public object Current => throw new NotImplementedException();
+
+            public bool MoveNext()
+            {
+                throw new NotImplementedException();
+            }
+
+            public void Reset()
+            {
+                throw new NotImplementedException();
+            }
         }
     }
 }

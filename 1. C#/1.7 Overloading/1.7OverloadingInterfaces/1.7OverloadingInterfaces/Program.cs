@@ -9,6 +9,16 @@ using _1._7OverloadingInterfaces.YeldAndThis;
 
 namespace _1._7OverloadingInterfaces
 {
+    class asd
+    {
+        static int a;
+        static int asdsa;
+
+        static asd()
+        {
+            a = 2;
+        }
+    }
     class Program
     {
         static void Main(string[] args)
