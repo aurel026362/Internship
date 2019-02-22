@@ -8,7 +8,7 @@ namespace _1._12_Events
 {
     class EventForMe
     {
-        public void Notify(object sender, MovingEventArgs e)
+        public void Notify(object sender, StudentEventArgs e)
         {
             Console.WriteLine("For me : " + e.Message);
         }

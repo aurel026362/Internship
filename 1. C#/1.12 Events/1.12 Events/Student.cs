@@ -12,7 +12,7 @@ namespace _1._12_Events
         public string name;
         private int money;
 
-        public event EventHandler<MovingEventArgs> Notificator;
+        public event EventHandler<StudentEventArgs> Notificator;
 
         public Student(string newname, int newmoney)
         {
@@ -22,13 +22,13 @@ namespace _1._12_Events
 
         public void MoneyData()
         {
-            Notificator(this, new MovingEventArgs("Student " + this.name + " have " + this.money + " !"));
+            Notificator(this, new StudentEventArgs("Student " + this.name + " have " + this.money + " !"));
         }
 
         public void AddMoney(int mon)
         {
             this.money += mon;
-            Notificator(this, new MovingEventArgs("Student " + this.name + " added " + mon + " money!"));
+            Notificator(this, new StudentEventArgs("Student " + this.name + " added " + mon + " money!"));
         }
 
         public void SpendMoney(int mon)
@@ -36,20 +36,20 @@ namespace _1._12_Events
             if (this.money >= mon)
             {
                 this.money -= mon;
-                Notificator(this, new MovingEventArgs("Student " + this.name + " spended " + mon + " money!"));
+                Notificator(this, new StudentEventArgs("Student " + this.name + " spended " + mon + " money!"));
             }
             else
-                Notificator(this, new MovingEventArgs("Student " + this.name + " don't have sufficient money!"));
+                Notificator(this, new StudentEventArgs("Student " + this.name + " don't have sufficient money!"));
         }
 
         public void Move(int distance)
         {
-            Notificator(this, new MovingEventArgs("Student go " + distance + " km!"));  
+            Notificator(this, new StudentEventArgs("Student go " + distance + " km!"));  
         }
 
         public void Read(string book)
         {
-            Notificator(this, new MovingEventArgs("Student read the book '" + book + "' ."));
+            Notificator(this, new StudentEventArgs("Student read the book '" + book + "' ."));
         }
 
     }

@@ -8,7 +8,7 @@ namespace _1._11_LinqAdv.OperationTech
 {
     class ClausuresOp
     {
-        delegate int CoubEx(int a);
+        delegate int CoubEx(int number);
         public ClausuresOp()
         {
             Console.WriteLine("Closures with Func: ");

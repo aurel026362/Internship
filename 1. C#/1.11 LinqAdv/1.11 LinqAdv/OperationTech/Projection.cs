@@ -14,21 +14,21 @@ namespace _1._11_LinqAdv.OperationTech
         {
             listT = newList;
             //sample select
-            var result = listT.Select(x => (x.company + " " + x.warranty));
+            var elements = listT.Select(x => new { x.company, x.warranty});
 
-            foreach(string item in result)
+            foreach(var item in elements)
             {
-                Console.WriteLine(item);
+                Console.WriteLine($"{item.company} {item.warranty}");
             }
 
             //select many
-            var result1 = listT.SelectMany(x => x.listH).Reverse();
+            var hardwares = listT.SelectMany(x => x.listH).Reverse();
             Console.WriteLine("Show all hardware elements:");
-            ShowData(result1);
+            ShowData(hardwares);
 
-            var res = listT.SelectMany(x => x.listH, (parent, child) => new { parent.company, child.name}).OrderByDescending(x => x.company).ThenBy(x => x.name);
+            var hardwaresorted = listT.SelectMany(x => x.listH, (parent, child) => new { parent.company, child.name}).OrderByDescending(x => x.company).ThenBy(x => x.name);
             Console.WriteLine("Show Select Many:");
-            foreach (var item in res)
+            foreach (var item in hardwaresorted)
             {
                 Console.WriteLine(item.company + " " + item.name);
             }

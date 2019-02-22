@@ -21,9 +21,10 @@ namespace _1._11_LinqAdv.OperationTech
             });
 
             Console.WriteLine("\nShow every elements and how much exist: ");
-            foreach(var t in res)
+            Console.WriteLine("Name  Count");
+            foreach(var technology in res)
             {
-                Console.WriteLine(t.Name + " " + t.Count + " ");
+                Console.WriteLine(technology.Name + " " + technology.Count + " ");
             }
 
             var result1 = listT.OfType<PC>();

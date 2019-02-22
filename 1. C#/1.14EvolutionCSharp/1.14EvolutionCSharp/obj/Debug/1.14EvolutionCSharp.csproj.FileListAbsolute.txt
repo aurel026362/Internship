@@ -5,3 +5,13 @@ c:\users\aurel.starciuc\source\repos\1.14EvolutionCSharp\1.14EvolutionCSharp\obj
 c:\users\aurel.starciuc\source\repos\1.14EvolutionCSharp\1.14EvolutionCSharp\obj\Debug\1.14EvolutionCSharp.csproj.CoreCompileInputs.cache
 c:\users\aurel.starciuc\source\repos\1.14EvolutionCSharp\1.14EvolutionCSharp\obj\Debug\1.14EvolutionCSharp.exe
 c:\users\aurel.starciuc\source\repos\1.14EvolutionCSharp\1.14EvolutionCSharp\obj\Debug\1.14EvolutionCSharp.pdb
+D:\Git\Internship\1. C#\1.14EvolutionCSharp\1.14EvolutionCSharp\bin\Debug\1.14EvolutionCSharp.exe.config
+D:\Git\Internship\1. C#\1.14EvolutionCSharp\1.14EvolutionCSharp\bin\Debug\1.14EvolutionCSharp.exe
+D:\Git\Internship\1. C#\1.14EvolutionCSharp\1.14EvolutionCSharp\bin\Debug\1.14EvolutionCSharp.pdb
+D:\Git\Internship\1. C#\1.14EvolutionCSharp\1.14EvolutionCSharp\obj\Debug\1.14EvolutionCSharp.csprojAssemblyReference.cache
+D:\Git\Internship\1. C#\1.14EvolutionCSharp\1.14EvolutionCSharp\obj\Debug\1.14EvolutionCSharp.csproj.CoreCompileInputs.cache
+D:\Git\Internship\1. C#\1.14EvolutionCSharp\1.14EvolutionCSharp\obj\Debug\1.14EvolutionCSharp.exe
+D:\Git\Internship\1. C#\1.14EvolutionCSharp\1.14EvolutionCSharp\obj\Debug\1.14EvolutionCSharp.pdb
+D:\Git\Internship\1. C#\1.14EvolutionCSharp\1.14EvolutionCSharp\bin\Debug\System.ValueTuple.dll
+D:\Git\Internship\1. C#\1.14EvolutionCSharp\1.14EvolutionCSharp\bin\Debug\System.ValueTuple.xml
+D:\Git\Internship\1. C#\1.14EvolutionCSharp\1.14EvolutionCSharp\obj\Debug\1.14EvolutionCSharp.csproj.CopyComplete

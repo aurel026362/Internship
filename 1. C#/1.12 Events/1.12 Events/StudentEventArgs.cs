@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace _1._12_Events
 {
-    public class MovingEventArgs:EventArgs
+    public class StudentEventArgs:EventArgs
     {
         public string Message { get; private set; }
 
-        public MovingEventArgs(string newmessage)
+        public StudentEventArgs(string newmessage)
         {
             this.Message = newmessage;
         }

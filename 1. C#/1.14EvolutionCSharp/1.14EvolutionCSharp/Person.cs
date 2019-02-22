@@ -6,17 +6,19 @@ using System.Threading.Tasks;
 
 namespace _1._14EvolutionCSharp
 {
-    class ClassExample
+    class Person
     {
+        private int id;
         public string fName;
         public string lName;
         public int age;
 
-        public ClassExample(string newF, string newL, int newage)
+        public Person(string newFName, string newLName, int newage)
         {
-            this.fName = newF;
-            this.lName = newL;
+            this.fName = newFName;
+            this.lName = newLName;
             this.age = newage;
         }
+        
     }
 }

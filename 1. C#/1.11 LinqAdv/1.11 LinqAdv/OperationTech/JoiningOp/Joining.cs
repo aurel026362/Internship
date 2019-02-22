@@ -22,14 +22,14 @@ namespace _1._11_LinqAdv.OperationTech
 
             List<StudentsNotes> listN = new List<StudentsNotes>();
 
-            var stn1 = new StudentsNotes { disc = 6, owner = st1 };
-            var stn2 = new StudentsNotes { disc = 8, owner = st2 };
-            var stn3 = new StudentsNotes { disc = 9, owner = st2 };
-            var stn4 = new StudentsNotes { disc = 6, owner = st1 };
-            var stn5 = new StudentsNotes { disc = 7, owner = st3 };
-            var stn6= new StudentsNotes { disc = 5, owner = st1 };
+            var studentn1 = new StudentsNotes { disc = 6, owner = st1 };
+            var studentn2 = new StudentsNotes { disc = 8, owner = st2 };
+            var studentn3 = new StudentsNotes { disc = 9, owner = st2 };
+            var studentn4 = new StudentsNotes { disc = 6, owner = st1 };
+            var studentn5 = new StudentsNotes { disc = 7, owner = st3 };
+            var studentn6 = new StudentsNotes { disc = 5, owner = st1 };
 
-            listN.AddRange( new List<StudentsNotes> { stn1, stn2, stn3, stn4, stn5, stn6});
+            listN.AddRange( new List<StudentsNotes> { studentn1, studentn2, studentn3, studentn4, studentn5, studentn6 });
 
             var query = listS.Join(listN, Student => Student, StudentNotes => StudentNotes.owner,
                 (Student, StudentsNotes) => new {
@@ -37,6 +37,7 @@ namespace _1._11_LinqAdv.OperationTech
                 });
 
             Console.WriteLine("Show joined elements:");
+            Console.WriteLine($"Name:   Note:");
             foreach (var item in query)
             {
                 Console.WriteLine(item.ownerName + " : " + item.noter);

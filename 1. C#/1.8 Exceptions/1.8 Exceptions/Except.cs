@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace _1._8_Exceptions
 {
@@ -14,6 +12,9 @@ namespace _1._8_Exceptions
             int n = -1;
             while (n != 0)
             {
+                try
+                {
+                    Console.WriteLine("    Menu");
                     Console.WriteLine("1 - Input Arguments Exception");
                     Console.WriteLine("2 - Double Catch and Finnaly");
                     Console.WriteLine("3 - Throw example & Custom Exception");
@@ -21,27 +22,34 @@ namespace _1._8_Exceptions
                     Console.WriteLine("Chose operation: ");
 
                     n = Convert.ToInt32(Console.ReadLine());
+                    Console.Clear();
+
                     switch (n)
                     {
-                        case 1: InputExc(); break;
-                        case 2: DoubleCatchFinally(); break;
-                        case 3: ThrowEx(); break;
+                        case 1: CheckNumbers(); break;
+                        case 2: ProcessingFile(); break;
+                        case 3: CheckCode(); break;
                         case 0: Console.WriteLine("Exit!"); break;
                         default: Console.WriteLine("Don't exist this operation!"); break;
                     }
+                }
+                catch(FormatException fEx)
+                {
+                    Console.WriteLine("Error! Input a number! " + fEx.Message);
+                    Trace.WriteLine("Error! Input a number! " + fEx.Message);
+                }
             }
-
         }
         
-        private void ThrowEx()
+        private void CheckCode()
         {
             try
             {
-                Console.Write("s=");
-                string s = Console.ReadLine();
-                if (s.Length > 10)
+                Console.Write("Code=");
+                string code = Console.ReadLine();
+                if (code.Length > 10)
                 {
-                    throw new MyException(s.Length);
+                    throw new MyException(code.Length);
                 }
             }
             catch (FormatException ex)
@@ -54,7 +62,7 @@ namespace _1._8_Exceptions
             }
         }
 
-        private void DoubleCatchFinally()
+        private void ProcessingFile()
         {
             string text;
             FileStream fileStream = null;
@@ -74,7 +82,6 @@ namespace _1._8_Exceptions
             catch (Exception ex) when (fileStream != null)
             {
                 Console.WriteLine(ex.Message);
-                //Rethrow
                 throw new Exception();
             }
             finally
@@ -84,26 +91,27 @@ namespace _1._8_Exceptions
             }
         }
 
-        private void InputExc()
+        private void CheckNumbers()
         {
-            char a = 'a';
-            char b = 'b';
+            char firstchar = 'a';
+            char secondchar = 'b';
             try
             {
-                if (a.GetType() == typeof(int) && b.GetType() == typeof(int))
-                    InputExcMethod('a', 'b');
+                if (firstchar.GetType() == typeof(int) && secondchar.GetType() == typeof(int))
+                    Console.WriteLine(Sum(firstchar, secondchar));
                 else
                     throw new ArgumentException();
             }
             catch (Exception ae)
             {
-                Console.WriteLine("Argument exception: " + ae.Message);
+                Console.WriteLine("Exception: " + ae.Message);
+                Debug.WriteLine(ae.Message);
             }
         }
 
-        private void InputExcMethod(int a, int b)
+        private int Sum(int num1, int num2)
         {
-            Console.WriteLine("It's 2 number is " + a + " and " +b);
+            return num1 + num2;
         }
     }
 }

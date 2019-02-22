@@ -8,7 +8,7 @@ namespace _1._12_Events
 {
     class EventForBank
     {
-        public void Notify(object sender, MovingEventArgs e)
+        public void Notify(object sender, StudentEventArgs e)
         {
             Console.WriteLine("For Bank : " + e.Message);
         }
