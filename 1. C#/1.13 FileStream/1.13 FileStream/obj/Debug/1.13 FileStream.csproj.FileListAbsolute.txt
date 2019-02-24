@@ -1,0 +1,7 @@
+C:\Users\Aurel\Desktop\1.13 FileStream\1.13 FileStream\bin\Debug\1.13 FileStream.exe.config
+C:\Users\Aurel\Desktop\1.13 FileStream\1.13 FileStream\bin\Debug\1.13 FileStream.exe
+C:\Users\Aurel\Desktop\1.13 FileStream\1.13 FileStream\bin\Debug\1.13 FileStream.pdb
+C:\Users\Aurel\Desktop\1.13 FileStream\1.13 FileStream\obj\Debug\1.13 FileStream.csprojAssemblyReference.cache
+C:\Users\Aurel\Desktop\1.13 FileStream\1.13 FileStream\obj\Debug\1.13 FileStream.csproj.CoreCompileInputs.cache
+C:\Users\Aurel\Desktop\1.13 FileStream\1.13 FileStream\obj\Debug\1.13 FileStream.exe
+C:\Users\Aurel\Desktop\1.13 FileStream\1.13 FileStream\obj\Debug\1.13 FileStream.pdb

@@ -12,3 +12,10 @@ D:\Git\Internship\1. C#\1.12 Events\1.12 Events\obj\Debug\1.12 Events.csprojAsse
 D:\Git\Internship\1. C#\1.12 Events\1.12 Events\obj\Debug\1.12 Events.csproj.CoreCompileInputs.cache
 D:\Git\Internship\1. C#\1.12 Events\1.12 Events\obj\Debug\1.12 Events.exe
 D:\Git\Internship\1. C#\1.12 Events\1.12 Events\obj\Debug\1.12 Events.pdb
+C:\Users\Aurel\Desktop\Got\Internship\1. C#\1.12 Events\1.12 Events\bin\Debug\1.12 Events.exe.config
+C:\Users\Aurel\Desktop\Got\Internship\1. C#\1.12 Events\1.12 Events\bin\Debug\1.12 Events.exe
+C:\Users\Aurel\Desktop\Got\Internship\1. C#\1.12 Events\1.12 Events\bin\Debug\1.12 Events.pdb
+C:\Users\Aurel\Desktop\Got\Internship\1. C#\1.12 Events\1.12 Events\obj\Debug\1.12 Events.csprojAssemblyReference.cache
+C:\Users\Aurel\Desktop\Got\Internship\1. C#\1.12 Events\1.12 Events\obj\Debug\1.12 Events.csproj.CoreCompileInputs.cache
+C:\Users\Aurel\Desktop\Got\Internship\1. C#\1.12 Events\1.12 Events\obj\Debug\1.12 Events.exe
+C:\Users\Aurel\Desktop\Got\Internship\1. C#\1.12 Events\1.12 Events\obj\Debug\1.12 Events.pdb

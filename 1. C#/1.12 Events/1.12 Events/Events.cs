@@ -42,7 +42,7 @@ namespace _1._12_Events
             WeakEventManager<Student, StudentEventArgs>.AddHandler(student, "Notificator", me.Notify);
             WeakEventManager<Student, StudentEventArgs>.AddHandler(student, "Notificator", bank.Notify);
             student.Move(12);
-            Console.WriteLine("4444444444444444444444");
+            Console.WriteLine("------------------------------------------------------------------");
 
             WeakEventManager<Student, StudentEventArgs>.RemoveHandler(student, "Notificator", bank.Notify);
             student.Move(12);
