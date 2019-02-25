@@ -9,7 +9,7 @@ namespace _1._11_LinqAdv.OperationTech
     class Filtering
     {
         List<Technology> listT = new List<Technology>();
-        
+
         public Filtering(List<Technology> newListT)
         {
             listT = newListT;
@@ -34,7 +34,7 @@ namespace _1._11_LinqAdv.OperationTech
             Console.WriteLine("Skipe first 2 elements:");
             ShowList(listWithoutFirst2);
             
-            var listCond = listT.TakeWhile(x=>x.warranty>2);
+            var listCond = listT.TakeWhile(x=>(x.warranty>2));
             Console.WriteLine("Show elements while warranty>2: ");
             ShowList(listCond);
 
@@ -45,6 +45,12 @@ namespace _1._11_LinqAdv.OperationTech
             var listUnique = listT.Distinct();
             Console.WriteLine("Show unique items:");
             ShowList(listUnique);
+
+            var avgWarranty = listT.Average(x => x.warranty);
+            Console.WriteLine("Avg Warranty: " + avgWarranty);
+
+            bool expresion = listT.Any(x => x.warranty < 2);
+            Console.WriteLine("Exist in list object with warranty <2 : " + expresion);
         }
 
         private void ShowList(IEnumerable<Technology> lt)

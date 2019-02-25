@@ -8,7 +8,7 @@ namespace _1._11_LinqAdv.OperationTech.JoiningOp
 {
     class StudentsNotes
     {
-        public int disc;
+        public int note;
         public Student owner;
     }
 }
