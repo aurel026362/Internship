@@ -1,0 +1,7 @@
+C:\Users\aurel.starciuc\source\repos\1.16 CreationalPattern\1.16 CreationalPattern\bin\Debug\1.16 CreationalPattern.exe.config
+C:\Users\aurel.starciuc\source\repos\1.16 CreationalPattern\1.16 CreationalPattern\bin\Debug\1.16 CreationalPattern.exe
+C:\Users\aurel.starciuc\source\repos\1.16 CreationalPattern\1.16 CreationalPattern\bin\Debug\1.16 CreationalPattern.pdb
+C:\Users\aurel.starciuc\source\repos\1.16 CreationalPattern\1.16 CreationalPattern\obj\Debug\1.16 CreationalPattern.csprojAssemblyReference.cache
+C:\Users\aurel.starciuc\source\repos\1.16 CreationalPattern\1.16 CreationalPattern\obj\Debug\1.16 CreationalPattern.csproj.CoreCompileInputs.cache
+C:\Users\aurel.starciuc\source\repos\1.16 CreationalPattern\1.16 CreationalPattern\obj\Debug\1.16 CreationalPattern.exe
+C:\Users\aurel.starciuc\source\repos\1.16 CreationalPattern\1.16 CreationalPattern\obj\Debug\1.16 CreationalPattern.pdb

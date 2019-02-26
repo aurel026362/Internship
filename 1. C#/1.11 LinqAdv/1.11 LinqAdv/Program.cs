@@ -52,6 +52,7 @@ namespace _1._11_LinqAdv
                 new SmartPhone { company = "Xiaomi", warranty = 7 }
             }
             );
+
             int n = -1;
             while ( n!=0 )
             {

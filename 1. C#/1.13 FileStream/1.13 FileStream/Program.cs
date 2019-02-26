@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,8 +11,12 @@ namespace _1._13_FileStream
     {
         static void Main(string[] args)
         {
-            new SyncDirectory();
+            //string myFilePath = @"D:\MyFile.txt";
+            //string ext = Path.GetExtension(myFilePath);
+            //Console.WriteLine(ext);
+            new SyncDirectory(@"D:\Dir1", @"D:\Syncronize\Dir2");
 
+            Console.WriteLine("Succes!");
             Console.ReadKey();
         }
     }
