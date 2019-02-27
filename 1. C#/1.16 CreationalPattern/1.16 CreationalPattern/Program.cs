@@ -19,9 +19,9 @@ namespace _1._16_CreationalPattern
             var president2 = President.Instance;
             president2.name = "Trump";
 
-            Console.WriteLine(president.name + " " + president2.name);
+            Console.WriteLine(president.name + " " + president2.name + " " + President.Instance);
 
-            Console.WriteLine(president.GetHashCode() + " " + president.GetHashCode() + "\n");
+            Console.WriteLine(president.GetHashCode() + " " + president2.GetHashCode() + "\n");
 
             //------------------------------------------
             //---------Factory--------------------------
@@ -37,8 +37,8 @@ namespace _1._16_CreationalPattern
 
             var simpleParcel = FactoryParcel.SimpleParcel(17, 3, "Stefan cel Mare 23");
 
-
             Console.WriteLine("Fragil Parcels....\n");
+
             foreach (var fragilParcel in fragilParcels)
             {
                 Console.WriteLine($"Weight (in kg): {fragilParcel.weight}");

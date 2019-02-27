@@ -5,3 +5,10 @@ C:\Users\aurel.starciuc\source\repos\1.16 CreationalPattern\1.16 CreationalPatte
 C:\Users\aurel.starciuc\source\repos\1.16 CreationalPattern\1.16 CreationalPattern\obj\Debug\1.16 CreationalPattern.csproj.CoreCompileInputs.cache
 C:\Users\aurel.starciuc\source\repos\1.16 CreationalPattern\1.16 CreationalPattern\obj\Debug\1.16 CreationalPattern.exe
 C:\Users\aurel.starciuc\source\repos\1.16 CreationalPattern\1.16 CreationalPattern\obj\Debug\1.16 CreationalPattern.pdb
+D:\Git\Internship\1. C#\1.16 CreationalPattern\1.16 CreationalPattern\bin\Debug\1.16 CreationalPattern.exe.config
+D:\Git\Internship\1. C#\1.16 CreationalPattern\1.16 CreationalPattern\bin\Debug\1.16 CreationalPattern.exe
+D:\Git\Internship\1. C#\1.16 CreationalPattern\1.16 CreationalPattern\bin\Debug\1.16 CreationalPattern.pdb
+D:\Git\Internship\1. C#\1.16 CreationalPattern\1.16 CreationalPattern\obj\Debug\1.16 CreationalPattern.csprojAssemblyReference.cache
+D:\Git\Internship\1. C#\1.16 CreationalPattern\1.16 CreationalPattern\obj\Debug\1.16 CreationalPattern.csproj.CoreCompileInputs.cache
+D:\Git\Internship\1. C#\1.16 CreationalPattern\1.16 CreationalPattern\obj\Debug\1.16 CreationalPattern.exe
+D:\Git\Internship\1. C#\1.16 CreationalPattern\1.16 CreationalPattern\obj\Debug\1.16 CreationalPattern.pdb
