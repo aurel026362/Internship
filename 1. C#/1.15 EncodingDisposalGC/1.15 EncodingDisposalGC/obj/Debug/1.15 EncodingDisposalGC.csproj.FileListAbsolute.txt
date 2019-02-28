@@ -5,3 +5,10 @@ C:\Users\aurel.starciuc\source\repos\1.15 EncodingDisposalGC\1.15 EncodingDispos
 C:\Users\aurel.starciuc\source\repos\1.15 EncodingDisposalGC\1.15 EncodingDisposalGC\obj\Debug\1.15 EncodingDisposalGC.csproj.CoreCompileInputs.cache
 C:\Users\aurel.starciuc\source\repos\1.15 EncodingDisposalGC\1.15 EncodingDisposalGC\obj\Debug\1.15 EncodingDisposalGC.exe
 C:\Users\aurel.starciuc\source\repos\1.15 EncodingDisposalGC\1.15 EncodingDisposalGC\obj\Debug\1.15 EncodingDisposalGC.pdb
+D:\Git\Internship\1. C#\1.15 EncodingDisposalGC\1.15 EncodingDisposalGC\bin\Debug\1.15 EncodingDisposalGC.exe.config
+D:\Git\Internship\1. C#\1.15 EncodingDisposalGC\1.15 EncodingDisposalGC\bin\Debug\1.15 EncodingDisposalGC.exe
+D:\Git\Internship\1. C#\1.15 EncodingDisposalGC\1.15 EncodingDisposalGC\bin\Debug\1.15 EncodingDisposalGC.pdb
+D:\Git\Internship\1. C#\1.15 EncodingDisposalGC\1.15 EncodingDisposalGC\obj\Debug\1.15 EncodingDisposalGC.csprojAssemblyReference.cache
+D:\Git\Internship\1. C#\1.15 EncodingDisposalGC\1.15 EncodingDisposalGC\obj\Debug\1.15 EncodingDisposalGC.csproj.CoreCompileInputs.cache
+D:\Git\Internship\1. C#\1.15 EncodingDisposalGC\1.15 EncodingDisposalGC\obj\Debug\1.15 EncodingDisposalGC.exe
+D:\Git\Internship\1. C#\1.15 EncodingDisposalGC\1.15 EncodingDisposalGC\obj\Debug\1.15 EncodingDisposalGC.pdb

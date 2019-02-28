@@ -65,7 +65,6 @@ namespace _1._14EvolutionCSharp
                 else
                     WriteLine("This is person!");
             }
-
             WriteLine();
         }
 
@@ -73,10 +72,7 @@ namespace _1._14EvolutionCSharp
         {
             WriteLine("Tuple example: ");
 
-            (int num1, int num2)Example(int a, int b)
-            {
-                return (a, b);
-            }
+            (int num1, int num2) Example(int a, int b) => (a, b);
 
             var (_,num2) = Example(2, 3);
 
@@ -235,6 +231,7 @@ namespace _1._14EvolutionCSharp
         private static void DynamicExample()
         {
             WriteLine("Dynamic example: ");
+
             //Dynamic example
             dynamic array = new int[3] { 1, 2, 3 };
 
