@@ -25,7 +25,7 @@ namespace _1._15_EncodingDisposalGC
         {
             EncodingAndWriteInFile();
             CompareStrings();
-            //TimeSpanExample();
+            TimeSpanExample();
             DateTimeExample();
             DateTimeOfSetExample();
             TimeZoneExample();
@@ -80,8 +80,10 @@ namespace _1._15_EncodingDisposalGC
             Console.WriteLine("\nTime Zone Example:");
 
             TimeZone currentZone = TimeZone.CurrentTimeZone;
+            TimeZoneInfo pacific = TimeZoneInfo.FindSystemTimeZoneById("Pacific Standard Time");
 
             Console.WriteLine(currentZone.StandardName + " || " + currentZone.DaylightName);
+            Console.WriteLine(pacific.StandardName + " " + pacific.BaseUtcOffset);
 
             DateTime dt1 = new DateTime(2008, 1, 1);
             DateTime dt2 = new DateTime(2010, 5, 22);

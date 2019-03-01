@@ -1,0 +1,7 @@
+C:\Users\aurel.starciuc\source\repos\1.17 StructuralPatterns\1.17 StructuralPatterns\bin\Debug\1.17 StructuralPatterns.exe.config
+C:\Users\aurel.starciuc\source\repos\1.17 StructuralPatterns\1.17 StructuralPatterns\bin\Debug\1.17 StructuralPatterns.exe
+C:\Users\aurel.starciuc\source\repos\1.17 StructuralPatterns\1.17 StructuralPatterns\bin\Debug\1.17 StructuralPatterns.pdb
+C:\Users\aurel.starciuc\source\repos\1.17 StructuralPatterns\1.17 StructuralPatterns\obj\Debug\1.17 StructuralPatterns.csprojAssemblyReference.cache
+C:\Users\aurel.starciuc\source\repos\1.17 StructuralPatterns\1.17 StructuralPatterns\obj\Debug\1.17 StructuralPatterns.csproj.CoreCompileInputs.cache
+C:\Users\aurel.starciuc\source\repos\1.17 StructuralPatterns\1.17 StructuralPatterns\obj\Debug\1.17 StructuralPatterns.exe
+C:\Users\aurel.starciuc\source\repos\1.17 StructuralPatterns\1.17 StructuralPatterns\obj\Debug\1.17 StructuralPatterns.pdb

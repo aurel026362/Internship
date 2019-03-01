@@ -19,7 +19,7 @@ namespace _1._16_CreationalPattern
             var president2 = President.Instance;
             president2.name = "Trump";
 
-            Console.WriteLine(president.name + " " + president2.name + " " + President.Instance);
+            Console.WriteLine(president.name + " " + president2.name + " " + President.Instance.name);
 
             Console.WriteLine(president.GetHashCode() + " " + president2.GetHashCode() + "\n");
 

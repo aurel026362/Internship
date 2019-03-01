@@ -234,12 +234,16 @@ namespace _1._14EvolutionCSharp
 
             //Dynamic example
             dynamic array = new int[3] { 1, 2, 3 };
+            
+            int first = (int)array[0]; 
 
             foreach (var item in array)
             {
                 //Write(item.toString()); ERROR
                 Write(item + " ");
             }
+
+            WriteLine(first);
             WriteLine("\n");
         }
     }

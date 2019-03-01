@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1.17 StructuralPatterns", "1.17 StructuralPatterns\1.17 StructuralPatterns.csproj", "{7062BFB9-4DEF-4C56-81DB-289E725EABDA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7062BFB9-4DEF-4C56-81DB-289E725EABDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7062BFB9-4DEF-4C56-81DB-289E725EABDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7062BFB9-4DEF-4C56-81DB-289E725EABDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7062BFB9-4DEF-4C56-81DB-289E725EABDA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {78D2CAAA-2971-49D4-806F-0B92DF096F08}
+	EndGlobalSection
+EndGlobal
