@@ -8,7 +8,9 @@ namespace _1._16_CreationalPattern
 {
     class President
     {
-        private static readonly Lazy<President> lazy = new Lazy<President>(() => new President(), true);
+        //private static readonly Lazy<President> lazy = new Lazy<President>(() => new President(), true);
+        private static President pp = new President();
+
         public string name;
 
         public static President Instance

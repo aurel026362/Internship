@@ -5,3 +5,10 @@ C:\Users\Aurel\source\repos\1.18 BehavioralPatterns\1.18 BehavioralPatterns\obj\
 C:\Users\Aurel\source\repos\1.18 BehavioralPatterns\1.18 BehavioralPatterns\obj\Debug\1.18 BehavioralPatterns.csproj.CoreCompileInputs.cache
 C:\Users\Aurel\source\repos\1.18 BehavioralPatterns\1.18 BehavioralPatterns\obj\Debug\1.18 BehavioralPatterns.exe
 C:\Users\Aurel\source\repos\1.18 BehavioralPatterns\1.18 BehavioralPatterns\obj\Debug\1.18 BehavioralPatterns.pdb
+D:\Git\Internship\1. C#\1.18 BehavioralPatterns\1.18 BehavioralPatterns\bin\Debug\1.18 BehavioralPatterns.exe.config
+D:\Git\Internship\1. C#\1.18 BehavioralPatterns\1.18 BehavioralPatterns\bin\Debug\1.18 BehavioralPatterns.exe
+D:\Git\Internship\1. C#\1.18 BehavioralPatterns\1.18 BehavioralPatterns\bin\Debug\1.18 BehavioralPatterns.pdb
+D:\Git\Internship\1. C#\1.18 BehavioralPatterns\1.18 BehavioralPatterns\obj\Debug\1.18 BehavioralPatterns.csprojAssemblyReference.cache
+D:\Git\Internship\1. C#\1.18 BehavioralPatterns\1.18 BehavioralPatterns\obj\Debug\1.18 BehavioralPatterns.csproj.CoreCompileInputs.cache
+D:\Git\Internship\1. C#\1.18 BehavioralPatterns\1.18 BehavioralPatterns\obj\Debug\1.18 BehavioralPatterns.exe
+D:\Git\Internship\1. C#\1.18 BehavioralPatterns\1.18 BehavioralPatterns\obj\Debug\1.18 BehavioralPatterns.pdb

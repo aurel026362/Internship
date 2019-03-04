@@ -5,3 +5,10 @@ C:\Users\aurel.starciuc\source\repos\1.17 StructuralPatterns\1.17 StructuralPatt
 C:\Users\aurel.starciuc\source\repos\1.17 StructuralPatterns\1.17 StructuralPatterns\obj\Debug\1.17 StructuralPatterns.csproj.CoreCompileInputs.cache
 C:\Users\aurel.starciuc\source\repos\1.17 StructuralPatterns\1.17 StructuralPatterns\obj\Debug\1.17 StructuralPatterns.exe
 C:\Users\aurel.starciuc\source\repos\1.17 StructuralPatterns\1.17 StructuralPatterns\obj\Debug\1.17 StructuralPatterns.pdb
+D:\Git\Internship\1. C#\1.17 StructuralPatterns\1.17 StructuralPatterns\bin\Debug\1.17 StructuralPatterns.exe.config
+D:\Git\Internship\1. C#\1.17 StructuralPatterns\1.17 StructuralPatterns\bin\Debug\1.17 StructuralPatterns.exe
+D:\Git\Internship\1. C#\1.17 StructuralPatterns\1.17 StructuralPatterns\bin\Debug\1.17 StructuralPatterns.pdb
+D:\Git\Internship\1. C#\1.17 StructuralPatterns\1.17 StructuralPatterns\obj\Debug\1.17 StructuralPatterns.csprojAssemblyReference.cache
+D:\Git\Internship\1. C#\1.17 StructuralPatterns\1.17 StructuralPatterns\obj\Debug\1.17 StructuralPatterns.csproj.CoreCompileInputs.cache
+D:\Git\Internship\1. C#\1.17 StructuralPatterns\1.17 StructuralPatterns\obj\Debug\1.17 StructuralPatterns.exe
+D:\Git\Internship\1. C#\1.17 StructuralPatterns\1.17 StructuralPatterns\obj\Debug\1.17 StructuralPatterns.pdb

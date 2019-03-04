@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.CompilerServices;
 
 namespace _1._14EvolutionCSharp
 {
@@ -25,7 +26,18 @@ namespace _1._14EvolutionCSharp
             PatternMatchEx();
             RefExample();
 
+            DataProgram();
+
             ReadKey();
+        }
+
+        static void DataProgram([CallerMemberName] string memberName = null,
+             [CallerFilePath] string filePath = null,
+            [CallerLineNumber] int lineNumber = 0)
+        {
+            WriteLine(memberName);
+            WriteLine(filePath);
+            WriteLine(lineNumber);
         }
 
         private static void RefExample()
@@ -111,6 +123,7 @@ namespace _1._14EvolutionCSharp
             catch (Exception ex) when (c == 0)
             {
                 WriteLine("Posible");
+                throw;
             }
             catch (Exception ex) when (c != 0)
             {

@@ -1,0 +1,14 @@
+C:\Users\aurel.starciuc\source\repos\1.19 ioCDI\1.19 ioCDI\obj\Debug\1.19 ioCDI.csprojAssemblyReference.cache
+C:\Users\aurel.starciuc\source\repos\1.19 ioCDI\1.19 ioCDI\obj\Debug\1.19 ioCDI.csproj.CoreCompileInputs.cache
+C:\Users\aurel.starciuc\source\repos\1.19 ioCDI\1.19 ioCDI\bin\Debug\1.19 ioCDI.exe.config
+C:\Users\aurel.starciuc\source\repos\1.19 ioCDI\1.19 ioCDI\bin\Debug\1.19 ioCDI.exe
+C:\Users\aurel.starciuc\source\repos\1.19 ioCDI\1.19 ioCDI\bin\Debug\1.19 ioCDI.pdb
+C:\Users\aurel.starciuc\source\repos\1.19 ioCDI\1.19 ioCDI\obj\Debug\1.19 ioCDI.exe
+C:\Users\aurel.starciuc\source\repos\1.19 ioCDI\1.19 ioCDI\obj\Debug\1.19 ioCDI.pdb
+D:\Git\Internship\1. C#\1.19 ioCDI\1.19 ioCDI\bin\Debug\1.19 ioCDI.exe.config
+D:\Git\Internship\1. C#\1.19 ioCDI\1.19 ioCDI\bin\Debug\1.19 ioCDI.exe
+D:\Git\Internship\1. C#\1.19 ioCDI\1.19 ioCDI\bin\Debug\1.19 ioCDI.pdb
+D:\Git\Internship\1. C#\1.19 ioCDI\1.19 ioCDI\obj\Debug\1.19 ioCDI.csprojAssemblyReference.cache
+D:\Git\Internship\1. C#\1.19 ioCDI\1.19 ioCDI\obj\Debug\1.19 ioCDI.csproj.CoreCompileInputs.cache
+D:\Git\Internship\1. C#\1.19 ioCDI\1.19 ioCDI\obj\Debug\1.19 ioCDI.exe
+D:\Git\Internship\1. C#\1.19 ioCDI\1.19 ioCDI\obj\Debug\1.19 ioCDI.pdb

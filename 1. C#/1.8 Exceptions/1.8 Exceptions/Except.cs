@@ -78,6 +78,7 @@ namespace _1._8_Exceptions
             catch (FileNotFoundException fileEx)
             {
                 Console.WriteLine(fileEx.Message);
+                throw new Exception("dsad", fileEx);
             }
             catch (Exception ex) when (fileStream != null)
             {
