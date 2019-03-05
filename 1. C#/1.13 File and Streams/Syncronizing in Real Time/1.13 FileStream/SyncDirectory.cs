@@ -39,58 +39,81 @@ namespace _1._13_FileStream
             watcher.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite |
                 NotifyFilters.FileName | NotifyFilters.DirectoryName;
 
-            
+
 
             watcher.IncludeSubdirectories = true;
-            
+
             watcher.Changed += CheckContent;
             watcher.Created += CheckSubdirectories;
             watcher.Deleted += DeleteFilesFromDir2;
             watcher.Renamed += CheckSubdirectories;
             watcher.EnableRaisingEvents = true;
 
+            //filesystemwatcher watcher2 = new filesystemwatcher(_path2);
 
-            //FileSystemWatcher watcher2 = new FileSystemWatcher(_path2);
+            //watcher2.notifyfilter = notifyfilters.lastaccess | notifyfilters.lastwrite |
+            //    notifyfilters.filename | notifyfilters.directoryname;
 
-            //watcher2.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite |
-            //    NotifyFilters.FileName | NotifyFilters.DirectoryName;
 
-            //watcher2.IncludeSubdirectories = true;
 
-            //watcher2.Changed += CheckContent;
-            //watcher2.Created += CheckSubdirectories;
-            //watcher2.Deleted += DeleteFilesFromDir2;
-            //watcher2.Renamed += CheckSubdirectories;
-            //watcher2.EnableRaisingEvents = true;
+            //watcher2.includesubdirectories = true;
+
+            //watcher2.changed += checkcontent;
+            //watcher2.created += deletefilesfromdir2;
+            //watcher2.deleted += deletefilesfromdir2;
+            //watcher2.renamed += checksubdirectories;
+            //watcher2.enableraisingevents = true;
         }
 
         private async void CheckContent(object obj, FileSystemEventArgs e)
         {
-            directories = Directory.GetDirectories(_path1, "*", SearchOption.AllDirectories);
+            Console.WriteLine("Check content");
             files = Directory.GetFiles(_path1, "*", SearchOption.AllDirectories);
 
             foreach (string file in files)
             {
                 newWay = file.Replace(_path1, _path2);
 
-                if (file.GetHashCode() != newWay.GetHashCode())
+                using (var from = new FileStream(file, FileMode.Open))
+                using (var to = new FileStream(newWay, FileMode.Open))
                 {
-                    bool executed = false;
-                    while (executed == false)
+                    if (!IsEquals(from, to))
                     {
-                        try
-                        {
-                            File.Copy(file, newWay, true);
-                            executed = true;
-                        }
-                        catch
-                        {
-                            Thread.Sleep(1000);
-                        }
+                        from.Close();
+                        to.Close();
+                        File.Delete(newWay);
+                        File.Copy(file, newWay);
+                        break;
                     }
                 }
             }
-                
+        }
+
+        bool IsEquals(Stream from, Stream to)
+        {
+            if (from.Length != to.Length)
+            {
+                return false;
+            }
+            else
+            {
+                var fromBytes = new byte[from.Length];
+                var toBytes = new byte[to.Length];
+
+                for (var i = 0; i < from.Length; i += 100)
+                {
+                    from.Read(fromBytes, 0, i);
+                    to.Read(toBytes, 0, i);
+                    if (!fromBytes.SequenceEqual(toBytes))
+                    {
+                        return false;
+                    }
+                    if (i < from.Length)
+                        i = (int)from.Length;
+                }
+            }
+
+            return true;
         }
 
         private void CheckSubdirectories(object obj, FileSystemEventArgs e)
@@ -101,7 +124,7 @@ namespace _1._13_FileStream
             foreach (string directory in directories)
             {
                 newWay = directory.Replace(_path1, _path2);
-                
+
                 if (!Directory.Exists(newWay))
                 {
                     Directory.CreateDirectory(newWay);
@@ -114,13 +137,12 @@ namespace _1._13_FileStream
 
                 if (!File.Exists(newWay))
                 {
-                    bool executed = false;
-                    while (executed == false)
+                    while (true)
                     {
                         try
                         {
                             File.Copy(file, newWay);
-                            executed = true;
+                            break;
                         }
                         catch
                         {
@@ -156,7 +178,7 @@ namespace _1._13_FileStream
                 }
             }
         }
-        
+
         private void CheckDirectories()
         {
             if (!Directory.Exists(_path1))

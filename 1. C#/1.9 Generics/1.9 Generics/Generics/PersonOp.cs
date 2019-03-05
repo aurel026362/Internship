@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace _1._9_Generics.Generics
 {
-    internal class PersonOp<T> where T : class//, IEnumerable
+    internal class PersonOp<T> where T : class
     {
         public T[] persons { get; set; }
 
@@ -33,11 +33,5 @@ namespace _1._9_Generics.Generics
             persons = new T[n];
             persons = newPersons;
         }
-
-
-        /*public void Modification(T newT, int i)
-        {
-            st[i] = newT;
-        }*/
     }
 }

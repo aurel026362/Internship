@@ -12,3 +12,8 @@ D:\Git\Internship\1. C#\1.9 Generics\1.9 Generics\obj\Debug\1.9 Generics.csprojA
 D:\Git\Internship\1. C#\1.9 Generics\1.9 Generics\obj\Debug\1.9 Generics.csproj.CoreCompileInputs.cache
 D:\Git\Internship\1. C#\1.9 Generics\1.9 Generics\obj\Debug\1.9 Generics.exe
 D:\Git\Internship\1. C#\1.9 Generics\1.9 Generics\obj\Debug\1.9 Generics.pdb
+D:\Git\Internship\1. C#\1.9 Generics\1.9 Generics\bin\Debug\EntityFramework.dll
+D:\Git\Internship\1. C#\1.9 Generics\1.9 Generics\bin\Debug\EntityFramework.SqlServer.dll
+D:\Git\Internship\1. C#\1.9 Generics\1.9 Generics\bin\Debug\EntityFramework.xml
+D:\Git\Internship\1. C#\1.9 Generics\1.9 Generics\bin\Debug\EntityFramework.SqlServer.xml
+D:\Git\Internship\1. C#\1.9 Generics\1.9 Generics\obj\Debug\1.9 Generics.csproj.CopyComplete

@@ -33,62 +33,59 @@ namespace _1._13_FileStream
             CheckSubdirectories();
             DeleteFilesFromDir2();
             CheckContent();
-            
         }
 
         private async void CheckContent()
         {
-            directories = Directory.GetDirectories(_path1, "*", SearchOption.AllDirectories);
             files = Directory.GetFiles(_path1, "*", SearchOption.AllDirectories);
-
-            string[] textFormat = { ".txt", ".doc", ".docx", ".html", ".css" };
 
             foreach (string file in files)
             {
                 newWay = file.Replace(_path1, _path2);
 
-                if (textFormat.Contains(Path.GetExtension(file)))
+                using (var from = new FileStream(file, FileMode.Open))
+                using (var to = new FileStream(newWay, FileMode.Open))
                 {
-                    StringBuilder stringBuilder1 = new StringBuilder();
-                    StringBuilder stringBuilder2 = new StringBuilder();
-
-                    using (StreamReader sr = new StreamReader(file))
+                    if (!IsEquals(from, to))
                     {
-                        string line;
-
-                        while ((line = sr.ReadLine()) != null)
-                        {
-                            await Task.Run(() => stringBuilder1.Append((line + Environment.NewLine)));
-                        }
-                    }
-
-                    using (StreamReader sr = new StreamReader(newWay))
-                    {
-                        string line;
-
-                        while ((line = sr.ReadLine()) != null)
-                        {
-                            await Task.Run(() => stringBuilder2.Append((line + Environment.NewLine)));
-                        }
-                    }
-
-                    if (!stringBuilder1.Equals(stringBuilder2))
-                    {
-                        using (StreamWriter sw = new StreamWriter( newWay, false, System.Text.Encoding.Default))
-                        {
-                            await Task.Run(() => sw.WriteLine((stringBuilder1)));
-                        }
+                        from.Close();
+                        to.Close();
+                        File.Delete(newWay);
+                        File.Copy(file, newWay);
                     }
                 }
-                else
-                {
-                    if (file.GetHashCode() != newWay.GetHashCode())
-                    {
-                        File.Copy(file, newWay, true);
-                    }
-                }
+
             }
         }
+
+        bool IsEquals(Stream from, Stream to)
+        {
+            if (from.Length != to.Length)
+            {
+                return false;
+            }
+
+            else
+            {
+                var fromBytes = new byte[from.Length];
+                var toBytes = new byte[to.Length];
+
+                for (var i = 0; i < from.Length; i += 100)
+                {
+                    from.Read(fromBytes, 0, i);
+                    to.Read(toBytes, 0, i);
+                    if (!fromBytes.SequenceEqual(toBytes))
+                    {
+                        return false;
+                    }
+                    if (i < from.Length)
+                        i = (int)from.Length;
+                }
+            }
+
+            return true;
+        }
+
 
         private void CheckSubdirectories()
         {
@@ -98,7 +95,7 @@ namespace _1._13_FileStream
             foreach (string directory in directories)
             {
                 newWay = directory.Replace(_path1, _path2);
-                
+
                 if (!Directory.Exists(newWay))
                 {
                     Directory.CreateDirectory(newWay);
@@ -134,14 +131,14 @@ namespace _1._13_FileStream
             foreach (string dir in directories2)
             {
                 newWay = dir.Replace(_path2, _path1);
-                
+
                 if (!Directory.Exists(newWay))
                 {
                     Directory.Delete(dir);
                 }
             }
         }
-        
+
         private void CheckDirectories()
         {
             if (!Directory.Exists(_path1))

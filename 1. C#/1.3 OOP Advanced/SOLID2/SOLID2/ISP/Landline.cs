@@ -14,7 +14,7 @@ namespace SOLID2
     {
         public void Call()
         {
-            Console.WriteLine("Possible to call, but don't take a photo");
+            Console.WriteLine("LandLine: Possible to call, but don't take a photo");
         }
     }
 }

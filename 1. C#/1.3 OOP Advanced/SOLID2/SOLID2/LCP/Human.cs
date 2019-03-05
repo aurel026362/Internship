@@ -7,8 +7,6 @@ using System.Threading.Tasks;
 
 namespace SOLID2
 {
-
-    //ICP
     public class Human : IRunning, ISwimming
     {
         public void Run()

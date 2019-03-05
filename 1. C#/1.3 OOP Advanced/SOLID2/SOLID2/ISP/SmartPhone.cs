@@ -8,12 +8,12 @@ namespace SOLID2.ISP
     {
         public void Call()
         {
-            Console.WriteLine("The SmartPhone can to call");
+            Console.WriteLine("SmartPhone: The SmartPhone can to call");
         }
 
         public void TakePhoto()
         {
-            Console.WriteLine("And this can to take photo");
+            Console.WriteLine("SmartPhone: And this can to take photo");
         }
     }
 }

@@ -2,6 +2,7 @@
 using SOLID2.LCP;
 using SOLID2.OCP;
 using System;
+using System.Collections.Generic;
 
 namespace SOLID2
 {
@@ -10,6 +11,7 @@ namespace SOLID2
         static void Main(string[] args)
         {
             //ISP
+            Console.WriteLine("\n-------ISP-----------\n");
             Landline landline = new Landline();
             landline.Call();
 
@@ -18,14 +20,21 @@ namespace SOLID2
             smartPhone.TakePhoto();
 
             //LCP
-            Horse horse = new Horse();
-            horse.Run();
+            Console.WriteLine("\n-------LCP-----------\n");
+            List<IRunning> runners = new List<IRunning>()
+            {
+                new Human(),
+                new Horse()
+            };
 
-            Pelican pelican = new Pelican();
-            pelican.Fly();
-            pelican.Swim();
+            Console.WriteLine("Running...");
+            foreach (var runner in runners)
+            {
+                runner.Run();
+            }
 
             //OCP
+            Console.WriteLine("\n-------OCP-----------\n");
             Transport car = new Car();
             car.Move();
 
