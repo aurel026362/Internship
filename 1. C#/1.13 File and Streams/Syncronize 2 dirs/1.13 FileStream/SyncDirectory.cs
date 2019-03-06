@@ -23,7 +23,6 @@ namespace _1._13_FileStream
         public SyncDirectory(string newPath1, string newPath2)
         {
             _path1 = newPath1;
-
             _path2 = newPath2;
 
             directories = Directory.GetDirectories(_path1, "*", SearchOption.AllDirectories);
@@ -42,50 +41,44 @@ namespace _1._13_FileStream
             foreach (string file in files)
             {
                 newWay = file.Replace(_path1, _path2);
-
-                using (var from = new FileStream(file, FileMode.Open))
-                using (var to = new FileStream(newWay, FileMode.Open))
+                if (isDifferent(file))
                 {
-                    if (!IsEquals(from, to))
-                    {
-                        from.Close();
-                        to.Close();
-                        File.Delete(newWay);
-                        File.Copy(file, newWay);
-                    }
+                    File.Copy(file, newWay, true);
                 }
-
             }
         }
 
-        bool IsEquals(Stream from, Stream to)
+        private bool isDifferent(string file)
+        {
+            using (var from = new FileStream(file, FileMode.Open))
+            using (var to = new FileStream(newWay, FileMode.Open))
+            {
+                return !IsEquals(from, to);
+            }
+        }
+        
+        bool IsEquals(Stream from, Stream to) 
         {
             if (from.Length != to.Length)
             {
                 return false;
             }
 
-            else
-            {
-                var fromBytes = new byte[from.Length];
-                var toBytes = new byte[to.Length];
+            int bsize = 1024 * 1024;
 
-                for (var i = 0; i < from.Length; i += 100)
+            var fromBytes = new byte[bsize];
+            var toBytes = new byte[bsize];
+
+            while ((from.Read(fromBytes, 0, bsize) != 0) 
+                && (to.Read(toBytes, 0, bsize) != 0))
+            {
+                if (!fromBytes.SequenceEqual(toBytes))
                 {
-                    from.Read(fromBytes, 0, i);
-                    to.Read(toBytes, 0, i);
-                    if (!fromBytes.SequenceEqual(toBytes))
-                    {
-                        return false;
-                    }
-                    if (i < from.Length)
-                        i = (int)from.Length;
+                    return false;
                 }
             }
-
             return true;
         }
-
 
         private void CheckSubdirectories()
         {

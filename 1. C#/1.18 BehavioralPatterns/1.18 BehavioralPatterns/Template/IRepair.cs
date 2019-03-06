@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _1._18_BehavioralPatterns
+namespace _1._18_BehavioralPatterns.Template
 {
-    //OBserver
-    interface IClient
+    interface IRepair
     {
-        void ReceiveMessage(string name, string version);
+        void Repair();
     }
 }

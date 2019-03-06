@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace _1._18_BehavioralPatterns
 {
+    //OBservable
     interface IApplication
     {
         void AddSubscriber(IClient client);

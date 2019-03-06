@@ -54,6 +54,7 @@
     <Compile Include="Strategy\IReadable.cs" />
     <Compile Include="Strategy\PC.cs" />
     <Compile Include="Strategy\SSD.cs" />
+    <Compile Include="Template\IRepair.cs" />
     <Compile Include="Template\PersonalReparation.cs" />
     <Compile Include="Template\Reparation.cs" />
     <Compile Include="Template\ServiceCenter.cs" />

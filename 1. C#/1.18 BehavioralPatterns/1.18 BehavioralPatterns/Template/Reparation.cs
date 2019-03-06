@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _1._18_BehavioralPatterns.Template
 {
-    abstract class Reparation
+    abstract class Reparation:IRepair
     {
         public void Repair()
         {

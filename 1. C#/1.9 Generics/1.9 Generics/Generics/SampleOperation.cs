@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _1._9_Generics.Generics
 {
-    class SampleOperation<T> where T: struct
+    class SampleOperation<T> where T: struct 
     {
         T c;
         public T Atribute(T a)

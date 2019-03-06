@@ -64,7 +64,7 @@
     <Compile Include="Repository pattern\UserRepository.cs" />
     <Compile Include="Repository pattern\IEntity.cs" />
     <Compile Include="Repository pattern\IRepository.cs" />
-    <Compile Include="Repository pattern\RepositoryOp.cs" />
+    <Compile Include="Repository pattern\OperationsRep.cs" />
     <Compile Include="Repository pattern\User.cs" />
   </ItemGroup>
   <ItemGroup>

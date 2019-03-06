@@ -67,25 +67,33 @@ namespace _1._13_FileStream
 
         private async void CheckContent(object obj, FileSystemEventArgs e)
         {
-            Console.WriteLine("Check content");
+            //Console.WriteLine(e.FullPath.ToString());
+
+            //newWay = (e.FullPath).Replace(_path1, _path2);
+            //Console.WriteLine(newWay);
+            //if (isDifferent(e.FullPath))
+            //{
+            //    File.Copy(e.FullPath, newWay, true);
+            //}
+
             files = Directory.GetFiles(_path1, "*", SearchOption.AllDirectories);
 
             foreach (string file in files)
             {
                 newWay = file.Replace(_path1, _path2);
-
-                using (var from = new FileStream(file, FileMode.Open))
-                using (var to = new FileStream(newWay, FileMode.Open))
+                if (isDifferent(file))
                 {
-                    if (!IsEquals(from, to))
-                    {
-                        from.Close();
-                        to.Close();
-                        File.Delete(newWay);
-                        File.Copy(file, newWay);
-                        break;
-                    }
+                    File.Copy(file, newWay, true);
                 }
+            }
+        }
+
+        private bool isDifferent(string file)
+        {
+            using (var from = new FileStream(file, FileMode.Open))
+            using (var to = new FileStream(newWay, FileMode.Open))
+            {
+                return !IsEquals(from, to);
             }
         }
 
@@ -95,29 +103,50 @@ namespace _1._13_FileStream
             {
                 return false;
             }
-            else
-            {
-                var fromBytes = new byte[from.Length];
-                var toBytes = new byte[to.Length];
 
-                for (var i = 0; i < from.Length; i += 100)
+            int bsize = 1024 * 1024;
+
+            var fromBytes = new byte[bsize];
+            var toBytes = new byte[bsize];
+
+            while ((from.Read(fromBytes, 0, bsize) != 0)
+                && (to.Read(toBytes, 0, bsize) != 0))
+            {
+                if (!fromBytes.SequenceEqual(toBytes))
                 {
-                    from.Read(fromBytes, 0, i);
-                    to.Read(toBytes, 0, i);
-                    if (!fromBytes.SequenceEqual(toBytes))
-                    {
-                        return false;
-                    }
-                    if (i < from.Length)
-                        i = (int)from.Length;
+                    return false;
                 }
             }
-
             return true;
         }
 
         private void CheckSubdirectories(object obj, FileSystemEventArgs e)
         {
+            ////if (e.Name )
+            //newWay = (e.FullPath).Replace(_path1, _path2);
+            //if (!Directory.Exists(newWay))
+            //{
+            //    Directory.CreateDirectory(newWay);
+            //}
+            
+            //newWay = (e.FullPath).Replace(_path1, _path2);
+
+            //if (!File.Exists(newWay))
+            //{
+            //    while (true)
+            //    {
+            //        try
+            //        {
+            //            File.Copy(e.FullPath, newWay, true);
+            //            break;
+            //        }
+            //        catch
+            //        {
+            //            Thread.Sleep(1000);
+            //        }
+            //    }
+            //}
+
             directories = Directory.GetDirectories(_path1, "*", SearchOption.AllDirectories);
             files = Directory.GetFiles(_path1, "*", SearchOption.AllDirectories);
 
@@ -155,6 +184,7 @@ namespace _1._13_FileStream
 
         private void DeleteFilesFromDir2(object obj, FileSystemEventArgs e)
         {
+
             string[] directories2 = Directory.GetDirectories(_path2, "*", SearchOption.AllDirectories);
             string[] files2 = Directory.GetFiles(_path2, "*", SearchOption.AllDirectories);
 

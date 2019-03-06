@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace _1._9_Generics.Repository_pattern
 {
-    class RepositoryOp
+    class OperationsRep
     {
-        public RepositoryOp()
+        public OperationsRep()
         {
             IRepository<User> uRep = new UserRepository(
                 new List<User>()

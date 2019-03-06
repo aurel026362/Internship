@@ -17,6 +17,11 @@ namespace _1._18_BehavioralPatterns.Strategy
             storage = newStorage;
         }
 
+        public void ChangeTypepRead(IReadable newStorage)
+        {
+            storage = newStorage;
+        }
+
         public void Read()
         {
             storage.Read();

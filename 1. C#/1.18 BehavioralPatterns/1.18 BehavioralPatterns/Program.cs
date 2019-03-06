@@ -35,7 +35,7 @@ namespace _1._18_BehavioralPatterns
             PC pc = new PC("Acer", new HDD());
 
             pc.Read();
-            pc.storage = new SSD();
+            pc.ChangeTypepRead(new SSD());
 
             pc.Read();
 

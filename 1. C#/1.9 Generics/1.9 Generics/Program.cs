@@ -37,7 +37,7 @@ namespace _1._9_Generics
                     case Operation.Exit: Console.WriteLine("Exit!"); break;
                     case Operation.Generic: new GenericsOp(); break;
                     case Operation.Collection: new NullableOp(); break;
-                    case Operation.RepositoryP: new RepositoryOp(); break;
+                    case Operation.RepositoryP: new OperationsRep(); break;
                     default: Console.WriteLine("Don't exist this operation!"); break;
                 }
             }
