@@ -10,7 +10,7 @@ namespace SOLID2
 
     //ISP
 
-    public class Landline:ICalling
+    public class Landline : ICalling
     {
         public void Call()
         {

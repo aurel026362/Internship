@@ -39,6 +39,17 @@ namespace _1._9_Generics.Nullable
             {
                 Console.WriteLine(book.name + " " + book.code + " " + book.page);
             }
+
+            ////Covariance
+            //IEnumerable<object> list = new List<string>();
+
+            ////Contravariance
+            //Action<object> contr = Get;
+        }
+
+        public void Get(object o)
+        {
+
         }
     }
 }

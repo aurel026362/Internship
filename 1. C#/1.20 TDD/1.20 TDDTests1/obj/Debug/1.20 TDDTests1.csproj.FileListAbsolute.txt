@@ -1,0 +1,17 @@
+C:\Users\aurel.starciuc\source\repos\1.20 TDD\1.20 TDDTests1\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\aurel.starciuc\source\repos\1.20 TDD\1.20 TDDTests1\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\aurel.starciuc\source\repos\1.20 TDD\1.20 TDDTests1\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\aurel.starciuc\source\repos\1.20 TDD\1.20 TDDTests1\bin\Debug\1.20 TDDTests1.dll
+C:\Users\aurel.starciuc\source\repos\1.20 TDD\1.20 TDDTests1\bin\Debug\1.20 TDDTests1.pdb
+C:\Users\aurel.starciuc\source\repos\1.20 TDD\1.20 TDDTests1\bin\Debug\1.20 TDD.exe
+C:\Users\aurel.starciuc\source\repos\1.20 TDD\1.20 TDDTests1\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Users\aurel.starciuc\source\repos\1.20 TDD\1.20 TDDTests1\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\aurel.starciuc\source\repos\1.20 TDD\1.20 TDDTests1\bin\Debug\1.20 TDD.pdb
+C:\Users\aurel.starciuc\source\repos\1.20 TDD\1.20 TDDTests1\bin\Debug\1.20 TDD.exe.config
+C:\Users\aurel.starciuc\source\repos\1.20 TDD\1.20 TDDTests1\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\Users\aurel.starciuc\source\repos\1.20 TDD\1.20 TDDTests1\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Users\aurel.starciuc\source\repos\1.20 TDD\1.20 TDDTests1\obj\Debug\1.20 TDDTests1.csprojAssemblyReference.cache
+C:\Users\aurel.starciuc\source\repos\1.20 TDD\1.20 TDDTests1\obj\Debug\1.20 TDDTests1.csproj.CoreCompileInputs.cache
+C:\Users\aurel.starciuc\source\repos\1.20 TDD\1.20 TDDTests1\obj\Debug\1.20 TDDTests1.csproj.CopyComplete
+C:\Users\aurel.starciuc\source\repos\1.20 TDD\1.20 TDDTests1\obj\Debug\1.20 TDDTests1.dll
+C:\Users\aurel.starciuc\source\repos\1.20 TDD\1.20 TDDTests1\obj\Debug\1.20 TDDTests1.pdb

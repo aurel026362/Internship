@@ -64,11 +64,13 @@ namespace _1._13_FileStream
                 return false;
             }
 
+            var isEqual = from.Equals(new BinaryReader(from).BaseStream);
+
             int bsize = 1024 * 1024;
 
             var fromBytes = new byte[bsize];
             var toBytes = new byte[bsize];
-
+            
             while ((from.Read(fromBytes, 0, bsize) != 0) 
                 && (to.Read(toBytes, 0, bsize) != 0))
             {

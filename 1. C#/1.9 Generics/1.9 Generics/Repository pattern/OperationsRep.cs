@@ -10,7 +10,7 @@ namespace _1._9_Generics.Repository_pattern
     {
         public OperationsRep()
         {
-            IRepository<User> uRep = new UserRepository(
+            IRepository<User> uRep = new GRepository<User>(
                 new List<User>()
                 { 
                 new User { Id = 1, name = "ion", age = 12, gender = "m" },
@@ -34,5 +34,10 @@ namespace _1._9_Generics.Repository_pattern
                 Console.WriteLine($"{user.name} {user.age} {user.gender}");
             }
         }
+    }
+
+    class MyList<T> 
+    {
+            
     }
 }

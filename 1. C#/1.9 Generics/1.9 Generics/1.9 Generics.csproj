@@ -61,7 +61,7 @@
     <Compile Include="Nullable\Book.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository pattern\UserRepository.cs" />
+    <Compile Include="Repository pattern\GRepository.cs" />
     <Compile Include="Repository pattern\IEntity.cs" />
     <Compile Include="Repository pattern\IRepository.cs" />
     <Compile Include="Repository pattern\OperationsRep.cs" />

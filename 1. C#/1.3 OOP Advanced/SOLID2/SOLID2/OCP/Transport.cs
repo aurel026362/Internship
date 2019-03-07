@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace SOLID2
 {
-
     //OCP
     abstract class Transport
     {

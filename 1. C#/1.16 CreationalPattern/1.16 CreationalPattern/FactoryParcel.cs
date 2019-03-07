@@ -30,7 +30,7 @@ namespace _1._16_CreationalPattern
                 return null;
         }
 
-        public static bool CheckArguments(float weight, float size, string adress)
+        private static bool CheckArguments(float weight, float size, string adress)
         {
             if (weight > 0 && size > 0 && !String.IsNullOrEmpty(adress))
             {

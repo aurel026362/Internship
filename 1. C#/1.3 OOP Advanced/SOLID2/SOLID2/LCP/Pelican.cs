@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SOLID2.LCP
 {
-    public class Pelican:IFlying, ISwimming
+    public class Pelican : IFlying, ISwimming
     {
         public void Fly()
         {

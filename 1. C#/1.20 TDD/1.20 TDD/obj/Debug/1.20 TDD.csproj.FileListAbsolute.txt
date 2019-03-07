@@ -1,0 +1,7 @@
+C:\Users\aurel.starciuc\source\repos\1.20 TDD\1.20 TDD\bin\Debug\1.20 TDD.exe.config
+C:\Users\aurel.starciuc\source\repos\1.20 TDD\1.20 TDD\bin\Debug\1.20 TDD.exe
+C:\Users\aurel.starciuc\source\repos\1.20 TDD\1.20 TDD\bin\Debug\1.20 TDD.pdb
+C:\Users\aurel.starciuc\source\repos\1.20 TDD\1.20 TDD\obj\Debug\1.20 TDD.csprojAssemblyReference.cache
+C:\Users\aurel.starciuc\source\repos\1.20 TDD\1.20 TDD\obj\Debug\1.20 TDD.csproj.CoreCompileInputs.cache
+C:\Users\aurel.starciuc\source\repos\1.20 TDD\1.20 TDD\obj\Debug\1.20 TDD.exe
+C:\Users\aurel.starciuc\source\repos\1.20 TDD\1.20 TDD\obj\Debug\1.20 TDD.pdb
