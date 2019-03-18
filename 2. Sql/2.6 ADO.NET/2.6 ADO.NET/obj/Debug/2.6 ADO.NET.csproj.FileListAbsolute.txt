@@ -1,0 +1,14 @@
+C:\Users\aurel.starciuc\source\repos\2.6 ADO.NET\2.6 ADO.NET\bin\Debug\2.6 ADO.NET.exe.config
+C:\Users\aurel.starciuc\source\repos\2.6 ADO.NET\2.6 ADO.NET\bin\Debug\2.6 ADO.NET.exe
+C:\Users\aurel.starciuc\source\repos\2.6 ADO.NET\2.6 ADO.NET\bin\Debug\2.6 ADO.NET.pdb
+C:\Users\aurel.starciuc\source\repos\2.6 ADO.NET\2.6 ADO.NET\obj\Debug\2.6 ADO.NET.csprojAssemblyReference.cache
+C:\Users\aurel.starciuc\source\repos\2.6 ADO.NET\2.6 ADO.NET\obj\Debug\2.6 ADO.NET.csproj.CoreCompileInputs.cache
+C:\Users\aurel.starciuc\source\repos\2.6 ADO.NET\2.6 ADO.NET\obj\Debug\2.6 ADO.NET.exe
+C:\Users\aurel.starciuc\source\repos\2.6 ADO.NET\2.6 ADO.NET\obj\Debug\2.6 ADO.NET.pdb
+D:\Git\Internship\2. Sql\2.6 ADO.NET\2.6 ADO.NET\bin\Debug\2.6 ADO.NET.exe.config
+D:\Git\Internship\2. Sql\2.6 ADO.NET\2.6 ADO.NET\bin\Debug\2.6 ADO.NET.exe
+D:\Git\Internship\2. Sql\2.6 ADO.NET\2.6 ADO.NET\bin\Debug\2.6 ADO.NET.pdb
+D:\Git\Internship\2. Sql\2.6 ADO.NET\2.6 ADO.NET\obj\Debug\2.6 ADO.NET.csprojAssemblyReference.cache
+D:\Git\Internship\2. Sql\2.6 ADO.NET\2.6 ADO.NET\obj\Debug\2.6 ADO.NET.csproj.CoreCompileInputs.cache
+D:\Git\Internship\2. Sql\2.6 ADO.NET\2.6 ADO.NET\obj\Debug\2.6 ADO.NET.exe
+D:\Git\Internship\2. Sql\2.6 ADO.NET\2.6 ADO.NET\obj\Debug\2.6 ADO.NET.pdb

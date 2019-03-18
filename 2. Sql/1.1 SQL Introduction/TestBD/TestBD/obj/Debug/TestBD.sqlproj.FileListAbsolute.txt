@@ -1,0 +1,15 @@
+C:\Users\aurel.starciuc\source\repos\TestBD\TestBD\bin\Debug\TestBD.dacpac
+C:\Users\aurel.starciuc\source\repos\TestBD\TestBD\bin\Debug\TestBD.dll
+C:\Users\aurel.starciuc\source\repos\TestBD\TestBD\bin\Debug\TestBD.pdb
+C:\Users\aurel.starciuc\source\repos\TestBD\TestBD\obj\Debug\TestBD.dll
+C:\Users\aurel.starciuc\source\repos\TestBD\TestBD\obj\Debug\TestBD.pdb
+C:\Users\aurel.starciuc\source\repos\TestBD\TestBD\obj\Debug\Model.xml
+C:\Users\aurel.starciuc\source\repos\TestBD\TestBD\obj\Debug\refactor.xml
+C:\Users\aurel.starciuc\source\repos\TestBD\TestBD\obj\Debug\postdeploy.sql
+C:\Users\aurel.starciuc\source\repos\TestBD\TestBD\obj\Debug\predeploy.sql
+D:\Git\Internship\2. Sql\1.1 SqlINTRODUCTIOn\TestBD\TestBD\bin\Debug\TestBD.dacpac
+D:\Git\Internship\2. Sql\1.1 SqlINTRODUCTIOn\TestBD\TestBD\bin\Debug\TestBD.dll
+D:\Git\Internship\2. Sql\1.1 SqlINTRODUCTIOn\TestBD\TestBD\bin\Debug\TestBD.pdb
+D:\Git\Internship\2. Sql\1.1 SqlINTRODUCTIOn\TestBD\TestBD\obj\Debug\TestBD.sqlprojAssemblyReference.cache
+D:\Git\Internship\2. Sql\1.1 SqlINTRODUCTIOn\TestBD\TestBD\obj\Debug\TestBD.dll
+D:\Git\Internship\2. Sql\1.1 SqlINTRODUCTIOn\TestBD\TestBD\obj\Debug\TestBD.pdb
