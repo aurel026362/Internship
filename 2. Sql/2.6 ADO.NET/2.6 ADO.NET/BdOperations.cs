@@ -21,83 +21,225 @@ namespace _2._6_ADO.NET
         {
             connectionstring = connstring;
 
-            ShowDataConnection();
-            SelectUsers();
+            SelectAndUpdate();
+            //ShowDataConnection();
+            //SelectUsers();
 
-            CreateTableTest();
-            CreateTablePC();
+            //CreateTable();
 
-            ReadData();
-
-            //JoinTables();
             //Update();
+
+            //ManipulatedData();
+
+
+            //CreateTableTest();
+            //CreateTablePC();
+            //JoinTables();
             //SelectUsers();
         }
 
-        public void ReadData()
+        public void CreateTable()
         {
-            DataSet ds = new DataSet();
-
-            string select = "SELECT * FROM Users;";
-
-            SqlDataAdapter dataAdapter = new SqlDataAdapter(select, connectionstring);
-            dataAdapter.Fill(ds, "Users");
-            
-            foreach(DataRow r in ds.Tables[0].Rows)
+            using (SqlConnection connection = new SqlConnection(connectionstring))
             {
-                Console.WriteLine(r["FirstName"] + " " + r["LastName"]);
+                connection.Open();
+                string create = "CREATE TABLE FakeTable( Id int , NameF nvarchar(20), number int);";
+                using (var sqlcommand = new SqlCommand(create, connection))
+                {
+                    try
+                    {
+                        sqlcommand.ExecuteNonQuery();
+                        Console.WriteLine("\nCreate tables succes! ");
+                    }
+                    catch
+                    {
+
+                    }
+                }
             }
 
-            DataRow dr = ds.Tables["Users"].NewRow();
-            dr["FirstName"] = "test";
-            dr["LastName"] = "testL";
-            dr["DateOfBirth"] = "2019-01-01";
-            dr["NumberPhone"] = "+35435432432";
-            dr["Login"] = "login";
-            dr["Password"] = "pass";
-            dr["EMail"] = "email@mail.ru";
-            ds.Tables["Users"].Rows.Add(dr);
-
-            dataAdapter.Update(ds, "Users");
-
-            select = "SELECT * FROM Interns";
-            dataAdapter = new SqlDataAdapter(select, connectionstring);
-            dataAdapter.Fill(ds, "SecondTable");
-
-            foreach (DataRow r in ds.Tables[1].Rows)
+            using (SqlConnection connection = new SqlConnection(connectionstring))
             {
-                Console.WriteLine(r["Id"] + " " + r["UserId"]);
+                connection.Open();
+                string create = "CREATE TABLE SecondFake( Id int, adress nvarchar(20), time_sec int);";
+                using (var sqlcommand = new SqlCommand(create, connection))
+                {
+                    try
+                    {
+                        sqlcommand.ExecuteNonQuery();
+                        Console.WriteLine("\nCreate tables succes! ");
+                    }
+                    catch
+                    {
+
+                    }
+                }
             }
         }
 
-        public void JoinTables()
+        public void ManipulatedData()
         {
-            DataSet ds = new DataSet("newJoin");
+            DataSet ds = new DataSet();
 
-            ds.Tables.Add(test);
-            ds.Tables.Add(PC);
+            string select = "SELECT * FROM FakeTable;";
 
-            Console.WriteLine("\n \n ------------------------");
-
-            ds.Relations.Add("TestPc",
-
-                test.Columns["Id"],
-                PC.Columns["TestId"]
-                );
-
-            Console.WriteLine("List of tets:");
-            foreach (DataRow dr in ds.Tables[0].Rows)
+            using (SqlConnection connect = new SqlConnection(connectionstring))
             {
-                Console.WriteLine(dr["Id"] + " " + dr["Name"]);
-            }
+                connect.Open();
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(select, connect);
+                SqlCommandBuilder combuilder = new SqlCommandBuilder(dataAdapter);
+                dataAdapter.Fill(ds, "FakeTable");
 
-            Console.WriteLine("\nList of PCs:");
-            foreach (DataRow dr in ds.Tables[1].Rows)
+                Console.WriteLine("\nData from FakeTable: ");
+
+                DataTable dt = ds.Tables["FakeTable"];
+
+                DataRow dr = ds.Tables["FakeTable"].NewRow();
+                dr["Id"] = 1;
+                dr["NameF"] = "testName";
+                dr["number"] = 2;
+                dt.Rows.Add(dr);
+
+                DataRow dr2 = ds.Tables["FakeTable"].NewRow();
+                dr2["Id"] = 2;
+                dr2["NameF"] = "secondName";
+                dr2["number"] = 4;
+                dt.Rows.Add(dr2);
+
+                dataAdapter.Update(ds, "FakeTable");
+
+
+                //dt.Rows.Remove(dr2);
+                //dr2["Id"] = 2;
+                //dr2["NameF"] = "unique";
+                //dr2["number"] = 4;
+                //dt.Rows.Add(dr2);
+
+                //dataAdapter.Update(ds, "FakeTable");
+
+                //dataAdapter.DeleteCommand = connect.CreateCommand();
+                //dataAdapter.DeleteCommand.CommandText = "DELETE FROM FakeTable;";
+                //dataAdapter.DeleteCommand.ExecuteNonQuery();
+
+                dataAdapter.InsertCommand = new SqlCommand("INSERT INTO FakeTable(Id, NameF, number) VALUES(9, 'eee', 123);", connect);
+                var row = dt.NewRow();
+                row["Id"] = 9;
+                row["NameF"] = "eee";
+                row["number"] = 1234;
+                dt.Rows.Add(row);
+
+                //dataAdapter.UpdateCommand = connect.CreateCommand();
+                //dataAdapter.UpdateCommand.CommandText = "Update FakeTable SET NameF = 'NewValue' WHERE number = 123";
+                //dataAdapter.UpdateCommand.ExecuteNonQueryAsync();
+
+                dataAdapter.Update(dt);
+
+                foreach (DataRow r in dt.Rows)
+                {
+                    Console.WriteLine(r["Id"] + " " + r["NameF"] + " " + r["number"]);
+                }
+            }
+            Console.WriteLine("Update has been successful! ");
+        }
+
+        public void SelectAndUpdate()
+        {
+            DataSet datas = new DataSet();
+
+            string select = "SELECT * FROM FakeTable;";
+            using (SqlConnection connect = new SqlConnection(connectionstring))
             {
-                Console.WriteLine(dr["PcId"] + " " + dr["NamePC"]);
-            }
-            
+                connect.Open();
+                SqlCommand command1 = new SqlCommand(select, connect);
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(command1);
+                sqlDataAdapter.Fill(datas, "FakeTable");
 
+                sqlDataAdapter.InsertCommand = new SqlCommand("INSERT INTO FakeTable(Id, NameF, number) values(@id,@nameF,@number)", connect);
+                sqlDataAdapter.InsertCommand.Parameters.Add("@id", SqlDbType.BigInt, 8, "Id");
+                sqlDataAdapter.InsertCommand.Parameters.Add("@nameF", SqlDbType.VarChar, 50, "nameF");
+                sqlDataAdapter.InsertCommand.Parameters.Add("@number", SqlDbType.BigInt, 8, "number");
+
+                DataTable dt = datas.Tables["FakeTable"];
+                var row = dt.NewRow();
+                row["Id"] = 12;
+                row["NameF"] = "o mers";
+                row["number"] = 132312;
+                dt.Rows.Add(row);
+
+                row = dt.NewRow();
+                row["Id"] = 13;
+                row["NameF"] = "nu o mers";
+                row["number"] = 1312;
+                dt.Rows.Add(row);
+
+                sqlDataAdapter.Update(datas, "FakeTable");
+            }
+        }
+
+        public void Update()
+        {
+            using (SqlConnection connection = new SqlConnection(connectionstring))
+            {
+                connection.Open();
+                string selectUsers = "UPDATE Users SET FirstName = @NewFirst, LastName = @NewLast WHERE Id = @id;";
+                using (var sqlcommand = new SqlCommand(selectUsers, connection))
+                {
+                    Console.Write("Chose new First Name: ");
+                    string newFName = Console.ReadLine();
+
+                    Console.Write("Chose new Last Name: ");
+                    string newLName = Console.ReadLine();
+
+                    Console.Write("Chose id: ");
+                    int id = Convert.ToInt32(Console.ReadLine());
+
+                    sqlcommand.Parameters.Add("@NewFirst", SqlDbType.VarChar, 50).Value = newFName;
+                    sqlcommand.Parameters.Add("@NewLast", SqlDbType.VarChar, 50).Value = newLName;
+                    sqlcommand.Parameters.Add("@id", SqlDbType.BigInt, 50).Value = id;
+
+                    sqlcommand.ExecuteNonQuery();
+                    Console.WriteLine("\nUpdate succes! ");
+                }
+            }
+        }
+
+        public void SelectUsers()
+        {
+            using (SqlConnection connection = new SqlConnection(connectionstring))
+            {
+                connection.Open();
+                string selectUsers = "SELECT Id, FirstName, LastName FROM Users;";
+                using (var sqlcommand = new SqlCommand(selectUsers, connection))
+                {
+                    SqlDataReader usersReader = sqlcommand.ExecuteReader();
+                    Console.WriteLine("\nList of users: ");
+                    while (usersReader.Read())
+                    {
+                        long id = (long)usersReader["Id"];
+                        string firstName = (string)usersReader["FirstName"];
+                        string lastName = (string)usersReader["LastName"];
+                        Console.WriteLine(id + " : " + firstName + " " + lastName);
+                    }
+                }
+            }
+            Console.WriteLine();
+        }
+
+        public void ShowDataConnection()
+        {
+            using (SqlConnection connection = new SqlConnection(connectionstring))
+            {
+                connection.Open();
+                Console.WriteLine("Connection opened");
+
+                Console.WriteLine("Data about connection:");
+                Console.WriteLine("\tLine connection: {0}", connection.ConnectionString);
+                Console.WriteLine("\tData Base: {0}", connection.Database);
+                Console.WriteLine("\tServer: {0}", connection.DataSource);
+                Console.WriteLine("\tServer Version: {0}", connection.ServerVersion);
+                Console.WriteLine("\tMood: {0}", connection.State);
+                Console.WriteLine("\tWorkstationld: {0}", connection.WorkstationId);
+            }
         }
 
         public void CreateTablePC()
@@ -189,71 +331,34 @@ namespace _2._6_ADO.NET
             Console.WriteLine("Tabel is been created!");
         }
 
-        public void Update()
+        public void JoinTables()
         {
-            using (SqlConnection connection = new SqlConnection(connectionstring))
+            DataSet ds = new DataSet("newJoin");
+
+            ds.Tables.Add(test);
+            ds.Tables.Add(PC);
+
+            Console.WriteLine("\n \n ------------------------");
+
+            ds.Relations.Add("TestPc",
+
+                test.Columns["Id"],
+                PC.Columns["TestId"]
+                );
+
+            Console.WriteLine("List of tets:");
+            foreach (DataRow dr in ds.Tables[0].Rows)
             {
-                connection.Open();
-                string selectUsers = "UPDATE Users SET FirstName = @NewFirst, LastName = @NewLast WHERE Id = @id;";
-                using (var sqlcommand = new SqlCommand(selectUsers, connection))
-                {
-                    Console.Write("Chose new First Name: ");
-                    string newFName = Console.ReadLine();
-
-                    Console.Write("Chose new Last Name: ");
-                    string newLName = Console.ReadLine();
-
-                    Console.Write("Chose id: ");
-                    int id = Convert.ToInt32(Console.ReadLine());
-
-                    sqlcommand.Parameters.Add("@NewFirst", newFName);
-                    sqlcommand.Parameters.Add("@NewLast", newLName);
-                    sqlcommand.Parameters.Add("@id", id);
-
-                    sqlcommand.ExecuteNonQuery();
-                    Console.WriteLine("\nUpdate succes! ");
-                }
+                Console.WriteLine(dr["Id"] + " " + dr["Name"]);
             }
-        }
 
-        public void SelectUsers()
-        {
-            using (SqlConnection connection = new SqlConnection(connectionstring))
+            Console.WriteLine("\nList of PCs:");
+            foreach (DataRow dr in ds.Tables[1].Rows)
             {
-                connection.Open();
-                string selectUsers = "SELECT Id, FirstName, LastName FROM Users;";
-                using (var sqlcommand = new SqlCommand(selectUsers, connection))
-                {
-                    SqlDataReader usersReader = sqlcommand.ExecuteReader();
-                    Console.WriteLine("\nList of users: ");
-                    while (usersReader.Read())
-                    {
-                        long id = (long)usersReader["Id"];
-                        string firstName = (string)usersReader["FirstName"];
-                        string lastName = (string)usersReader["LastName"];
-                        Console.WriteLine(id + " : "  + firstName + " " + lastName);
-                    }
-                }
+                Console.WriteLine(dr["PcId"] + " " + dr["NamePC"]);
             }
-            Console.WriteLine();
-        }
 
-        public void ShowDataConnection()
-        {
-            using (SqlConnection connection = new SqlConnection(connectionstring))
-            {
-                connection.Open();
-                Console.WriteLine("Connection opened");
 
-                // Вывод информации о подключении
-                Console.WriteLine("Data about connection:");
-                Console.WriteLine("\tLine connection: {0}", connection.ConnectionString);
-                Console.WriteLine("\tData Base: {0}", connection.Database);
-                Console.WriteLine("\tServer: {0}", connection.DataSource);
-                Console.WriteLine("\tServer Version: {0}", connection.ServerVersion);
-                Console.WriteLine("\tMood: {0}", connection.State);
-                Console.WriteLine("\tWorkstationld: {0}", connection.WorkstationId);
-            }
         }
     }
 }

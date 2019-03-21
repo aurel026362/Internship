@@ -1,0 +1,11 @@
+C:\Users\aurel.starciuc\source\repos\CodeFirst\CodeFirst\bin\Debug\netcoreapp2.1\CodeFirst.deps.json
+C:\Users\aurel.starciuc\source\repos\CodeFirst\CodeFirst\bin\Debug\netcoreapp2.1\CodeFirst.runtimeconfig.json
+C:\Users\aurel.starciuc\source\repos\CodeFirst\CodeFirst\bin\Debug\netcoreapp2.1\CodeFirst.runtimeconfig.dev.json
+C:\Users\aurel.starciuc\source\repos\CodeFirst\CodeFirst\bin\Debug\netcoreapp2.1\CodeFirst.dll
+C:\Users\aurel.starciuc\source\repos\CodeFirst\CodeFirst\bin\Debug\netcoreapp2.1\CodeFirst.pdb
+C:\Users\aurel.starciuc\source\repos\CodeFirst\CodeFirst\obj\Debug\netcoreapp2.1\CodeFirst.csprojAssemblyReference.cache
+C:\Users\aurel.starciuc\source\repos\CodeFirst\CodeFirst\obj\Debug\netcoreapp2.1\CodeFirst.csproj.CoreCompileInputs.cache
+C:\Users\aurel.starciuc\source\repos\CodeFirst\CodeFirst\obj\Debug\netcoreapp2.1\CodeFirst.AssemblyInfoInputs.cache
+C:\Users\aurel.starciuc\source\repos\CodeFirst\CodeFirst\obj\Debug\netcoreapp2.1\CodeFirst.AssemblyInfo.cs
+C:\Users\aurel.starciuc\source\repos\CodeFirst\CodeFirst\obj\Debug\netcoreapp2.1\CodeFirst.dll
+C:\Users\aurel.starciuc\source\repos\CodeFirst\CodeFirst\obj\Debug\netcoreapp2.1\CodeFirst.pdb

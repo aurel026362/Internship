@@ -8,10 +8,11 @@ namespace _1._9_Generics.Repository_pattern
 {
     public interface IRepository<T> where T : IEntity
     {
-        IEnumerable<T> GetUsersList();
-        T GetUser(int id);
-        void Add(T entity);
-        void Update(int id, T entity);
-        void Delete(int id);
+        IEnumerable<T> GetBookList(); // получение всех объектов
+        T GetBook(int id); // получение одного объекта по id
+        void Create(T item); // создание объекта
+        void Update(T item); // обновление объекта
+        void Delete(int id); // удаление объекта по id
+        void Save();
     }
 }

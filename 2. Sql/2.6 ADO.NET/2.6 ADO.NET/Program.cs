@@ -11,7 +11,7 @@ namespace _2._6_ADO.NET
     {
         static void Main(string[] args)
         {
-            string connectionString = @"Data Source=.\TOMANDJERRY;Initial Catalog=MyDataBase;Integrated Security=True";
+            string connectionString = @"Data Source=MDDSK40071\TOMANDJERRY;Initial Catalog=MyDataBase;Integrated Security=True";
 
             new BdOperations(connectionString);
             

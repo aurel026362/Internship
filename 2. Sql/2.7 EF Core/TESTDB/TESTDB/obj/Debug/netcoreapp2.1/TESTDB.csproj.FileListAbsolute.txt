@@ -1,0 +1,11 @@
+C:\Users\aurel.starciuc\source\repos\TESTDB\TESTDB\bin\Debug\netcoreapp2.1\TESTDB.deps.json
+C:\Users\aurel.starciuc\source\repos\TESTDB\TESTDB\bin\Debug\netcoreapp2.1\TESTDB.runtimeconfig.json
+C:\Users\aurel.starciuc\source\repos\TESTDB\TESTDB\bin\Debug\netcoreapp2.1\TESTDB.runtimeconfig.dev.json
+C:\Users\aurel.starciuc\source\repos\TESTDB\TESTDB\bin\Debug\netcoreapp2.1\TESTDB.dll
+C:\Users\aurel.starciuc\source\repos\TESTDB\TESTDB\obj\Debug\netcoreapp2.1\TESTDB.csprojAssemblyReference.cache
+C:\Users\aurel.starciuc\source\repos\TESTDB\TESTDB\obj\Debug\netcoreapp2.1\TESTDB.csproj.CoreCompileInputs.cache
+C:\Users\aurel.starciuc\source\repos\TESTDB\TESTDB\obj\Debug\netcoreapp2.1\TESTDB.AssemblyInfoInputs.cache
+C:\Users\aurel.starciuc\source\repos\TESTDB\TESTDB\obj\Debug\netcoreapp2.1\TESTDB.AssemblyInfo.cs
+C:\Users\aurel.starciuc\source\repos\TESTDB\TESTDB\bin\Debug\netcoreapp2.1\TESTDB.pdb
+C:\Users\aurel.starciuc\source\repos\TESTDB\TESTDB\obj\Debug\netcoreapp2.1\TESTDB.dll
+C:\Users\aurel.starciuc\source\repos\TESTDB\TESTDB\obj\Debug\netcoreapp2.1\TESTDB.pdb
