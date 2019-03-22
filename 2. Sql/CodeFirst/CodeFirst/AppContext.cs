@@ -6,10 +6,10 @@ using System.Text;
 
 namespace CodeFirst
 {
-    class AppContext : DbContext
+    public class AppContext : DbContext
     {
-        DbSet<Student> Students { get; set; }
-        DbSet<Marks> SMarks { get; set; }
+        public virtual DbSet<Student> Students { get; set; }
+        public virtual DbSet<Marks> SMarks { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

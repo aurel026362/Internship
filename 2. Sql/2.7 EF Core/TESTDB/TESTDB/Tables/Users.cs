@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using TESTDB.Repository;
 
 namespace TESTDB
 {
-    public partial class Users
+    public partial class Users : IEntity
     {
         public long Id { get; set; }
         public string FirstName { get; set; }

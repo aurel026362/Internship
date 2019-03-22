@@ -6,6 +6,9 @@ namespace CodeFirst
     {
         static void Main(string[] args)
         {
+            AppContext context = new AppContext();
+
+            var list = context.Students;
             Console.ReadKey();
         }
     }

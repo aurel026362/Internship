@@ -5,7 +5,7 @@ using System.Text;
 
 namespace TESTDB.Repository
 {
-    public class Repository<T> : IRepository<T> where T : class
+    public class Repository<T> : IRepository<T> where T : class, IEntity
     {
         DbContext _context;
         DbSet<T> _dbSet;
@@ -22,9 +22,10 @@ namespace TESTDB.Repository
             _context.SaveChanges();
         }
 
-        public T FindById(int id)
+        public T FindById(long id)
         {
             return _dbSet.Find(id);
+            //return _dbSet.SET(x=>x.Id == id);
         }
 
         public IEnumerable<T> Get()

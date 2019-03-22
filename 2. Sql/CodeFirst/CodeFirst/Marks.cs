@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CodeFirst
 {
-    class Marks
+    public class Marks
     {
         public long Id { get; set; }
         public string Discipline { get; set; }

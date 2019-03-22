@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.489
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2.9 EF Advanced Hierarchy", "2.9 EF Advanced Hierarchy\2.9 EF Advanced Hierarchy.csproj", "{6B20A780-6314-4774-84A3-6BFC3E02B03C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6B20A780-6314-4774-84A3-6BFC3E02B03C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B20A780-6314-4774-84A3-6BFC3E02B03C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B20A780-6314-4774-84A3-6BFC3E02B03C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B20A780-6314-4774-84A3-6BFC3E02B03C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5F49E4F7-B686-4D9C-9BF5-453074CF65E9}
+	EndGlobalSection
+EndGlobal

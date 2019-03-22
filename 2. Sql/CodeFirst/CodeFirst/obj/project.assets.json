@@ -3680,11 +3680,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\aurel.starciuc\\source\\repos\\CodeFirst\\CodeFirst\\CodeFirst.csproj",
+      "projectUniqueName": "D:\\Git\\Internship\\2. Sql\\CodeFirst\\CodeFirst\\CodeFirst.csproj",
       "projectName": "CodeFirst",
-      "projectPath": "C:\\Users\\aurel.starciuc\\source\\repos\\CodeFirst\\CodeFirst\\CodeFirst.csproj",
+      "projectPath": "D:\\Git\\Internship\\2. Sql\\CodeFirst\\CodeFirst\\CodeFirst.csproj",
       "packagesPath": "C:\\Users\\aurel.starciuc\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\aurel.starciuc\\source\\repos\\CodeFirst\\CodeFirst\\obj\\",
+      "outputPath": "D:\\Git\\Internship\\2. Sql\\CodeFirst\\CodeFirst\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

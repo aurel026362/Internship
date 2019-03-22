@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CodeFirst
 {
-    class Student
+    public class Student
     {
         public long Id { get; set; }
         public string FirstName { get; set; }
