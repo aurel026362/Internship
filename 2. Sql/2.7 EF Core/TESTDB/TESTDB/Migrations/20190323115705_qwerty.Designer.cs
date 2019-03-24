@@ -10,8 +10,8 @@ using TESTDB;
 namespace TESTDB.Migrations
 {
     [DbContext(typeof(TESTDBContext))]
-    [Migration("20190321145321_v10")]
-    partial class v10
+    [Migration("20190323115705_qwerty")]
+    partial class qwerty
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -77,51 +77,6 @@ namespace TESTDB.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("GROUPS");
-                });
-
-            modelBuilder.Entity("TESTDB.Interns", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<long>("GroupId");
-
-                    b.Property<long?>("MenthorId");
-
-                    b.Property<long>("UserId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("GroupId");
-
-                    b.HasIndex("MenthorId")
-                        .IsUnique()
-                        .HasName("UQ__Interns__262694BBC14690F6")
-                        .HasFilter("[MenthorId] IS NOT NULL");
-
-                    b.HasIndex("UserId")
-                        .IsUnique()
-                        .HasName("UQ__Interns__1788CC4D9B185DF7");
-
-                    b.ToTable("Interns");
-                });
-
-            modelBuilder.Entity("TESTDB.Menthors", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<long>("UserId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId")
-                        .IsUnique()
-                        .HasName("UQ__Menthors__1788CC4D01D0DA72");
-
-                    b.ToTable("Menthors");
                 });
 
             modelBuilder.Entity("TESTDB.Modules", b =>
@@ -255,6 +210,51 @@ namespace TESTDB.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("TESTDB.UsersIntern", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<long>("GroupId");
+
+                    b.Property<long?>("MenthorId");
+
+                    b.Property<long>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GroupId");
+
+                    b.HasIndex("MenthorId")
+                        .IsUnique()
+                        .HasName("UQ__Interns__262694BBC14690F6")
+                        .HasFilter("[MenthorId] IS NOT NULL");
+
+                    b.HasIndex("UserId")
+                        .IsUnique()
+                        .HasName("UQ__Interns__1788CC4D9B185DF7");
+
+                    b.ToTable("Interns");
+                });
+
+            modelBuilder.Entity("TESTDB.UsersMenthor", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<long>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique()
+                        .HasName("UQ__Menthors__1788CC4D01D0DA72");
+
+                    b.ToTable("Menthors");
+                });
+
             modelBuilder.Entity("TESTDB.ExamMarks", b =>
                 {
                     b.HasOne("TESTDB.Exams", "Examen")
@@ -262,7 +262,7 @@ namespace TESTDB.Migrations
                         .HasForeignKey("ExamenId")
                         .HasConstraintName("FK__ExamMarks__Exame__74643BF9");
 
-                    b.HasOne("TESTDB.Interns", "Intern")
+                    b.HasOne("TESTDB.UsersIntern", "Intern")
                         .WithMany("ExamMarks")
                         .HasForeignKey("InternId")
                         .HasConstraintName("FK__ExamMarks__Inter__75586032");
@@ -276,32 +276,6 @@ namespace TESTDB.Migrations
                         .HasConstraintName("FK__Exams__ModuleId__7187CF4E");
                 });
 
-            modelBuilder.Entity("TESTDB.Interns", b =>
-                {
-                    b.HasOne("TESTDB.Group", "Group")
-                        .WithMany("Interns")
-                        .HasForeignKey("GroupId")
-                        .HasConstraintName("FK__Interns__GroupId__61516785");
-
-                    b.HasOne("TESTDB.Menthors", "Menthor")
-                        .WithOne("Interns")
-                        .HasForeignKey("TESTDB.Interns", "MenthorId")
-                        .HasConstraintName("FK__Interns__Menthor__6339AFF7");
-
-                    b.HasOne("TESTDB.Users", "User")
-                        .WithOne("Interns")
-                        .HasForeignKey("TESTDB.Interns", "UserId")
-                        .HasConstraintName("FK__Interns__UserId__62458BBE");
-                });
-
-            modelBuilder.Entity("TESTDB.Menthors", b =>
-                {
-                    b.HasOne("TESTDB.Users", "User")
-                        .WithOne("Menthors")
-                        .HasForeignKey("TESTDB.Menthors", "UserId")
-                        .HasConstraintName("FK__Menthors__UserId__5AA469F6");
-                });
-
             modelBuilder.Entity("TESTDB.Tables.TestTable", b =>
                 {
                     b.HasOne("TESTDB.Group", "Group")
@@ -311,7 +285,7 @@ namespace TESTDB.Migrations
 
             modelBuilder.Entity("TESTDB.ThemeMarks", b =>
                 {
-                    b.HasOne("TESTDB.Interns", "Intern")
+                    b.HasOne("TESTDB.UsersIntern", "Intern")
                         .WithMany("ThemeMarks")
                         .HasForeignKey("InternId")
                         .HasConstraintName("FK__ThemeMark__Inter__6CC31A31");
@@ -324,7 +298,7 @@ namespace TESTDB.Migrations
 
             modelBuilder.Entity("TESTDB.Themes", b =>
                 {
-                    b.HasOne("TESTDB.Menthors", "Menthor")
+                    b.HasOne("TESTDB.UsersMenthor", "Menthor")
                         .WithMany("Themes")
                         .HasForeignKey("MenthorId")
                         .HasConstraintName("FK__Themes__MenthorI__67FE6514");
@@ -333,6 +307,32 @@ namespace TESTDB.Migrations
                         .WithMany("Themes")
                         .HasForeignKey("ModuleId")
                         .HasConstraintName("FK__Themes__ModuleId__68F2894D");
+                });
+
+            modelBuilder.Entity("TESTDB.UsersIntern", b =>
+                {
+                    b.HasOne("TESTDB.Group", "Group")
+                        .WithMany("Interns")
+                        .HasForeignKey("GroupId")
+                        .HasConstraintName("FK__Interns__GroupId__61516785");
+
+                    b.HasOne("TESTDB.UsersMenthor", "Menthor")
+                        .WithOne("Interns")
+                        .HasForeignKey("TESTDB.UsersIntern", "MenthorId")
+                        .HasConstraintName("FK__Interns__Menthor__6339AFF7");
+
+                    b.HasOne("TESTDB.Users", "User")
+                        .WithOne("Interns")
+                        .HasForeignKey("TESTDB.UsersIntern", "UserId")
+                        .HasConstraintName("FK__Interns__UserId__62458BBE");
+                });
+
+            modelBuilder.Entity("TESTDB.UsersMenthor", b =>
+                {
+                    b.HasOne("TESTDB.Users", "User")
+                        .WithOne("Menthors")
+                        .HasForeignKey("TESTDB.UsersMenthor", "UserId")
+                        .HasConstraintName("FK__Menthors__UserId__5AA469F6");
                 });
 #pragma warning restore 612, 618
         }

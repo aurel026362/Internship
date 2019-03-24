@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using _2._9_EF_Advanced_Hierarchy.Configurations;
 using System.Threading;
+using _2._9_EF_Advanced_Hierarchy.Tables;
 
 namespace _2._9_EF_Advanced_Hierarchy
 {
@@ -10,25 +11,30 @@ namespace _2._9_EF_Advanced_Hierarchy
     {
         static void Main(string[] args)
         {
-            AppContext context = new AppContext();
             Thread myThread = new Thread(new ThreadStart(OtherTransaction));
-            
+            Console.WriteLine("--------");
             myThread.Start();
 
-            var entity = context.Exchanges.FirstOrDefault();
-            entity.InMDL = 19;
-            context.Exchanges.Update(entity);
+            AppContext context = new AppContext();
+
+            var mark = context.ThemeMarks.FirstOrDefault();
+
+            mark.Comment = "can be better";
+            context.ThemeMarks.Update(mark);
             context.SaveChanges();
+
             Console.ReadKey();
         }
 
         private static void OtherTransaction()
         {
             AppContext context = new AppContext();
-            var other = context.Exchanges.FirstOrDefault();
-            other.InMDL = 99;
-            context.Exchanges.Update(other);
+
+            var mark = context.ThemeMarks.FirstOrDefault();
+            mark.Comment = "So so";
+            context.ThemeMarks.Update(mark);
             context.SaveChanges();
+
         }
     }
 }

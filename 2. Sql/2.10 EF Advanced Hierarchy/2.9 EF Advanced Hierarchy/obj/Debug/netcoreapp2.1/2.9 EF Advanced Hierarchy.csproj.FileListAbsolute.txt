@@ -9,3 +9,14 @@ C:\Users\aurel.starciuc\source\repos\2.9 EF Advanced Hierarchy\2.9 EF Advanced H
 C:\Users\aurel.starciuc\source\repos\2.9 EF Advanced Hierarchy\2.9 EF Advanced Hierarchy\bin\Debug\netcoreapp2.1\2.9 EF Advanced Hierarchy.pdb
 C:\Users\aurel.starciuc\source\repos\2.9 EF Advanced Hierarchy\2.9 EF Advanced Hierarchy\obj\Debug\netcoreapp2.1\2.9 EF Advanced Hierarchy.dll
 C:\Users\aurel.starciuc\source\repos\2.9 EF Advanced Hierarchy\2.9 EF Advanced Hierarchy\obj\Debug\netcoreapp2.1\2.9 EF Advanced Hierarchy.pdb
+C:\Users\Aurel\Desktop\Got\Internship\2. Sql\2.10 EF Advanced Hierarchy\2.9 EF Advanced Hierarchy\bin\Debug\netcoreapp2.1\2.9 EF Advanced Hierarchy.deps.json
+C:\Users\Aurel\Desktop\Got\Internship\2. Sql\2.10 EF Advanced Hierarchy\2.9 EF Advanced Hierarchy\bin\Debug\netcoreapp2.1\2.9 EF Advanced Hierarchy.runtimeconfig.json
+C:\Users\Aurel\Desktop\Got\Internship\2. Sql\2.10 EF Advanced Hierarchy\2.9 EF Advanced Hierarchy\bin\Debug\netcoreapp2.1\2.9 EF Advanced Hierarchy.runtimeconfig.dev.json
+C:\Users\Aurel\Desktop\Got\Internship\2. Sql\2.10 EF Advanced Hierarchy\2.9 EF Advanced Hierarchy\bin\Debug\netcoreapp2.1\2.9 EF Advanced Hierarchy.dll
+C:\Users\Aurel\Desktop\Got\Internship\2. Sql\2.10 EF Advanced Hierarchy\2.9 EF Advanced Hierarchy\bin\Debug\netcoreapp2.1\2.9 EF Advanced Hierarchy.pdb
+C:\Users\Aurel\Desktop\Got\Internship\2. Sql\2.10 EF Advanced Hierarchy\2.9 EF Advanced Hierarchy\obj\Debug\netcoreapp2.1\2.9 EF Advanced Hierarchy.csprojAssemblyReference.cache
+C:\Users\Aurel\Desktop\Got\Internship\2. Sql\2.10 EF Advanced Hierarchy\2.9 EF Advanced Hierarchy\obj\Debug\netcoreapp2.1\2.9 EF Advanced Hierarchy.csproj.CoreCompileInputs.cache
+C:\Users\Aurel\Desktop\Got\Internship\2. Sql\2.10 EF Advanced Hierarchy\2.9 EF Advanced Hierarchy\obj\Debug\netcoreapp2.1\2.9 EF Advanced Hierarchy.AssemblyInfoInputs.cache
+C:\Users\Aurel\Desktop\Got\Internship\2. Sql\2.10 EF Advanced Hierarchy\2.9 EF Advanced Hierarchy\obj\Debug\netcoreapp2.1\2.9 EF Advanced Hierarchy.AssemblyInfo.cs
+C:\Users\Aurel\Desktop\Got\Internship\2. Sql\2.10 EF Advanced Hierarchy\2.9 EF Advanced Hierarchy\obj\Debug\netcoreapp2.1\2.9 EF Advanced Hierarchy.dll
+C:\Users\Aurel\Desktop\Got\Internship\2. Sql\2.10 EF Advanced Hierarchy\2.9 EF Advanced Hierarchy\obj\Debug\netcoreapp2.1\2.9 EF Advanced Hierarchy.pdb

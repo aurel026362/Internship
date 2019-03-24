@@ -6,9 +6,9 @@ using System.Text;
 
 namespace TESTDB.Context.Configurations
 {
-    class InternsConfigurations : IEntityTypeConfiguration<Interns>
+    class InternsConfigurations : IEntityTypeConfiguration<UsersIntern>
     {
-        public void Configure(EntityTypeBuilder<Interns> builder)
+        public void Configure(EntityTypeBuilder<UsersIntern> builder)
         {
             builder.HasIndex(e => e.MenthorId)
                 .HasName("UQ__Interns__262694BBC14690F6")
@@ -26,12 +26,12 @@ namespace TESTDB.Context.Configurations
 
             builder.HasOne(d => d.Menthor)
                 .WithOne(p => p.Interns)
-                .HasForeignKey<Interns>(d => d.MenthorId)
+                .HasForeignKey<UsersIntern>(d => d.MenthorId)
                 .HasConstraintName("FK__Interns__Menthor__6339AFF7");
 
             builder.HasOne(d => d.User)
                 .WithOne(p => p.Interns)
-                .HasForeignKey<Interns>(d => d.UserId)
+                .HasForeignKey<UsersIntern>(d => d.UserId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__Interns__UserId__62458BBE");
         }

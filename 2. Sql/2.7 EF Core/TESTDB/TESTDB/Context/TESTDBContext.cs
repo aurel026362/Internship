@@ -20,8 +20,8 @@ namespace TESTDB
         public virtual DbSet<ExamMarks> ExamMarks { get; set; }
         public virtual DbSet<Exams> Exams { get; set; }
         public virtual DbSet<Group> Groups { get; set; }
-        public virtual DbSet<Interns> Interns { get; set; }
-        public virtual DbSet<Menthors> Menthors { get; set; }
+        public virtual DbSet<UsersIntern> Interns { get; set; }
+        public virtual DbSet<UsersMenthor> Menthors { get; set; }
         public virtual DbSet<Modules> Modules { get; set; }
         public virtual DbSet<ThemeMarks> ThemeMarks { get; set; }
         public virtual DbSet<Themes> Themes { get; set; }
@@ -32,7 +32,7 @@ namespace TESTDB
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Data Source=MDDSK40071\\TOMANDJERRY;Initial Catalog=TESTDB;Integrated Security=True");
+                optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-BIL3ATO\MSSQLSERVER1;Initial Catalog=test;Integrated Security=True");
             }
         }
 

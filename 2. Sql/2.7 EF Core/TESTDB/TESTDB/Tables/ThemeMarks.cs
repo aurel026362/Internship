@@ -11,7 +11,7 @@ namespace TESTDB
         public double Mark { get; set; }
         public string Comment { get; set; }
 
-        public virtual Interns Intern { get; set; }
+        public virtual UsersIntern Intern { get; set; }
         public virtual Themes Theme { get; set; }
     }
 }

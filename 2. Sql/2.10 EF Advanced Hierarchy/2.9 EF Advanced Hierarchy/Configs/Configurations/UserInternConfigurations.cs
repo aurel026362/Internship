@@ -11,6 +11,7 @@ namespace _2._9_EF_Advanced_Hierarchy.Configurations
         public void Configure(EntityTypeBuilder<UserIntern> builder)
         {
             builder.Property(x => x.Speciality).HasMaxLength(20);
+            builder.HasOne(x => x.Group).WithMany(x => x.Interns).HasForeignKey(x => x.GroupId);
         }
     }
 }

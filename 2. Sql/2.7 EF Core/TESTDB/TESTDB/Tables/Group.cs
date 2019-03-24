@@ -7,13 +7,13 @@ namespace TESTDB
     {
         public Group()
         {
-            Interns = new HashSet<Interns>();
+            Interns = new HashSet<UsersIntern>();
         }
 
         public long Id { get; set; }
         public string Name { get; set; }
         public DateTime? StartDate { get; set; }
 
-        public virtual ICollection<Interns> Interns { get; set; }
+        public virtual ICollection<UsersIntern> Interns { get; set; }
     }
 }

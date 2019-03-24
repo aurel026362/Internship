@@ -17,7 +17,7 @@ namespace TESTDB
         public long? MenthorId { get; set; }
         public long ModuleId { get; set; }
 
-        public virtual Menthors Menthor { get; set; }
+        public virtual UsersMenthor Menthor { get; set; }
         public virtual Modules Module { get; set; }
         public virtual ICollection<ThemeMarks> ThemeMarks { get; set; }
     }

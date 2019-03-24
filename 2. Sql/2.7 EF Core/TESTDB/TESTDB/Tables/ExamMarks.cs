@@ -11,6 +11,6 @@ namespace TESTDB
         public double? Mark { get; set; }
 
         public virtual Exams Examen { get; set; }
-        public virtual Interns Intern { get; set; }
+        public virtual UsersIntern Intern { get; set; }
     }
 }

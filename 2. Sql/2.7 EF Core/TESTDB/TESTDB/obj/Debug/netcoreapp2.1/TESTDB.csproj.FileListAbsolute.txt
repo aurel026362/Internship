@@ -20,3 +20,14 @@ D:\Git\Internship\2. Sql\2.7 EF Core\TESTDB\TESTDB\obj\Debug\netcoreapp2.1\TESTD
 D:\Git\Internship\2. Sql\2.7 EF Core\TESTDB\TESTDB\obj\Debug\netcoreapp2.1\TESTDB.AssemblyInfo.cs
 D:\Git\Internship\2. Sql\2.7 EF Core\TESTDB\TESTDB\obj\Debug\netcoreapp2.1\TESTDB.dll
 D:\Git\Internship\2. Sql\2.7 EF Core\TESTDB\TESTDB\obj\Debug\netcoreapp2.1\TESTDB.pdb
+C:\Users\Aurel\Desktop\Got\Internship\2. Sql\2.7 EF Core\TESTDB\TESTDB\bin\Debug\netcoreapp2.1\TESTDB.deps.json
+C:\Users\Aurel\Desktop\Got\Internship\2. Sql\2.7 EF Core\TESTDB\TESTDB\bin\Debug\netcoreapp2.1\TESTDB.runtimeconfig.json
+C:\Users\Aurel\Desktop\Got\Internship\2. Sql\2.7 EF Core\TESTDB\TESTDB\bin\Debug\netcoreapp2.1\TESTDB.runtimeconfig.dev.json
+C:\Users\Aurel\Desktop\Got\Internship\2. Sql\2.7 EF Core\TESTDB\TESTDB\bin\Debug\netcoreapp2.1\TESTDB.dll
+C:\Users\Aurel\Desktop\Got\Internship\2. Sql\2.7 EF Core\TESTDB\TESTDB\bin\Debug\netcoreapp2.1\TESTDB.pdb
+C:\Users\Aurel\Desktop\Got\Internship\2. Sql\2.7 EF Core\TESTDB\TESTDB\obj\Debug\netcoreapp2.1\TESTDB.csprojAssemblyReference.cache
+C:\Users\Aurel\Desktop\Got\Internship\2. Sql\2.7 EF Core\TESTDB\TESTDB\obj\Debug\netcoreapp2.1\TESTDB.csproj.CoreCompileInputs.cache
+C:\Users\Aurel\Desktop\Got\Internship\2. Sql\2.7 EF Core\TESTDB\TESTDB\obj\Debug\netcoreapp2.1\TESTDB.AssemblyInfoInputs.cache
+C:\Users\Aurel\Desktop\Got\Internship\2. Sql\2.7 EF Core\TESTDB\TESTDB\obj\Debug\netcoreapp2.1\TESTDB.AssemblyInfo.cs
+C:\Users\Aurel\Desktop\Got\Internship\2. Sql\2.7 EF Core\TESTDB\TESTDB\obj\Debug\netcoreapp2.1\TESTDB.dll
+C:\Users\Aurel\Desktop\Got\Internship\2. Sql\2.7 EF Core\TESTDB\TESTDB\obj\Debug\netcoreapp2.1\TESTDB.pdb

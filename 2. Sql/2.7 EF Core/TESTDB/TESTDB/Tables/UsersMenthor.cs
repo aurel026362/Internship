@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace TESTDB
 {
-    public partial class Menthors
+    public partial class UsersMenthor
     {
-        public Menthors()
+        public UsersMenthor()
         {
             Themes = new HashSet<Themes>();
         }
@@ -14,7 +14,7 @@ namespace TESTDB
         public long UserId { get; set; }
 
         public virtual Users User { get; set; }
-        public virtual Interns Interns { get; set; }
+        public virtual UsersIntern Interns { get; set; }
         public virtual ICollection<Themes> Themes { get; set; }
     }
 }

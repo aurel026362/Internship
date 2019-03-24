@@ -15,7 +15,7 @@ namespace TESTDB
         public string Password { get; set; }
         public string Email { get; set; }
 
-        public virtual Interns Interns { get; set; }
-        public virtual Menthors Menthors { get; set; }
+        public virtual UsersIntern Interns { get; set; }
+        public virtual UsersMenthor Menthors { get; set; }
     }
 }
