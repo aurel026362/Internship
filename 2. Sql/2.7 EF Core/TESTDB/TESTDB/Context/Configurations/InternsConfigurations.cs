@@ -34,6 +34,23 @@ namespace TESTDB.Context.Configurations
                 .HasForeignKey<UsersIntern>(d => d.UserId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__Interns__UserId__62458BBE");
+
+            builder.HasData(
+                new UsersIntern
+                {
+                    Id = 1,
+                    GroupId = 1,
+                    UserId = 1,
+                    MenthorId = 2
+                },
+                new UsersIntern
+                {
+                    Id = 2,
+                    GroupId = 1,
+                    UserId = 2,
+                    MenthorId = 1
+                }
+                );
         }
     }
 }

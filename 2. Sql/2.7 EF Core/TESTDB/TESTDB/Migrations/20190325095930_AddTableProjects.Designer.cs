@@ -10,8 +10,8 @@ using TESTDB;
 namespace TESTDB.Migrations
 {
     [DbContext(typeof(TESTDBContext))]
-    [Migration("20190323115705_qwerty")]
-    partial class qwerty
+    [Migration("20190325095930_AddTableProjects")]
+    partial class AddTableProjects
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -95,6 +95,35 @@ namespace TESTDB.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Modules");
+                });
+
+            modelBuilder.Entity("TESTDB.Tables.MenthorProject", b =>
+                {
+                    b.Property<long>("MenthorId");
+
+                    b.Property<long>("ProjectId");
+
+                    b.HasKey("MenthorId", "ProjectId");
+
+                    b.HasIndex("ProjectId");
+
+                    b.ToTable("MenthorsProjects");
+                });
+
+            modelBuilder.Entity("TESTDB.Tables.Project", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("DurationDays");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(50);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Projects");
                 });
 
             modelBuilder.Entity("TESTDB.Tables.TestTable", b =>
@@ -274,6 +303,19 @@ namespace TESTDB.Migrations
                         .WithOne("Exams")
                         .HasForeignKey("TESTDB.Exams", "ModuleId")
                         .HasConstraintName("FK__Exams__ModuleId__7187CF4E");
+                });
+
+            modelBuilder.Entity("TESTDB.Tables.MenthorProject", b =>
+                {
+                    b.HasOne("TESTDB.UsersMenthor", "Menthor")
+                        .WithMany("MenthorProjects")
+                        .HasForeignKey("MenthorId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("TESTDB.Tables.Project", "Project")
+                        .WithMany("MenthorProjects")
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("TESTDB.Tables.TestTable", b =>

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TESTDB.Migrations
 {
-    public partial class qwerty : Migration
+    public partial class AddTableProjects : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -34,6 +34,20 @@ namespace TESTDB.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Modules", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Projects",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(maxLength: 50, nullable: true),
+                    DurationDays = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Projects", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -146,6 +160,30 @@ namespace TESTDB.Migrations
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "MenthorsProjects",
+                columns: table => new
+                {
+                    MenthorId = table.Column<long>(nullable: false),
+                    ProjectId = table.Column<long>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MenthorsProjects", x => new { x.MenthorId, x.ProjectId });
+                    table.ForeignKey(
+                        name: "FK_MenthorsProjects_Menthors_MenthorId",
+                        column: x => x.MenthorId,
+                        principalTable: "Menthors",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_MenthorsProjects_Projects_ProjectId",
+                        column: x => x.ProjectId,
+                        principalTable: "Projects",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -273,6 +311,11 @@ namespace TESTDB.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_MenthorsProjects_ProjectId",
+                table: "MenthorsProjects",
+                column: "ProjectId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Tests_GroupId",
                 table: "Tests",
                 column: "GroupId");
@@ -304,6 +347,9 @@ namespace TESTDB.Migrations
                 name: "ExamMarks");
 
             migrationBuilder.DropTable(
+                name: "MenthorsProjects");
+
+            migrationBuilder.DropTable(
                 name: "Tests");
 
             migrationBuilder.DropTable(
@@ -311,6 +357,9 @@ namespace TESTDB.Migrations
 
             migrationBuilder.DropTable(
                 name: "Exams");
+
+            migrationBuilder.DropTable(
+                name: "Projects");
 
             migrationBuilder.DropTable(
                 name: "Interns");

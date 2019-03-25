@@ -25,7 +25,6 @@ namespace TESTDB.Repository
         public T FindById(long id)
         {
             return _dbSet.Find(id);
-            //return _dbSet.SET(x=>x.Id == id);
         }
 
         public IEnumerable<T> Get()

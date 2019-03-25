@@ -1,0 +1,23 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [dbo].[GROUPS] (Table)
+       [dbo].[Interns] (Table)
+       [dbo].[Menthors] (Table)
+       [dbo].[Users] (Table)
+       Foreign Key: unnamed constraint on [dbo].[Interns] (Foreign Key)
+       Foreign Key: unnamed constraint on [dbo].[Interns] (Foreign Key)
+       Foreign Key: unnamed constraint on [dbo].[Interns] (Foreign Key)
+       Foreign Key: unnamed constraint on [dbo].[Menthors] (Foreign Key)
+       Check Constraint: unnamed constraint on [dbo].[Users] (Check Constraint)
+
+** Supporting actions

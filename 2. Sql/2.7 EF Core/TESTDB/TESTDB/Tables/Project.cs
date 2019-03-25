@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TESTDB.Repository;
 
 namespace TESTDB.Tables
 {
-    public partial class TestTable
+    public class Project : IEntity
     {
         public long Id { get; set; }
         public string Name { get; set; }
-        public long GroupsId { get; set; }
-        public virtual Group Group { get; set; }
+        public int DurationDays { get; set; }
+        public ICollection<MenthorProject> MenthorProjects { get; set; }
     }
 }

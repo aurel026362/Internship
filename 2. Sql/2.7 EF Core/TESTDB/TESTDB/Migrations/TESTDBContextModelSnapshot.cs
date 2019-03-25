@@ -75,6 +75,14 @@ namespace TESTDB.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("GROUPS");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            Name = "Interns123",
+                            StartDate = new DateTime(2019, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
                 });
 
             modelBuilder.Entity("TESTDB.Modules", b =>
@@ -93,25 +101,55 @@ namespace TESTDB.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Modules");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            Name = "C#",
+                            StartDate = new DateTime(2019, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            Name = "SQL AND EF CORE",
+                            StartDate = new DateTime(2019, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            Name = "WEB",
+                            StartDate = new DateTime(2019, 4, 4, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
                 });
 
-            modelBuilder.Entity("TESTDB.Tables.TestTable", b =>
+            modelBuilder.Entity("TESTDB.Tables.MenthorProject", b =>
+                {
+                    b.Property<long>("MenthorId");
+
+                    b.Property<long>("ProjectId");
+
+                    b.HasKey("MenthorId", "ProjectId");
+
+                    b.HasIndex("ProjectId");
+
+                    b.ToTable("MenthorsProjects");
+                });
+
+            modelBuilder.Entity("TESTDB.Tables.Project", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<long?>("GroupId");
+                    b.Property<int>("DurationDays");
 
-                    b.Property<long>("GroupsId");
-
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .HasMaxLength(50);
 
                     b.HasKey("Id");
 
-                    b.HasIndex("GroupId");
-
-                    b.ToTable("Tests");
+                    b.ToTable("Projects");
                 });
 
             modelBuilder.Entity("TESTDB.ThemeMarks", b =>
@@ -136,6 +174,39 @@ namespace TESTDB.Migrations
                     b.HasIndex("ThemeId");
 
                     b.ToTable("ThemeMarks");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            Comment = "Good",
+                            InternId = 1L,
+                            Mark = 9.0,
+                            ThemeId = 1L
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            Comment = "No Comment",
+                            InternId = 1L,
+                            Mark = 1.0,
+                            ThemeId = 1L
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            Comment = "The Best",
+                            InternId = 2L,
+                            Mark = 10.0,
+                            ThemeId = 2L
+                        },
+                        new
+                        {
+                            Id = 4L,
+                            InternId = 1L,
+                            Mark = 8.0,
+                            ThemeId = 4L
+                        });
                 });
 
             modelBuilder.Entity("TESTDB.Themes", b =>
@@ -165,6 +236,44 @@ namespace TESTDB.Migrations
                     b.HasIndex("ModuleId");
 
                     b.ToTable("Themes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            MenthorId = 1L,
+                            ModuleId = 1L,
+                            Name = "Creational Pattern",
+                            Source = "S:\\Internship\\C#",
+                            TimeOfTheme = new DateTime(2019, 2, 6, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            MenthorId = 1L,
+                            ModuleId = 2L,
+                            Name = "SQL SELECT",
+                            Source = "S:\\Internship\\SQL",
+                            TimeOfTheme = new DateTime(2019, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            MenthorId = 2L,
+                            ModuleId = 2L,
+                            Name = "EF Core Mapping",
+                            Source = "S:\\Internship\\SQL",
+                            TimeOfTheme = new DateTime(2019, 3, 16, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 4L,
+                            MenthorId = 2L,
+                            ModuleId = 3L,
+                            Name = "JS",
+                            Source = "S:\\Internship\\WEB",
+                            TimeOfTheme = new DateTime(2019, 4, 2, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
                 });
 
             modelBuilder.Entity("TESTDB.Users", b =>
@@ -206,6 +315,52 @@ namespace TESTDB.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            DateOfBirth = new DateTime(1999, 5, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "aurel@mail.ru",
+                            FirstName = "Aurel",
+                            LastName = "Starciuc",
+                            Login = "aurel12345",
+                            NumberPhone = "+37367620932",
+                            Password = "12345"
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            DateOfBirth = new DateTime(1997, 3, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "cristia@mail.ru",
+                            FirstName = "Cristi",
+                            LastName = "Anghelenici",
+                            Login = "cristi12345",
+                            NumberPhone = "++3732167321",
+                            Password = "54321"
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            DateOfBirth = new DateTime(1994, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "alexandr@mail.ru",
+                            FirstName = "Alexandr",
+                            LastName = "Racovschi",
+                            Login = "alexandr1633",
+                            NumberPhone = "+37336218321",
+                            Password = "asd1236"
+                        },
+                        new
+                        {
+                            Id = 4L,
+                            DateOfBirth = new DateTime(1984, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "iong@mail.ru",
+                            FirstName = "Ion",
+                            LastName = "Gandrabura",
+                            Login = "ion79345",
+                            NumberPhone = "+373954035",
+                            Password = "asdqwe123"
+                        });
                 });
 
             modelBuilder.Entity("TESTDB.UsersIntern", b =>
@@ -234,6 +389,22 @@ namespace TESTDB.Migrations
                         .HasName("UQ__Interns__1788CC4D9B185DF7");
 
                     b.ToTable("Interns");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            GroupId = 1L,
+                            MenthorId = 2L,
+                            UserId = 1L
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            GroupId = 1L,
+                            MenthorId = 1L,
+                            UserId = 2L
+                        });
                 });
 
             modelBuilder.Entity("TESTDB.UsersMenthor", b =>
@@ -251,6 +422,18 @@ namespace TESTDB.Migrations
                         .HasName("UQ__Menthors__1788CC4D01D0DA72");
 
                     b.ToTable("Menthors");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            UserId = 3L
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            UserId = 4L
+                        });
                 });
 
             modelBuilder.Entity("TESTDB.ExamMarks", b =>
@@ -274,11 +457,17 @@ namespace TESTDB.Migrations
                         .HasConstraintName("FK__Exams__ModuleId__7187CF4E");
                 });
 
-            modelBuilder.Entity("TESTDB.Tables.TestTable", b =>
+            modelBuilder.Entity("TESTDB.Tables.MenthorProject", b =>
                 {
-                    b.HasOne("TESTDB.Group", "Group")
-                        .WithMany()
-                        .HasForeignKey("GroupId");
+                    b.HasOne("TESTDB.UsersMenthor", "Menthor")
+                        .WithMany("MenthorProjects")
+                        .HasForeignKey("MenthorId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("TESTDB.Tables.Project", "Project")
+                        .WithMany("MenthorProjects")
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("TESTDB.ThemeMarks", b =>

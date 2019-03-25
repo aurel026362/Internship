@@ -13,3 +13,12 @@ D:\Git\Internship\2. Sql\1.1 SqlINTRODUCTIOn\TestBD\TestBD\bin\Debug\TestBD.pdb
 D:\Git\Internship\2. Sql\1.1 SqlINTRODUCTIOn\TestBD\TestBD\obj\Debug\TestBD.sqlprojAssemblyReference.cache
 D:\Git\Internship\2. Sql\1.1 SqlINTRODUCTIOn\TestBD\TestBD\obj\Debug\TestBD.dll
 D:\Git\Internship\2. Sql\1.1 SqlINTRODUCTIOn\TestBD\TestBD\obj\Debug\TestBD.pdb
+D:\Git\Internship\2. Sql\1.1 SQL Introduction\TestBD\TestBD\bin\Debug\TestBD.dacpac
+D:\Git\Internship\2. Sql\1.1 SQL Introduction\TestBD\TestBD\bin\Debug\TestBD.dll
+D:\Git\Internship\2. Sql\1.1 SQL Introduction\TestBD\TestBD\bin\Debug\TestBD.pdb
+D:\Git\Internship\2. Sql\1.1 SQL Introduction\TestBD\TestBD\obj\Debug\TestBD.dll
+D:\Git\Internship\2. Sql\1.1 SQL Introduction\TestBD\TestBD\obj\Debug\TestBD.pdb
+D:\Git\Internship\2. Sql\1.1 SQL Introduction\TestBD\TestBD\obj\Debug\Model.xml
+D:\Git\Internship\2. Sql\1.1 SQL Introduction\TestBD\TestBD\obj\Debug\refactor.xml
+D:\Git\Internship\2. Sql\1.1 SQL Introduction\TestBD\TestBD\obj\Debug\postdeploy.sql
+D:\Git\Internship\2. Sql\1.1 SQL Introduction\TestBD\TestBD\obj\Debug\predeploy.sql

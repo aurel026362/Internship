@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using TESTDB.Context.Configurations;
@@ -26,13 +27,13 @@ namespace TESTDB
         public virtual DbSet<ThemeMarks> ThemeMarks { get; set; }
         public virtual DbSet<Themes> Themes { get; set; }
         public virtual DbSet<Users> Users { get; set; }
-        public virtual DbSet<TestTable> Tests { get; set; } 
+        public virtual DbSet<Project> Projects { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-BIL3ATO\MSSQLSERVER1;Initial Catalog=test;Integrated Security=True");
+                optionsBuilder.UseSqlServer(@"Data Source=MDDSK40071\TOMANDJERRY;Initial Catalog=TESTDB;Integrated Security=True");
             }
         }
 
@@ -40,15 +41,18 @@ namespace TESTDB
         {
             modelBuilder.HasAnnotation("ProductVersion", "2.2.3-servicing-35854");
 
-            modelBuilder.ApplyConfiguration(new ExamMarksConfigurations());
-            modelBuilder.ApplyConfiguration(new ExamsConfigurations());
-            modelBuilder.ApplyConfiguration(new GroupsConfigurations());
-            modelBuilder.ApplyConfiguration(new InternsConfigurations());
-            modelBuilder.ApplyConfiguration(new MenthorsConfigurations());
-            modelBuilder.ApplyConfiguration(new ModulesConfigurations());
-            modelBuilder.ApplyConfiguration(new ThemeMarksConfigurations());
-            modelBuilder.ApplyConfiguration(new ThemesConfigurations());
-            modelBuilder.ApplyConfiguration(new UsersConfigurations());
+            //modelBuilder.ApplyConfiguration(new ExamMarksConfigurations());
+            //modelBuilder.ApplyConfiguration(new ExamsConfigurations());
+            //modelBuilder.ApplyConfiguration(new GroupsConfigurations());
+            //modelBuilder.ApplyConfiguration(new InternsConfigurations());
+            //modelBuilder.ApplyConfiguration(new MenthorsConfigurations());
+            //modelBuilder.ApplyConfiguration(new ModulesConfigurations());
+            //modelBuilder.ApplyConfiguration(new ThemeMarksConfigurations());
+            //modelBuilder.ApplyConfiguration(new ThemesConfigurations());
+            //modelBuilder.ApplyConfiguration(new UsersConfigurations());
+            //modelBuilder.ApplyConfiguration(new ProjectConfigurations());
+            //modelBuilder.ApplyConfiguration(new MenthorProjectConfigurations());
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
     }
 }

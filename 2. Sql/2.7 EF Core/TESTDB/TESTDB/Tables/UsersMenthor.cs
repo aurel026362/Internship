@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using TESTDB.Tables;
 
 namespace TESTDB
 {
@@ -16,5 +17,6 @@ namespace TESTDB
         public virtual Users User { get; set; }
         public virtual UsersIntern Interns { get; set; }
         public virtual ICollection<Themes> Themes { get; set; }
+        public ICollection<MenthorProject> MenthorProjects { get; set; }
     }
 }
