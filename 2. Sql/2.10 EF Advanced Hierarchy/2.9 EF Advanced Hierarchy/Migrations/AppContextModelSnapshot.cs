@@ -103,7 +103,7 @@ namespace _2._9_EF_Advanced_Hierarchy.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<long>("MenthroId")
+                    b.Property<long>("MenthorId")
                         .HasColumnName("MenthorId");
 
                     b.Property<long>("ModuleId");
@@ -119,7 +119,7 @@ namespace _2._9_EF_Advanced_Hierarchy.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("MenthroId");
+                    b.HasIndex("MenthorId");
 
                     b.HasIndex("ModuleId");
 
@@ -160,14 +160,38 @@ namespace _2._9_EF_Advanced_Hierarchy.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<DateTime>("DateOfBirth")
+                        .HasColumnType("date");
+
                     b.Property<string>("Discriminator")
                         .IsRequired();
 
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnName("EMail")
+                        .HasMaxLength(30)
+                        .IsUnicode(false);
+
                     b.Property<string>("FirstName")
+                        .IsRequired()
                         .HasMaxLength(20);
 
                     b.Property<string>("LastName")
+                        .IsRequired()
                         .HasMaxLength(20);
+
+                    b.Property<string>("Login")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .IsUnicode(false);
+
+                    b.Property<string>("NumberPhone")
+                        .HasMaxLength(15);
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .IsUnicode(false);
 
                     b.HasKey("Id");
 
@@ -182,9 +206,6 @@ namespace _2._9_EF_Advanced_Hierarchy.Migrations
 
                     b.Property<long>("GroupId");
 
-                    b.Property<string>("Speciality")
-                        .HasMaxLength(20);
-
                     b.HasIndex("GroupId");
 
                     b.HasDiscriminator().HasValue("UserIntern");
@@ -193,14 +214,6 @@ namespace _2._9_EF_Advanced_Hierarchy.Migrations
             modelBuilder.Entity("_2._9_EF_Advanced_Hierarchy.UserMenthor", b =>
                 {
                     b.HasBaseType("_2._9_EF_Advanced_Hierarchy.User");
-
-                    b.Property<int?>("Experience");
-
-                    b.Property<string>("Job")
-                        .HasMaxLength(20);
-
-                    b.Property<string>("Level")
-                        .HasMaxLength(30);
 
                     b.HasDiscriminator().HasValue("UserMenthor");
                 });
@@ -230,7 +243,7 @@ namespace _2._9_EF_Advanced_Hierarchy.Migrations
                 {
                     b.HasOne("_2._9_EF_Advanced_Hierarchy.UserMenthor", "Menthor")
                         .WithMany("Themes")
-                        .HasForeignKey("MenthroId")
+                        .HasForeignKey("MenthorId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("_2._9_EF_Advanced_Hierarchy.Tables.Module", "Modulep")

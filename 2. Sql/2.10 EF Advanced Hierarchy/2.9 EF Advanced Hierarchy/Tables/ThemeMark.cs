@@ -4,9 +4,8 @@ using System.Text;
 
 namespace _2._9_EF_Advanced_Hierarchy.Tables
 {
-    public class ThemeMark : IEntity
+    public class ThemeMark : Entity<long>
     {
-        public long Id { get; set; }
         public int Mark { get; set; }
         public string Comment { get; set; }
         public long InternId { get; set; }

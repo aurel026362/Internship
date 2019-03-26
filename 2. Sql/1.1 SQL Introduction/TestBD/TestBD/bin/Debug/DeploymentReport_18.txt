@@ -1,0 +1,22 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [dbo].[Modules] (Table)
+       [dbo].[ThemeMarks] (Table)
+       [dbo].[Themes] (Table)
+       Foreign Key: unnamed constraint on [dbo].[ThemeMarks] (Foreign Key)
+       Foreign Key: unnamed constraint on [dbo].[ThemeMarks] (Foreign Key)
+       Foreign Key: unnamed constraint on [dbo].[Themes] (Foreign Key)
+       Foreign Key: unnamed constraint on [dbo].[Themes] (Foreign Key)
+       Check Constraint: unnamed constraint on [dbo].[ThemeMarks] (Check Constraint)
+
+** Supporting actions

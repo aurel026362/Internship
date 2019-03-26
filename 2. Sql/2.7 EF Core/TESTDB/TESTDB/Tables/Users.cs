@@ -4,9 +4,8 @@ using TESTDB.Repository;
 
 namespace TESTDB
 {
-    public partial class Users : IEntity
+    public partial class Users : IEntity<long>
     {
-        public long Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime DateOfBirth { get; set; }

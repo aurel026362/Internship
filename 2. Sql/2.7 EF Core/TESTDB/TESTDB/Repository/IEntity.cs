@@ -4,6 +4,11 @@ using System.Text;
 
 namespace TESTDB.Repository
 {
+    public abstract class Entity<T>
+    {
+        public T Id { get; set; }
+    }
+
     public interface IEntity
     {
         long Id { get; set; }

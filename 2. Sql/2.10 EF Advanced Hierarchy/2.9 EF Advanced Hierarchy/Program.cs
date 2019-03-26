@@ -11,17 +11,19 @@ namespace _2._9_EF_Advanced_Hierarchy
     {
         static void Main(string[] args)
         {
-            Thread myThread = new Thread(new ThreadStart(OtherTransaction));
-            Console.WriteLine("--------");
-            myThread.Start();
+            //Thread myThread = new Thread(new ThreadStart(OtherTransaction));
+            //Console.WriteLine("--------");
+            //myThread.Start();
 
-            AppContext context = new AppContext();
+            //AppContext context = new AppContext();
 
-            var mark = context.ThemeMarks.FirstOrDefault();
+            //var mark = context.ThemeMarks.FirstOrDefault();
 
-            mark.Comment = "can be better";
-            context.ThemeMarks.Update(mark);
-            context.SaveChanges();
+            //mark.Comment = "can be better";
+            //context.ThemeMarks.Update(mark);
+            //context.SaveChanges();
+
+            new Selecting();
 
             Console.ReadKey();
         }

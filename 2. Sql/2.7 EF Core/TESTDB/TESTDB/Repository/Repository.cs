@@ -1,44 +1,48 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace TESTDB.Repository
 {
-    public class Repository<T> : IRepository<T> where T : class, IEntity
-    {
+    public class Repository<TModel> : IRepository<TModel>  where TModel : Entity<TModel>
+    { 
         DbContext _context;
-        DbSet<T> _dbSet;
 
         public Repository(DbContext context)
         {
             _context = context;
-            _dbSet = context.Set<T>();
         }
 
-        public void Add(T item)
+        public void Add(TModel item)
         {
-            _dbSet.Add(item);
+            _context.Set<TModel>().Add(item);
             _context.SaveChanges();
         }
 
-        public T FindById(long id)
+        public TModel FindById(long id)
         {
-            return _dbSet.Find(id);
+            return _context.Set<TModel>().Find(id);
         }
 
-        public IEnumerable<T> Get()
+        public TModel FindById(TModel id)
         {
-            return _dbSet;
+            throw new NotImplementedException();
         }
 
-        public void Remove(T item)
+        public IQueryable<TModel> Get()
         {
-            _dbSet.Remove(item);
+            return _context.Set<TModel>();
+        }
+
+        public void Remove(TModel item)
+        {
+            _context.Set<TModel>().Remove(item);
             _context.SaveChanges();
         }
 
-        public void Update(T item)
+        public void Update(TModel item)
         {
             _context.Entry(item).State = EntityState.Modified;
             _context.SaveChanges();

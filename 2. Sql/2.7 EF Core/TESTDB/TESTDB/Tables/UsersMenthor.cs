@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using TESTDB.Repository;
 using TESTDB.Tables;
 
 namespace TESTDB
 {
-    public partial class UsersMenthor
+    public partial class UsersMenthor : Users
     {
         public UsersMenthor()
         {
             Themes = new HashSet<Themes>();
         }
-
-        public long Id { get; set; }
         public long UserId { get; set; }
 
         public virtual Users User { get; set; }

@@ -4,14 +4,13 @@ using System.Text;
 
 namespace _2._9_EF_Advanced_Hierarchy.Tables
 {
-    public class Theme : IEntity
+    public class Theme : Entity<long>
     {
-        public long Id { get; set; }
         public string Name { get; set; }
         public DateTime? TimeOfTheme { get; set; }
         public string Source { get; set; }
         public long ModuleId { get; set; }
-        public long MenthroId { get; set; }
+        public long MenthorId { get; set; }
         public Module Modulep { get; set; }
         public UserMenthor Menthor { get; set; }
 

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using TESTDB.Repository;
 
 namespace TESTDB
 {
-    public partial class ThemeMarks
+    public partial class ThemeMarks : Entity<long>
     {
-        public long Id { get; set; }
         public long ThemeId { get; set; }
         public long InternId { get; set; }
         public double Mark { get; set; }

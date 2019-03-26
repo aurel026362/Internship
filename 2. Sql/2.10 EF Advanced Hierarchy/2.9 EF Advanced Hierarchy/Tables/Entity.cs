@@ -4,8 +4,8 @@ using System.Text;
 
 namespace _2._9_EF_Advanced_Hierarchy.Tables
 {
-    public interface IEntity
+    public abstract class Entity<T>
     {
-        long Id { get; set; }
+       public T Id { get; set; }
     }
 }

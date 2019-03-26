@@ -4,6 +4,7 @@ using _2._9_EF_Advanced_Hierarchy.Tables;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 
 namespace _2._9_EF_Advanced_Hierarchy
@@ -13,7 +14,7 @@ namespace _2._9_EF_Advanced_Hierarchy
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UserIntern> Interns { get; set; }
         public virtual DbSet<UserMenthor> Menthors { get; set; }
-        public virtual DbSet<Module> Modules { get; set; }
+        public virtual DbSet<Tables.Module> Modules { get; set; }
         public virtual DbSet<Theme> Themes { get; set; }
         public virtual DbSet<ThemeMark> ThemeMarks { get; set; }
         public virtual DbSet<Exam> Exams { get; set; }
@@ -31,22 +32,24 @@ namespace _2._9_EF_Advanced_Hierarchy
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
-            optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-BIL3ATO\MSSQLSERVER1;Initial Catalog=test;Integrated Security=True");
+            optionsBuilder.UseSqlServer(@"Data Source=MDDSK40071\TOMANDJERRY;Initial Catalog=test;Integrated Security=True");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // modelBuilder.HasAnnotation("ProductVersion", "2.2.3-servicing-35854");
 
-            modelBuilder.ApplyConfiguration(new UserConfigurations());
-            modelBuilder.ApplyConfiguration(new UserInternConfigurations());
-            modelBuilder.ApplyConfiguration(new UserMenthorConfigurations());
-            modelBuilder.ApplyConfiguration(new ModuleConfig());
-            modelBuilder.ApplyConfiguration(new ThemeConfig());
-            modelBuilder.ApplyConfiguration(new ThemeMarkConfig());
-            modelBuilder.ApplyConfiguration(new ExamConfig());
-            modelBuilder.ApplyConfiguration(new ExamMarkConfig());
-            modelBuilder.ApplyConfiguration(new GroupConfig());
+            //modelBuilder.ApplyConfiguration(new UserConfigurations());
+            //modelBuilder.ApplyConfiguration(new UserInternConfigurations());
+            //modelBuilder.ApplyConfiguration(new UserMenthorConfigurations());
+            //modelBuilder.ApplyConfiguration(new ModuleConfig());
+            //modelBuilder.ApplyConfiguration(new ThemeConfig());
+            //modelBuilder.ApplyConfiguration(new ThemeMarkConfig());
+            //modelBuilder.ApplyConfiguration(new ExamConfig());
+            //modelBuilder.ApplyConfiguration(new ExamMarkConfig());
+            //modelBuilder.ApplyConfiguration(new GroupConfig());
+
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
     }
 }

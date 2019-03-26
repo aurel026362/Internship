@@ -15,6 +15,15 @@ namespace _2._9_EF_Advanced_Hierarchy.Configs.Configurations
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Name).HasMaxLength(30);
             builder.Property(x => x.StartDate).HasColumnType("smalldatetime");
+
+            builder.HasData(
+               new Group
+               {
+                   Id = 1,
+                   Name = "Interns123",
+                   StartDate = Convert.ToDateTime("2019/02/01")
+               }
+               );
         }
     }
 }

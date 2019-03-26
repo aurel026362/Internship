@@ -4,9 +4,8 @@ using System.Text;
 
 namespace _2._9_EF_Advanced_Hierarchy.Tables
 {
-    public class Group : IEntity
+    public class Group : Entity<long>
     {
-        public long Id { get; set; }
         public string Name { get; set; }
         public DateTime StartDate { get; set; }
 

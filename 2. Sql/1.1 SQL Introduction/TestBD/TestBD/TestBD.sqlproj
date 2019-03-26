@@ -60,9 +60,6 @@
     <Folder Include="CreateTables" />
   </ItemGroup>
   <ItemGroup>
-    <PreDeploy Include="CreateTables.sql" />
-  </ItemGroup>
-  <ItemGroup>
     <PostDeploy Include="InsertData2.sql" />
   </ItemGroup>
   <ItemGroup>
@@ -73,5 +70,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="TestBD.publish.xml" />
+    <Build Include="CreateTables\Modules.sql" />
+    <Build Include="CreateTables\Themes.sql" />
+    <Build Include="CreateTables\ThemeMarks.sql" />
   </ItemGroup>
 </Project>

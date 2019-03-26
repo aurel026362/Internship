@@ -11,8 +11,33 @@ namespace _2._9_EF_Advanced_Hierarchy.Configurations
         public void Configure(EntityTypeBuilder<User> builder)
         {
             builder.HasKey(x => x.Id);
-            builder.Property(x => x.LastName).HasMaxLength(20);
-            builder.Property(x => x.FirstName).HasMaxLength(20);
+            builder.Property(e => e.DateOfBirth).HasColumnType("date");
+
+            builder.Property(e => e.Email)
+                    .IsRequired()
+                    .HasColumnName("EMail")
+                    .HasMaxLength(30)
+                    .IsUnicode(false);
+
+            builder.Property(e => e.FirstName)
+                    .IsRequired()
+                    .HasMaxLength(20);
+
+            builder.Property(e => e.LastName)
+                    .IsRequired()
+                    .HasMaxLength(20);
+
+            builder.Property(e => e.Login)
+                    .IsRequired()
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+            builder.Property(e => e.NumberPhone).HasMaxLength(15);
+
+            builder.Property(e => e.Password)
+                    .IsRequired()
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
         }
     }
 }

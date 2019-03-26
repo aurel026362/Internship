@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using TESTDB.Repository;
 
 namespace TESTDB
 {
-    public partial class ExamMarks
+    public partial class ExamMarks : Entity<long>
     {
-        public long Id { get; set; }
         public long ExamenId { get; set; }
         public long InternId { get; set; }
         public double? Mark { get; set; }

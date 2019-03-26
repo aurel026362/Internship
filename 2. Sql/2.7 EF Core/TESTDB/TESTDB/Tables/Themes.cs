@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using TESTDB.Repository;
 
 namespace TESTDB
 {
-    public partial class Themes
+    public partial class Themes : Entity<long>
     {
         public Themes()
         {
             ThemeMarks = new HashSet<ThemeMarks>();
         }
-
-        public long Id { get; set; }
         public string Name { get; set; }
         public DateTime? TimeOfTheme { get; set; }
         public string Source { get; set; }

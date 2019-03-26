@@ -24,7 +24,7 @@ namespace TESTDB
         public virtual DbSet<UsersIntern> Interns { get; set; }
         public virtual DbSet<UsersMenthor> Menthors { get; set; }
         public virtual DbSet<Modules> Modules { get; set; }
-        public virtual DbSet<ThemeMarks> ThemeMarks { get; set; }
+        public virtual DbSet<ThemeMarks> Marks { get; set; }
         public virtual DbSet<Themes> Themes { get; set; }
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<Project> Projects { get; set; }

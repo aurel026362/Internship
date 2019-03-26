@@ -5,7 +5,7 @@ using TESTDB.Repository;
 
 namespace TESTDB.Tables
 {
-    public class Project : IEntity
+    public class Project : Entity<long>
     {
         public long Id { get; set; }
         public string Name { get; set; }

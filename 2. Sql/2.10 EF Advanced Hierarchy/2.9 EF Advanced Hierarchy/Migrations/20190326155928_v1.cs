@@ -9,6 +9,20 @@ namespace _2._9_EF_Advanced_Hierarchy.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Groups",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(maxLength: 30, nullable: true),
+                    StartDate = table.Column<DateTime>(type: "smalldatetime", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Groups", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Modules",
                 columns: table => new
                 {
@@ -28,17 +42,45 @@ namespace _2._9_EF_Advanced_Hierarchy.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    FirstName = table.Column<string>(maxLength: 20, nullable: true),
-                    LastName = table.Column<string>(maxLength: 20, nullable: true),
+                    FirstName = table.Column<string>(maxLength: 20, nullable: false),
+                    LastName = table.Column<string>(maxLength: 20, nullable: false),
+                    DateOfBirth = table.Column<DateTime>(type: "date", nullable: false),
+                    NumberPhone = table.Column<string>(maxLength: 15, nullable: true),
+                    Login = table.Column<string>(unicode: false, maxLength: 20, nullable: false),
+                    Password = table.Column<string>(unicode: false, maxLength: 20, nullable: false),
+                    EMail = table.Column<string>(unicode: false, maxLength: 30, nullable: false),
                     Discriminator = table.Column<string>(nullable: false),
-                    Speciality = table.Column<string>(maxLength: 20, nullable: true),
-                    Job = table.Column<string>(maxLength: 20, nullable: true),
-                    Level = table.Column<string>(maxLength: 30, nullable: true),
-                    Experience = table.Column<int>(nullable: true)
+                    GroupId = table.Column<long>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Users_Groups_GroupId",
+                        column: x => x.GroupId,
+                        principalTable: "Groups",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Exams",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Date = table.Column<DateTime>(type: "smalldatetime", nullable: false),
+                    ModuleId = table.Column<long>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Exams", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Exams_Modules_ModuleId",
+                        column: x => x.ModuleId,
+                        principalTable: "Modules",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -48,7 +90,7 @@ namespace _2._9_EF_Advanced_Hierarchy.Migrations
                     Id = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(maxLength: 20, nullable: true),
-                    TimeOfTheme = table.Column<DateTime>(type: "smalldatetime", nullable: false),
+                    TimeOfTheme = table.Column<DateTime>(type: "smalldatetime", nullable: true),
                     Source = table.Column<string>(maxLength: 100, nullable: true),
                     ModuleId = table.Column<long>(nullable: false),
                     MenthorId = table.Column<long>(nullable: false)
@@ -66,6 +108,34 @@ namespace _2._9_EF_Advanced_Hierarchy.Migrations
                         name: "FK_Themes_Modules_ModuleId",
                         column: x => x.ModuleId,
                         principalTable: "Modules",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ExamMarks",
+                columns: table => new
+                {
+                    Id = table.Column<long>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Mark = table.Column<int>(nullable: false),
+                    Comment = table.Column<string>(maxLength: 200, nullable: true),
+                    InternId = table.Column<long>(nullable: false),
+                    ExamId = table.Column<long>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ExamMarks", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ExamMarks_Exams_ExamId",
+                        column: x => x.ExamId,
+                        principalTable: "Exams",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ExamMarks_Users_InternId",
+                        column: x => x.InternId,
+                        principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -100,6 +170,22 @@ namespace _2._9_EF_Advanced_Hierarchy.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_ExamMarks_ExamId",
+                table: "ExamMarks",
+                column: "ExamId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ExamMarks_InternId",
+                table: "ExamMarks",
+                column: "InternId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Exams_ModuleId",
+                table: "Exams",
+                column: "ModuleId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ThemeMarks_InternId",
                 table: "ThemeMarks",
                 column: "InternId");
@@ -118,12 +204,23 @@ namespace _2._9_EF_Advanced_Hierarchy.Migrations
                 name: "IX_Themes_ModuleId",
                 table: "Themes",
                 column: "ModuleId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_GroupId",
+                table: "Users",
+                column: "GroupId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "ExamMarks");
+
+            migrationBuilder.DropTable(
                 name: "ThemeMarks");
+
+            migrationBuilder.DropTable(
+                name: "Exams");
 
             migrationBuilder.DropTable(
                 name: "Themes");
@@ -133,6 +230,9 @@ namespace _2._9_EF_Advanced_Hierarchy.Migrations
 
             migrationBuilder.DropTable(
                 name: "Modules");
+
+            migrationBuilder.DropTable(
+                name: "Groups");
         }
     }
 }

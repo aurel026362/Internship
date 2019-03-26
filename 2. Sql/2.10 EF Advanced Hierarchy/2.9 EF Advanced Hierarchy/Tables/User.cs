@@ -5,11 +5,14 @@ using System.Text;
 
 namespace _2._9_EF_Advanced_Hierarchy
 {
-    public class User : IEntity
+    public class User : Entity<long>
     {
-
-        public long Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public DateTime DateOfBirth { get; set; }
+        public string NumberPhone { get; set; }
+        public string Login { get; set; }
+        public string Password { get; set; }
+        public string Email { get; set; }
     }
 }

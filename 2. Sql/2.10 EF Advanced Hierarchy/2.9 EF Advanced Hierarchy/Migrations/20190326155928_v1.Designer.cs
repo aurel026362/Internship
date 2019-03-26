@@ -10,8 +10,8 @@ using _2._9_EF_Advanced_Hierarchy;
 namespace _2._9_EF_Advanced_Hierarchy.Migrations
 {
     [DbContext(typeof(AppContext))]
-    [Migration("20190323194043_v2")]
-    partial class v2
+    [Migration("20190326155928_v1")]
+    partial class v1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,66 @@ namespace _2._9_EF_Advanced_Hierarchy.Migrations
                 .HasAnnotation("ProductVersion", "2.2.3-servicing-35854")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("_2._9_EF_Advanced_Hierarchy.Tables.Exam", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("smalldatetime");
+
+                    b.Property<long>("ModuleId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ModuleId")
+                        .IsUnique();
+
+                    b.ToTable("Exams");
+                });
+
+            modelBuilder.Entity("_2._9_EF_Advanced_Hierarchy.Tables.ExamMark", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Comment")
+                        .HasMaxLength(200);
+
+                    b.Property<long>("ExamId");
+
+                    b.Property<long>("InternId");
+
+                    b.Property<int>("Mark");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ExamId");
+
+                    b.HasIndex("InternId");
+
+                    b.ToTable("ExamMarks");
+                });
+
+            modelBuilder.Entity("_2._9_EF_Advanced_Hierarchy.Tables.Group", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(30);
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("smalldatetime");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Groups");
+                });
 
             modelBuilder.Entity("_2._9_EF_Advanced_Hierarchy.Tables.Module", b =>
                 {
@@ -45,7 +105,7 @@ namespace _2._9_EF_Advanced_Hierarchy.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<long>("MenthroId")
+                    b.Property<long>("MenthorId")
                         .HasColumnName("MenthorId");
 
                     b.Property<long>("ModuleId");
@@ -56,12 +116,12 @@ namespace _2._9_EF_Advanced_Hierarchy.Migrations
                     b.Property<string>("Source")
                         .HasMaxLength(100);
 
-                    b.Property<DateTime>("TimeOfTheme")
+                    b.Property<DateTime?>("TimeOfTheme")
                         .HasColumnType("smalldatetime");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("MenthroId");
+                    b.HasIndex("MenthorId");
 
                     b.HasIndex("ModuleId");
 
@@ -102,14 +162,38 @@ namespace _2._9_EF_Advanced_Hierarchy.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<DateTime>("DateOfBirth")
+                        .HasColumnType("date");
+
                     b.Property<string>("Discriminator")
                         .IsRequired();
 
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnName("EMail")
+                        .HasMaxLength(30)
+                        .IsUnicode(false);
+
                     b.Property<string>("FirstName")
+                        .IsRequired()
                         .HasMaxLength(20);
 
                     b.Property<string>("LastName")
+                        .IsRequired()
                         .HasMaxLength(20);
+
+                    b.Property<string>("Login")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .IsUnicode(false);
+
+                    b.Property<string>("NumberPhone")
+                        .HasMaxLength(15);
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .IsUnicode(false);
 
                     b.HasKey("Id");
 
@@ -122,8 +206,9 @@ namespace _2._9_EF_Advanced_Hierarchy.Migrations
                 {
                     b.HasBaseType("_2._9_EF_Advanced_Hierarchy.User");
 
-                    b.Property<string>("Speciality")
-                        .HasMaxLength(20);
+                    b.Property<long>("GroupId");
+
+                    b.HasIndex("GroupId");
 
                     b.HasDiscriminator().HasValue("UserIntern");
                 });
@@ -132,22 +217,35 @@ namespace _2._9_EF_Advanced_Hierarchy.Migrations
                 {
                     b.HasBaseType("_2._9_EF_Advanced_Hierarchy.User");
 
-                    b.Property<int>("Experience");
-
-                    b.Property<string>("Job")
-                        .HasMaxLength(20);
-
-                    b.Property<string>("Level")
-                        .HasMaxLength(30);
-
                     b.HasDiscriminator().HasValue("UserMenthor");
+                });
+
+            modelBuilder.Entity("_2._9_EF_Advanced_Hierarchy.Tables.Exam", b =>
+                {
+                    b.HasOne("_2._9_EF_Advanced_Hierarchy.Tables.Module", "Module")
+                        .WithOne("Exam")
+                        .HasForeignKey("_2._9_EF_Advanced_Hierarchy.Tables.Exam", "ModuleId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("_2._9_EF_Advanced_Hierarchy.Tables.ExamMark", b =>
+                {
+                    b.HasOne("_2._9_EF_Advanced_Hierarchy.Tables.Exam", "Exam")
+                        .WithMany("ExamMarks")
+                        .HasForeignKey("ExamId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("_2._9_EF_Advanced_Hierarchy.UserIntern", "Intern")
+                        .WithMany("ExamMarks")
+                        .HasForeignKey("InternId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("_2._9_EF_Advanced_Hierarchy.Tables.Theme", b =>
                 {
                     b.HasOne("_2._9_EF_Advanced_Hierarchy.UserMenthor", "Menthor")
                         .WithMany("Themes")
-                        .HasForeignKey("MenthroId")
+                        .HasForeignKey("MenthorId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("_2._9_EF_Advanced_Hierarchy.Tables.Module", "Modulep")
@@ -169,6 +267,14 @@ namespace _2._9_EF_Advanced_Hierarchy.Migrations
                         .HasForeignKey("ThemeId")
                         .HasConstraintName("FK_Mark_Theme")
                         .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("_2._9_EF_Advanced_Hierarchy.UserIntern", b =>
+                {
+                    b.HasOne("_2._9_EF_Advanced_Hierarchy.Tables.Group", "Group")
+                        .WithMany("Interns")
+                        .HasForeignKey("GroupId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }
