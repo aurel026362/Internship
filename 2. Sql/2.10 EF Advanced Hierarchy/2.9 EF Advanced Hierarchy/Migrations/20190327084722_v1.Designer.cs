@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using _2._9_EF_Advanced_Hierarchy;
 
 namespace _2._9_EF_Advanced_Hierarchy.Migrations
 {
     [DbContext(typeof(AppContext))]
-    partial class AppContextModelSnapshot : ModelSnapshot
+    [Migration("20190327084722_v1")]
+    partial class v1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -157,44 +159,6 @@ namespace _2._9_EF_Advanced_Hierarchy.Migrations
                     b.HasIndex("ModuleId");
 
                     b.ToTable("Themes");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            MenthorId = 1L,
-                            ModuleId = 1L,
-                            Name = "Creational Pattern",
-                            Source = "S:\\Internship\\C#",
-                            TimeOfTheme = new DateTime(2019, 2, 6, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 2L,
-                            MenthorId = 1L,
-                            ModuleId = 2L,
-                            Name = "SQL SELECT",
-                            Source = "S:\\Internship\\SQL",
-                            TimeOfTheme = new DateTime(2019, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 3L,
-                            MenthorId = 2L,
-                            ModuleId = 2L,
-                            Name = "EF Core Mapping",
-                            Source = "S:\\Internship\\SQL",
-                            TimeOfTheme = new DateTime(2019, 3, 16, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 4L,
-                            MenthorId = 2L,
-                            ModuleId = 3L,
-                            Name = "JS",
-                            Source = "S:\\Internship\\WEB",
-                            TimeOfTheme = new DateTime(2019, 4, 2, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        });
                 });
 
             modelBuilder.Entity("_2._9_EF_Advanced_Hierarchy.Tables.ThemeMark", b =>
@@ -280,32 +244,6 @@ namespace _2._9_EF_Advanced_Hierarchy.Migrations
                     b.HasIndex("GroupId");
 
                     b.HasDiscriminator().HasValue("UserIntern");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            DateOfBirth = new DateTime(1999, 5, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "aurel@mail.ru",
-                            FirstName = "Aurel",
-                            LastName = "Starciuc",
-                            Login = "aurel12345",
-                            NumberPhone = "+37367620932",
-                            Password = "12345",
-                            GroupId = 1L
-                        },
-                        new
-                        {
-                            Id = 2L,
-                            DateOfBirth = new DateTime(1997, 3, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "cristia@mail.ru",
-                            FirstName = "Cristi",
-                            LastName = "Anghelenici",
-                            Login = "cristi12345",
-                            NumberPhone = "++3732167321",
-                            Password = "54321",
-                            GroupId = 1L
-                        });
                 });
 
             modelBuilder.Entity("_2._9_EF_Advanced_Hierarchy.UserMenthor", b =>
@@ -313,19 +251,6 @@ namespace _2._9_EF_Advanced_Hierarchy.Migrations
                     b.HasBaseType("_2._9_EF_Advanced_Hierarchy.User");
 
                     b.HasDiscriminator().HasValue("UserMenthor");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 5L,
-                            DateOfBirth = new DateTime(1994, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "alexandr@mail.ru",
-                            FirstName = "Alexandr5",
-                            LastName = "Racovschi4",
-                            Login = "alexandr1633",
-                            NumberPhone = "+37336218321",
-                            Password = "asd1236"
-                        });
                 });
 
             modelBuilder.Entity("_2._9_EF_Advanced_Hierarchy.Tables.Exam", b =>

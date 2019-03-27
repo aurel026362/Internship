@@ -23,7 +23,9 @@ namespace _2._9_EF_Advanced_Hierarchy
             //context.ThemeMarks.Update(mark);
             //context.SaveChanges();
 
-            new Selecting();
+            AppContext context = new AppContext();
+
+            new Selecting(context);
 
             Console.ReadKey();
         }

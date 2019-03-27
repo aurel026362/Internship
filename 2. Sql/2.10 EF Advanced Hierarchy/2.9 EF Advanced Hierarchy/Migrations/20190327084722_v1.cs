@@ -28,7 +28,7 @@ namespace _2._9_EF_Advanced_Hierarchy.Migrations
                 {
                     Id = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(type: "nvarchar", maxLength: 20, nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(20)", nullable: true),
                     DateStart = table.Column<DateTime>(type: "date", nullable: false)
                 },
                 constraints: table =>
@@ -167,6 +167,25 @@ namespace _2._9_EF_Advanced_Hierarchy.Migrations
                         principalTable: "Themes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Groups",
+                columns: new[] { "Id", "Name", "StartDate" },
+                values: new object[,]
+                {
+                    { 1L, "Interns123", new DateTime(2019, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 2L, "interns234", new DateTime(2019, 6, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Modules",
+                columns: new[] { "Id", "DateStart", "Name" },
+                values: new object[,]
+                {
+                    { 1L, new DateTime(2019, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified), "C#" },
+                    { 2L, new DateTime(2019, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified), "SQL AND EF CORE" },
+                    { 3L, new DateTime(2019, 4, 4, 0, 0, 0, 0, DateTimeKind.Unspecified), "WEB" }
                 });
 
             migrationBuilder.CreateIndex(

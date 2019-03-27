@@ -23,6 +23,7 @@ namespace _2._9_EF_Advanced_Hierarchy
 
         public AppContext()
         {
+            //Database.EnsureCreated();
         }
 
         public AppContext(DbContextOptions<AppContext> options) : base(options)
@@ -31,7 +32,6 @@ namespace _2._9_EF_Advanced_Hierarchy
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (!optionsBuilder.IsConfigured)
             optionsBuilder.UseSqlServer(@"Data Source=MDDSK40071\TOMANDJERRY;Initial Catalog=test;Integrated Security=True");
         }
 
@@ -50,6 +50,7 @@ namespace _2._9_EF_Advanced_Hierarchy
             //modelBuilder.ApplyConfiguration(new GroupConfig());
 
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+           
         }
     }
 }

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using _2._9_EF_Advanced_Hierarchy;
 
 namespace _2._9_EF_Advanced_Hierarchy.Migrations
 {
     [DbContext(typeof(AppContext))]
-    partial class AppContextModelSnapshot : ModelSnapshot
+    [Migration("20190327084933_v2")]
+    partial class v2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -317,14 +319,25 @@ namespace _2._9_EF_Advanced_Hierarchy.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 5L,
+                            Id = 3L,
                             DateOfBirth = new DateTime(1994, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "alexandr@mail.ru",
-                            FirstName = "Alexandr5",
-                            LastName = "Racovschi4",
+                            FirstName = "Alexandr",
+                            LastName = "Racovschi",
                             Login = "alexandr1633",
                             NumberPhone = "+37336218321",
                             Password = "asd1236"
+                        },
+                        new
+                        {
+                            Id = 4L,
+                            DateOfBirth = new DateTime(1984, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "iong@mail.ru",
+                            FirstName = "Ion",
+                            LastName = "Gandrabura",
+                            Login = "ion79345",
+                            NumberPhone = "+373954035",
+                            Password = "asdqwe123"
                         });
                 });
 

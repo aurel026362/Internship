@@ -22,6 +22,12 @@ namespace _2._9_EF_Advanced_Hierarchy.Configs.Configurations
                    Id = 1,
                    Name = "Interns123",
                    StartDate = Convert.ToDateTime("2019/02/01")
+               },
+               new Group
+               {
+                   Id = 2,
+                   Name = "interns234",
+                   StartDate = Convert.ToDateTime("2019-06-01")
                }
                );
         }

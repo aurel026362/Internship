@@ -23,39 +23,39 @@ namespace _2._9_EF_Advanced_Hierarchy.Configs.Configurations
 
             builder.Property(x => x.RowVersion).IsRowVersion();
 
-            builder.HasData(
-                new ThemeMark
-                {
-                    Id = 1,
-                    Comment = "Good",
-                    Mark = 9,
-                    InternId = 1,
-                    ThemeId = 1
-                },
-                new ThemeMark
-                {
-                    Id = 2,
-                    Comment = "No Comment",
-                    Mark = 1,
-                    InternId = 1,
-                    ThemeId = 1
-                },
-                new ThemeMark
-                {
-                    Id = 3,
-                    Comment = "The Best",
-                    Mark = 10,
-                    InternId = 2,
-                    ThemeId = 2
-                },
-                new ThemeMark
-                {
-                    Id = 4,
-                    Mark = 8,
-                    InternId = 1,
-                    ThemeId = 4
-                }
-            );
+            //builder.HasData(
+            //    new ThemeMark
+            //    {
+            //        Id = 1,
+            //        Comment = "Good",
+            //        Mark = 9,
+            //        InternId = 1,
+            //        ThemeId = 1
+            //    },
+            //    new ThemeMark
+            //    {
+            //        Id = 2,
+            //        Comment = "No Comment",
+            //        Mark = 1,
+            //        InternId = 1,
+            //        ThemeId = 1
+            //    },
+            //    new ThemeMark
+            //    {
+            //        Id = 3,
+            //        Comment = "The Best",
+            //        Mark = 10,
+            //        InternId = 2,
+            //        ThemeId = 2
+            //    },
+            //    new ThemeMark
+            //    {
+            //        Id = 4,
+            //        Mark = 8,
+            //        InternId = 1,
+            //        ThemeId = 4
+            //    }
+            //);
 
         }
     }
