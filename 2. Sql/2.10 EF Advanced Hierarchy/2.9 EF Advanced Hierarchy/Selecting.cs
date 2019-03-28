@@ -110,6 +110,7 @@ namespace _2._9_EF_Advanced_Hierarchy
         private void GroupJoinExample()
         {
             Console.WriteLine("\nGroupJoin EXAmple:");
+
             var themes = context.Themes.GroupJoin(
                 context.ThemeMarks,
                 t => t.Id,

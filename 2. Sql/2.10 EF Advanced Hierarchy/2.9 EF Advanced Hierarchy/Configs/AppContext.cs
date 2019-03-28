@@ -9,7 +9,7 @@ using System.Text;
 
 namespace _2._9_EF_Advanced_Hierarchy
 {
-    public partial class AppContext : DbContext
+    public class AppContext : DbContext
     {
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UserIntern> Interns { get; set; }

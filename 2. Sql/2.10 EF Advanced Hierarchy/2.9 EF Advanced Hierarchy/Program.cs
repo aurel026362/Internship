@@ -4,6 +4,7 @@ using System.Linq;
 using _2._9_EF_Advanced_Hierarchy.Configurations;
 using System.Threading;
 using _2._9_EF_Advanced_Hierarchy.Tables;
+using System.Collections.Generic;
 
 namespace _2._9_EF_Advanced_Hierarchy
 {
@@ -23,9 +24,33 @@ namespace _2._9_EF_Advanced_Hierarchy
             //context.ThemeMarks.Update(mark);
             //context.SaveChanges();
 
-            AppContext context = new AppContext();
+            using (AppContext context = new AppContext())
+            {
 
-            new Selecting(context);
+                //Polymorphic query
+                var list = context.Users.ToList();
+
+                Console.WriteLine("Users:");
+
+                foreach (var item in list)
+                {
+                    Console.WriteLine(item.FirstName + " " + item.LastName);
+                }
+
+                //NONPolymorphic query
+                var interns = context.Users.OfType<UserIntern>().ToList();
+
+                Console.WriteLine("\nInterns:");
+
+                foreach (var intern in interns)
+                {
+                    Console.WriteLine(intern.FirstName + " " + intern.LastName);
+                }
+
+                //new Selecting(context);
+
+                //new Trans();
+            }
 
             Console.ReadKey();
         }

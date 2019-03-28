@@ -5,7 +5,7 @@ using System.Text;
 
 namespace _2._9_EF_Advanced_Hierarchy
 {
-    public class User : Entity<long>
+    public abstract class User : Entity<long>
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

@@ -37,6 +37,9 @@ namespace _2._9_EF_Advanced_Hierarchy.Configurations
                 Password = "54321",
                 Email = "cristia@mail.ru"
             });
+
+            //builder.OwnsMany(x=>x.ThemeMarks).HasData(
+            //    new Tables.ThemeMark() { Id = 1, Mark = 7, }
         }
     }
 }
