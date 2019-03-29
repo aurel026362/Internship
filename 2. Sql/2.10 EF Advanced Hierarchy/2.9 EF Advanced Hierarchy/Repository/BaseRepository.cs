@@ -5,7 +5,7 @@ using System.Text;
 
 namespace _2._9_EF_Advanced_Hierarchy.Repository
 {
-    public abstract class IRepository<T, TID> where T : Entity<TID>
+    public abstract class BaseRepository<T, TID> where T : Entity<TID>
     {
         public abstract void Add(T item);
         

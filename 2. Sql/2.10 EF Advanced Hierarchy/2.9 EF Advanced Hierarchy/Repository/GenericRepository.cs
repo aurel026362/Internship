@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace _2._9_EF_Advanced_Hierarchy
 {
-    public class GenericRepository<T, TID> : IRepository<T, TID> where T : Entity<TID>
+    public class GenericRepository<T, TID> : BaseRepository<T, TID> where T : Entity<TID>
     {
         DbContext _context;
 
