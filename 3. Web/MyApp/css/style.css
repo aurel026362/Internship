@@ -7,8 +7,12 @@ font-family: 'Poppins', sans-serif;
 color: #222;
 }
 
-.paddingFrom{
-    padding: 40px;
+.address{
+    margin-bottom:1000px;
+}
+
+.paddingForm{
+    margin: 50px;
 }
 
 .navbar-nav li{
@@ -36,7 +40,18 @@ color: #222;
     text-shadow: 1px 1px 10px black;
 }
 
-@media (min-width:1100px){
+#imageRegister{
+    width: 100%;
+    padding-top:20px;
+}
+
+#signInBtn{
+    margin-bottom:20px;
+    margin-right: 30px;
+    width:200px;
+}
+
+@media (max-width:1000px){
     .carousel-inner img{
         width:100%;
     }
@@ -100,6 +115,10 @@ color: #222;
     padding:20px;
 }
 
+#footer {
+        /* Footer height */
+  }
+
 .fa-facebook{ color:blue; }
 .fa-instagram{ color:rgb(253, 74, 74); }
 .fa-youtube{ color:red; }
@@ -114,6 +133,8 @@ color: #222;
 footer{
     background-color:rgb(53, 53, 53);
     padding-top:50px;
+    position: relative;
+    bottom:0;
     border-top:4px solid silver;
     color: white;
 }
