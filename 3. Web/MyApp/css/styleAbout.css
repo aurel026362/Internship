@@ -1,0 +1,28 @@
+.bg-first {
+    height: 400px;
+    transform: translateY(-20%);
+    background-image: url('../imgs/about.jpg');
+    background-size: cover;
+}
+
+.align-center {
+    align-items: center;
+    display: block;
+    max-height: 500px;
+    min-height: 200px;
+    font-size:30px;
+}
+
+.foto1{
+    height: 400px;
+    transform: translateY(-20%);
+    background-image: url('../imgs/foto1.jpg');
+    background-size: cover;
+}
+
+.foto2{
+    height: 400px;
+    transform: translateY(-20%);
+    background-image: url('../imgs/about.jpg');
+    background-size: cover;
+}
