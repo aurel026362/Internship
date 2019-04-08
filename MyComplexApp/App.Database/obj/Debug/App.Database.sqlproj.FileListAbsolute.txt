@@ -1,0 +1,10 @@
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Database\bin\Debug\App.Database.dacpac
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Database\bin\Debug\App.Database.dll
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Database\bin\Debug\App.Database.pdb
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Database\obj\Debug\App.Database.sqlprojAssemblyReference.cache
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Database\obj\Debug\Model.xml
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Database\obj\Debug\refactor.xml
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Database\obj\Debug\postdeploy.sql
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Database\obj\Debug\predeploy.sql
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Database\obj\Debug\App.Database.dll
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Database\obj\Debug\App.Database.pdb

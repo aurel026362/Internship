@@ -36,3 +36,45 @@ C:\Users\aurel.starciuc\source\repos\CustomIdentityApp\CustomIdentityApp\obj\Deb
 C:\Users\aurel.starciuc\source\repos\CustomIdentityApp\CustomIdentityApp\obj\Debug\netcoreapp2.1\Razor\Views\Users\Create.g.cshtml.cs
 C:\Users\aurel.starciuc\source\repos\CustomIdentityApp\CustomIdentityApp\obj\Debug\netcoreapp2.1\Razor\Views\Users\Edit.g.cshtml.cs
 C:\Users\aurel.starciuc\source\repos\CustomIdentityApp\CustomIdentityApp\obj\Debug\netcoreapp2.1\Razor\Views\Users\ChangePassword.g.cshtml.cs
+D:\Git\Internship\3. Web\CustomIdentityApp\CustomIdentityApp\bin\Debug\netcoreapp2.1\CustomIdentityApp.deps.json
+D:\Git\Internship\3. Web\CustomIdentityApp\CustomIdentityApp\bin\Debug\netcoreapp2.1\CustomIdentityApp.runtimeconfig.json
+D:\Git\Internship\3. Web\CustomIdentityApp\CustomIdentityApp\bin\Debug\netcoreapp2.1\CustomIdentityApp.runtimeconfig.dev.json
+D:\Git\Internship\3. Web\CustomIdentityApp\CustomIdentityApp\bin\Debug\netcoreapp2.1\CustomIdentityApp.dll
+D:\Git\Internship\3. Web\CustomIdentityApp\CustomIdentityApp\bin\Debug\netcoreapp2.1\CustomIdentityApp.pdb
+D:\Git\Internship\3. Web\CustomIdentityApp\CustomIdentityApp\bin\Debug\netcoreapp2.1\CustomIdentityApp.Views.dll
+D:\Git\Internship\3. Web\CustomIdentityApp\CustomIdentityApp\bin\Debug\netcoreapp2.1\CustomIdentityApp.Views.pdb
+D:\Git\Internship\3. Web\CustomIdentityApp\CustomIdentityApp\obj\Debug\netcoreapp2.1\CustomIdentityApp.csprojAssemblyReference.cache
+D:\Git\Internship\3. Web\CustomIdentityApp\CustomIdentityApp\obj\Debug\netcoreapp2.1\CustomIdentityApp.csproj.CoreCompileInputs.cache
+D:\Git\Internship\3. Web\CustomIdentityApp\CustomIdentityApp\obj\Debug\netcoreapp2.1\CustomIdentityApp.RazorAssemblyInfo.cache
+D:\Git\Internship\3. Web\CustomIdentityApp\CustomIdentityApp\obj\Debug\netcoreapp2.1\CustomIdentityApp.RazorAssemblyInfo.cs
+D:\Git\Internship\3. Web\CustomIdentityApp\CustomIdentityApp\obj\Debug\netcoreapp2.1\CustomIdentityApp.AssemblyInfoInputs.cache
+D:\Git\Internship\3. Web\CustomIdentityApp\CustomIdentityApp\obj\Debug\netcoreapp2.1\CustomIdentityApp.AssemblyInfo.cs
+D:\Git\Internship\3. Web\CustomIdentityApp\CustomIdentityApp\obj\Debug\netcoreapp2.1\CustomIdentityApp.TagHelpers.input.cache
+D:\Git\Internship\3. Web\CustomIdentityApp\CustomIdentityApp\obj\Debug\netcoreapp2.1\CustomIdentityApp.TagHelpers.output.cache
+D:\Git\Internship\3. Web\CustomIdentityApp\CustomIdentityApp\obj\Debug\netcoreapp2.1\CustomIdentityApp.RazorCoreGenerate.cache
+D:\Git\Internship\3. Web\CustomIdentityApp\CustomIdentityApp\obj\Debug\netcoreapp2.1\Razor\Views\Account\Login.g.cshtml.cs
+D:\Git\Internship\3. Web\CustomIdentityApp\CustomIdentityApp\obj\Debug\netcoreapp2.1\Razor\Views\Account\Register.g.cshtml.cs
+D:\Git\Internship\3. Web\CustomIdentityApp\CustomIdentityApp\obj\Debug\netcoreapp2.1\Razor\Views\Home\About.g.cshtml.cs
+D:\Git\Internship\3. Web\CustomIdentityApp\CustomIdentityApp\obj\Debug\netcoreapp2.1\Razor\Views\Home\Contact.g.cshtml.cs
+D:\Git\Internship\3. Web\CustomIdentityApp\CustomIdentityApp\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.g.cshtml.cs
+D:\Git\Internship\3. Web\CustomIdentityApp\CustomIdentityApp\obj\Debug\netcoreapp2.1\Razor\Views\Home\Privacy.g.cshtml.cs
+D:\Git\Internship\3. Web\CustomIdentityApp\CustomIdentityApp\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Error.g.cshtml.cs
+D:\Git\Internship\3. Web\CustomIdentityApp\CustomIdentityApp\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_CookieConsentPartial.g.cshtml.cs
+D:\Git\Internship\3. Web\CustomIdentityApp\CustomIdentityApp\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_Layout.g.cshtml.cs
+D:\Git\Internship\3. Web\CustomIdentityApp\CustomIdentityApp\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_ValidationScriptsPartial.g.cshtml.cs
+D:\Git\Internship\3. Web\CustomIdentityApp\CustomIdentityApp\obj\Debug\netcoreapp2.1\Razor\Views\Users\ChangePassword.g.cshtml.cs
+D:\Git\Internship\3. Web\CustomIdentityApp\CustomIdentityApp\obj\Debug\netcoreapp2.1\Razor\Views\Users\Create.g.cshtml.cs
+D:\Git\Internship\3. Web\CustomIdentityApp\CustomIdentityApp\obj\Debug\netcoreapp2.1\Razor\Views\Users\Edit.g.cshtml.cs
+D:\Git\Internship\3. Web\CustomIdentityApp\CustomIdentityApp\obj\Debug\netcoreapp2.1\Razor\Views\Users\Index.g.cshtml.cs
+D:\Git\Internship\3. Web\CustomIdentityApp\CustomIdentityApp\obj\Debug\netcoreapp2.1\Razor\Views\_ViewImports.g.cshtml.cs
+D:\Git\Internship\3. Web\CustomIdentityApp\CustomIdentityApp\obj\Debug\netcoreapp2.1\Razor\Views\_ViewStart.g.cshtml.cs
+D:\Git\Internship\3. Web\CustomIdentityApp\CustomIdentityApp\obj\Debug\netcoreapp2.1\CustomIdentityApp.RazorTargetAssemblyInfo.cache
+D:\Git\Internship\3. Web\CustomIdentityApp\CustomIdentityApp\obj\Debug\netcoreapp2.1\CustomIdentityApp.RazorTargetAssemblyInfo.cs
+D:\Git\Internship\3. Web\CustomIdentityApp\CustomIdentityApp\obj\Debug\netcoreapp2.1\CustomIdentityApp.Views.pdb
+D:\Git\Internship\3. Web\CustomIdentityApp\CustomIdentityApp\obj\Debug\netcoreapp2.1\CustomIdentityApp.dll
+D:\Git\Internship\3. Web\CustomIdentityApp\CustomIdentityApp\obj\Debug\netcoreapp2.1\CustomIdentityApp.pdb
+D:\Git\Internship\3. Web\CustomIdentityApp\CustomIdentityApp\obj\Debug\netcoreapp2.1\CustomIdentityApp.csproj.CopyComplete
+D:\Git\Internship\3. Web\CustomIdentityApp\CustomIdentityApp\obj\Debug\netcoreapp2.1\Razor\Views\Roles\Index.g.cshtml.cs
+D:\Git\Internship\3. Web\CustomIdentityApp\CustomIdentityApp\obj\Debug\netcoreapp2.1\Razor\Views\Roles\Create.g.cshtml.cs
+D:\Git\Internship\3. Web\CustomIdentityApp\CustomIdentityApp\obj\Debug\netcoreapp2.1\Razor\Views\Roles\UserList.g.cshtml.cs
+D:\Git\Internship\3. Web\CustomIdentityApp\CustomIdentityApp\obj\Debug\netcoreapp2.1\Razor\Views\Roles\Edit.g.cshtml.cs

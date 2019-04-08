@@ -1,0 +1,16 @@
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Services.Interfaces\obj\Debug\netcoreapp2.1\App.Services.Interfaces.csprojAssemblyReference.cache
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Services.Interfaces\obj\Debug\netcoreapp2.1\App.Services.Interfaces.csproj.CoreCompileInputs.cache
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Services.Interfaces\obj\Debug\netcoreapp2.1\App.Services.Interfaces.AssemblyInfoInputs.cache
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Services.Interfaces\obj\Debug\netcoreapp2.1\App.Services.Interfaces.AssemblyInfo.cs
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Services.Interfaces\bin\Debug\netcoreapp2.1\App.Services.Interfaces.deps.json
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Services.Interfaces\bin\Debug\netcoreapp2.1\App.Services.Interfaces.dll
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Services.Interfaces\bin\Debug\netcoreapp2.1\App.Services.Interfaces.pdb
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Services.Interfaces\bin\Debug\netcoreapp2.1\App.Data.Domain.dll
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Services.Interfaces\bin\Debug\netcoreapp2.1\App.Infrastructure.dll
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Services.Interfaces\bin\Debug\netcoreapp2.1\App.Services.Dtos.dll
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Services.Interfaces\bin\Debug\netcoreapp2.1\App.Infrastructure.pdb
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Services.Interfaces\bin\Debug\netcoreapp2.1\App.Services.Dtos.pdb
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Services.Interfaces\bin\Debug\netcoreapp2.1\App.Data.Domain.pdb
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Services.Interfaces\obj\Debug\netcoreapp2.1\App.Services.Interfaces.csproj.CopyComplete
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Services.Interfaces\obj\Debug\netcoreapp2.1\App.Services.Interfaces.dll
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Services.Interfaces\obj\Debug\netcoreapp2.1\App.Services.Interfaces.pdb

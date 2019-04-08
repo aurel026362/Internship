@@ -1,0 +1,9 @@
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Services.Dtos\bin\Debug\netcoreapp2.1\App.Services.Dtos.deps.json
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Services.Dtos\bin\Debug\netcoreapp2.1\App.Services.Dtos.dll
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Services.Dtos\bin\Debug\netcoreapp2.1\App.Services.Dtos.pdb
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Services.Dtos\obj\Debug\netcoreapp2.1\App.Services.Dtos.csprojAssemblyReference.cache
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Services.Dtos\obj\Debug\netcoreapp2.1\App.Services.Dtos.csproj.CoreCompileInputs.cache
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Services.Dtos\obj\Debug\netcoreapp2.1\App.Services.Dtos.AssemblyInfoInputs.cache
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Services.Dtos\obj\Debug\netcoreapp2.1\App.Services.Dtos.AssemblyInfo.cs
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Services.Dtos\obj\Debug\netcoreapp2.1\App.Services.Dtos.dll
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Services.Dtos\obj\Debug\netcoreapp2.1\App.Services.Dtos.pdb

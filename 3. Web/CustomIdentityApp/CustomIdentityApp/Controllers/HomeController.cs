@@ -5,9 +5,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using CustomIdentityApp.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CustomIdentityApp.Controllers
 {
+    [Authorize(Roles="Admin")]
     public class HomeController : Controller
     {
         public IActionResult Index()

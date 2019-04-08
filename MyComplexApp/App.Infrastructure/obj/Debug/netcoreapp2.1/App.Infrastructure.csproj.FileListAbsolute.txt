@@ -1,0 +1,12 @@
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Infrastructure\obj\Debug\netcoreapp2.1\App.Infrastructure.csprojAssemblyReference.cache
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Infrastructure\obj\Debug\netcoreapp2.1\App.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Infrastructure\obj\Debug\netcoreapp2.1\App.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Infrastructure\obj\Debug\netcoreapp2.1\App.Infrastructure.AssemblyInfo.cs
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Infrastructure\bin\Debug\netcoreapp2.1\App.Infrastructure.deps.json
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Infrastructure\bin\Debug\netcoreapp2.1\App.Infrastructure.dll
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Infrastructure\bin\Debug\netcoreapp2.1\App.Infrastructure.pdb
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Infrastructure\bin\Debug\netcoreapp2.1\App.Data.Domain.dll
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Infrastructure\bin\Debug\netcoreapp2.1\App.Data.Domain.pdb
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Infrastructure\obj\Debug\netcoreapp2.1\App.Infrastructure.csproj.CopyComplete
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Infrastructure\obj\Debug\netcoreapp2.1\App.Infrastructure.dll
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Infrastructure\obj\Debug\netcoreapp2.1\App.Infrastructure.pdb

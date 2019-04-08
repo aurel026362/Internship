@@ -1,0 +1,11 @@
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Data.Domain\bin\Debug\netcoreapp2.1\App.Data.Domain.deps.json
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Data.Domain\bin\Debug\netcoreapp2.1\App.Data.Domain.dll
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Data.Domain\obj\Debug\netcoreapp2.1\App.Data.Domain.csprojAssemblyReference.cache
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Data.Domain\obj\Debug\netcoreapp2.1\App.Data.Domain.csproj.CoreCompileInputs.cache
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Data.Domain\obj\Debug\netcoreapp2.1\App.Data.Domain.AssemblyInfoInputs.cache
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Data.Domain\obj\Debug\netcoreapp2.1\App.Data.Domain.AssemblyInfo.cs
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Data.Domain\bin\Debug\netcoreapp2.1\App.Data.Domain.runtimeconfig.json
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Data.Domain\bin\Debug\netcoreapp2.1\App.Data.Domain.runtimeconfig.dev.json
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Data.Domain\bin\Debug\netcoreapp2.1\App.Data.Domain.pdb
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Data.Domain\obj\Debug\netcoreapp2.1\App.Data.Domain.dll
+C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Data.Domain\obj\Debug\netcoreapp2.1\App.Data.Domain.pdb
