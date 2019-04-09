@@ -7,14 +7,14 @@ using System.Text;
 
 namespace App.Data.Domain.DomainModelsConfigs.ConcreteConfigs
 {
-    class GroupConfig : IEntityTypeConfiguration<Group>
+    public class GroupConfig : IEntityTypeConfiguration<Group>
     {
         public void Configure(EntityTypeBuilder<Group> builder)
         {
             builder.ToTable("Groups");
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Name).HasMaxLength(30);
-            builder.Property(x => x.StartDate).HasColumnType("smalldatetime");
+            builder.Property(x => x.StartDate).HasColumnType("date");
 
             builder.HasData(
                new Group

@@ -90,3 +90,13 @@ D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\App.Web.Views.pdb
 D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\App.Web.csproj.CopyComplete
 D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\App.Web.dll
 D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\App.Web.pdb
+D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\Group\Delete.g.cshtml.cs
+D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\Group\Details.g.cshtml.cs
+D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\Group\Edit.g.cshtml.cs
+D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\Group\Index.g.cshtml.cs
+D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\Group\AddOrEdit.g.cshtml.cs
+D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\Module\Create.g.cshtml.cs
+D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\Module\Delete.g.cshtml.cs
+D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\Module\Details.g.cshtml.cs
+D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\Module\Edit.g.cshtml.cs
+D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\Module\Index.g.cshtml.cs

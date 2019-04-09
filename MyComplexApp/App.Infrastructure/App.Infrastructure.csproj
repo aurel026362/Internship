@@ -5,11 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Exceptions\" />
+    <ProjectReference Include="..\App.Data.Domain\App.Data.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\App.Data.Domain\App.Data.Domain.csproj" />
+    <Folder Include="Exceptions\" />
   </ItemGroup>
 
 </Project>

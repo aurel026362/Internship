@@ -6,7 +6,7 @@ using System.Text;
 
 namespace App.Data.Domain.DomainModelsConfigs.ConcreteConfigs
 {
-    class ExamConfig : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<Exam>
+    public class ExamConfig : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<Exam>
     {
         public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<Exam> builder)
         {

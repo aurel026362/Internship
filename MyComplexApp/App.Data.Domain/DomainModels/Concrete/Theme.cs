@@ -11,9 +11,9 @@ namespace App.Data.Domain.DomainModels.Concrete
         public string Source { get; set; }
         public long ModuleId { get; set; }
         public long MenthorId { get; set; }
+
         public Module Modulep { get; set; }
         public UserMenthor Menthor { get; set; }
-
         public ICollection<ThemeMark> ThemeMarks { get; set; }
         public ICollection<Comment> Comments { get; set; }
     }

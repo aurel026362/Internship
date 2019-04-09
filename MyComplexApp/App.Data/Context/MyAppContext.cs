@@ -1,4 +1,5 @@
 ﻿using App.Data.Domain.DomainModels.Concrete;
+using App.Data.Domain.DomainModelsConfigs.ConcreteConfigs;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -9,7 +10,8 @@ using System.Text;
 
 namespace App.Data.Context
 {
-    public class AppContext : DbContext
+    public class MyAppContext // : DbContext
+           :DbContext
     {
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UserIntern> Interns { get; set; }
@@ -22,15 +24,16 @@ namespace App.Data.Context
         public virtual DbSet<Group> Groups { get; set; }
         public virtual DbSet<Comment> Comments { get; set; }
 
-        public AppContext()
+        public MyAppContext()
         {
             //Database.EnsureCreated();
         }
 
-        //public AppContext(DbContextOptions<TripsFinderContext> options)
-        // : base(options)
-        //{
-        //}
+        public MyAppContext(DbContextOptions<MyAppContext> options) 
+            : base(options)
+        {
+
+        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -41,18 +44,17 @@ namespace App.Data.Context
         {
             // modelBuilder.HasAnnotation("ProductVersion", "2.2.3-servicing-35854");
 
-            //modelBuilder.ApplyConfiguration(new UserConfigurations());
-            //modelBuilder.ApplyConfiguration(new UserInternConfigurations());
-            //modelBuilder.ApplyConfiguration(new UserMenthorConfigurations());
-            //modelBuilder.ApplyConfiguration(new ModuleConfig());
-            //modelBuilder.ApplyConfiguration(new ThemeConfig());
-            //modelBuilder.ApplyConfiguration(new ThemeMarkConfig());
-            //modelBuilder.ApplyConfiguration(new ExamConfig());
-            //modelBuilder.ApplyConfiguration(new ExamMarkConfig());
-            //modelBuilder.ApplyConfiguration(new GroupConfig());
+            modelBuilder.ApplyConfiguration(new UserConfigurations());
+            modelBuilder.ApplyConfiguration(new UserInternConfigurations());
+            modelBuilder.ApplyConfiguration(new UserMenthorConfigurations());
+            modelBuilder.ApplyConfiguration(new ModuleConfig());
+            modelBuilder.ApplyConfiguration(new ThemeConfig());
+            modelBuilder.ApplyConfiguration(new ThemeMarkConfig());
+            modelBuilder.ApplyConfiguration(new ExamConfig());
+            modelBuilder.ApplyConfiguration(new ExamMarkConfig());
+            modelBuilder.ApplyConfiguration(new GroupConfig());
+            modelBuilder.ApplyConfiguration(new CommentConfig());
 
-            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-           
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Text;
 
 namespace App.Data.Domain.DomainModelsConfigs.ConcreteConfigs
 {
-    class ThemeConfig : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<Theme>
+    public class ThemeConfig : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<Theme>
     {
         public void Configure(EntityTypeBuilder<Theme> builder)
         {
@@ -20,43 +20,43 @@ namespace App.Data.Domain.DomainModelsConfigs.ConcreteConfigs
             builder.HasOne(x => x.Modulep).WithMany(x => x.Themes).HasForeignKey(x => x.ModuleId);
             builder.HasOne(x => x.Menthor).WithMany(x => x.Themes).HasForeignKey(x => x.MenthorId);
 
-            //builder.HasData(
-            //    new Theme
-            //    {
-            //        Id = 1,
-            //        Name = "Creational Pattern",
-            //        TimeOfTheme = Convert.ToDateTime("2019/02/06"),
-            //        Source = "S:\\Internship\\C#",
-            //        MenthorId = 1,
-            //        ModuleId = 1
-            //    },
-            //    new Theme
-            //    {
-            //        Id = 2,
-            //        Name = "SQL SELECT",
-            //        TimeOfTheme = Convert.ToDateTime("2019/03/01"),
-            //        Source = "S:\\Internship\\SQL",
-            //        MenthorId = 1,
-            //        ModuleId = 2
-            //    }, new Theme
-            //    {
-            //        Id = 3,
-            //        Name = "EF Core Mapping",
-            //        TimeOfTheme = Convert.ToDateTime("2019/03/16"),
-            //        Source = "S:\\Internship\\SQL",
-            //        MenthorId = 2,
-            //        ModuleId = 2
-            //    },
-            //    new Theme
-            //    {
-            //        Id = 4,
-            //        Name = "JS",
-            //        TimeOfTheme = Convert.ToDateTime("2019/04/02"),
-            //        Source = "S:\\Internship\\WEB",
-            //        MenthorId = 2,
-            //        ModuleId = 3
-            //    }
-            //    );
+            builder.HasData(
+                new Theme
+                {
+                    Id = 1,
+                    Name = "Creational Pattern",
+                    TimeOfTheme = Convert.ToDateTime("2019/02/06"),
+                    Source = "S:\\Internship\\C#",
+                    MenthorId = 1,
+                    ModuleId = 1
+                },
+                new Theme
+                {
+                    Id = 2,
+                    Name = "SQL SELECT",
+                    TimeOfTheme = Convert.ToDateTime("2019/03/01"),
+                    Source = "S:\\Internship\\SQL",
+                    MenthorId = 1,
+                    ModuleId = 2
+                }, new Theme
+                {
+                    Id = 3,
+                    Name = "EF Core Mapping",
+                    TimeOfTheme = Convert.ToDateTime("2019/03/16"),
+                    Source = "S:\\Internship\\SQL",
+                    MenthorId = 2,
+                    ModuleId = 2
+                },
+                new Theme
+                {
+                    Id = 4,
+                    Name = "JS",
+                    TimeOfTheme = Convert.ToDateTime("2019/04/02"),
+                    Source = "S:\\Internship\\WEB",
+                    MenthorId = 2,
+                    ModuleId = 3
+                }
+                );
         }
     }
 }

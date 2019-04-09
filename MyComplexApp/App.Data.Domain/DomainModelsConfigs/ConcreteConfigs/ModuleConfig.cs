@@ -7,7 +7,7 @@ using System.Text;
 
 namespace App.Data.Domain.DomainModelsConfigs.ConcreteConfigs
 {
-    class ModuleConfig : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<Module>
+    public class ModuleConfig : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<Module>
     {
         public void Configure(EntityTypeBuilder<Module> builder)
         {

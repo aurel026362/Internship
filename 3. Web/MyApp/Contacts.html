@@ -18,6 +18,7 @@
     <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/styleContact.css">
 </head>
 
 <body>
@@ -46,30 +47,68 @@
         </div>
     </nav>
 
-    <div class="container-fluid address">
-        <h4>My Address</h4>
-        <hr class="display-4">
-        <p>Equal-width columns can be broken into multiple lines, 
-            but there was a Safari flexbox bug that prevented this from working without 
-            an explicit flex-basis or border. There are workarounds for older browser 
-            versions, but they shouldn’t be necessary if you’re up-to-date.</p>
-    </div>
-
-    <footer class="container-fluid" id="footer">
-            <div class="container-fluid">
-                <div class="row padding text-center">
-                    <div class="col-12">
-                        <h2>Our Contacts</h2>
-                    </div>
-                    <div class="col-12 social padding">
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
+    <header class="bg-header">
+        <div class="text-center">
+        </div>
+    </header>
+    <div class="container-fluid col-12">
+        <div class="row col-8 bg-second address">
+            <div class="col-12">
+                <h4>Our Address</h4>
+                <hr>
+                <span class="text-adress"><i class="fas fa-map-marker-alt"></i>
+                    MD-201202 Moldova Chisinau, Sarmizegetusa 48
+                </span>
+                <br>
+                <span class="text-adress"><i class="fas fa-phone"></i>
+                    +37367495853
+                </span><br>
+                <span class="text-adress"><i class="far fa-envelope-open"></i>
+                    <a href="#">test@mail.ru</a>
+                </span><br>
+                <br><br><br>
+                <h5>Our Social Networks</h5>
+                <hr>
+                <div>
+                    <span class="text-adress"><i class="fab fa-twitter"></i><a href="#"> Twitter</a></span><br>
+                    <span class="text-adress"><i class="fab fa-instagram"></i> <a href="#"> Instagram</a></span><br>
+                    <span class="text-adress"><i class="fab fa-facebook"></i><a href="#"> Facebook</a></span><br>
+                    <span class="text-adress"><i class="fab fa-youtube"></i><a href="#"> YouTube</a></span><br>
                 </div>
             </div>
-        </footer>
-    </body>
-    
-    </html>
+        </div>
+    </div>
+
+    <div class="col-12">
+        <br><br>
+        <h4>Our Location</h4>
+        <hr>
+    </div>
+
+    <div style="width: 100%">
+        <iframe width="100%" height="600"
+            src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;q=Moldova%2C%20Chisinau%2C%20Cuza%20Voda%203%2F1+(My%20Business%20Name)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=A&amp;output=embed"
+            frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+            <a href="https://www.maps.ie/map-my-route/">Draw map route</a>
+        </iframe>
+    </div>
+    <br />
+
+    <footer class="container-fluid" id="footer">
+        <div class="container-fluid">
+            <div class="row padding text-center">
+                <div class="col-12">
+                    <h2>Our Contacts</h2>
+                </div>
+                <div class="col-12 social padding">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

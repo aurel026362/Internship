@@ -8,7 +8,7 @@ using System.Text;
 
 namespace App.Data.Domain.DomainModelsConfigs.ConcreteConfigs
 {
-    class ExamMarkConfig : IEntityTypeConfiguration<ExamMark>
+    public class ExamMarkConfig : IEntityTypeConfiguration<ExamMark>
     {
         public void Configure(EntityTypeBuilder<ExamMark> builder)
         {

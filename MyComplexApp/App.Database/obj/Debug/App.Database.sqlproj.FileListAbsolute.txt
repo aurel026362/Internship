@@ -8,3 +8,9 @@ C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Database\obj\Debug\postdep
 C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Database\obj\Debug\predeploy.sql
 C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Database\obj\Debug\App.Database.dll
 C:\Users\aurel.starciuc\source\repos\MyComplexApp\App.Database\obj\Debug\App.Database.pdb
+D:\Git\Internship\MyComplexApp\App.Database\bin\Debug\App.Database.dacpac
+D:\Git\Internship\MyComplexApp\App.Database\bin\Debug\App.Database.dll
+D:\Git\Internship\MyComplexApp\App.Database\bin\Debug\App.Database.pdb
+D:\Git\Internship\MyComplexApp\App.Database\obj\Debug\App.Database.sqlprojAssemblyReference.cache
+D:\Git\Internship\MyComplexApp\App.Database\obj\Debug\App.Database.dll
+D:\Git\Internship\MyComplexApp\App.Database\obj\Debug\App.Database.pdb

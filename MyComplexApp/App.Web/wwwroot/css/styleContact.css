@@ -1,0 +1,28 @@
+.bg-header {
+    background-image: url('../imgs/contact_Us.png');
+    background-size: cover;
+    margin: 0px;
+    height: 400px;
+    margin-bottom: -10%;
+    -webkit-filter: blur(2px);
+    -moz-filter: blur(2px);
+    -o-filter: blur(2px);
+    -ms-filter: blur(2px);
+    filter: blur(2px);
+}
+
+.bg-second {
+    background-color: white;
+    height: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin: 0 auto;
+    border-radius: 5px;
+}
+
+.address{
+    padding: 50px;
+}
+
+.text-adress{
+    font-size:20px;
+}

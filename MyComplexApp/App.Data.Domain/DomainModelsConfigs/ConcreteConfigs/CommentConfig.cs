@@ -7,7 +7,7 @@ using System.Text;
 
 namespace App.Data.Domain.DomainModelsConfigs.ConcreteConfigs
 {
-    class CommentConfig : IEntityTypeConfiguration<Comment>
+    public class CommentConfig : IEntityTypeConfiguration<Comment>
     {
         public void Configure(EntityTypeBuilder<Comment> builder)
         {

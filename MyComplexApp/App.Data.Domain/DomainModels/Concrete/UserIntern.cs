@@ -8,9 +8,9 @@ namespace App.Data.Domain.DomainModels.Concrete
     {
         public long GroupId { get; set; }
         public long UserId { get; set; }
+        public long? MenthorId { get; set; }
         public User User { get; set; }
-
-        //public UserMenthor Menthor { get; set; }
+        public UserMenthor Menthor { get; set; }
         public Group Group { get; set; }
         public ICollection<ThemeMark> ThemeMarks { get; set; }
         public ICollection<ExamMark> ExamMarks { get; set; }
