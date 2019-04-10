@@ -100,3 +100,4 @@ D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\Modul
 D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\Module\Details.g.cshtml.cs
 D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\Module\Edit.g.cshtml.cs
 D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\Module\Index.g.cshtml.cs
+D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\Account\Register.g.cshtml.cs

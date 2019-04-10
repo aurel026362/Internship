@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.2",
-    "signature": "3a6d3ef1159f3078fa6924815b31e90ce13e2e77"
+    "signature": "1218754482ba7ed717a7f496c69a74a14961cf2d"
   },
   "compilationOptions": {},
   "targets": {
@@ -9,6 +9,8 @@
       "App.Data.Domain/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Identity": "2.2.0",
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "2.2.0",
+          "Microsoft.AspNetCore.Owin": "2.2.0",
           "Microsoft.EntityFrameworkCore": "2.2.3",
           "Microsoft.EntityFrameworkCore.SqlServer": "2.2.3",
           "Microsoft.EntityFrameworkCore.SqlServer.Design": "1.1.6",
@@ -204,6 +206,30 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.AspNetCore.Identity.dll": {
+            "assemblyVersion": "2.2.0.0",
+            "fileVersion": "2.2.0.18316"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.Identity.EntityFrameworkCore/2.2.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Identity": "2.2.0",
+          "Microsoft.EntityFrameworkCore.Relational": "2.2.3",
+          "Microsoft.Extensions.Identity.Stores": "2.2.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll": {
+            "assemblyVersion": "2.2.0.0",
+            "fileVersion": "2.2.0.18316"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.Owin/2.2.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Http": "2.2.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Owin.dll": {
             "assemblyVersion": "2.2.0.0",
             "fileVersion": "2.2.0.18316"
           }
@@ -424,6 +450,19 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.Extensions.Identity.Core.dll": {
+            "assemblyVersion": "2.2.0.0",
+            "fileVersion": "2.2.0.18316"
+          }
+        }
+      },
+      "Microsoft.Extensions.Identity.Stores/2.2.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Identity.Core": "2.2.0",
+          "Microsoft.Extensions.Logging": "2.2.0",
+          "System.ComponentModel.Annotations": "4.5.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.Identity.Stores.dll": {
             "assemblyVersion": "2.2.0.0",
             "fileVersion": "2.2.0.18316"
           }
@@ -992,6 +1031,20 @@
       "path": "microsoft.aspnetcore.identity/2.2.0",
       "hashPath": "microsoft.aspnetcore.identity.2.2.0.nupkg.sha512"
     },
+    "Microsoft.AspNetCore.Identity.EntityFrameworkCore/2.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-PGJ8f8sE9vbnyPJpSCMYAjh1itkM8uL9QnkO5lQSSJGeyG4b1+zNoLS+leJgjGnlkTzgWPffc4OuqH7wsYahWw==",
+      "path": "microsoft.aspnetcore.identity.entityframeworkcore/2.2.0",
+      "hashPath": "microsoft.aspnetcore.identity.entityframeworkcore.2.2.0.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Owin/2.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-TYJMPdjS3l9g1GT9aKfEPaa9aRQQ8BmRqK78+/JDDkKlzOQZVis5wppqRXRd/OxVcOt6yEa90qqkBVsC1suMxQ==",
+      "path": "microsoft.aspnetcore.owin/2.2.0",
+      "hashPath": "microsoft.aspnetcore.owin.2.2.0.nupkg.sha512"
+    },
     "Microsoft.AspNetCore.WebUtilities/2.2.0": {
       "type": "package",
       "serviceable": true,
@@ -1138,6 +1191,13 @@
       "sha512": "sha512-/C+Valwg8IeUwDIunusittHivA9iyf82Jr1yeUFWO2zH2mDMMeYgjRyDLZqfL/7Vq94PEQsgv1XAaDfAX8msMw==",
       "path": "microsoft.extensions.identity.core/2.2.0",
       "hashPath": "microsoft.extensions.identity.core.2.2.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Identity.Stores/2.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-WY6os4m5LcG7XXHQK1vQggjdNFs7h6CsidVLOzPjG7Cb1zwRYKzfRT/pSUD40JNGvVp4oNENjLPvu/30ufIGNw==",
+      "path": "microsoft.extensions.identity.stores/2.2.0",
+      "hashPath": "microsoft.extensions.identity.stores.2.2.0.nupkg.sha512"
     },
     "Microsoft.Extensions.Logging/2.2.0": {
       "type": "package",

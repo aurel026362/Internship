@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.2",
-    "signature": "845699c5c352c852bc4db63e7c3beaa130b4ffc4"
+    "signature": "082cb1a901b1051d578922c9afe52153a0831503"
   },
   "compilationOptions": {},
   "targets": {
@@ -228,6 +228,17 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll": {
+            "assemblyVersion": "2.2.0.0",
+            "fileVersion": "2.2.0.18316"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.Owin/2.2.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Http": "2.2.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Owin.dll": {
             "assemblyVersion": "2.2.0.0",
             "fileVersion": "2.2.0.18316"
           }
@@ -2466,6 +2477,7 @@
           "App.Infrastructure": "1.0.0",
           "Microsoft.AspNetCore.Identity": "2.2.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "2.2.0",
+          "Microsoft.AspNetCore.Owin": "2.2.0",
           "Microsoft.EntityFrameworkCore": "2.2.3",
           "Microsoft.EntityFrameworkCore.Design": "2.2.3",
           "Microsoft.EntityFrameworkCore.SqlServer": "2.2.3",
@@ -2480,6 +2492,8 @@
       "App.Data.Domain/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Identity": "2.2.0",
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "2.2.0",
+          "Microsoft.AspNetCore.Owin": "2.2.0",
           "Microsoft.EntityFrameworkCore": "2.2.3",
           "Microsoft.EntityFrameworkCore.SqlServer": "2.2.3",
           "Microsoft.EntityFrameworkCore.SqlServer.Design": "1.1.6"
@@ -2669,6 +2683,13 @@
       "sha512": "sha512-PGJ8f8sE9vbnyPJpSCMYAjh1itkM8uL9QnkO5lQSSJGeyG4b1+zNoLS+leJgjGnlkTzgWPffc4OuqH7wsYahWw==",
       "path": "microsoft.aspnetcore.identity.entityframeworkcore/2.2.0",
       "hashPath": "microsoft.aspnetcore.identity.entityframeworkcore.2.2.0.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Owin/2.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-TYJMPdjS3l9g1GT9aKfEPaa9aRQQ8BmRqK78+/JDDkKlzOQZVis5wppqRXRd/OxVcOt6yEa90qqkBVsC1suMxQ==",
+      "path": "microsoft.aspnetcore.owin/2.2.0",
+      "hashPath": "microsoft.aspnetcore.owin.2.2.0.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Razor.Language/2.2.0": {
       "type": "package",

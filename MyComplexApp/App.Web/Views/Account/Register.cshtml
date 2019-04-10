@@ -1,0 +1,113 @@
+﻿@model App.Web.ViewModels.UserViewModel
+@{
+    ViewData["Title"] = "Register";
+}
+<div class="container paddingFrom" id="signin">
+    <div class="row">
+        <div class="col">
+            <div class="row col-12">
+                <h2>Sign In</h2>
+            </div>
+            <div class="row col-12">
+                <div class="col-sm-8 text-center">
+                    <h4 class="page-header">Personal Data</h4>
+                    <form role="form" asp-controller="Account" asp-action="Register" method="post">
+                        <div asp-validation-summary="ModelOnly"></div>
+                        <div class="form-group float-label-control">
+                            <label asp-for="FirstName">First Name</label>
+                            <input asp-for="FirstName" type="text" class="form-control" placeholder="First Name" name="FirstName">
+                            <span asp-validation-for="FirstName"></span>
+                        </div>
+                        <div class="form-group float-label-control">
+                            <label asp-for="LastName">Last Name</label>
+                            <input asp-for="LastName" type="text" class="form-control" placeholder="Last Name" name="LastName">
+                            <span asp-validation-for="LastName"></span>
+                        </div>
+                        <div class="form-group float-label-control">
+                            <label asp-for="DateOfBirth">Date Of Birth</label>
+                            <input asp-for="DateOfBirth" type="date" class="form-control" placeholder="Date of Birth" name="DBirth">
+                            <span asp-validation-for="DateOfBirth"></span>
+                        </div>
+                        <div class="form-group float-label-control">
+                            <label asp-for="PhoneNumber">Number Phone</label>
+                            <input asp-for="PhoneNumber" type="text" class="form-control" placeholder="Number Phone" name="PhoneNumber">
+                            <span asp-validation-for="PhoneNumber"></span>
+                        </div>
+                        <h4 class="page-header">Account Data</h4>
+                        <h4 class="page-header">Your E-Mail Address</h4>
+                        <div class="form-group float-label-control">
+                            <label asp-for="Email">Email Address</label>
+                            <input asp-for="Email" type="email" class="form-control" placeholder="What's your email address?"
+                                   name="EMail">
+                            <span asp-validation-for="Email"></span>
+                        </div>
+                        <div class="form-group float-label-control">
+                            <label asp-for="Password">Password</label>
+                            <input asp-for="Password" type="password" class="form-control" placeholder="Password" name="Password">
+                            <span asp-validation-for="Password"></span>
+                        </div>
+
+                        <h4 class="page-header">Choose your role:</h4>
+                        <div class="form-group float-label-control">
+                            <select class="form-control"  id="Role" name="Role">
+                                <option name="intern" value="Intern">Intern</option>
+                                <option name="mentor" value="Mentor">Mentor</option>
+                                <option name="admin" value="Admin">Admin</option>
+                            </select>
+                        </div>
+                        <div>
+                            <input type="submit" class="btn btn-lg btn-primary" value="Sign In">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div>
+                <img src="imgs/foto1.jpg" alt="" id="imageRegister">
+            </div>
+            <br>
+            <div>
+                <h2>Ceva informatie</h2>
+                <p>
+                    Madonna and Child with Angels is the central panel of the large multi-paneled
+                    altarpiece produced by Masaccio for the chapel of Saint Julian in the church
+                    of Santa Maria del Carmine in Pisa, Italy. The panel, which is badly damaged
+                    <br><br>
+                    Madonna and Child with Angels is the central panel of the large multi-paneled
+                    altarpiece produced by Masaccio for the chapel of Saint Julian in the church
+                    of Santa Maria del Carmine in Pisa, Italy. The panel, which is badly damaged
+                    and smaller than its original size, was produced in collaboration with Masaccio's
+                    brother Giovanni and with Andrea di Giusto in 1426. It depicts six figures: the
+                    <br><br>
+                    Madonna and Child with Angels is the central panel of the large multi-paneled
+                    altarpiece produced by Masaccio for the chapel of Saint Julian in the church
+                    <br>
+                    <a href="#" class="btn btn-danger">Read More</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+<!--Blocul cu text 1-->
+<div class="container-fluid">
+    <div class="row jumbotron">
+        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-10">
+            <p class="lead">
+                Era odata ca niciodata o prea frumoasa fata.
+                Din mare parte... Limba noastr-i o comoara, in adincuri
+                infundata, un sirag de piatra rara in adincuri infundata.
+                Era odata ca niciodata o prea frumoasa fata.
+                Din mare parte... Limba noastr-i o comoara, in adincuri
+                infundata, un sirag de piatra rara in adincuri infundata.
+            </p>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-2">
+            <a href="#">
+                <button class="btn btn-succes btn-lg" type="button">Read More</button>
+            </a>
+        </div>
+    </div>
+</div>
+<br>

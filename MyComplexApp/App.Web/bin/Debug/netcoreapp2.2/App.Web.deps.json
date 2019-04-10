@@ -698,6 +698,7 @@
           "App.Infrastructure": "1.0.0",
           "Microsoft.AspNetCore.Identity": "2.2.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "2.2.0",
+          "Microsoft.AspNetCore.Owin": "2.2.0",
           "Microsoft.EntityFrameworkCore": "2.2.3",
           "Microsoft.EntityFrameworkCore.Design": "2.2.3",
           "Microsoft.EntityFrameworkCore.SqlServer": "2.2.3",
@@ -715,6 +716,8 @@
       "App.Data.Domain/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Identity": "2.2.0",
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "2.2.0",
+          "Microsoft.AspNetCore.Owin": "2.2.0",
           "Microsoft.EntityFrameworkCore": "2.2.3",
           "Microsoft.EntityFrameworkCore.SqlServer": "2.2.3",
           "Microsoft.EntityFrameworkCore.SqlServer.Design": "1.1.6"

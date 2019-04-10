@@ -1,4 +1,5 @@
 ﻿using App.Data.Domain.DomainModels.Concrete;
+using App.Data.Domain.DomainModels.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -27,19 +28,9 @@ namespace App.Data.Domain.DomainModelsConfigs.ConcreteConfigs
             builder.Property(e => e.LastName)
                     .IsRequired()
                     .HasMaxLength(20);
-
-            builder.Property(e => e.Login)
-                    .IsRequired()
-                    .HasMaxLength(20)
-                    .IsUnicode(false);
-
-            builder.Property(e => e.NumberPhone).HasMaxLength(15);
-
-            builder.Property(e => e.Password)
-                    .IsRequired()
-                    .HasMaxLength(20)
-                    .IsUnicode(false);
-
+           
+            builder.Property(e => e.PhoneNumber).HasMaxLength(15);
+            
             builder.HasData(
                 new User()
                 {
@@ -47,9 +38,9 @@ namespace App.Data.Domain.DomainModelsConfigs.ConcreteConfigs
                     FirstName = "Aurel",
                     LastName = "Starciuc",
                     DateOfBirth = Convert.ToDateTime("1999/05/22"),
-                    NumberPhone = "+37367620932",
-                    Login = "aurel12345",
-                    Password = "12345",
+                    PhoneNumber = "+37367620932",
+                    UserName = "aurel12345",
+                    PasswordHash = "12345",
                     Email = "aurel@mail.ru"
                 },
                 new User()
@@ -58,9 +49,9 @@ namespace App.Data.Domain.DomainModelsConfigs.ConcreteConfigs
                     FirstName = "Cristi",
                     LastName = "Anghelenici",
                     DateOfBirth = Convert.ToDateTime("1989/08/12"),
-                    NumberPhone = "+37367665467",
-                    Login = "cristi4324",
-                    Password = "885464",
+                    PhoneNumber = "+37367665467",
+                    UserName = "cristi4324",
+                    PasswordHash = "885464",
                     Email = "cristi@mail.ru"
                 },
                 new User()
@@ -69,9 +60,9 @@ namespace App.Data.Domain.DomainModelsConfigs.ConcreteConfigs
                     FirstName = "Alexandr",
                     LastName = "Racovschi",
                     DateOfBirth = Convert.ToDateTime("1994/04/20"),
-                    NumberPhone = "+37336218321",
-                    Login = "alexandr1633",
-                    Password = "asd1236",
+                    PhoneNumber = "+37336218321",
+                    UserName = "alexandr1633",
+                    PasswordHash = "asd1236",
                     Email = "alexandr@mail.ru"
                 },
                 new User()
@@ -80,9 +71,9 @@ namespace App.Data.Domain.DomainModelsConfigs.ConcreteConfigs
                     FirstName = "Ion",
                     LastName = "Gandrabura",
                     DateOfBirth = Convert.ToDateTime("1984/04/22"),
-                    NumberPhone = "+373954035",
-                    Login = "ion79345",
-                    Password = "asdqwe123",
+                    PhoneNumber = "+373954035",
+                    UserName = "ion79345",
+                    PasswordHash = "asdqwe123",
                     Email = "iong@mail.ru"
                 });
         }

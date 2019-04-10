@@ -1,19 +1,15 @@
 ﻿using App.Data.Domain.DomainModels.Concrete;
+using App.Data.Domain.DomainModels.Identity;
 using App.Data.Domain.DomainModelsConfigs.ConcreteConfigs;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Reflection;
-using System.Text;
 
 namespace App.Data.Context
 {
     public class MyAppContext // : DbContext
-           :DbContext
+           : IdentityDbContext<User, Role,long>
     {
-        public virtual DbSet<User> Users { get; set; }
+        //public virtual DbSet<Domain.DomainModels.Identity.User> Users { get; set; }
         public virtual DbSet<UserIntern> Interns { get; set; }
         public virtual DbSet<UserMenthor> Menthors { get; set; }
         public virtual DbSet<Domain.DomainModels.Concrete.Module> Modules { get; set; }
@@ -42,6 +38,7 @@ namespace App.Data.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             // modelBuilder.HasAnnotation("ProductVersion", "2.2.3-servicing-35854");
 
             modelBuilder.ApplyConfiguration(new UserConfigurations());

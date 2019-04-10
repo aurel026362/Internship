@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using App.Data.Context;
+using App.Data.Domain.DomainModels.Identity;
 using App.Web.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -35,14 +37,29 @@ namespace App.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddIdentity<User, Role>(opt =>
+            {
+                opt.Password.RequiredLength = 6;
+                opt.Password.RequireDigit = false;
+                opt.Password.RequireLowercase = false;
+                opt.Password.RequireNonAlphanumeric = false;
+                opt.Password.RequireUppercase = false;
+                opt.Password.RequireNonAlphanumeric = false;
+
+            }).AddEntityFrameworkStores<MyAppContext>().AddDefaultTokenProviders();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             //NEW CODE
             services.AddDbContext<MyAppContext>(options =>
-            //options.UseSqlServer(@"Data Source=MDDSK40071\\TOMANDJERRY;Initial Catalog=test;Integrated Security=True"));
             options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
-            //@"Data Source=MDDSK40071\\TOMANDJERRY;Initial Catalog=test;Integrated Security=True"
+
+            //services.AddDefaultIdentity<User>()
+            //    .AddEntityFrameworkStores<MyAppContext>();
+
+            //services.AddIdentity<User, IdentityRole>()
+            //.AddEntityFrameworkStores<MyAppContext>()
+            //.AddDefaultTokenProviders();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,6 +76,7 @@ namespace App.Web
                 app.UseHsts();
             }
 
+            app.UseAuthentication();
             //---------MyCode
             //app.UseMiddleware<MainMiddleware>();
             //app.UseMiddleware<SecondaryMiddleWare>();
