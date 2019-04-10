@@ -28,6 +28,6 @@ namespace App.Web.ViewModels
         public string Email { get; set; }
 
         [Required]
-        public string Role { get; set; }
+        public string TypeUser { get; set; }
     }
 }

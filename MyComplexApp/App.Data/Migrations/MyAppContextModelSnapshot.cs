@@ -15,7 +15,7 @@ namespace App.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.3-servicing-35854")
+                .HasAnnotation("ProductVersion", "2.2.4-servicing-10062")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -149,6 +149,63 @@ namespace App.Data.Migrations
                             DateStart = new DateTime(2019, 4, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Name = "WEB"
                         });
+                });
+
+            modelBuilder.Entity("App.Data.Domain.DomainModels.Concrete.RequestedUser", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("AccessFailedCount");
+
+                    b.Property<string>("ConcurrencyStamp");
+
+                    b.Property<DateTime>("DateOfBirth")
+                        .HasColumnType("date");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnName("EMail")
+                        .HasMaxLength(30)
+                        .IsUnicode(false);
+
+                    b.Property<bool>("EmailConfirmed");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(20);
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(20);
+
+                    b.Property<bool>("LockoutEnabled");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd");
+
+                    b.Property<string>("NormalizedEmail");
+
+                    b.Property<string>("NormalizedUserName");
+
+                    b.Property<string>("PasswordHash");
+
+                    b.Property<string>("PhoneNumber");
+
+                    b.Property<bool>("PhoneNumberConfirmed");
+
+                    b.Property<string>("SecurityStamp");
+
+                    b.Property<bool>("TwoFactorEnabled");
+
+                    b.Property<string>("TypeUser")
+                        .HasMaxLength(20);
+
+                    b.Property<string>("UserName");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("RequestedUsers");
                 });
 
             modelBuilder.Entity("App.Data.Domain.DomainModels.Concrete.Theme", b =>
@@ -414,9 +471,11 @@ namespace App.Data.Migrations
                     b.Property<string>("NormalizedUserName")
                         .HasMaxLength(256);
 
-                    b.Property<string>("PasswordHash");
+                    b.Property<string>("PasswordHash")
+                        .IsRequired();
 
                     b.Property<string>("PhoneNumber")
+                        .IsRequired()
                         .HasMaxLength(15);
 
                     b.Property<bool>("PhoneNumberConfirmed");
@@ -445,7 +504,7 @@ namespace App.Data.Migrations
                         {
                             Id = 1L,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "4a00207e-3a5b-4a56-813f-5cc9946c6048",
+                            ConcurrencyStamp = "23251655-df63-4f39-ad94-9f719adc75dd",
                             DateOfBirth = new DateTime(1999, 5, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "aurel@mail.ru",
                             EmailConfirmed = false,
@@ -462,7 +521,7 @@ namespace App.Data.Migrations
                         {
                             Id = 2L,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "47e44561-cc3b-40c7-99d3-4901262bcf53",
+                            ConcurrencyStamp = "17cb3830-355a-47d6-b95f-e037db8bf8b4",
                             DateOfBirth = new DateTime(1989, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "cristi@mail.ru",
                             EmailConfirmed = false,
@@ -479,7 +538,7 @@ namespace App.Data.Migrations
                         {
                             Id = 3L,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c2fa539f-ffe8-4519-8dee-8a040f3aa022",
+                            ConcurrencyStamp = "4bcdad59-b3ea-4d20-ba53-905984d1dd1e",
                             DateOfBirth = new DateTime(1994, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "alexandr@mail.ru",
                             EmailConfirmed = false,
@@ -496,7 +555,7 @@ namespace App.Data.Migrations
                         {
                             Id = 4L,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "2d309793-9261-4af3-b504-26ab169a1ed0",
+                            ConcurrencyStamp = "88c68724-3c47-47f6-b338-6cbfc396041c",
                             DateOfBirth = new DateTime(1984, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "iong@mail.ru",
                             EmailConfirmed = false,

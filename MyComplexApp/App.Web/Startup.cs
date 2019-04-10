@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using App.Data.Context;
+using App.Data.Domain.DomainModels.Concrete;
 using App.Data.Domain.DomainModels.Identity;
 using App.Web.Models;
 using Microsoft.AspNetCore.Builder;
@@ -37,7 +38,7 @@ namespace App.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddIdentity<User, Role>(opt =>
+            services.AddIdentity<RequestedUser, Role>(opt =>
             {
                 opt.Password.RequiredLength = 6;
                 opt.Password.RequireDigit = false;

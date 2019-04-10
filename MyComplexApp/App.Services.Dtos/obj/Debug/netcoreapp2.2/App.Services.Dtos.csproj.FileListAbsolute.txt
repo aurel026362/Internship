@@ -16,3 +16,12 @@ D:\Git\Internship\MyComplexApp\App.Services.Dtos\obj\Debug\netcoreapp2.2\App.Ser
 D:\Git\Internship\MyComplexApp\App.Services.Dtos\obj\Debug\netcoreapp2.2\App.Services.Dtos.AssemblyInfo.cs
 D:\Git\Internship\MyComplexApp\App.Services.Dtos\obj\Debug\netcoreapp2.2\App.Services.Dtos.dll
 D:\Git\Internship\MyComplexApp\App.Services.Dtos\obj\Debug\netcoreapp2.2\App.Services.Dtos.pdb
+C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Services.Dtos\bin\Debug\netcoreapp2.2\App.Services.Dtos.deps.json
+C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Services.Dtos\bin\Debug\netcoreapp2.2\App.Services.Dtos.dll
+C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Services.Dtos\bin\Debug\netcoreapp2.2\App.Services.Dtos.pdb
+C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Services.Dtos\obj\Debug\netcoreapp2.2\App.Services.Dtos.csprojAssemblyReference.cache
+C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Services.Dtos\obj\Debug\netcoreapp2.2\App.Services.Dtos.csproj.CoreCompileInputs.cache
+C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Services.Dtos\obj\Debug\netcoreapp2.2\App.Services.Dtos.AssemblyInfoInputs.cache
+C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Services.Dtos\obj\Debug\netcoreapp2.2\App.Services.Dtos.AssemblyInfo.cs
+C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Services.Dtos\obj\Debug\netcoreapp2.2\App.Services.Dtos.dll
+C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Services.Dtos\obj\Debug\netcoreapp2.2\App.Services.Dtos.pdb

@@ -11,15 +11,15 @@ namespace App.Web.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly UserManager<User> _userManager;
-        private readonly SignInManager<User> _signInManager;
-        private MyAppContext _context = new MyAppContext();
+        private readonly UserManager<RequestedUser> _userManager;
+        private readonly SignInManager<RequestedUser> _signInManager;
 
-        public AccountController(UserManager<User> groupManager, SignInManager<User> signInManager)
+        public AccountController(UserManager<RequestedUser> groupManager, SignInManager<RequestedUser> signInManager)
         {
             _userManager = groupManager;
             _signInManager = signInManager;
         }
+
         [HttpGet]
         public IActionResult Register()
         {
@@ -30,8 +30,18 @@ namespace App.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var role = model.Role;
-                User user = new User()
+                //var role = model.Role;
+                //User user = new User()
+                //{
+                //    FirstName = model.FirstName,
+                //    LastName = model.LastName,
+                //    DateOfBirth = model.DateOfBirth,
+                //    PhoneNumber = model.PhoneNumber,
+                //    PasswordHash = model.Password,
+                //    Email = model.Email,
+                //    UserName = model.Email+role
+                //};
+                RequestedUser user = new RequestedUser()
                 {
                     FirstName = model.FirstName,
                     LastName = model.LastName,
@@ -39,7 +49,8 @@ namespace App.Web.Controllers
                     PhoneNumber = model.PhoneNumber,
                     PasswordHash = model.Password,
                     Email = model.Email,
-                    UserName = model.Email+role
+                    UserName = model.Email,
+                    TypeUser = model.TypeUser
                 };
 
                 // добавляем пользователя

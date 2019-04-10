@@ -26,3 +26,17 @@ D:\Git\Internship\MyComplexApp\App.Data.Interfaces\obj\Debug\netcoreapp2.2\App.D
 D:\Git\Internship\MyComplexApp\App.Data.Interfaces\obj\Debug\netcoreapp2.2\App.Data.Interfaces.csproj.CopyComplete
 D:\Git\Internship\MyComplexApp\App.Data.Interfaces\obj\Debug\netcoreapp2.2\App.Data.Interfaces.dll
 D:\Git\Internship\MyComplexApp\App.Data.Interfaces\obj\Debug\netcoreapp2.2\App.Data.Interfaces.pdb
+C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Data.Interfaces\bin\Debug\netcoreapp2.2\App.Data.Interfaces.deps.json
+C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Data.Interfaces\bin\Debug\netcoreapp2.2\App.Data.Interfaces.dll
+C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Data.Interfaces\bin\Debug\netcoreapp2.2\App.Data.Interfaces.pdb
+C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Data.Interfaces\bin\Debug\netcoreapp2.2\App.Data.Domain.dll
+C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Data.Interfaces\bin\Debug\netcoreapp2.2\App.Infrastructure.dll
+C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Data.Interfaces\bin\Debug\netcoreapp2.2\App.Data.Domain.pdb
+C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Data.Interfaces\bin\Debug\netcoreapp2.2\App.Infrastructure.pdb
+C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Data.Interfaces\obj\Debug\netcoreapp2.2\App.Data.Interfaces.csprojAssemblyReference.cache
+C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Data.Interfaces\obj\Debug\netcoreapp2.2\App.Data.Interfaces.csproj.CoreCompileInputs.cache
+C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Data.Interfaces\obj\Debug\netcoreapp2.2\App.Data.Interfaces.AssemblyInfoInputs.cache
+C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Data.Interfaces\obj\Debug\netcoreapp2.2\App.Data.Interfaces.AssemblyInfo.cs
+C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Data.Interfaces\obj\Debug\netcoreapp2.2\App.Data.Interfaces.csproj.CopyComplete
+C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Data.Interfaces\obj\Debug\netcoreapp2.2\App.Data.Interfaces.dll
+C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Data.Interfaces\obj\Debug\netcoreapp2.2\App.Data.Interfaces.pdb

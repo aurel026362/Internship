@@ -14,3 +14,9 @@ D:\Git\Internship\MyComplexApp\App.Database\bin\Debug\App.Database.pdb
 D:\Git\Internship\MyComplexApp\App.Database\obj\Debug\App.Database.sqlprojAssemblyReference.cache
 D:\Git\Internship\MyComplexApp\App.Database\obj\Debug\App.Database.dll
 D:\Git\Internship\MyComplexApp\App.Database\obj\Debug\App.Database.pdb
+C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Database\bin\Debug\App.Database.dacpac
+C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Database\bin\Debug\App.Database.dll
+C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Database\bin\Debug\App.Database.pdb
+C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Database\obj\Debug\App.Database.sqlprojAssemblyReference.cache
+C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Database\obj\Debug\App.Database.dll
+C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Database\obj\Debug\App.Database.pdb

@@ -22,3 +22,15 @@ D:\Git\Internship\MyComplexApp\App.Infrastructure\obj\Debug\netcoreapp2.2\App.In
 D:\Git\Internship\MyComplexApp\App.Infrastructure\obj\Debug\netcoreapp2.2\App.Infrastructure.csproj.CopyComplete
 D:\Git\Internship\MyComplexApp\App.Infrastructure\obj\Debug\netcoreapp2.2\App.Infrastructure.dll
 D:\Git\Internship\MyComplexApp\App.Infrastructure\obj\Debug\netcoreapp2.2\App.Infrastructure.pdb
+C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Infrastructure\bin\Debug\netcoreapp2.2\App.Infrastructure.deps.json
+C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Infrastructure\bin\Debug\netcoreapp2.2\App.Infrastructure.dll
+C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Infrastructure\bin\Debug\netcoreapp2.2\App.Infrastructure.pdb
+C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Infrastructure\bin\Debug\netcoreapp2.2\App.Data.Domain.dll
+C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Infrastructure\bin\Debug\netcoreapp2.2\App.Data.Domain.pdb
+C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Infrastructure\obj\Debug\netcoreapp2.2\App.Infrastructure.csprojAssemblyReference.cache
+C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Infrastructure\obj\Debug\netcoreapp2.2\App.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Infrastructure\obj\Debug\netcoreapp2.2\App.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Infrastructure\obj\Debug\netcoreapp2.2\App.Infrastructure.AssemblyInfo.cs
+C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Infrastructure\obj\Debug\netcoreapp2.2\App.Infrastructure.csproj.CopyComplete
+C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Infrastructure\obj\Debug\netcoreapp2.2\App.Infrastructure.dll
+C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Infrastructure\obj\Debug\netcoreapp2.2\App.Infrastructure.pdb

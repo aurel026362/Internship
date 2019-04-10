@@ -31,6 +31,10 @@ namespace App.Data.Domain.DomainModelsConfigs.ConcreteConfigs
            
             builder.Property(e => e.PhoneNumber).HasMaxLength(15);
             
+            builder.Property(x => x.PhoneNumber).IsRequired();
+            builder.Property(x => x.PasswordHash).IsRequired();
+            builder.Property(x => x.DateOfBirth).IsRequired();
+
             builder.HasData(
                 new User()
                 {

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace App.Data.Migrations
 {
-    public partial class AddIdentity : Migration
+    public partial class v1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -45,9 +45,7 @@ namespace App.Data.Migrations
                     AccessFailedCount = table.Column<int>(nullable: false),
                     FirstName = table.Column<string>(maxLength: 20, nullable: false),
                     LastName = table.Column<string>(maxLength: 20, nullable: false),
-                    DateOfBirth = table.Column<DateTime>(type: "date", nullable: false),
-                    Login = table.Column<string>(unicode: false, maxLength: 20, nullable: false),
-                    Password = table.Column<string>(unicode: false, maxLength: 20, nullable: false)
+                    DateOfBirth = table.Column<DateTime>(type: "date", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -375,13 +373,13 @@ namespace App.Data.Migrations
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
-                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "DateOfBirth", "EMail", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "Login", "NormalizedEmail", "NormalizedUserName", "Password", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "DateOfBirth", "EMail", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { 1L, 0, "bd60ef47-4445-4eba-bc74-3529e6e26627", new DateTime(1999, 5, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "aurel@mail.ru", false, "Aurel", "Starciuc", false, null, "aurel12345", null, null, "12345", null, "+37367620932", false, null, false, null },
-                    { 2L, 0, "ca166dd6-9247-4288-947f-706ee0ec66a3", new DateTime(1989, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "cristi@mail.ru", false, "Cristi", "Anghelenici", false, null, "cristi4324", null, null, "885464", null, "+37367665467", false, null, false, null },
-                    { 3L, 0, "46292c12-ef51-418b-a548-14dae67b4ec2", new DateTime(1994, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), "alexandr@mail.ru", false, "Alexandr", "Racovschi", false, null, "alexandr1633", null, null, "asd1236", null, "+37336218321", false, null, false, null },
-                    { 4L, 0, "48de98b8-38e2-4a5c-b44a-14cfcf979d6a", new DateTime(1984, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "iong@mail.ru", false, "Ion", "Gandrabura", false, null, "ion79345", null, null, "asdqwe123", null, "+373954035", false, null, false, null }
+                    { 1L, 0, "4867183f-dc90-4bc6-992d-735d5bdd729f", new DateTime(1999, 5, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "aurel@mail.ru", false, "Aurel", "Starciuc", false, null, null, null, "12345", "+37367620932", false, null, false, "aurel12345" },
+                    { 2L, 0, "cd9d3550-c74b-4313-98c1-2360af526acd", new DateTime(1989, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "cristi@mail.ru", false, "Cristi", "Anghelenici", false, null, null, null, "885464", "+37367665467", false, null, false, "cristi4324" },
+                    { 3L, 0, "ec503e37-b559-4cc3-99a5-1ca2ac669819", new DateTime(1994, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), "alexandr@mail.ru", false, "Alexandr", "Racovschi", false, null, null, null, "asd1236", "+37336218321", false, null, false, "alexandr1633" },
+                    { 4L, 0, "12f2771b-9a00-41b6-be65-f72d8d3573b3", new DateTime(1984, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "iong@mail.ru", false, "Ion", "Gandrabura", false, null, null, null, "asdqwe123", "+373954035", false, null, false, "ion79345" }
                 });
 
             migrationBuilder.InsertData(

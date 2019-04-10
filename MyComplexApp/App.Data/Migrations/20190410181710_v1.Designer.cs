@@ -10,14 +10,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace App.Data.Migrations
 {
     [DbContext(typeof(MyAppContext))]
-    [Migration("20190410135956_mynewM")]
-    partial class mynewM
+    [Migration("20190410181710_v1")]
+    partial class v1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.3-servicing-35854")
+                .HasAnnotation("ProductVersion", "2.2.4-servicing-10062")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -410,21 +410,11 @@ namespace App.Data.Migrations
 
                     b.Property<DateTimeOffset?>("LockoutEnd");
 
-                    b.Property<string>("Login")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .IsUnicode(false);
-
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256);
 
                     b.Property<string>("NormalizedUserName")
                         .HasMaxLength(256);
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .IsUnicode(false);
 
                     b.Property<string>("PasswordHash");
 
@@ -457,69 +447,69 @@ namespace App.Data.Migrations
                         {
                             Id = 1L,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8b3d55a3-c560-4f1c-a321-a069bd83988e",
+                            ConcurrencyStamp = "4867183f-dc90-4bc6-992d-735d5bdd729f",
                             DateOfBirth = new DateTime(1999, 5, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "aurel@mail.ru",
                             EmailConfirmed = false,
                             FirstName = "Aurel",
                             LastName = "Starciuc",
                             LockoutEnabled = false,
-                            Login = "aurel12345",
-                            Password = "12345",
+                            PasswordHash = "12345",
                             PhoneNumber = "+37367620932",
                             PhoneNumberConfirmed = false,
-                            TwoFactorEnabled = false
+                            TwoFactorEnabled = false,
+                            UserName = "aurel12345"
                         },
                         new
                         {
                             Id = 2L,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "524b9305-ba86-43b9-9a37-ba35d515f70c",
+                            ConcurrencyStamp = "cd9d3550-c74b-4313-98c1-2360af526acd",
                             DateOfBirth = new DateTime(1989, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "cristi@mail.ru",
                             EmailConfirmed = false,
                             FirstName = "Cristi",
                             LastName = "Anghelenici",
                             LockoutEnabled = false,
-                            Login = "cristi4324",
-                            Password = "885464",
+                            PasswordHash = "885464",
                             PhoneNumber = "+37367665467",
                             PhoneNumberConfirmed = false,
-                            TwoFactorEnabled = false
+                            TwoFactorEnabled = false,
+                            UserName = "cristi4324"
                         },
                         new
                         {
                             Id = 3L,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "6ce1e01c-0bcf-4723-ad35-cfc8082edaff",
+                            ConcurrencyStamp = "ec503e37-b559-4cc3-99a5-1ca2ac669819",
                             DateOfBirth = new DateTime(1994, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "alexandr@mail.ru",
                             EmailConfirmed = false,
                             FirstName = "Alexandr",
                             LastName = "Racovschi",
                             LockoutEnabled = false,
-                            Login = "alexandr1633",
-                            Password = "asd1236",
+                            PasswordHash = "asd1236",
                             PhoneNumber = "+37336218321",
                             PhoneNumberConfirmed = false,
-                            TwoFactorEnabled = false
+                            TwoFactorEnabled = false,
+                            UserName = "alexandr1633"
                         },
                         new
                         {
                             Id = 4L,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "959ac3f3-b8b3-4bcb-a631-39cee17c6092",
+                            ConcurrencyStamp = "12f2771b-9a00-41b6-be65-f72d8d3573b3",
                             DateOfBirth = new DateTime(1984, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "iong@mail.ru",
                             EmailConfirmed = false,
                             FirstName = "Ion",
                             LastName = "Gandrabura",
                             LockoutEnabled = false,
-                            Login = "ion79345",
-                            Password = "asdqwe123",
+                            PasswordHash = "asdqwe123",
                             PhoneNumber = "+373954035",
                             PhoneNumberConfirmed = false,
-                            TwoFactorEnabled = false
+                            TwoFactorEnabled = false,
+                            UserName = "ion79345"
                         });
                 });
 
@@ -563,11 +553,9 @@ namespace App.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<long>", b =>
                 {
-                    b.Property<string>("LoginProvider")
-                        .HasMaxLength(128);
+                    b.Property<string>("LoginProvider");
 
-                    b.Property<string>("ProviderKey")
-                        .HasMaxLength(128);
+                    b.Property<string>("ProviderKey");
 
                     b.Property<string>("ProviderDisplayName");
 
@@ -597,11 +585,9 @@ namespace App.Data.Migrations
                 {
                     b.Property<long>("UserId");
 
-                    b.Property<string>("LoginProvider")
-                        .HasMaxLength(128);
+                    b.Property<string>("LoginProvider");
 
-                    b.Property<string>("Name")
-                        .HasMaxLength(128);
+                    b.Property<string>("Name");
 
                     b.Property<string>("Value");
 
