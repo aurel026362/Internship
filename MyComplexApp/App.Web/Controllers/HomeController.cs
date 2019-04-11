@@ -5,17 +5,42 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using App.Web.Models;
+using Microsoft.AspNetCore.Identity;
+using App.Data.Domain.DomainModels.Identity;
+using App.Data.Context;
+using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authorization;
+using App.Web.ViewModels;
 
 namespace App.Web.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly UserManager<User> _userManager;
+        private readonly SignInManager<User> _signInManager;
+        private readonly MyAppContext _context;
+        private readonly ILogger<AccountController> _logger;
+
+        public HomeController(UserManager<User> userManager, SignInManager<User> signInManager,
+            MyAppContext context, ILogger<AccountController> logger)
+        {
+            _userManager = userManager;
+            _signInManager = signInManager;
+            _logger = logger;
+            _context = context;
+        }
+
         public IActionResult Index()
         {
             return View();
         }
 
         public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        public IActionResult Success()
         {
             return View();
         }

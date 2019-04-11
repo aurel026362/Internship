@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -38,7 +39,7 @@ namespace App.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddIdentity<RequestedUser, Role>(opt =>
+            services.AddIdentity<User, Role>(opt =>
             {
                 opt.Password.RequiredLength = 6;
                 opt.Password.RequireDigit = false;
@@ -51,6 +52,7 @@ namespace App.Web
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
+            services.AddTransient<IEmailSender, EmailSender>();
             //NEW CODE
             services.AddDbContext<MyAppContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
@@ -69,6 +71,7 @@ namespace App.Web
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
             }
             else
             {
@@ -78,18 +81,6 @@ namespace App.Web
             }
 
             app.UseAuthentication();
-            //---------MyCode
-            //app.UseMiddleware<MainMiddleware>();
-            //app.UseMiddleware<SecondaryMiddleWare>();
-            //app.Run(async (context) =>
-            //{
-            //    var a = Configuration.GetConnectionString("DevConnection");
-            //    await context.Response.WriteAsync("a=" + a);
-            //});
-
-            //app.UseMainMiddleware();
-            //app.UseSecondaryMiddleWare();
-            //---------------
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();

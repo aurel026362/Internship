@@ -1,0 +1,116 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-md-6">
+            <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <h4>Create a new account.</h4>
+                    <hr />
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Input.FirstName"></label>
+                        <input asp-for="Input.FirstName" class="form-control" />
+                        <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Input.LastName"></label>
+                        <input asp-for="Input.LastName" class="form-control" />
+                        <span asp-validation-for="Input.LastName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Input.DateOfBirth"></label>
+                        <input asp-for="Input.DateOfBirth" class="form-control" />
+                        <span asp-validation-for="Input.DateOfBirth" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Input.PhoenNumber"></label>
+                        <input asp-for="Input.PhoenNumber" class="form-control" />
+                        <span asp-validation-for="Input.PhoenNumber" class="text-danger"></span>
+                    </div>
+                    <h4 class="page-header">Account Data</h4>
+                    <div class="form-group">
+                        <label asp-for="Input.Email"></label>
+                        <input asp-for="Input.Email" class="form-control" />
+                        <span asp-validation-for="Input.Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Input.Password"></label>
+                        <input asp-for="Input.Password" class="form-control" />
+                        <span asp-validation-for="Input.Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Input.ConfirmPassword"></label>
+                        <input asp-for="Input.ConfirmPassword" class="form-control" />
+                        <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                    </div>
+                    <div class="form-group float-label-control">
+                        <select class="form-control">
+                            <option name="Intern">Intern</option>
+                            <option name="Menthor">Menthor</option>
+                            <option name="Admin">Admin</option>
+                        </select>
+                    </div>
+                    <div>
+                        <input type="submit" class="btn btn-lg btn-primary" value="Sign Up">
+                    </div>
+            </form>
+        </div>
+        @section Scripts {
+            <partial name="_ValidationScriptsPartial" />
+        }
+        <div class="col-xs-12 col-md-6">
+            <div>
+                <img src="imgs/foto1.jpg" alt="" id="imageRegister">
+            </div>
+            <br>
+            <div>
+                <h2>Ceva informatie</h2>
+                <p>
+                    Madonna and Child with Angels is the central panel of the large multi-paneled
+                    altarpiece produced by Masaccio for the chapel of Saint Julian in the church
+                    of Santa Maria del Carmine in Pisa, Italy. The panel, which is badly damaged
+                    <br><br>
+                    Madonna and Child with Angels is the central panel of the large multi-paneled
+                    altarpiece produced by Masaccio for the chapel of Saint Julian in the church
+                    of Santa Maria del Carmine in Pisa, Italy. The panel, which is badly damaged
+                    and smaller than its original size, was produced in collaboration with Masaccio's
+                    brother Giovanni and with Andrea di Giusto in 1426. It depicts six figures: the
+                    <br><br>
+                    Madonna and Child with Angels is the central panel of the large multi-paneled
+                    altarpiece produced by Masaccio for the chapel of Saint Julian in the church
+                    <br>
+                    <a href="#" class="btn btn-danger">Read More</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr>
+<!--Blocul cu text 1-->
+<div class="container-fluid">
+    <div class="row jumbotron">
+        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-10">
+            <p class="lead">
+                Era odata ca niciodata o prea frumoasa fata.
+                Din mare parte... Limba noastr-i o comoara, in adincuri
+                infundata, un sirag de piatra rara in adincuri infundata.
+                Era odata ca niciodata o prea frumoasa fata.
+                Din mare parte... Limba noastr-i o comoara, in adincuri
+                infundata, un sirag de piatra rara in adincuri infundata.
+            </p>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-2">
+            <a href="#">
+                <button class="btn btn-succes btn-lg" type="button">Read More</button>
+            </a>
+        </div>
+    </div>
+</div>
+<br>

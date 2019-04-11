@@ -1,11 +1,9 @@
-﻿@*@{
-        ViewData["Title"] = "Home Page";
-    }
+﻿@model App.Web.ViewModels.LoginViewModel
 
-    <div class="text-center">
-        <h1 class="display-4">Welcome</h1>
-        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-    </div>*@
+@{
+        ViewData["Title"] = "Home Page";
+}
+
 
 
 <div class="carousel slide" data-ride="carousel" id="slides">
@@ -51,20 +49,20 @@
         <div class="row col-12 text-center">
             <div class="text-center">
                 <h4 class="page-header">Account Data</h4>
-                <form role="form">
+                <form role="form" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
                     <div class="form-group float-label-control label-bottom">
-                        <label for="">Login</label>
-                        <input type="text" class="form-control" placeholder="Login">
+                        <label asp-for="Email">Email</label>
+                        <input asp-for="Email" type="text" class="form-control" placeholder="Login">
                     </div>
                     <div class="form-group float-label-control">
-                        <label for="">Password</label>
-                        <input type="password" class="form-control" placeholder="Password">
+                        <label asp-for="Password">Password</label>
+                        <input asp-for="Password" type="password" class="form-control" placeholder="Password">
                     </div>
 
                     <div>
                         <input type="submit" class="btn btn-lg btn-primary" id="signInBtn" value="Sign In">
                         <button id="signInBtn" style=" padding:5px; color:rgb(165, 165, 165);"
-                                class="btn btn-outline-light">
+                                class="btn btn-outline-light" type="submit">
                             I forgot my password!
                         </button>
                     </div>

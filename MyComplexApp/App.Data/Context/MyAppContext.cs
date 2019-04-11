@@ -9,7 +9,7 @@ namespace App.Data.Context
     public class MyAppContext // : DbContext
            : IdentityDbContext<User, Role,long>
     {
-        public virtual DbSet<Domain.DomainModels.Identity.User> Users { get; set; }
+        //public virtual DbSet<Domain.DomainModels.Identity.User> Users { get; set; }
         public virtual DbSet<UserIntern> Interns { get; set; }
         public virtual DbSet<UserMenthor> Menthors { get; set; }
         public virtual DbSet<Domain.DomainModels.Concrete.Module> Modules { get; set; }
@@ -34,8 +34,8 @@ namespace App.Data.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //optionsBuilder.UseSqlServer(@"Data Source=MDDSK40071\TOMANDJERRY;Initial Catalog=test;Integrated Security=True");
-            optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-BIL3ATO\MSSQLSERVER1;Initial Catalog=test;Integrated Security=True");
+            optionsBuilder.UseSqlServer(@"Data Source=MDDSK40071\TOMANDJERRY;Initial Catalog=test;Integrated Security=True");
+            //optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-BIL3ATO\MSSQLSERVER1;Initial Catalog=test;Integrated Security=True");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
