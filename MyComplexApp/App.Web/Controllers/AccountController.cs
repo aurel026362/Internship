@@ -8,7 +8,8 @@ using App.Data.Context;
 using System;
 
 namespace App.Web.Controllers
-{
+{ 
+    
     public class AccountController : Controller
     {
         private readonly UserManager<User> _userManager;
