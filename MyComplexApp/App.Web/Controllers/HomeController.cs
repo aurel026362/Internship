@@ -19,10 +19,10 @@ namespace App.Web.Controllers
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly MyAppContext _context;
-        private readonly ILogger<AccountController> _logger;
+        private readonly ILogger<AdminController> _logger;
 
         public HomeController(UserManager<User> userManager, SignInManager<User> signInManager,
-            MyAppContext context, ILogger<AccountController> logger)
+            MyAppContext context, ILogger<AdminController> logger)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -31,6 +31,16 @@ namespace App.Web.Controllers
         }
 
         public IActionResult Index()
+        {
+            return View();
+        }
+
+        public IActionResult About()
+        {
+            return View();
+        }
+
+        public IActionResult Contacts()
         {
             return View();
         }

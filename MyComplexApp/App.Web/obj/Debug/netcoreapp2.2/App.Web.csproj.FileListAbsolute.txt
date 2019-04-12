@@ -90,7 +90,6 @@ D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\App.Web.Views.pdb
 D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\App.Web.csproj.CopyComplete
 D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\App.Web.dll
 D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\App.Web.pdb
-D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\Account\Register.g.cshtml.cs
 C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Web\bin\Debug\netcoreapp2.2\App.Web.dll.config
 C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Web\bin\Debug\netcoreapp2.2\App.Web.deps.json
 C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Web\bin\Debug\netcoreapp2.2\App.Web.runtimeconfig.json
@@ -148,7 +147,6 @@ D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Areas\Ident
 D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_LoginPartial.g.cshtml.cs
 D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Register.g.cshtml.cs
 D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\ConfirmEmail.g.cshtml.cs
-D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\Account\Index.g.cshtml.cs
 D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Logout.g.cshtml.cs
 D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Manage\PersonalData.g.cshtml.cs
 D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\Account\Manage\_ManageNav.g.cshtml.cs
@@ -224,3 +222,5 @@ C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2
 C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\Home\Error.g.cshtml.cs
 C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\Home\Success.g.cshtml.cs
 C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_LoginPartial.g.cshtml.cs
+D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\Home\About.g.cshtml.cs
+D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\Home\Contacts.g.cshtml.cs

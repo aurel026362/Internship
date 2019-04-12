@@ -57,12 +57,24 @@ namespace App.Web
             services.AddDbContext<MyAppContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
 
-            //services.AddDefaultIdentity<User>()
-            //    .AddEntityFrameworkStores<MyAppContext>();
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+        .AddRazorPagesOptions(options =>
+        {
+            options.AllowAreas = true;
+            options.Conventions.AuthorizeAreaFolder("Identity", "/Account/Manage");
+            options.Conventions.AuthorizeAreaPage("Identity", "/Account/Logout");
+        });
 
-            //services.AddIdentity<User, IdentityRole>()
-            //.AddEntityFrameworkStores<MyAppContext>()
-            //.AddDefaultTokenProviders();
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = $"/Identity/Account/Login";
+                options.LogoutPath = $"/Identity/Account/Logout";
+                options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
+            });
+
+            // using Microsoft.AspNetCore.Identity.UI.Services;
+            //services.AddSingleton<IEmailSender, EmailSender>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -80,11 +92,13 @@ namespace App.Web
                 app.UseHsts();
             }
 
-            app.UseAuthentication();
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+
+            app.UseAuthentication();
+            
 
             app.UseMvc(routes =>
             {

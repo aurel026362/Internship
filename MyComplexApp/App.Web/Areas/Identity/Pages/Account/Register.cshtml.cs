@@ -10,6 +10,8 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using App.Data.Context;
+using App.Data.Domain.DomainModels.Concrete;
 
 namespace App.Web.Areas.Identity.Pages.Account
 {
@@ -18,17 +20,20 @@ namespace App.Web.Areas.Identity.Pages.Account
     {
         private readonly SignInManager<User> _signInManager;
         private readonly UserManager<User> _userManager;
+        private readonly MyAppContext _context;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
 
         public RegisterModel(
             UserManager<User> userManager,
             SignInManager<User> signInManager,
+            MyAppContext context,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _context = context;
             _logger = logger;
             _emailSender = emailSender;
         }
@@ -42,10 +47,10 @@ namespace App.Web.Areas.Identity.Pages.Account
         {
             [Required]
             public string FirstName { get; set; }
-            
+
             [Required]
             public string LastName { get; set; }
-            
+
             [Required]
             [DataType(DataType.Date)]
             public DateTime DateOfBirth { get; set; }
@@ -68,6 +73,9 @@ namespace App.Web.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+
+            [Required]
+            public string Role { get; set; }
         }
 
         public void OnGet(string returnUrl = null)
@@ -90,7 +98,31 @@ namespace App.Web.Areas.Identity.Pages.Account
                     DateOfBirth = Input.DateOfBirth
                 };
 
-                var result = await _userManager.CreateAsync(user, Input.Password);
+
+                IdentityResult result = null;
+
+                    using (var transaction = _context.Database.BeginTransaction())
+                    {
+                        try
+                        {
+                        result = await _userManager.CreateAsync(user, Input.Password);
+                        await _userManager.AddToRoleAsync(user, Input.Role);
+                        switch (Input.Role)
+                        {
+                            case "Menthor":{ await _context.Menthors.AddAsync(new UserMenthor() { User = user}); await _context.SaveChangesAsync(); }break;
+                            case "Intern": { await _context.AddAsync(new UserIntern() { User = user}); await _context.SaveChangesAsync(); } break;
+                            case "Admin": break;
+                            default: throw new Exception();
+                        }
+                        transaction.Commit();
+                        }
+                        catch (Exception)
+                        {
+                        transaction.Rollback();
+                            // TODO: Handle failure
+                        }
+                    }
+
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");

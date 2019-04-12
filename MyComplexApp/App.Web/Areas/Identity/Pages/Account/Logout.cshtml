@@ -3,8 +3,17 @@
 @{
     ViewData["Title"] = "Log out";
 }
+<script>
 
+    $('.isLoggedOut').hide();
+    $('#menuId').append("<li class='nav - item active isLoggedIn'><a href = '/identity/account/register' class= 'nav-link' > Register</a > </li >");
+    $('#menuId').append("<li class='nav - item active isLoggedIn'><a href = '/identity/account/login' class= 'nav-link' > Log In</a > </li >");
+
+</script>
 <header>
-    <h1>@ViewData["Title"]</h1>
-    <p>You have successfully logged out of the application.</p>
+    <div class="container-fluid">
+        <h1>@ViewData["Title"]</h1>
+        <p>You have successfully logged out of the application.</p>
+        </div>
 </header>
+

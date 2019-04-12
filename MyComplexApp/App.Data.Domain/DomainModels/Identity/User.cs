@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace App.Data.Domain.DomainModels.Identity
@@ -10,6 +11,8 @@ namespace App.Data.Domain.DomainModels.Identity
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
+
+        [DataType(DataType.Date)]
         public DateTime DateOfBirth { get; set; }
         //public string NumberPhone { get; set; }
         //public string Login { get; set; }

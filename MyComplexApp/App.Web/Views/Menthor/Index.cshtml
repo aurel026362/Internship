@@ -1,0 +1,11 @@
+﻿@model IEnumerable<App.Data.Domain.DomainModels.Identity.User>
+    @using Microsoft.AspNetCore.Identity
+    @inject UserManager<App.Data.Domain.DomainModels.Identity.User>
+    UserManager
+
+    @{
+    ViewData["Title"] = "Index";
+    }
+
+    <h5>Welcome @UserManager.FindByNameAsync(UserManager.GetUserName(User)).Result.FirstName</h5>
+

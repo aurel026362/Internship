@@ -10,6 +10,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using App.Data.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace App.Web.Areas.Identity.Pages.Account
 {
@@ -68,7 +70,7 @@ namespace App.Web.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
-            returnUrl = returnUrl ?? Url.Content("~/Admin/Index");
+                returnUrl = returnUrl ?? Url.Content("~/Admin/Index");
 
             if (ModelState.IsValid)
             {

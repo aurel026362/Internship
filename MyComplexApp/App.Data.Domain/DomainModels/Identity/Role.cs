@@ -5,7 +5,7 @@ using System.Text;
 
 namespace App.Data.Domain.DomainModels.Identity
 {
-    public class Role :IdentityRole<long>
+    public class Role : IdentityRole<long>
     {
     }
 }

@@ -1,135 +1,286 @@
 ﻿@model IEnumerable<App.Data.Domain.DomainModels.Identity.User>
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<App.Data.Domain.DomainModels.Identity.User> UserManager
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<!DOCTYPE html>
+<html>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<div class="container-fluid">
+<head>
+    <title>My App</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
+
+    <!-- <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/UserStyle.css"> -->
+</head>
+
+<body>
     <div class="row">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.FirstName)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.LastName)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.DateOfBirth)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.UserName)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.NormalizedUserName)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Email)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.NormalizedEmail)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.EmailConfirmed)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.PasswordHash)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.SecurityStamp)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ConcurrencyStamp)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.PhoneNumber)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.PhoneNumberConfirmed)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.TwoFactorEnabled)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.LockoutEnd)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.LockoutEnabled)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.AccessFailedCount)
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.FirstName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.LastName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.DateOfBirth)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.UserName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.NormalizedUserName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Email)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.NormalizedEmail)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.EmailConfirmed)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PasswordHash)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.SecurityStamp)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ConcurrencyStamp)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PhoneNumber)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PhoneNumberConfirmed)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.TwoFactorEnabled)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.LockoutEnd)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.LockoutEnabled)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.AccessFailedCount)
-                        </td>
-                        <td>
-                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+        <div class="col-2">
+            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
+                   aria-controls="v-pills-home" aria-selected="true">Home</a>
+                <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
+                   aria-controls="v-pills-profile" aria-selected="false">Profile</a>
+                <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab"
+                   aria-controls="v-pills-messages" aria-selected="false">Messages</a>
+                <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab"
+                   aria-controls="v-pills-settings" aria-selected="false">Settings</a>
+                    <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout">
+                        <button id="logout" type="submit" class="nav-link btn btn-link text-dark"><span class="text-danger">Logout</span></button>
+                    </form>
+            </div>
+        </div>
+        <div class="col-10">
+            <div class="tab-content" id="v-pills-tabContent">
+                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
+                     aria-labelledby="v-pills-home-tab">
+
+                    <div class="container-fluid">
+                        <div class="row">
+                            <h5>Welcome @UserManager.FindByNameAsync(UserManager.GetUserName(User)).Result.FirstName</h5>
+                            <div class="col-12" style="padding:20px">
+                                <img src="https://w2w.fund/Content/img/default.png"
+                                     class="rounded-circle mx-auto d-block">
+                                <br>
+                            </div>
+                            <div class="row col-12 d-flex justify-content-center">
+                                <div class="col-sm-8 text-center">
+                                    <table class="table">
+                                        <tr>
+                                            <th colspan="2">Personal Data</th>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2"><h5>@UserManager.FindByNameAsync(UserManager.GetUserName(User)).Result.Email</h5></td>
+                                        </tr>
+                                        <tr>
+                                            <td>@UserManager.FindByNameAsync(UserManager.GetUserName(User)).Result.FirstName</td>
+                                            <td>@UserManager.FindByNameAsync(UserManager.GetUserName(User)).Result.LastName</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                    <!--  -->
+                    <div class="container-fluid text-center">
+                        <div class="row bg-first">
+                            <p>
+                                My problem is that after translating up the image, the div that contains it remains
+                                unchanged, and has lots of white space in the place where the image used to be.
+                            </p>
+                        </div>
+                        <div class="row">
+                            <h5>@UserManager.FindByNameAsync(UserManager.GetUserName(User)).Result.Email</h5>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.FirstName)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.LastName)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.DateOfBirth)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.UserName)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Email)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.EmailConfirmed)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.PhoneNumber)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.PhoneNumberConfirmed)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.AccessFailedCount)
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.FirstName)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.LastName)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.DateOfBirth)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.UserName)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Email)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.EmailConfirmed)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.PhoneNumber)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.PhoneNumberConfirmed)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.AccessFailedCount)
+                                            </td>
+                                            <td>
+                                                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                                                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                                                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="container-fluid text-center">
+                        <div class="row">
+                            <div class="col-md-4 col-xs-12">
+                                <canvas id="mychart"></canvas>
+                            </div>
+                            <div class="col-md-6 col-xs-12">
+                                <canvas id="mychart2"></canvas>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <p class="text-center text-muted">
+                                Coding Just Got Easy!
+
+                                Free Plugin for IntelliJ,
+                                Android Studio, and Eclipse: Write fast & error free code with AI code completions.
+                            </p>
+                        </div>
+                        <div class="row">
+                            <canvas id="mychart3"></canvas>
+                            <script src="js_charts/javsc.js"></script>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                    <h4>Something</h4>
+                </div>
+                <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12" style="padding:20px">
+                                <img src="https://w2w.fund/Content/img/default.png"
+                                     class="rounded-circle mx-auto d-block">
+                                <br>
+                                <button class="btn btn-outline-primary mx-auto d-block">
+                                    Change Profile
+                                    Photo
+                                </button>
+                            </div>
+                            <div class="row col-12 d-flex justify-content-center">
+                                <div class="col-sm-8 text-center">
+                                    <table class="table">
+                                        <tr>
+                                            <th>Personal Data</th>
+                                            <th>
+                                                <button class="btn btn-outline-primary btn-sm">Change Data</button>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <td>First Name</td>
+                                            <td>@UserManager.FindByNameAsync(UserManager.GetUserName(User)).Result.FirstName</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Last Name</td>
+                                            <td>@UserManager.FindByNameAsync(UserManager.GetUserName(User)).Result.LastName</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Number Phone</td>
+                                            <td>@UserManager.FindByNameAsync(UserManager.GetUserName(User)).Result.PhoneNumber</td>
+                                        </tr>
+                                        <tr>
+                                            <td>EMail</td>
+                                            <td>@UserManager.FindByNameAsync(UserManager.GetUserName(User)).Result.Email</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Account Data</th>
+                                            <th>
+                                                <button class="btn btn-outline-primary btn-sm">Change Data</button>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <td>Login</td>
+                                            <td>@UserManager.FindByNameAsync(UserManager.GetUserName(User)).Result.Email</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Password</td>
+                                            <td>********</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-danger">Delete Account</button>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+    <script>
+        $('#myTab a[href="#profile"]').tab('show') // Select tab by name
+        $('#myTab li:first-child a').tab('show') // Select first tab
+        $('#myTab li:last-child a').tab('show') // Select last tab
+        $('#myTab li:nth-child(3) a').tab('show')
+    </script>
+    <footer class="container-fluid" id="footer">
+        <div class="container-fluid">
+            <div class="row padding text-center">
+                <div class="col-12">
+                    <h2>Our Contacts</h2>
+                </div>
+                <div class="col-12 social padding">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
