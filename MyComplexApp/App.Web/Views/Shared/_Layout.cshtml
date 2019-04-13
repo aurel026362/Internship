@@ -57,8 +57,20 @@
                     else
                     {
                         <li class="nav-item active isLoggedOut">
-                            <a href="~/Admin/Index" class="nav-link"><span class="text-primary">Hi @UserManager.GetUserName(User)</span></a>
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <a href="~/Admin/Index" class="nav-link"><span class="text-primary">Hi @UserManager.GetUserName(User)</span></a>
+                            }
+                            else if (User.IsInRole("Menthor"))
+                            {
+                                <a href="~/Menthor/Index" class="nav-link"><span class="text-primary">Hi @UserManager.GetUserName(User)</span></a>
+                            }
+                            else if (User.IsInRole("Intern"))
+                            {
+                                <a href="~/Intern/Index" class="nav-link"><span class="text-primary">Hi @UserManager.GetUserName(User)</span></a>
+                            }
                         </li>
+
                         <li class="nav-item isLoggedOut">
                             <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout">
                                 <button id="logout" type="submit" class="nav-link btn btn-link text-dark"><span class="text-danger"><span class="text-danger">Log Out</span></button>

@@ -14,6 +14,7 @@ namespace App.Data.Domain.DomainModelsConfigs.ConcreteConfigs
         {
             builder.ToTable("ExamMarks");
             builder.HasKey(x => x.Id);
+            builder.HasIndex(x=> new { x.InternId, x.ExamId});
             builder.Property(x => x.Comment).HasMaxLength(200);
             builder.HasOne(x => x.Intern).WithMany(x => x.ExamMarks).HasForeignKey(x => x.InternId);
             builder.HasOne(x => x.Exam).WithMany(x => x.ExamMarks).HasForeignKey(x => x.ExamId);

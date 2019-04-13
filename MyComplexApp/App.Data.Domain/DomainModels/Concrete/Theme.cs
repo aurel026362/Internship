@@ -4,7 +4,7 @@ using System.Text;
 
 namespace App.Data.Domain.DomainModels.Concrete
 {
-    public class Theme : Entity<long>
+    public class Theme : Entity
     {
         public string Name { get; set; }
         public DateTime? TimeOfTheme { get; set; }

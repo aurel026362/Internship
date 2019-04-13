@@ -4,7 +4,7 @@ using System.Text;
 
 namespace App.Data.Domain.DomainModels.Concrete
 {
-    public class Exam : Entity<long>
+    public class Exam : Entity
     {
         public DateTime Date { get; set; }
         public long ModuleId { get; set; }

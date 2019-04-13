@@ -1,0 +1,36 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<App.Data.Domain.DomainModels.Identity.User> UserManager
+@{
+    ViewData["Title"] = "Profile";
+}
+
+<div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
+     aria-labelledby="v-pills-home-tab">
+
+    <div class="container-fluid">
+        <div class="row">
+            <h5>Welcome @UserManager.FindByNameAsync(UserManager.GetUserName(User)).Result.FirstName</h5>
+            <div class="col-12" style="padding:20px">
+                <img src="https://w2w.fund/Content/img/default.png"
+                     class="rounded-circle mx-auto d-block">
+                <br>
+            </div>
+            <div class="row col-12 d-flex justify-content-center">
+                <div class="col-sm-8 text-center">
+                    <table class="table">
+                        <tr>
+                            <th colspan="2">Personal Data</th>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><h5>@UserManager.FindByNameAsync(UserManager.GetUserName(User)).Result.Email</h5></td>
+                        </tr>
+                        <tr>
+                            <td>@UserManager.FindByNameAsync(UserManager.GetUserName(User)).Result.FirstName</td>
+                            <td>@UserManager.FindByNameAsync(UserManager.GetUserName(User)).Result.LastName</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

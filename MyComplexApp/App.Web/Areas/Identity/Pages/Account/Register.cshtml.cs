@@ -101,27 +101,28 @@ namespace App.Web.Areas.Identity.Pages.Account
 
                 IdentityResult result = null;
 
-                    using (var transaction = _context.Database.BeginTransaction())
+                using (var transaction = _context.Database.BeginTransaction())
+                {
+                    try
                     {
-                        try
-                        {
                         result = await _userManager.CreateAsync(user, Input.Password);
                         await _userManager.AddToRoleAsync(user, Input.Role);
                         switch (Input.Role)
                         {
-                            case "Menthor":{ await _context.Menthors.AddAsync(new UserMenthor() { User = user}); await _context.SaveChangesAsync(); }break;
-                            case "Intern": { await _context.AddAsync(new UserIntern() { User = user}); await _context.SaveChangesAsync(); } break;
+                            case "Menthor": { await _context.Menthors.AddAsync(new UserMenthor() { User = user }); await _context.SaveChangesAsync(); } break;
+                            case "Intern": { await _context.Interns.AddAsync(new UserIntern() { User = user }); await _context.SaveChangesAsync(); } break;
                             case "Admin": break;
                             default: throw new Exception();
                         }
                         transaction.Commit();
-                        }
-                        catch (Exception)
-                        {
-                        transaction.Rollback();
-                            // TODO: Handle failure
-                        }
                     }
+                    catch (Exception e)
+                    {
+                        transaction.Rollback();
+                        throw new Exception();
+                        // TODO: Handle failure
+                    }
+                }
 
                 if (result.Succeeded)
                 {

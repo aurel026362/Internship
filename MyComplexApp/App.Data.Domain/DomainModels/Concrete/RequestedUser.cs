@@ -5,7 +5,7 @@ using System.Text;
 
 namespace App.Data.Domain.DomainModels.Concrete
 {
-    public class RequestedUser : IdentityUser<long>
+    public class RequestedUser : IdentityUser
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

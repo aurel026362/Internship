@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace App.Services.Interfaces
+namespace App.Data.Interfaces
 {
-    public interface IUserService
+    public class InternEMarks
     {
     }
 }

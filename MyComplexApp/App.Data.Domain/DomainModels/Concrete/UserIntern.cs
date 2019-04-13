@@ -5,9 +5,9 @@ using System.Text;
 
 namespace App.Data.Domain.DomainModels.Concrete
 {
-    public class UserIntern : Entity<long>
+    public class UserIntern : Entity
     {
-        public long GroupId { get; set; }
+        public long? GroupId { get; set; }
         public long UserId { get; set; }
         public long? MenthorId { get; set; }
         public User User { get; set; }

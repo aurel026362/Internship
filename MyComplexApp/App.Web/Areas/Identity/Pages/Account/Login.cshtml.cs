@@ -70,16 +70,19 @@ namespace App.Web.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
-                returnUrl = returnUrl ?? Url.Content("~/Admin/Index");
+                returnUrl = returnUrl ?? Url.Content("~/Home/Index");
 
             if (ModelState.IsValid)
             {
-                // This doesn't count login failures towards account lockout
-                // To enable password failures to trigger account lockout, set lockoutOnFailure: true
                 var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: true);
+                
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
+                    var currentRole = User.IsInRole("Admin");
+                    if (User.IsInRole("Admin")) return LocalRedirect("~/Admin/Index");
+                    if (User.IsInRole("Menthor")) return LocalRedirect("~/Menthor/Index");
+                    if (User.IsInRole("Intern")) return LocalRedirect("~/Intern/Index");
                     return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)

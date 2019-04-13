@@ -4,8 +4,8 @@ using System.Text;
 
 namespace App.Data.Domain.DomainModels.Concrete
 {
-    public abstract class Entity<T>
+    public abstract class Entity
     {
-        public T Id { get; set; }
+        public long Id { get; set; }
     }
 }

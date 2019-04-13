@@ -1,6 +1,7 @@
 ﻿using App.Data.Domain.DomainModels.Concrete;
 using App.Data.Domain.DomainModels.Identity;
 using App.Data.Domain.DomainModelsConfigs.ConcreteConfigs;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -56,6 +57,14 @@ namespace App.Data.Context
             modelBuilder.ApplyConfiguration(new GroupConfig());
             modelBuilder.ApplyConfiguration(new CommentConfig());
             modelBuilder.ApplyConfiguration(new RequestedUserConfig());
+
+            //modelBuilder.Entity<User>().ToTable("Users");
+            //modelBuilder.Entity<Role>().ToTable("Roles");
+            //modelBuilder.Entity<IdentityUserRole<long>>().ToTable("UserRoles");
+            //modelBuilder.Entity<IdentityUserToken<long>>().ToTable("UserTokens");
+            //modelBuilder.Entity<IdentityUserLogin<long>>().ToTable("UserLogins");
+            //modelBuilder.Entity<IdentityUserClaim<long>>().ToTable("UserClaims");
+            //modelBuilder.Entity<IdentityRoleClaim<long>>().ToTable("RoleClaims");
 
         }
     }

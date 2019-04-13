@@ -4,18 +4,22 @@ using System.Linq;
 using System.Threading.Tasks;
 using App.Data.Context;
 using App.Data.Domain.DomainModels.Identity;
+using App.Data.Repository;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace App.Web.Controllers
 {
+    [Authorize(Roles = "Menthor")]
     public class MenthorController : Controller
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly MyAppContext _context;
 
-        public MenthorController(UserManager<User> groupManager, SignInManager<User> signInManager, MyAppContext context, IHttpContextAccessor httpContextAccessor)
+        public MenthorController(UserManager<User> groupManager, SignInManager<User> signInManager, MyAppContext context)
         {
             _userManager = groupManager;
             _signInManager = signInManager;
@@ -24,9 +28,11 @@ namespace App.Web.Controllers
 
             //var userId = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
         }
-        public async Task<IActionResult> Index()
+
+        public IActionResult Index()
         {
-            return View(await _context.Users.ToListAsync());
+            //var user = _userManager.FindByEmailAsync();
+            return View(_context.ThemeMarks.ToList());
         }
     }
 }

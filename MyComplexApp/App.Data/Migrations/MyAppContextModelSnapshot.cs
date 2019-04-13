@@ -78,7 +78,7 @@ namespace App.Data.Migrations
 
                     b.HasIndex("ExamId");
 
-                    b.HasIndex("InternId");
+                    b.HasIndex("InternId", "ExamId");
 
                     b.ToTable("ExamMarks");
                 });
@@ -296,9 +296,9 @@ namespace App.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("InternId");
-
                     b.HasIndex("ThemeId");
+
+                    b.HasIndex("InternId", "ThemeId");
 
                     b.ToTable("ThemeMarks");
 
@@ -342,7 +342,7 @@ namespace App.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<long>("GroupId");
+                    b.Property<long?>("GroupId");
 
                     b.Property<long?>("MenthorId");
 
@@ -503,14 +503,14 @@ namespace App.Data.Migrations
                         {
                             Id = 1L,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "29b87e5d-9751-468f-8319-598d6f64b3b6",
+                            ConcurrencyStamp = "e73bec47-bbe9-4ae4-bae4-b1bc45e78294",
                             DateOfBirth = new DateTime(1999, 5, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "aurel@mail.ru",
                             EmailConfirmed = false,
                             FirstName = "Aurel",
                             LastName = "Starciuc",
                             LockoutEnabled = false,
-                            PasswordHash = "1186476624",
+                            PasswordHash = "494091657",
                             PhoneNumber = "+37367620932",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -520,14 +520,14 @@ namespace App.Data.Migrations
                         {
                             Id = 2L,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "72ad0cb3-17cd-4595-abc8-6f2638a7c0e2",
+                            ConcurrencyStamp = "a61f7ebd-76d0-49d3-adb1-32cb016f2733",
                             DateOfBirth = new DateTime(1989, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "cristi@mail.ru",
                             EmailConfirmed = false,
                             FirstName = "Cristi",
                             LastName = "Anghelenici",
                             LockoutEnabled = false,
-                            PasswordHash = "2041111096",
+                            PasswordHash = "650237439",
                             PhoneNumber = "+37367665467",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -537,14 +537,14 @@ namespace App.Data.Migrations
                         {
                             Id = 3L,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9822efd3-ce79-4ebd-9935-88d9ce563e96",
+                            ConcurrencyStamp = "af61181c-d8a0-42d6-8b5f-07a977493cef",
                             DateOfBirth = new DateTime(1994, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "alexandr@mail.ru",
                             EmailConfirmed = false,
                             FirstName = "Alexandr",
                             LastName = "Racovschi",
                             LockoutEnabled = false,
-                            PasswordHash = "-1898531178",
+                            PasswordHash = "-1011549758",
                             PhoneNumber = "+37336218321",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -554,14 +554,14 @@ namespace App.Data.Migrations
                         {
                             Id = 4L,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "81ba87e5-6f67-4a55-b1e0-03025665a4dc",
+                            ConcurrencyStamp = "c6535135-1283-42bd-8525-d45d559c63ac",
                             DateOfBirth = new DateTime(1984, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "iong@mail.ru",
                             EmailConfirmed = false,
                             FirstName = "Ion",
                             LastName = "Gandrabura",
                             LockoutEnabled = false,
-                            PasswordHash = "992253336",
+                            PasswordHash = "-2053212294",
                             PhoneNumber = "+373954035",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -712,8 +712,7 @@ namespace App.Data.Migrations
                 {
                     b.HasOne("App.Data.Domain.DomainModels.Concrete.Group", "Group")
                         .WithMany("Interns")
-                        .HasForeignKey("GroupId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("GroupId");
 
                     b.HasOne("App.Data.Domain.DomainModels.Concrete.UserMenthor", "Menthor")
                         .WithOne("Intern")

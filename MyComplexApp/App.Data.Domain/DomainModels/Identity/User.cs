@@ -14,10 +14,6 @@ namespace App.Data.Domain.DomainModels.Identity
 
         [DataType(DataType.Date)]
         public DateTime DateOfBirth { get; set; }
-        //public string NumberPhone { get; set; }
-        //public string Login { get; set; }
-        //public string Password { get; set; }
-        //public string Email { get; set; }
 
         public UserIntern Intern { get; set; }
         public UserMenthor Menthor { get; set; }

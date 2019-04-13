@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace App.Web.Controllers
 {
-    [Authorize]
+    [Authorize(Roles =("Admin"))]
     public class AdminController : Controller
     {
         private readonly UserManager<User> _userManager;

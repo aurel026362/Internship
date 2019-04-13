@@ -5,7 +5,7 @@ using System.Text;
 
 namespace App.Data.Domain.DomainModels.Concrete
 {
-    public class Comment : Entity<long>
+    public class Comment : Entity
     {
         public long? UserId { get; set; }
         public long? ThemeId { get; set; }

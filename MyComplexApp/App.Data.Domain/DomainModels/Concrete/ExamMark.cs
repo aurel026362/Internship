@@ -4,7 +4,7 @@ using System.Text;
 
 namespace App.Data.Domain.DomainModels.Concrete
 {
-    public class ExamMark : Entity<long>
+    public class ExamMark : Entity
     {
         public int Mark { get; set; }
         public string Comment { get; set; }

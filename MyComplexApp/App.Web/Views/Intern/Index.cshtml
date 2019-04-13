@@ -1,0 +1,161 @@
+﻿@model IEnumerable<App.Web.Models.ForIntern.InternMarks>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My App</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
+
+    <!-- <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/UserStyle.css"> -->
+</head>
+
+<body>
+    <div class="row">
+        <div class="col-2">
+            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
+                   aria-controls="v-pills-home" aria-selected="true">Home</a>
+                <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
+                   aria-controls="v-pills-profile" aria-selected="false">Profile</a>
+                <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab"
+                   aria-controls="v-pills-messages" aria-selected="false">Messages</a>
+                <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab"
+                   aria-controls="v-pills-settings" aria-selected="false">Settings</a>
+                <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout">
+                    <button id="logout" type="submit" class="nav-link btn btn-link text-dark"><span class="text-danger">Logout</span></button>
+                </form>
+            </div>
+        </div>
+        <div class="col-10">
+            <div class="tab-content" id="v-pills-tabContent">
+
+                <partial name="../GeneralViews/Profile" />
+                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                    <div class="container-fluid text-center">
+                        <div class="row bg-first">
+                            <p>
+                                My problem is that after translating up the image, the div that contains it remains
+                                unchanged, and has lots of white space in the place where the image used to be.
+                            </p>
+                        </div>
+                        <div class="row">
+                            <select style="width:100%" class="form-control">
+                                @{
+                                    var list = ViewData["Modules"] as IList<string>;
+                                    foreach (var item in list)
+                                    {
+                                        <option>@item</option>
+                                    }
+                                    <option>All Modules</option>
+                                }
+                            </select>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Theme
+                                        </th>
+                                        <th>
+                                            Mark
+                                        </th>
+                                        <th>
+                                            Comment
+                                        </th>
+                                        <th>
+
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td colspan="2">
+                                                @Html.DisplayFor(modelItem => item.TName)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Mark)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Comment)
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="container-fluid text-center">
+                        <div class="row">
+                            <div class="col-md-4 col-xs-12">
+                                <canvas id="mychart"></canvas>
+                            </div>
+                            <div class="col-md-6 col-xs-12">
+                                <canvas id="mychart2"></canvas>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <p class="text-center text-muted">
+                                Coding Just Got Easy!
+
+                                Free Plugin for IntelliJ,
+                                Android Studio, and Eclipse: Write fast & error free code with AI code completions.
+                            </p>
+                        </div>
+                        <div class="row">
+                            <canvas id="mychart3"></canvas>
+                            <script src="js_charts/javsc.js"></script>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                    <h4>Something</h4>
+                </div>
+                <partial name="../GeneralViews/Settings" />
+            </div>
+        </div>
+    </div>
+    <script>
+        $('#myTab a[href="#profile"]').tab('show') // Select tab by name
+        $('#myTab li:first-child a').tab('show') // Select first tab
+        $('#myTab li:last-child a').tab('show') // Select last tab
+        $('#myTab li:nth-child(3) a').tab('show')
+    </script>
+    <footer class="container-fluid" id="footer">
+        <div class="container-fluid">
+            <div class="row padding text-center">
+                <div class="col-12">
+                    <h2>Our Contacts</h2>
+                </div>
+                <div class="col-12 social padding">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

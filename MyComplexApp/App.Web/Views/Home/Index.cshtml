@@ -37,150 +37,134 @@
         </div>
     </div>
 </div>
-<!--Log In-->
-@*<div class="container paddingForm">
-        <div class="row col-12 text-center">
-            <div class="row col-12 text-center">
-                <h2>Log In</h2>
-            </div>
-
-            <div class="row col-12 text-center">
-                <div class="text-center">
-                    <h4 class="page-header">Account Data</h4>
-                    <form role="form" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
-                        <div class="form-group float-label-control label-bottom">
-                            <label asp-for="Email">Email</label>
-                            <input asp-for="Email" type="text" class="form-control" placeholder="Login">
-                        </div>
-                        <div class="form-group float-label-control">
-                            <label asp-for="Password">Password</label>
-                            <input asp-for="Password" type="password" class="form-control" placeholder="Password">
-                        </div>
-
-                        <div>
-                            <input type="submit" class="btn btn-lg btn-primary" id="signInBtn" value="Sign In">
-                            <button id="signInBtn" style=" padding:5px; color:rgb(165, 165, 165);"
-                                    class="btn btn-outline-light" type="submit">
-                                I forgot my password!
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>*@
-
+@*<partial name="~/identity/account/login" />*@
+@if (User.IsInRole("Admin"))
+{
     <a href="~/Admin/Index" class="btn btn-primary" style="width:100%">GO TO PROFILE</a>
-    <hr>
-    <div class="container-fluid padding">
-        <div class="row padding">
-            <div class="offset-lg-2 col-lg-4">
-                <h2>Ceva informatie</h2>
-                <p>
-                    Madonna and Child with Angels is the central panel of the large multi-paneled
-                    altarpiece produced by Masaccio for the chapel of Saint Julian in the church
-                    of Santa Maria del Carmine in Pisa, Italy. The panel, which is badly damaged
-                    and smaller than its original size, was produced in collaboration with Masaccio's
-                    <br><br>
-                    Madonna and Child with Angels is the central panel of the large multi-paneled
-                    altarpiece produced by Masaccio for the chapel of Saint Julian in the church
-                    of Santa Maria del Carmine in Pisa, Italy. The panel, which is badly damaged
+}
+else if (User.IsInRole("Menthor"))
+{
+    <a href="~/Menthor/Index" class="btn btn-primary" style="width:100%">GO TO PROFILE</a>
+}
+else if (User.IsInRole("Intern"))
+{
+    <a href="~/Intern/Index" class="btn btn-primary" style="width:100%">GO TO PROFILE</a>
+}
+else
+{
+    <a href="~/identity/account/Login" class="btn btn-primary" style="width:100%">GO TO PROFILE</a>
+}
 
-                    <br><br>
-                    Madonna and Child with Angels is the central panel of the large multi-paneled
+<hr>
+<div class="container-fluid padding">
+    <div class="row padding">
+        <div class="offset-lg-2 col-lg-4">
+            <h2>Ceva informatie</h2>
+            <p>
+                Madonna and Child with Angels is the central panel of the large multi-paneled
+                altarpiece produced by Masaccio for the chapel of Saint Julian in the church
+                of Santa Maria del Carmine in Pisa, Italy. The panel, which is badly damaged
+                and smaller than its original size, was produced in collaboration with Masaccio's
+                <br><br>
+                Madonna and Child with Angels is the central panel of the large multi-paneled
+                altarpiece produced by Masaccio for the chapel of Saint Julian in the church
+                of Santa Maria del Carmine in Pisa, Italy. The panel, which is badly damaged
 
-                    <br>
-                    <a href="#" class="btn btn-danger">Read More</a>
-                </p>
-            </div>
-            <div class="col-lg-6">
+                <br><br>
+                Madonna and Child with Angels is the central panel of the large multi-paneled
+
                 <br>
-                <img src="~/imgs/foto1.jpg" alt="" class="img-fluid">
-            </div>
+                <a href="#" class="btn btn-danger">Read More</a>
+            </p>
+        </div>
+        <div class="col-lg-6">
+            <br>
+            <img src="~/imgs/foto1.jpg" alt="" class="img-fluid">
         </div>
     </div>
-    <figure>
-        <div class="fixed-wrap">
-            <div id="fixed">
+</div>
+<figure>
+    <div class="fixed-wrap">
+        <div id="fixed">
 
-            </div>
-        </div>
-    </figure>
-    <div id="gifs" class="collapse">
-        <div class="container-fluid padding">
-            <div class="row text-center">
-                <div class="col-sm-6 col-md-3">
-                    <img src="~/imgs/foto4.jpg" class="gif">
-                </div>
-                <div class="col-sm-6 col-md-3">
-                    <img src="~/imgs/foto5.jpg" class="gif">
-                </div>
-                <div class="col-sm-6 col-md-3">
-                    <img src="~/imgs/foto6.jpg" class="gif">
-                </div>
-                <div class="col-sm-6 col-md-3">
-                    <img src="~/imgs/foto7.jpg" class="gif">
-                </div>
-            </div>
         </div>
     </div>
-
+</figure>
+<div id="gifs" class="collapse">
     <div class="container-fluid padding">
-        <div class="row aler text-center">
-            <div class="col-12">
-                <h1 class="display-4">Something</h1>
-                <hr>
+        <div class="row text-center">
+            <div class="col-sm-6 col-md-3">
+                <img src="~/imgs/foto4.jpg" class="gif">
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <img src="~/imgs/foto5.jpg" class="gif">
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <img src="~/imgs/foto6.jpg" class="gif">
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <img src="~/imgs/foto7.jpg" class="gif">
             </div>
         </div>
     </div>
+</div>
 
-    <div class="container padding">
-        <div class="row padding">
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="https://ribalych.ru/wp-content/uploads/2019/03/26-foto-predmetov_001.jpg"
-                         class="card-img-top" alt="">
-                    <div class="card-body">
-                        <h4 class="card-title">UNREAL ENGINE</h4>
-                        <p class="card-text">
-                            salkdj slakdjsa lkdsald jdk sada sadsad sa
-                            fds fd asd fa ffds fsd fsdf sdf sd
-                            dsf dsgf fds gsdfg sg dfsd fsa
-                        </p>
-                        <a href="#" class="btn btn-warning">Watch</a>
-                    </div>
+<div class="container-fluid padding">
+    <div class="row aler text-center">
+        <div class="col-12">
+            <h1 class="display-4">Something</h1>
+            <hr>
+        </div>
+    </div>
+</div>
+
+<div class="container padding">
+    <div class="row padding">
+        <div class="col-md-4">
+            <div class="card">
+                <img src="https://ribalych.ru/wp-content/uploads/2019/03/26-foto-predmetov_001.jpg"
+                     class="card-img-top" alt="">
+                <div class="card-body">
+                    <h4 class="card-title">UNREAL ENGINE</h4>
+                    <p class="card-text">
+                        salkdj slakdjsa lkdsald jdk sada sadsad sa
+                        fds fd asd fa ffds fsd fsdf sdf sd
+                        dsf dsgf fds gsdfg sg dfsd fsa
+                    </p>
+                    <a href="#" class="btn btn-warning">Watch</a>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="https://g1.nh.ee/images/pix/1000x654/UmKMVVvVqTk/72a935c9dc964233f3-85752089.jpg"
-                         class="card-img-top" alt="">
-                    <div class="card-body">
-                        <h4 class="card-title">Other</h4>
-                        <p class="card-text">
-                            salkdj slakdjsa lkdsald jdk sada sadsad sa
-                            fds fd asd fa ffds fsd fsdf sdf sd
-                            dsf dsgf fds gsdfg sg dfsd fsa
-                        </p>
-                        <a href="#" class="btn btn-warning">Watch</a>
-                    </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="https://g1.nh.ee/images/pix/1000x654/UmKMVVvVqTk/72a935c9dc964233f3-85752089.jpg"
+                     class="card-img-top" alt="">
+                <div class="card-body">
+                    <h4 class="card-title">Other</h4>
+                    <p class="card-text">
+                        salkdj slakdjsa lkdsald jdk sada sadsad sa
+                        fds fd asd fa ffds fsd fsdf sdf sd
+                        dsf dsgf fds gsdfg sg dfsd fsa
+                    </p>
+                    <a href="#" class="btn btn-warning">Watch</a>
                 </div>
             </div>
+        </div>
 
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="https://telegraf.com.ua/files/2019/03/pejzazhi-i-nochnoe-nebo-na-snimkax-dilana-najta-16.jpg"
-                         class="card-img-top" alt="">
-                    <div class="card-body">
-                        <h4 class="card-title">Other2</h4>
-                        <p class="card-text">
-                            salkdj slakdjsa lkdsald jdk sada sadsad sa
-                            fds fd asd fa ffds fsd fsdf sdf sd
-                            dsf dsgf fds gsdfg sg dfsd fsa
-                        </p>
-                        <a href="#" class="btn btn-warning">Watch</a>
-                    </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="https://telegraf.com.ua/files/2019/03/pejzazhi-i-nochnoe-nebo-na-snimkax-dilana-najta-16.jpg"
+                     class="card-img-top" alt="">
+                <div class="card-body">
+                    <h4 class="card-title">Other2</h4>
+                    <p class="card-text">
+                        salkdj slakdjsa lkdsald jdk sada sadsad sa
+                        fds fd asd fa ffds fsd fsdf sdf sd
+                        dsf dsgf fds gsdfg sg dfsd fsa
+                    </p>
+                    <a href="#" class="btn btn-warning">Watch</a>
                 </div>
             </div>
         </div>
     </div>
+</div>

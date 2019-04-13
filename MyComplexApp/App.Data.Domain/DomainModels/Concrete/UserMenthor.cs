@@ -5,7 +5,7 @@ using System.Text;
 
 namespace App.Data.Domain.DomainModels.Concrete
 {
-    public class UserMenthor : Entity<long>
+    public class UserMenthor : Entity
     {
         public long UserId {get;set;}
 

@@ -13,6 +13,7 @@ namespace App.Data.Domain.DomainModelsConfigs.ConcreteConfigs
         {
             builder.ToTable("ThemeMarks");
             builder.HasKey(x => x.Id);
+            builder.HasIndex(x=> new { x.InternId, x.ThemeId});
             builder.Property(x => x.Comment).HasMaxLength(200);
 
             builder.HasOne(x => x.Intern).WithMany(x => x.ThemeMarks).HasForeignKey(x => x.InternId);

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace App.Data.Interfaces.RepositoryInterfaces
 {
-    public abstract class BaseRepository<T, TID> where T : Entity<TID>
+    public abstract class BaseRepository<T, TID> where T : Entity
     {
         public abstract void Add(T item);
         
