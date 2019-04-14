@@ -1,24 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Git\\Internship\\MyComplexApp\\App.Infrastructure\\App.Infrastructure.csproj": {}
+    "C:\\Users\\Aurel\\Desktop\\Got\\Internship\\MyComplexApp\\App.Infrastructure\\App.Infrastructure.csproj": {}
   },
   "projects": {
-    "D:\\Git\\Internship\\MyComplexApp\\App.Data.Domain\\App.Data.Domain.csproj": {
+    "C:\\Users\\Aurel\\Desktop\\Got\\Internship\\MyComplexApp\\App.Data.Domain\\App.Data.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Git\\Internship\\MyComplexApp\\App.Data.Domain\\App.Data.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Aurel\\Desktop\\Got\\Internship\\MyComplexApp\\App.Data.Domain\\App.Data.Domain.csproj",
         "projectName": "App.Data.Domain",
-        "projectPath": "D:\\Git\\Internship\\MyComplexApp\\App.Data.Domain\\App.Data.Domain.csproj",
-        "packagesPath": "C:\\Users\\aurel.starciuc\\.nuget\\packages\\",
-        "outputPath": "D:\\Git\\Internship\\MyComplexApp\\App.Data.Domain\\obj\\",
+        "projectPath": "C:\\Users\\Aurel\\Desktop\\Got\\Internship\\MyComplexApp\\App.Data.Domain\\App.Data.Domain.csproj",
+        "packagesPath": "C:\\Users\\Aurel\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Aurel\\Desktop\\Got\\Internship\\MyComplexApp\\App.Data.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
+          "C:\\ProgramData\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\aurel.starciuc\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Aurel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.2"
@@ -86,21 +88,23 @@
         }
       }
     },
-    "D:\\Git\\Internship\\MyComplexApp\\App.Infrastructure\\App.Infrastructure.csproj": {
+    "C:\\Users\\Aurel\\Desktop\\Got\\Internship\\MyComplexApp\\App.Infrastructure\\App.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Git\\Internship\\MyComplexApp\\App.Infrastructure\\App.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\Aurel\\Desktop\\Got\\Internship\\MyComplexApp\\App.Infrastructure\\App.Infrastructure.csproj",
         "projectName": "App.Infrastructure",
-        "projectPath": "D:\\Git\\Internship\\MyComplexApp\\App.Infrastructure\\App.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\aurel.starciuc\\.nuget\\packages\\",
-        "outputPath": "D:\\Git\\Internship\\MyComplexApp\\App.Infrastructure\\obj\\",
+        "projectPath": "C:\\Users\\Aurel\\Desktop\\Got\\Internship\\MyComplexApp\\App.Infrastructure\\App.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\Aurel\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Aurel\\Desktop\\Got\\Internship\\MyComplexApp\\App.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
+          "C:\\ProgramData\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\aurel.starciuc\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Aurel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.2"
@@ -112,8 +116,8 @@
         "frameworks": {
           "netcoreapp2.2": {
             "projectReferences": {
-              "D:\\Git\\Internship\\MyComplexApp\\App.Data.Domain\\App.Data.Domain.csproj": {
-                "projectPath": "D:\\Git\\Internship\\MyComplexApp\\App.Data.Domain\\App.Data.Domain.csproj"
+              "C:\\Users\\Aurel\\Desktop\\Got\\Internship\\MyComplexApp\\App.Data.Domain\\App.Data.Domain.csproj": {
+                "projectPath": "C:\\Users\\Aurel\\Desktop\\Got\\Internship\\MyComplexApp\\App.Data.Domain\\App.Data.Domain.csproj"
               }
             }
           }

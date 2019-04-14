@@ -138,3 +138,8 @@ color: #222;
     }
 }
 
+.div-card{
+    width:100%;
+    border:5px solid black;
+}
+

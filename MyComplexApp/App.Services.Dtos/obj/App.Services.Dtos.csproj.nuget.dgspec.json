@@ -1,24 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Git\\Internship\\MyComplexApp\\App.Services.Dtos\\App.Services.Dtos.csproj": {}
+    "C:\\Users\\Aurel\\Desktop\\Got\\Internship\\MyComplexApp\\App.Services.Dtos\\App.Services.Dtos.csproj": {}
   },
   "projects": {
-    "D:\\Git\\Internship\\MyComplexApp\\App.Services.Dtos\\App.Services.Dtos.csproj": {
+    "C:\\Users\\Aurel\\Desktop\\Got\\Internship\\MyComplexApp\\App.Services.Dtos\\App.Services.Dtos.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Git\\Internship\\MyComplexApp\\App.Services.Dtos\\App.Services.Dtos.csproj",
+        "projectUniqueName": "C:\\Users\\Aurel\\Desktop\\Got\\Internship\\MyComplexApp\\App.Services.Dtos\\App.Services.Dtos.csproj",
         "projectName": "App.Services.Dtos",
-        "projectPath": "D:\\Git\\Internship\\MyComplexApp\\App.Services.Dtos\\App.Services.Dtos.csproj",
-        "packagesPath": "C:\\Users\\aurel.starciuc\\.nuget\\packages\\",
-        "outputPath": "D:\\Git\\Internship\\MyComplexApp\\App.Services.Dtos\\obj\\",
+        "projectPath": "C:\\Users\\Aurel\\Desktop\\Got\\Internship\\MyComplexApp\\App.Services.Dtos\\App.Services.Dtos.csproj",
+        "packagesPath": "C:\\Users\\Aurel\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Aurel\\Desktop\\Got\\Internship\\MyComplexApp\\App.Services.Dtos\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
+          "C:\\ProgramData\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\aurel.starciuc\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Aurel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.2"

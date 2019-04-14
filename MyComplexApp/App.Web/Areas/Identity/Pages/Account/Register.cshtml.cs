@@ -99,7 +99,7 @@ namespace App.Web.Areas.Identity.Pages.Account
                 };
 
 
-                IdentityResult result = null;
+                IdentityResult result;
 
                 using (var transaction = _context.Database.BeginTransaction())
                 {

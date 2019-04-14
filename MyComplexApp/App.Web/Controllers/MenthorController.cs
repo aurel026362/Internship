@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using App.Data.Context;
 using App.Data.Domain.DomainModels.Identity;
 using App.Data.Repository;
+using App.Web.Models.ForMenthor;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -31,8 +32,18 @@ namespace App.Web.Controllers
 
         public IActionResult Index()
         {
-            //var user = _userManager.FindByEmailAsync();
-            return View(_context.ThemeMarks.ToList());
+            var interns = _context.ThemeMarks.Select(x => new InternAllMarks()
+            {
+                Id = x.Intern.UserId,
+                FirstName = x.Intern.User.FirstName,
+                LastName = x.Intern.User.LastName,
+                EMail = x.Intern.User.Email,
+                Theme = x.theme.Name,
+                Mark = x.Mark,
+                Comment = x.Comment
+            }).ToList();
+
+            return View(interns/*_context.ThemeMarks.ToList()*/);
         }
     }
 }

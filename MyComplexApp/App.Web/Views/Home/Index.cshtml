@@ -37,24 +37,24 @@
         </div>
     </div>
 </div>
-@*<partial name="~/identity/account/login" />*@
-@if (User.IsInRole("Admin"))
-{
-    <a href="~/Admin/Index" class="btn btn-primary" style="width:100%">GO TO PROFILE</a>
-}
-else if (User.IsInRole("Menthor"))
-{
-    <a href="~/Menthor/Index" class="btn btn-primary" style="width:100%">GO TO PROFILE</a>
-}
-else if (User.IsInRole("Intern"))
-{
-    <a href="~/Intern/Index" class="btn btn-primary" style="width:100%">GO TO PROFILE</a>
-}
-else
-{
-    <a href="~/identity/account/Login" class="btn btn-primary" style="width:100%">GO TO PROFILE</a>
-}
-
+<div class="row">
+    @if (User.IsInRole("Admin"))
+    {
+        <a href="~/Admin/Index" class="btn btn-primary" style="width:100%">GO TO PROFILE</a>
+    }
+    else if (User.IsInRole("Menthor"))
+    {
+        <a href="~/Menthor/Index" class="btn btn-primary" style="width:100%">GO TO PROFILE</a>
+    }
+    else if (User.IsInRole("Intern"))
+    {
+        <a href="~/Intern/Index" class="btn btn-primary" style="width:100%">GO TO PROFILE</a>
+    }
+    else
+    {
+        <a href="~/identity/account/Login" class="btn btn-primary" style="width:100%">GO TO PROFILE</a>
+    }
+</div>
 <hr>
 <div class="container-fluid padding">
     <div class="row padding">
@@ -103,7 +103,7 @@ else
                 <img src="~/imgs/foto6.jpg" class="gif">
             </div>
             <div class="col-sm-6 col-md-3">
-                <img src="~/imgs/foto7.jpg" class="gif">
+                <img src="~/imgs/foto7.jpeg" class="gif">
             </div>
         </div>
     </div>
@@ -151,7 +151,7 @@ else
             </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-4 div-card">
             <div class="card">
                 <img src="https://telegraf.com.ua/files/2019/03/pejzazhi-i-nochnoe-nebo-na-snimkax-dilana-najta-16.jpg"
                      class="card-img-top" alt="">

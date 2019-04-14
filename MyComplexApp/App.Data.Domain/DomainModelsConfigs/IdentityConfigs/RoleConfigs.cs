@@ -7,7 +7,7 @@ using System.Text;
 
 namespace App.Data.Domain.DomainModelsConfigs.IdentityConfigs
 {
-    class RoleConfigs : IEntityTypeConfiguration<Role>
+    public class RoleConfigs : IEntityTypeConfiguration<Role>
     {
         public void Configure(EntityTypeBuilder<Role> builder)
         {
