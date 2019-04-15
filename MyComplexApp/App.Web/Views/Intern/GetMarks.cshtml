@@ -1,0 +1,34 @@
+﻿@model IList<App.Web.Models.ForUser.InternTMark>
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Theme
+                </th>
+                <th>
+                    Mark
+                </th>
+                <th>
+                    Comment
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.TName
+                    </td>
+                    <td>
+                        @item.Mark
+                    </td>
+                    <td>
+                        @item.Comment
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

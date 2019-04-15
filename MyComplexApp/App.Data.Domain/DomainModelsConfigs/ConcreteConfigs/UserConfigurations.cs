@@ -46,8 +46,8 @@ namespace App.Data.Domain.DomainModelsConfigs.ConcreteConfigs
                     LastName = "Starciuc",
                     DateOfBirth = Convert.ToDateTime("1999/05/22"),
                     PhoneNumber = "+37367620932",
-                    UserName = "aurel12345",
-                    PasswordHash = Convert.ToString("12345".GetHashCode()),
+                    UserName = "aurel@mail.ru",
+                    PasswordHash = Convert.ToString("123456".GetHashCode()),
                     Email = "aurel@mail.ru"
                 },
                 new User()
@@ -57,8 +57,8 @@ namespace App.Data.Domain.DomainModelsConfigs.ConcreteConfigs
                     LastName = "Anghelenici",
                     DateOfBirth = Convert.ToDateTime("1989/08/12"),
                     PhoneNumber = "+37367665467",
-                    UserName = "cristi4324",
-                    PasswordHash = Convert.ToString("885464".GetHashCode()),
+                    UserName = "cristi@mail.ru",
+                    PasswordHash = Convert.ToString("qwerty".GetHashCode()),
                     Email = "cristi@mail.ru"
                 },
                 new User()
@@ -68,8 +68,8 @@ namespace App.Data.Domain.DomainModelsConfigs.ConcreteConfigs
                     LastName = "Racovschi",
                     DateOfBirth = Convert.ToDateTime("1994/04/20"),
                     PhoneNumber = "+37336218321",
-                    UserName = "alexandr1633",
-                    PasswordHash = Convert.ToString("asd1236".GetHashCode()),
+                    UserName = "alexandr@mail.ru",
+                    PasswordHash = Convert.ToString("zxcvbn".GetHashCode()),
                     Email = "alexandr@mail.ru"
                 },
                 new User()
@@ -79,9 +79,20 @@ namespace App.Data.Domain.DomainModelsConfigs.ConcreteConfigs
                     LastName = "Gandrabura",
                     DateOfBirth = Convert.ToDateTime("1984/04/22"),
                     PhoneNumber = "+373954035",
-                    UserName = "ion79345",
-                    PasswordHash = Convert.ToString("asdqwe123".GetHashCode()),
+                    UserName = "iong@mail.ru",
+                    PasswordHash = Convert.ToString("asdfgh".GetHashCode()),
                     Email = "iong@mail.ru"
+                },
+                new User()
+                {
+                    Id = 5,
+                    FirstName = "Gosa",
+                    LastName = "Dudari",
+                    DateOfBirth = Convert.ToDateTime("1978/05/22"),
+                    PhoneNumber = "+37354354398",
+                    UserName = "gosa@mail.ru",
+                    Email = "gosa@mail.ru",
+                    PasswordHash = Convert.ToString("dudari".GetHashCode())
                 });
         }
     }

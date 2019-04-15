@@ -15,7 +15,7 @@ namespace App.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.4-servicing-10062")
+                .HasAnnotation("ProductVersion", "2.2.3-servicing-35854")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -433,21 +433,21 @@ namespace App.Data.Migrations
                         new
                         {
                             Id = 1L,
-                            ConcurrencyStamp = "-1466486309",
+                            ConcurrencyStamp = "-805808217",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = 2L,
-                            ConcurrencyStamp = "-103912974",
+                            ConcurrencyStamp = "1126075609",
                             Name = "Menthor",
                             NormalizedName = "MENTHOR"
                         },
                         new
                         {
                             Id = 3L,
-                            ConcurrencyStamp = "114907227",
+                            ConcurrencyStamp = "-634304411",
                             Name = "Intern",
                             NormalizedName = "INTERN"
                         });
@@ -501,6 +501,8 @@ namespace App.Data.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed");
 
+                    b.Property<long?>("RoleId");
+
                     b.Property<string>("SecurityStamp");
 
                     b.Property<bool>("TwoFactorEnabled");
@@ -518,6 +520,8 @@ namespace App.Data.Migrations
                         .HasName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
+                    b.HasIndex("RoleId");
+
                     b.ToTable("AspNetUsers");
 
                     b.HasData(
@@ -525,69 +529,86 @@ namespace App.Data.Migrations
                         {
                             Id = 1L,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5586d020-46c0-4802-b857-f703dda62f2e",
+                            ConcurrencyStamp = "1677f068-65e6-47b6-86eb-12ecaa9afc55",
                             DateOfBirth = new DateTime(1999, 5, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "aurel@mail.ru",
                             EmailConfirmed = false,
                             FirstName = "Aurel",
                             LastName = "Starciuc",
                             LockoutEnabled = false,
-                            PasswordHash = "-244170697",
+                            PasswordHash = "981900055",
                             PhoneNumber = "+37367620932",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
-                            UserName = "aurel12345"
+                            UserName = "aurel@mail.ru"
                         },
                         new
                         {
                             Id = 2L,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ff31dc51-c25e-4f67-8bd0-968f7e4e5498",
+                            ConcurrencyStamp = "866fe51a-dc3a-4fe8-8f84-b2d351aebd85",
                             DateOfBirth = new DateTime(1989, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "cristi@mail.ru",
                             EmailConfirmed = false,
                             FirstName = "Cristi",
                             LastName = "Anghelenici",
                             LockoutEnabled = false,
-                            PasswordHash = "-715377164",
+                            PasswordHash = "-1741532969",
                             PhoneNumber = "+37367665467",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
-                            UserName = "cristi4324"
+                            UserName = "cristi@mail.ru"
                         },
                         new
                         {
                             Id = 3L,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ef560a30-8fae-4973-8957-a9417c0aad21",
+                            ConcurrencyStamp = "e923f837-5a3b-405b-b886-c3e217770067",
                             DateOfBirth = new DateTime(1994, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "alexandr@mail.ru",
                             EmailConfirmed = false,
                             FirstName = "Alexandr",
                             LastName = "Racovschi",
                             LockoutEnabled = false,
-                            PasswordHash = "1256342698",
+                            PasswordHash = "1452066757",
                             PhoneNumber = "+37336218321",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
-                            UserName = "alexandr1633"
+                            UserName = "alexandr@mail.ru"
                         },
                         new
                         {
                             Id = 4L,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "571eefbd-4e43-4d4b-8d0a-55c81e0587a7",
+                            ConcurrencyStamp = "a616a43b-0320-4ae0-9a02-01e5616181e7",
                             DateOfBirth = new DateTime(1984, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "iong@mail.ru",
                             EmailConfirmed = false,
                             FirstName = "Ion",
                             LastName = "Gandrabura",
                             LockoutEnabled = false,
-                            PasswordHash = "-230978315",
+                            PasswordHash = "1026496451",
                             PhoneNumber = "+373954035",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
-                            UserName = "ion79345"
+                            UserName = "iong@mail.ru"
+                        },
+                        new
+                        {
+                            Id = 5L,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "3cc35756-67a1-49de-932c-371c058f7a7b",
+                            DateOfBirth = new DateTime(1978, 5, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "gosa@mail.ru",
+                            EmailConfirmed = false,
+                            FirstName = "Gosa",
+                            LastName = "Dudari",
+                            LockoutEnabled = false,
+                            PasswordHash = "2070567705",
+                            PhoneNumber = "+37354354398",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "gosa@mail.ru"
                         });
                 });
 
@@ -652,9 +673,13 @@ namespace App.Data.Migrations
 
                     b.Property<long>("RoleId");
 
+                    b.Property<long?>("UserId1");
+
                     b.HasKey("UserId", "RoleId");
 
                     b.HasIndex("RoleId");
+
+                    b.HasIndex("UserId1");
 
                     b.ToTable("AspNetUserRoles");
                 });
@@ -755,6 +780,13 @@ namespace App.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+            modelBuilder.Entity("App.Data.Domain.DomainModels.Identity.User", b =>
+                {
+                    b.HasOne("App.Data.Domain.DomainModels.Identity.Role")
+                        .WithMany("Users")
+                        .HasForeignKey("RoleId");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<long>", b =>
                 {
                     b.HasOne("App.Data.Domain.DomainModels.Identity.Role")
@@ -790,6 +822,10 @@ namespace App.Data.Migrations
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("App.Data.Domain.DomainModels.Identity.User")
+                        .WithMany("Roles")
+                        .HasForeignKey("UserId1");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<long>", b =>

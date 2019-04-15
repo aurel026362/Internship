@@ -35,4 +35,5 @@ namespace App.Data.Domain.DomainModelsConfigs.IdentityConfigs
                 });
         }
     }
+
 }

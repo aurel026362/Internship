@@ -1,5 +1,4 @@
-﻿@using Microsoft.AspNetCore.Identity
-@inject UserManager<App.Data.Domain.DomainModels.Identity.User> UserManager
+﻿@model App.Web.Models.ForUser.PersonalData
 @{
     ViewData["Title"] = "Profile";
 }
@@ -9,7 +8,7 @@
 
     <div class="container-fluid">
         <div class="row">
-            <h5>Welcome @UserManager.FindByNameAsync(UserManager.GetUserName(User)).Result.FirstName</h5>
+            <h5>Welcome @Model.EMail</h5>
             <div class="col-12" style="padding:20px">
                 <img src="https://w2w.fund/Content/img/default.png"
                      class="rounded-circle mx-auto d-block">
@@ -22,11 +21,11 @@
                             <th colspan="2">Personal Data</th>
                         </tr>
                         <tr>
-                            <td colspan="2"><h5>@UserManager.FindByNameAsync(UserManager.GetUserName(User)).Result.Email</h5></td>
+                            <td colspan="2"><h5>@Model.EMail</h5></td>
                         </tr>
                         <tr>
-                            <td>@UserManager.FindByNameAsync(UserManager.GetUserName(User)).Result.FirstName</td>
-                            <td>@UserManager.FindByNameAsync(UserManager.GetUserName(User)).Result.LastName</td>
+                            <td>@Model.FirstName</td>
+                            <td>@Model.LastName</td>
                         </tr>
                     </table>
                 </div>

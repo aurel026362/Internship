@@ -1,6 +1,4 @@
-﻿@model IEnumerable<App.Data.Domain.DomainModels.Identity.User>
-@using Microsoft.AspNetCore.Identity
-@inject UserManager<App.Data.Domain.DomainModels.Identity.User> UserManager
+﻿@model App.Web.Models.Admin.AdminData
 @{
     ViewData["Title"] = "Index";
 }
@@ -32,7 +30,7 @@
 </head>
 
 <body>
-    <div class="row">
+    <div class="row" style="width:100%">
         <div class="col-2">
             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
@@ -50,7 +48,7 @@
         </div>
         <div class="col-10">
             <div class="tab-content" id="v-pills-tabContent">
-                <partial name="../GeneralViews/Profile" />
+                @await Html.PartialAsync("../GeneralViews/Profile", Model.PersonalData)
                 <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                     <div class="container-fluid text-center">
                         <div class="row bg-first">
@@ -60,70 +58,67 @@
                             </p>
                         </div>
                         <div class="row">
-                            <h5>@UserManager.FindByNameAsync(UserManager.GetUserName(User)).Result.Email</h5>
+                            <h5>@Model.PersonalData.EMail</h5>
                             <table class="table">
                                 <thead>
                                     <tr>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.FirstName)
+                                            First Name
                                         </th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.LastName)
+                                            Last Name
                                         </th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.DateOfBirth)
+                                            Date Of Birth
                                         </th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.UserName)
+                                            User Name
                                         </th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.Email)
+                                            EmailConfimration
                                         </th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.EmailConfirmed)
+                                            Phone Number
                                         </th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.PhoneNumber)
+                                            PhoneConfirmation
                                         </th>
                                         <th>
-                                            @Html.DisplayNameFor(model => model.PhoneNumberConfirmed)
-                                        </th>
-                                        <th>
-                                            @Html.DisplayNameFor(model => model.AccessFailedCount)
+                                            AccesFailedCount
                                         </th>
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach (var item in Model)
+                                    @foreach (var item in Model.Users)
                                     {
                                         <tr>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.FirstName)
+                                                @item.FirstName
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.LastName)
+                                                @item.LastName
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.DateOfBirth)
+                                                @item.DateOfBirth
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.UserName)
+                                                @item.UserName
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.Email)
+                                                @item.EmailConfirmed
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.EmailConfirmed)
+                                                @item.PhoneNumber
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.PhoneNumber)
+                                                @item.PhoneNumberConfirmed
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.PhoneNumberConfirmed)
+                                                @item.AccessFailedCount
                                             </td>
                                             <td>
-                                                @Html.DisplayFor(modelItem => item.AccessFailedCount)
+                                                @item.FirstName
                                             </td>
                                             <td>
                                                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
@@ -155,30 +150,70 @@
                         </div>
                         <div class="row">
                             <canvas id="mychart3"></canvas>
-                            @*<script src="#"></script>*@
+                            <script src="~/js/ForAdmin/ChartsInterns.js">
+                            </script>
                         </div>
                     </div>
                 </div>
                 <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-                    <h4>Something</h4>
-                </div>
-                <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                    <button id="something"></button>
-                    <table class="table table-condensed table-striped table-bordered">
-                        <thead><tr><th>Id</th><th>FirstName</th><th>LastName</th><th></th></tr></thead>
-                        <tbody></tbody>
-                    </table>
-                    <script>
+                    <button class="btn btn-primary" id="something">Show Data</button>
 
+                    <div id="div1">
+                        <select id="modules" class="custom-select"></select>
+                        <select id="themes" class="custom-select"></select>
+                    </div>
+                    <button class="btn btn-primary" id="something">Show Data</button>
+                    <script>
+                        //$(document).ready(function () {
+                        //    $("#something").click(function () {
+                        //        $.ajax({
+                        //            url: "/Admin/AjaxExample",
+                        //            type: 'GET',
+                        //            dataType: 'json',
+                        //            encoding: 'UTF-8'
+                        //        }).done(function (result) {
+                        //            console.log(result);
+                        //            for (let i = 0; i < result.length; i++) {
+                        //                $("#modules").append("<option>" + result[i] + "<option>");
+                        //            }
+
+                        //        }).error(function (jqXHR, textStatus, errorThrown) {
+                        //            do_sliding(false, '#start', false, true);
+                        //        });
+                        //    });
+                        //});
+                        //$("something").click(function () {
+                        //    $.post("/Admin/AjaxExampleResponse",
+                        //        {
+                        //            name: "Donald Duck",
+                        //            city: "Duckburg"
+                        //        },
+                        //        function (data, status) {
+                        //            alert("Data: " + data + "\nStatus: " + status);
+                        //        });
+                        //});
+
+                        //$(document).ready(function () {
+                        //    $("select[name='country'").bind("change", function () {
+                        //        $.get("/Admin/Admin/AjaxExampleResponse"),
+                        //            { country: $("select[name='modules']").val() }, function (data) {
+                        //                data = JSON.parse(data);
+                        //                $("select[name='theme'").append($("<option value='" +
+                        //                    theme + "'>" + data[theme] + "</option>"));
+                        //            }
+                        //    });
+                        //});
                     </script>
                 </div>
+                @await Html.PartialAsync("../GeneralViews/Settings", Model.PersonalData)
             </div>
         </div>
-        <script>
-            $('#myTab a[href="#profile"]').tab('show') // Select tab by name
-            $('#myTab li:first-child a').tab('show') // Select first tab
-            $('#myTab li:last-child a').tab('show') // Select last tab
-            $('#myTab li:nth-child(3) a').tab('show')
-        </script>
+    </div>
+    <script>
+        $('#myTab a[href="#profile"]').tab('show') // Select tab by name
+        $('#myTab li:first-child a').tab('show') // Select first tab
+        $('#myTab li:last-child a').tab('show') // Select last tab
+        $('#myTab li:nth-child(3) a').tab('show')
+    </script>
 </body>
 </html>

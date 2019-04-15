@@ -18,5 +18,6 @@ namespace App.Data.Domain.DomainModels.Identity
         public UserIntern Intern { get; set; }
         public UserMenthor Menthor { get; set; }
         public ICollection<Comment> Comments { get; set; }
+        public ICollection<IdentityUserRole<long>> Roles { get; set; }
     }
 }

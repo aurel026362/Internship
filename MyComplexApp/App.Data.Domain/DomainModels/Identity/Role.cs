@@ -7,5 +7,6 @@ namespace App.Data.Domain.DomainModels.Identity
 {
     public class Role : IdentityRole<long>
     {
+        public ICollection<User> Users { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<App.Web.Models.ForIntern.InternMarks>
+﻿@model App.Web.Models.ForUser.DataCurrentUser
 @{
     ViewData["Title"] = "Index";
 }
@@ -22,6 +22,7 @@
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"></script>
     <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
 
@@ -30,7 +31,7 @@
 </head>
 
 <body>
-    <div class="row">
+    <div class="row" style="width:100%">
         <div class="col-2">
             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
@@ -49,7 +50,8 @@
         <div class="col-10">
             <div class="tab-content" id="v-pills-tabContent">
 
-                <partial name="../GeneralViews/Profile" />
+                @*<partial name="../GeneralViews/Profile" />*@
+                @await Html.PartialAsync("../GeneralViews/Profile", Model.PersonalData)
                 <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                     <div class="container-fluid text-center">
                         <div class="row bg-first">
@@ -58,51 +60,17 @@
                                 unchanged, and has lots of white space in the place where the image used to be.
                             </p>
                         </div>
-                        <div class="row">
-                            <select style="width:100%" class="form-control">
-                                @{
-                                    var list = ViewData["Modules"] as IList<string>;
-                                    foreach (var item in list)
-                                    {
-                                        <option>@item</option>
-                                    }
-                                    <option>All Modules</option>
+                        <div class="row" id="mydiv">
+                            <select name="modules" style="width:100%" class="form-control" id="module">
+                                @foreach (var item in Model.Modules)
+                                {
+                                    <option value=@item.Id>@item.Name</option>
                                 }
+                                <option value="0">All Modules</option>
                             </select>
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>
-                                            Theme
-                                        </th>
-                                        <th>
-                                            Mark
-                                        </th>
-                                        <th>
-                                            Comment
-                                        </th>
-                                        <th>
-
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach (var item in Model)
-                                    {
-                                        <tr>
-                                            <td colspan="2">
-                                                @Html.DisplayFor(modelItem => item.TName)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.Mark)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.Comment)
-                                            </td>
-                                        </tr>
-                                    }
-                                </tbody>
-                            </table>
+                            <div id="marks-table" class="col-12">
+                                @await Html.PartialAsync("../Intern/GetMarks", Model.Marks.ThemeMarks)
+                            </div>
                         </div>
                     </div>
                     <div class="container-fluid text-center">
@@ -131,14 +99,14 @@
                 <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
                     <h4>Something</h4>
                 </div>
-                <partial name="../GeneralViews/Settings" />
+                    @await Html.PartialAsync("../GeneralViews/Settings", Model.PersonalData)
             </div>
         </div>
     </div>
     <script>
-        $('#myTab a[href="#profile"]').tab('show') // Select tab by name
-        $('#myTab li:first-child a').tab('show') // Select first tab
-        $('#myTab li:last-child a').tab('show') // Select last tab
+        $('#myTab a[href="#profile"]').tab('show')
+        $('#myTab li:first-child a').tab('show')
+        $('#myTab li:last-child a').tab('show')
         $('#myTab li:nth-child(3) a').tab('show')
     </script>
     <footer class="container-fluid" id="footer">
@@ -156,6 +124,22 @@
             </div>
         </div>
     </footer>
+    <script>
+        $(document).ready(function () {
+            $("#module").bind("change", function () {
+                $.get("/Intern/GetMarks", { moduleId: $('#module').val() })
+                    .done(function (data) {
+                        console.log(data);
+                        $("#marks-table").html(data);
+                    })
+                    .fail(function (data) {
+                    })
+                    .always(function () {
+                    });
+            });
+
+        });
+    </script>
 </body>
 
 </html>

@@ -1,5 +1,7 @@
 ﻿using App.Data.Context;
 using App.Data.Domain.DomainModels.Identity;
+using App.Web.Models.Admin;
+using App.Web.Models.ForUser;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -29,13 +31,38 @@ namespace App.Web.Controllers
 
             //var userId = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
         }
-
-        // GET: Users
+        
         public async Task<IActionResult> Index()
         {
+            var currentId = Convert.ToInt32(_signInManager.UserManager.GetUserId(User));
             //var user = _userManager.FindByEmailAsync();
-            return View(await _context.Users.ToListAsync());
+            var person = new AdminData();
+            person.PersonalData = await _context.Users.Where(x => x.Id.Equals(currentId)).Select(x => new PersonalData()
+            {
+                Id = x.Id,
+                FirstName = x.FirstName,
+                LastName = x.LastName,
+                EMail = x.Email,
+                PhoneNumber = x.PhoneNumber,
+                DateOfBirth = x.DateOfBirth
+            }).FirstAsync();
+
+            person.Users = await _context.Users.ToListAsync();
+
+            return View(person);
         }
+
+        public async Task<IActionResult> AjaxExample()
+        {
+            var list = await _context.Modules.Select(x=>x.Name).ToListAsync();
+            return Json(list);
+        }
+
+        //public async Task<IActionResult> AjaxExampleResponse()
+        //{
+        //    var list = await _context.Themes.Where(x=>x.Modulep.Name.Equals()).Select(x => x.Name).ToListAsync();
+        //    return Json(list);
+        //}
 
         // GET: Users/Details/5
         public async Task<IActionResult> Details(long? id)
