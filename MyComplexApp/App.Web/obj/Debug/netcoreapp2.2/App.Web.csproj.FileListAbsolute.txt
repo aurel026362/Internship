@@ -233,3 +233,4 @@ C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2
 C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\Intern\Index.g.cshtml.cs
 C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\Menthor\Index.g.cshtml.cs
 D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\Intern\GetMarks.g.cshtml.cs
+C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\Intern\GetMarks.g.cshtml.cs

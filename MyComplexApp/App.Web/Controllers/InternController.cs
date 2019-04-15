@@ -106,18 +106,17 @@ namespace App.Web.Controllers
 
             return PartialView("GetMarks", marks);
         }
-
-        public async Task<IActionResult> EditData(string FName, string LName, string newPhone, string DBirth)
+        
+        public IActionResult EditData(string FName=""/*, string LName, string newPhone, string DBirth*/)
         {
-
             long currentId = Convert.ToInt32(_signInManager.UserManager.GetUserId(User));
-            var user = await _context.Users.FindAsync(currentId);
-            user.FirstName = FName;
-            user.LastName = LName;
-            user.PhoneNumber = newPhone;
-            user.DateOfBirth = Convert.ToDateTime(DBirth);
-            _context.Update(user);
-            _context.SaveChanges();
+            //var user = await _context.Users.FindAsync(currentId);
+            //user.FirstName = FName;
+            //user.LastName = LName;
+            //user.PhoneNumber = newPhone;
+            //user.DateOfBirth = Convert.ToDateTime(DBirth);
+            //_context.Update(user);
+            //_context.SaveChanges();
             return PartialView(null);
         }
         

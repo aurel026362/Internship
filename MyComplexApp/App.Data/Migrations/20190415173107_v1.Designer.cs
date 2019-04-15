@@ -10,14 +10,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace App.Data.Migrations
 {
     [DbContext(typeof(MyAppContext))]
-    [Migration("20190415115508_v2")]
-    partial class v2
+    [Migration("20190415173107_v1")]
+    partial class v1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.3-servicing-35854")
+                .HasAnnotation("ProductVersion", "2.2.4-servicing-10062")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -435,21 +435,21 @@ namespace App.Data.Migrations
                         new
                         {
                             Id = 1L,
-                            ConcurrencyStamp = "-805808217",
+                            ConcurrencyStamp = "-1737623923",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = 2L,
-                            ConcurrencyStamp = "1126075609",
+                            ConcurrencyStamp = "-1945148716",
                             Name = "Menthor",
                             NormalizedName = "MENTHOR"
                         },
                         new
                         {
                             Id = 3L,
-                            ConcurrencyStamp = "-634304411",
+                            ConcurrencyStamp = "93869711",
                             Name = "Intern",
                             NormalizedName = "INTERN"
                         });
@@ -531,14 +531,14 @@ namespace App.Data.Migrations
                         {
                             Id = 1L,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "1677f068-65e6-47b6-86eb-12ecaa9afc55",
+                            ConcurrencyStamp = "28f7c841-d856-465b-a97d-c86436cd4c43",
                             DateOfBirth = new DateTime(1999, 5, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "aurel@mail.ru",
                             EmailConfirmed = false,
                             FirstName = "Aurel",
                             LastName = "Starciuc",
                             LockoutEnabled = false,
-                            PasswordHash = "981900055",
+                            PasswordHash = "496818266",
                             PhoneNumber = "+37367620932",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -548,14 +548,14 @@ namespace App.Data.Migrations
                         {
                             Id = 2L,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "866fe51a-dc3a-4fe8-8f84-b2d351aebd85",
+                            ConcurrencyStamp = "d011b180-cb05-4c67-9518-e4a63d26ce5d",
                             DateOfBirth = new DateTime(1989, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "cristi@mail.ru",
                             EmailConfirmed = false,
                             FirstName = "Cristi",
                             LastName = "Anghelenici",
                             LockoutEnabled = false,
-                            PasswordHash = "-1741532969",
+                            PasswordHash = "1829368371",
                             PhoneNumber = "+37367665467",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -565,14 +565,14 @@ namespace App.Data.Migrations
                         {
                             Id = 3L,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e923f837-5a3b-405b-b886-c3e217770067",
+                            ConcurrencyStamp = "1b530f26-6a14-4032-b028-be6f1d9b95fa",
                             DateOfBirth = new DateTime(1994, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "alexandr@mail.ru",
                             EmailConfirmed = false,
                             FirstName = "Alexandr",
                             LastName = "Racovschi",
                             LockoutEnabled = false,
-                            PasswordHash = "1452066757",
+                            PasswordHash = "1267765335",
                             PhoneNumber = "+37336218321",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -582,14 +582,14 @@ namespace App.Data.Migrations
                         {
                             Id = 4L,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "a616a43b-0320-4ae0-9a02-01e5616181e7",
+                            ConcurrencyStamp = "f34c24bf-e9ba-4bab-ace4-c1abe85ad128",
                             DateOfBirth = new DateTime(1984, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "iong@mail.ru",
                             EmailConfirmed = false,
                             FirstName = "Ion",
                             LastName = "Gandrabura",
                             LockoutEnabled = false,
-                            PasswordHash = "1026496451",
+                            PasswordHash = "-1947835335",
                             PhoneNumber = "+373954035",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -599,14 +599,14 @@ namespace App.Data.Migrations
                         {
                             Id = 5L,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3cc35756-67a1-49de-932c-371c058f7a7b",
+                            ConcurrencyStamp = "987b77dc-cd0c-4762-846a-f4673e651f2a",
                             DateOfBirth = new DateTime(1978, 5, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "gosa@mail.ru",
                             EmailConfirmed = false,
                             FirstName = "Gosa",
                             LastName = "Dudari",
                             LockoutEnabled = false,
-                            PasswordHash = "2070567705",
+                            PasswordHash = "-21968939",
                             PhoneNumber = "+37354354398",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,

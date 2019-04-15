@@ -22,7 +22,8 @@
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"></script>
     <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>*@
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
 
@@ -104,10 +105,10 @@
         </div>
     </div>
     <script>
-        $('#myTab a[href="#profile"]').tab('show')
-        $('#myTab li:first-child a').tab('show')
-        $('#myTab li:last-child a').tab('show')
-        $('#myTab li:nth-child(3) a').tab('show')
+        $('#myTab a[href="#profile"]').tab('show');
+        $('#myTab li:first-child a').tab('show');
+        $('#myTab li:last-child a').tab('show');
+        $('#myTab li:nth-child(3) a').tab('show');
     </script>
     <footer class="container-fluid" id="footer">
         <div class="container-fluid">
@@ -124,7 +125,52 @@
             </div>
         </div>
     </footer>
+    <input type="text" id="jora" value="TEST"/>
+    <button id="PersonalData" onclick="myFunction()">PersonalData</button>
     <script>
+        //$(document).ready(function () {
+        //    $("#PersonalData").bind("click", function () {
+        //        alert($("#FName").val());
+        //        $.ajax({
+        //            type: "POST",
+        //            url: "EditData",
+        //            data: '{FName:' + $('#FName').val() + ' }',
+        //            contentType: "aplication/json; charset=utf-8",
+        //            dataType: "json",
+        //            success: function () {
+        //                alert("Succes");
+        //            },
+        //            failure: function () {
+        //                alert("FAIL");
+        //            }
+        //        });
+        //    });
+        //});
+
+        function myFunction() {
+            var name = $("#jora").val();
+            alert(name);
+
+            $.ajax({
+                url: "/Intern/EditData",
+                type: "POST",
+                data: ({ nume: "asd" }),
+                datatype: "html",
+                success: function () { alert("success");}
+            });
+
+            //$.post("/Intern/EditData", { name })
+            //    .done(function () {
+            //        alert("succes");
+            //    })
+            //    .fail(function () {
+            //        alert("error");
+            //    }).
+            //    always(function () {
+            //        alert("Always");
+            //    });
+        }
+
         $(document).ready(function () {
             $("#module").bind("change", function () {
                 $.get("/Intern/GetMarks", { moduleId: $('#module').val() })
