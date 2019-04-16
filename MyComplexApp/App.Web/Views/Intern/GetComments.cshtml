@@ -1,0 +1,36 @@
+﻿@model IList<App.Web.Models.GeneralUser.CommentsViewModel>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+<div class="col-md-9 col-xs-7 content-div">
+    <div class="row content-comment-div">
+        <div class="form-group col-12">
+            <p>Comments</p>
+            <hr />
+            <div class="col-12" id="allcomments">
+                @foreach (var item in Model)
+                {
+                    <b>@item.EMail</b><span>:</span> @item.Comment <small class="text-muted text-right">(@item.DateComment)</small><br />
+                }
+            </div>
+        </div>
+    </div>
+    <div class="row content-input-div">
+        <input class="form-control" id="myComment" />
+        <button class="btn btn-primary" id="submitComment">Add Comment</button>
+    </div>
+</div>
+<script>
+    $("#submitComment").click(function () {
+        $.ajax({
+            url: "/Intern/SubmitComment",
+            type: "POST",
+            data: ({ comment: $("#myComment").val(), themeId: $("#theme").val() }),
+            datatype: "html",
+            success: function () {
+                $("#allcomments").append("<b>  </b> : " + $("#myComment").
+                    val() + " <small class='text-muted'>(@DateTime.Now.ToString())</span><br/>");
+                $("#myComment").val("");
+            }
+        });
+    });
+</script>

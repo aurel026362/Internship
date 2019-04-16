@@ -9,6 +9,7 @@ namespace App.Data.Domain.DomainModels.Concrete
     {
         public long? UserId { get; set; }
         public long? ThemeId { get; set; }
+        public string Content { get; set; }
         public DateTime DateComment { get; set; }
         public User User { get; set; }
         public Theme Theme { get; set; }

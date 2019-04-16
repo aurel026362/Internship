@@ -33,7 +33,7 @@
                                             </div>
                                             <div class="modal-body mx-4">
                                                 <div class="md-form mb-4">
-                                                    <p><i class="fas fa-file-signature indigo-text"></i>First Name</i></p>
+                                                    <i class="fas fa-file-signature indigo-text"></i><p>First Name</p>
                                                     <input type="text" id="FName" class="form-control validate" value=@Model.FirstName>
                                                 </div>
 
@@ -143,41 +143,29 @@
     </div>
 </div>
 <script>
-        $(document).ready(function () {
-            $("#PersonalData").bind("click", function () {
+        //$(document).ready(function () {
+        //    $("#PersonalData").bind("click", function () {
+        //            alert(name);
+        //            $.ajax({
+        //                url: "/Intern/EditData",
+        //                type: "POST",
+        //                data: ({ fname: $("#FName").val(), lname: $("#LName").val(), phone: $("#PhoneNumber").val(), dbirth: $("#DateBirth").val() }),
+        //                datatype: "html",
+        //                success: function () { alert("success"); }
+        //            });
 
-                $.ajax({
-                    type: "POST",
-                    url: "Intern/EditData",
-                    data: '{FName:' + $('#FName').val() + ' }',
-                    contentType: "aplication/json; charset=utf-8",
-                    dataType: "json",
-                    success: function () {
-                        alert("Succes");
-                    },
-                    failure: function () {
-                        alert("FAIL");
-                    }
-                })
-
-                //var FName = $('#FName').val();
-                //var request = new XMLHttpRequest();
-                //alert(fname);
-                //request.open('Post', 'Intern/EditData');
-                //request.send(fname);
-                ////$.post("/Intern/EditData", { FirstName: $('#FName').val()/*, LastName: $('#LName').val(), moduleId: $('#PhoneNumber').val(), moduleId: $('#DateBirth').val()*/})
-                //    .done(function (data){
-                //        console.log(data);
-                //        alert("Succes");                       
-                //        //$("#marks-table").html(data);
-                //    })
-                //    .fail(function (data) {
-                //    })
-                //    .always(function () {
-
-                //    });
-            });
-        });
+        //    //$.post("/Intern/EditData", { name })
+        //    //    .done(function () {
+        //    //        alert("succes");
+        //    //    })
+        //    //    .fail(function () {
+        //    //        alert("error");
+        //    //    }).
+        //    //    always(function () {
+        //    //        alert("Always");
+        //    //    });
+        //    });
+        //});
 
     //function myfunction(var fname) {
     //    var request = new XMLHttpRequest();

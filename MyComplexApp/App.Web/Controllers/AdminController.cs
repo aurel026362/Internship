@@ -52,18 +52,6 @@ namespace App.Web.Controllers
             return View(person);
         }
 
-        public async Task<IActionResult> AjaxExample()
-        {
-            var list = await _context.Modules.Select(x=>x.Name).ToListAsync();
-            return Json(list);
-        }
-
-        //public async Task<IActionResult> AjaxExampleResponse()
-        //{
-        //    var list = await _context.Themes.Where(x=>x.Modulep.Name.Equals()).Select(x => x.Name).ToListAsync();
-        //    return Json(list);
-        //}
-
         // GET: Users/Details/5
         public async Task<IActionResult> Details(long? id)
         {

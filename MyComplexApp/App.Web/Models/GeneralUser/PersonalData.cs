@@ -14,7 +14,5 @@ namespace App.Web.Models.ForUser
         public string EMail { get; set; }
         public string PhoneNumber { get; set; }
         public DateTime DateOfBirth { get; set; }
-        public UserMenthor Menthor { get; set; }
-        public Group Group { get; set; }
     }
 }

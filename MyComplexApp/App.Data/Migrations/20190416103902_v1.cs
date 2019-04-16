@@ -366,6 +366,7 @@ namespace App.Data.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     UserId = table.Column<long>(nullable: true),
                     ThemeId = table.Column<long>(nullable: true),
+                    Content = table.Column<string>(nullable: false),
                     DateComment = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
@@ -419,9 +420,9 @@ namespace App.Data.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { 1L, "-1737623923", "Admin", "ADMIN" },
-                    { 2L, "-1945148716", "Menthor", "MENTHOR" },
-                    { 3L, "93869711", "Intern", "INTERN" }
+                    { 1L, "-1025030764", "Admin", "ADMIN" },
+                    { 2L, "1249488988", "Menthor", "MENTHOR" },
+                    { 3L, "263676492", "Intern", "INTERN" }
                 });
 
             migrationBuilder.InsertData(
@@ -429,11 +430,11 @@ namespace App.Data.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "DateOfBirth", "EMail", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "RoleId", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { 1L, 0, "28f7c841-d856-465b-a97d-c86436cd4c43", new DateTime(1999, 5, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "aurel@mail.ru", false, "Aurel", "Starciuc", false, null, null, null, "496818266", "+37367620932", false, null, null, false, "aurel@mail.ru" },
-                    { 2L, 0, "d011b180-cb05-4c67-9518-e4a63d26ce5d", new DateTime(1989, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "cristi@mail.ru", false, "Cristi", "Anghelenici", false, null, null, null, "1829368371", "+37367665467", false, null, null, false, "cristi@mail.ru" },
-                    { 3L, 0, "1b530f26-6a14-4032-b028-be6f1d9b95fa", new DateTime(1994, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), "alexandr@mail.ru", false, "Alexandr", "Racovschi", false, null, null, null, "1267765335", "+37336218321", false, null, null, false, "alexandr@mail.ru" },
-                    { 4L, 0, "f34c24bf-e9ba-4bab-ace4-c1abe85ad128", new DateTime(1984, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "iong@mail.ru", false, "Ion", "Gandrabura", false, null, null, null, "-1947835335", "+373954035", false, null, null, false, "iong@mail.ru" },
-                    { 5L, 0, "987b77dc-cd0c-4762-846a-f4673e651f2a", new DateTime(1978, 5, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "gosa@mail.ru", false, "Gosa", "Dudari", false, null, null, null, "-21968939", "+37354354398", false, null, null, false, "gosa@mail.ru" }
+                    { 1L, 0, "44eca687-0e32-4e6a-9fef-452d1e2a302a", new DateTime(1999, 5, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "aurel@mail.ru", false, "Aurel", "Starciuc", false, null, null, null, "-943891492", "+37367620932", false, null, null, false, "aurel@mail.ru" },
+                    { 2L, 0, "0d84869a-3718-49ce-b1a5-bbbe8484336e", new DateTime(1989, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "cristi@mail.ru", false, "Cristi", "Anghelenici", false, null, null, null, "1630691884", "+37367665467", false, null, null, false, "cristi@mail.ru" },
+                    { 3L, 0, "ab7fb2ce-7e18-4017-b7ca-1dcb7453747f", new DateTime(1994, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), "alexandr@mail.ru", false, "Alexandr", "Racovschi", false, null, null, null, "-350703844", "+37336218321", false, null, null, false, "alexandr@mail.ru" },
+                    { 4L, 0, "1dfdc4d9-a6fe-40fa-aad8-b3322fcf3d79", new DateTime(1984, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "iong@mail.ru", false, "Ion", "Gandrabura", false, null, null, null, "13987656", "+373954035", false, null, null, false, "iong@mail.ru" },
+                    { 5L, 0, "941fb0c6-dfc2-4ede-995d-097c6545c383", new DateTime(1978, 5, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "gosa@mail.ru", false, "Gosa", "Dudari", false, null, null, null, "-1415464994", "+37354354398", false, null, null, false, "gosa@mail.ru" }
                 });
 
             migrationBuilder.InsertData(

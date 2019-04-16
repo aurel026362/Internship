@@ -1,4 +1,5 @@
 ﻿using App.Data.Domain.DomainModels.Concrete;
+using App.Web.Models.GeneralUser;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -11,6 +12,8 @@ namespace App.Web.Models.ForUser
     {
         public PersonalData PersonalData { get; set; }
         public Mark Marks { get; set; }
-        public ICollection<Module> Modules { get; set; }
+        public IList<Theme> Themes { get; set; }
+        public IList<Module> Modules { get; set; }
+        public IList<CommentsViewModel> Comments { get; set; }
     }
 }

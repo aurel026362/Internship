@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using App.Data.Context;
+using App.Data.Domain.DomainModels.Concrete;
 using App.Data.Domain.DomainModels.Identity;
 using App.Web.Models.ForIntern;
 using App.Web.Models.ForUser;
+using App.Web.Models.GeneralUser;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -76,6 +78,18 @@ namespace App.Web.Controllers
 
             person.Modules = await _context.Modules.ToListAsync();
 
+            person.Themes = await _context.Themes.ToListAsync();
+            
+            var cms = await _context.Comments.Select(x => new CommentsViewModel
+            {
+                EMail = x.User.Email,
+                ThemeName = x.Theme.Name,
+                Comment = x.Content,
+                DateComment = x.DateComment
+            }).ToListAsync();
+
+            person.Comments = cms;
+
             return View(person);
         }
 
@@ -107,17 +121,42 @@ namespace App.Web.Controllers
             return PartialView("GetMarks", marks);
         }
         
-        public IActionResult EditData(string FName=""/*, string LName, string newPhone, string DBirth*/)
+        [HttpGet]
+        public async Task<IActionResult> GetComments(long themeId)
+        {
+             var cms  = await _context.Comments.Where(x => x.ThemeId.Equals(themeId)).Select(x=>new CommentsViewModel()
+             {
+                 EMail = x.User.Email,
+                 ThemeName = x.Theme.Name,
+                 Comment = x.Content,
+                 DateComment = x.DateComment
+             }).ToListAsync();
+            var data = new DataCurrentUser();
+            data.Comments = cms;
+            return PartialView("GetComments", cms);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SubmitComment(string comment, long themeId)
+        {
+            var currentId = Convert.ToInt32(_signInManager.UserManager.GetUserId(User));
+            await _context.Comments.AddAsync(new Comment() { UserId=currentId, Content = comment, DateComment = DateTime.Now, ThemeId = themeId});
+            await _context.SaveChangesAsync();
+            return StatusCode(200);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditData(string fname, string lname, string phone, DateTime dbirth)
         {
             long currentId = Convert.ToInt32(_signInManager.UserManager.GetUserId(User));
-            //var user = await _context.Users.FindAsync(currentId);
-            //user.FirstName = FName;
-            //user.LastName = LName;
-            //user.PhoneNumber = newPhone;
-            //user.DateOfBirth = Convert.ToDateTime(DBirth);
-            //_context.Update(user);
-            //_context.SaveChanges();
-            return PartialView(null);
+            var user = await _context.Users.FindAsync(currentId);
+            user.FirstName = fname;
+            user.LastName = lname;
+            user.PhoneNumber = phone;
+            user.DateOfBirth = dbirth;
+            _context.Update(user);
+            _context.SaveChanges();
+            return StatusCode(200);
         }
         
     }
