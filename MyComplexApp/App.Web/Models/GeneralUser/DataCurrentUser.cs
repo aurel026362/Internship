@@ -11,9 +11,9 @@ namespace App.Web.Models.ForUser
     public class DataCurrentUser
     {
         public PersonalData PersonalData { get; set; }
-        public Mark Marks { get; set; }
+        public Marks Marks { get; set; }
         public IList<Theme> Themes { get; set; }
         public IList<Module> Modules { get; set; }
-        public IList<CommentsViewModel> Comments { get; set; }
+        public CurrentUserCommsViewModel CurrentUserComms { get; set; }
     }
 }

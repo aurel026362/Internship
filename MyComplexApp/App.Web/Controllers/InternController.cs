@@ -55,7 +55,7 @@ namespace App.Web.Controllers
                 PhoneNumber = x.PhoneNumber,
                 DateOfBirth = x.DateOfBirth
             }).FirstAsync();
-            
+
             var currentTMarks = await _context.ThemeMarks.Where(x=>x.Intern.User.Id.Equals(currentId)).Select(x => new InternTMark()
             {
                 TName = x.theme.Name,
@@ -71,7 +71,7 @@ namespace App.Web.Controllers
                 Date = x.Exam.Date
             }).ToListAsync();
 
-            var mark = new Mark();
+            var mark = new Marks();
             mark.ThemeMarks = currentTMarks;
             mark.ExamMarks = currentEMarks;
             person.Marks = mark;
@@ -79,16 +79,19 @@ namespace App.Web.Controllers
             person.Modules = await _context.Modules.ToListAsync();
 
             person.Themes = await _context.Themes.ToListAsync();
-            
-            var cms = await _context.Comments.Select(x => new CommentsViewModel
+
+            person.CurrentUserComms = new CurrentUserCommsViewModel();
+
+            person.CurrentUserComms.Comments = await _context.Comments.Select(x => new CommentsViewModel
             {
                 EMail = x.User.Email,
                 ThemeName = x.Theme.Name,
                 Comment = x.Content,
                 DateComment = x.DateComment
-            }).ToListAsync();
+            }).Take(10).OrderByDescending(x => x.DateComment).ToListAsync();
 
-            person.Comments = cms;
+            //person.CurrentUserComms.Comments = cms;
+            person.CurrentUserComms.CurrentUserEmail = person.PersonalData.EMail;
 
             return View(person);
         }
@@ -124,16 +127,20 @@ namespace App.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> GetComments(long themeId)
         {
-             var cms  = await _context.Comments.Where(x => x.ThemeId.Equals(themeId)).Select(x=>new CommentsViewModel()
+            var currentId = Convert.ToInt32(_signInManager.UserManager.GetUserId(User));
+            var currentUser = _context.Users.FirstOrDefault(x=>x.Id.Equals(currentId));
+
+            var data = new CurrentUserCommsViewModel();
+
+            data.CurrentUserEmail = currentUser.Email;
+             data.Comments = await _context.Comments.Where(x => x.ThemeId.Equals(themeId)).Select(x=>new CommentsViewModel()
              {
                  EMail = x.User.Email,
                  ThemeName = x.Theme.Name,
                  Comment = x.Content,
                  DateComment = x.DateComment
-             }).ToListAsync();
-            var data = new DataCurrentUser();
-            data.Comments = cms;
-            return PartialView("GetComments", cms);
+             }).Take(10).OrderByDescending(x => x.DateComment).ToListAsync();
+            return PartialView("GetComments", data);
         }
 
         [HttpPost]

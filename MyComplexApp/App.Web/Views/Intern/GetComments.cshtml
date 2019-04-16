@@ -1,22 +1,22 @@
-﻿@model IList<App.Web.Models.GeneralUser.CommentsViewModel>
-@using Microsoft.AspNetCore.Identity
-@inject SignInManager<IdentityUser> SignInManager
+﻿@model App.Web.Models.GeneralUser.CurrentUserCommsViewModel
 <div class="col-md-9 col-xs-7 content-div">
+    <div class="row content-input-div">
+        <input class="form-control" id="myComment" />
+        <button class="btn btn-primary" id="submitComment">Add Comment</button>
+    </div>
     <div class="row content-comment-div">
         <div class="form-group col-12">
             <p>Comments</p>
             <hr />
             <div class="col-12" id="allcomments">
-                @foreach (var item in Model)
+
+                @foreach (var item in Model.Comments)
                 {
                     <b>@item.EMail</b><span>:</span> @item.Comment <small class="text-muted text-right">(@item.DateComment)</small><br />
                 }
+                <button id="MoreComments" class="btn btn-outline-primary btn-sm">Show more comments...</button>
             </div>
         </div>
-    </div>
-    <div class="row content-input-div">
-        <input class="form-control" id="myComment" />
-        <button class="btn btn-primary" id="submitComment">Add Comment</button>
     </div>
 </div>
 <script>
@@ -27,10 +27,24 @@
             data: ({ comment: $("#myComment").val(), themeId: $("#theme").val() }),
             datatype: "html",
             success: function () {
-                $("#allcomments").append("<b>  </b> : " + $("#myComment").
+                $("#allcomments").prepend("<b>@Model.CurrentUserEmail</b> : " + $("#myComment").
                     val() + " <small class='text-muted'>(@DateTime.Now.ToString())</span><br/>");
                 $("#myComment").val("");
             }
         });
     });
+
+    @*$("#MoreComments").click(function () {
+        $.ajax({
+            url: "/Intern/GetComments",
+            type: "GET",
+            data: ({ themeId: $("#theme").val() }),
+            datatype: "html",
+            success: function (data) {
+                var comms = @Model.Comments;
+                comms.foreach($("#allcomments").append(comms.comment.va));
+             }
+        });
+    });*@
+
 </script>
