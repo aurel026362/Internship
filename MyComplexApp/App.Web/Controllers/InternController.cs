@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace App.Web.Controllers
 {
@@ -87,7 +88,7 @@ namespace App.Web.Controllers
                 EMail = x.User.Email,
                 ThemeName = x.Theme.Name,
                 Comment = x.Content,
-                DateComment = x.DateComment
+                DateComment = x.DateComment.ToString("dd/MM/yyyy HH:mm")
             }).Take(10).OrderByDescending(x => x.DateComment).ToListAsync();
 
             //person.CurrentUserComms.Comments = cms;
@@ -138,9 +139,26 @@ namespace App.Web.Controllers
                  EMail = x.User.Email,
                  ThemeName = x.Theme.Name,
                  Comment = x.Content,
-                 DateComment = x.DateComment
-             }).Take(10).OrderByDescending(x => x.DateComment).ToListAsync();
+                 DateComment = x.DateComment.ToString("dd/MM/yyyy HH:mm")
+             }).OrderByDescending(x => x.DateComment).Take(10).ToListAsync();
+
             return PartialView("GetComments", data);
+        }
+
+        [HttpGet]
+        public ActionResult GetMoreComments(long themeId, int pageNr)
+        {
+            var comments = _context.Comments.Where(x => x.ThemeId.Equals(themeId)).Select(x => new CommentsViewModel()
+            {
+                EMail = x.User.Email,
+                ThemeName = x.Theme.Name,
+                Comment = x.Content,
+                DateComment = x.DateComment.ToString("dd/MM/yyyy HH:mm")
+            }).OrderByDescending(x => x.DateComment).Skip(10*pageNr).Take(10).ToList();
+
+            //return Json(comments);
+            var result = JsonConvert.SerializeObject(comments);
+            return Content(result, "application/json");
         }
 
         [HttpPost]
