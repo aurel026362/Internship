@@ -40,23 +40,23 @@
 <div class="row">
     @if (User.IsInRole("Admin"))
     {
-        <a href="~/Admin/Index" class="btn btn-primary" style="width:100%">GO TO PROFILE</a>
+        <a id="BGoToProfile" href="~/Admin/Index" class="btn btn-primary" style="width:100%">GO TO PROFILE</a>
     }
     else if (User.IsInRole("Menthor"))
     {
-        <a href="~/Menthor/Index" class="btn btn-primary" style="width:100%">GO TO PROFILE</a>
+        <a id="BGoToProfile" href="~/Menthor/Index" class="btn btn-primary" style="width:100%">GO TO PROFILE</a>
     }
     else if (User.IsInRole("Intern"))
     {
-        <a href="~/Intern/Index" class="btn btn-primary" style="width:100%">GO TO PROFILE</a>
+        <a id="BGoToProfile" href="~/Intern/Index" class="btn btn-primary" style="width:100%">GO TO PROFILE</a>
     }
     else
     {
-        <a href="~/identity/account/Login" class="btn btn-primary" style="width:100%">GO TO PROFILE</a>
+        <a id="BGoToProfile" href="~/identity/account/Login" class="btn btn-primary" style="width:100%">GO TO PROFILE</a>
     }
 </div>
 <hr>
-<div class="container-fluid padding">
+<div  id="but" class="container-fluid padding ShowUp">
     <div class="row padding">
         <div class="offset-lg-2 col-lg-4">
             <h2>Ceva informatie</h2>
@@ -90,7 +90,7 @@
         </div>
     </div>
 </figure>
-<div id="gifs" class="collapse">
+@*<div id="gifs" class="collapse">
     <div class="container-fluid padding">
         <div class="row text-center">
             <div class="col-sm-6 col-md-3">
@@ -107,7 +107,7 @@
             </div>
         </div>
     </div>
-</div>
+</div>*@
 
 <div class="container-fluid padding">
     <div class="row aler text-center">
@@ -118,9 +118,9 @@
     </div>
 </div>
 
-<div class="container padding">
+<div id="qqq" class="container padding">
     <div class="row padding">
-        <div class="col-md-4">
+        <div class="col-md-4 ShowUp" >
             <div class="card">
                 <img src="https://ribalych.ru/wp-content/uploads/2019/03/26-foto-predmetov_001.jpg"
                      class="card-img-top" alt="">
@@ -135,7 +135,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 ShowUp">
             <div class="card">
                 <img src="https://g1.nh.ee/images/pix/1000x654/UmKMVVvVqTk/72a935c9dc964233f3-85752089.jpg"
                      class="card-img-top" alt="">
@@ -152,7 +152,7 @@
         </div>
 
         <div class="col-md-4 div-card">
-            <div class="card">
+            <div class="card ShowUp">
                 <img src="https://telegraf.com.ua/files/2019/03/pejzazhi-i-nochnoe-nebo-na-snimkax-dilana-najta-16.jpg"
                      class="card-img-top" alt="">
                 <div class="card-body">
@@ -168,3 +168,52 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+        //setTimeout("$('.ShowUp').get(0).style.color = 'red'", 2000);
+
+        //$(".ShowUp").get(0).css("bacground-color","green");
+        //$("#but").css("background-color", "red");
+        //$("#but").css("width", "100px");
+        //$("#but").html("<button>asdsdas</button>");
+
+        //var div = $("#but").clone();
+        //$("body").append("<button>asdsa</button>");
+
+        //<div>
+        //$("#but").wrap("<div></div>");//impachetare
+        //</div>
+
+        //$("#but").remove();
+        //$("#but").empty();
+
+        //$("<p>sadsa</p>").appendTo("#but");
+        //$("<p>sadsa</p>").insertBefore("#but");
+
+        //$("#but").fadeOut(2000);
+        //$("#but").fadeIn(2000);
+        ////$("#but").show(2000);
+        //$("#but").slideDown(1000);
+        //$(".qqq").hide();
+        //$(window).scroll(function () { $("#qqq").show(2000); });
+
+        //function GetNumber(min, max) {
+        //    return Math.floor(Math.random() * (max - min + 1)) + min;
+        //}
+
+        //$("#but").css("background-color", "#" + GetNumber(0, 9) + GetNumber(0, 9) + GetNumber(0, 9) + GetNumber(0, 9) + GetNumber(0, 9) + GetNumber(0, 9));
+
+        //$("#but").append("<a href='#' id='button1'>Click Me</a>");
+        //$(document).bind("click", function () {
+        //    $("#button1").hide(2000);
+        //});
+        //$("#but").append("<button id='asd'>qwerty</button>");
+
+        //$("#asd").on({
+        //    mouseenter: function () { $(this).css("background-color", "red"); },
+        //    mouseleave: function () { $(this).css("background-color", "lightblue"); },
+        //    click: function () { $(this).css("background-color", "yellow"); }
+        //});
+
+    });
+</script>
