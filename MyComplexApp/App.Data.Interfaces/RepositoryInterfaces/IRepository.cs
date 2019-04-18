@@ -1,4 +1,5 @@
 ﻿using App.Data.Domain.DomainModels.Concrete;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -7,13 +8,16 @@ using System.Threading.Tasks;
 
 namespace App.Data.Interfaces.RepositoryInterfaces
 {
-    public interface IRepository<T> : IDisposable where T : Entity
+    public interface IRepository<T> where T : Entity 
     {
-        Task<List<T>> GetAll();
 
-        Task<List<T>> GetAll(Expression<Func<T, bool>> predicate);
+        Task<T> GetById(long Id);
 
-        Task<T> GetById(long id);
+        IList<T> GetNext10(int skipNr);
+
+        Task<IList<T>> GetAll();
+        
+        //Task<IList<T>> GetAll(Expression<Func<T, bool>> predicate);
 
         Task Add(T element);
 
@@ -22,9 +26,6 @@ namespace App.Data.Interfaces.RepositoryInterfaces
         void Delete(T element);
 
         void Delete(long id);
-
-        void DeleteRange(IEnumerable<T> elements);
-        void DeleteRange(IEnumerable<long> elementsIds);
 
         Task Save();
 

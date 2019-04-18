@@ -1,27 +1,56 @@
 ﻿@model App.Web.Models.GeneralUser.CurrentUserCommsViewModel
+<style>
+    .my-comment {
+        margin: 10px;
+        padding: 5px;
+        border-radius: 20px;
+        background-color: #3399ff;
+        color: #fff;
+        height: auto;
+        width: 500px;
+        float: left;
+    }
+
+    .other-comment {
+        margin: 10px;
+        padding: 5px;
+        border-radius: 20px;
+        background-color: #d9d9d9;
+        color: #fff;
+        height: auto;
+        width: 500px;
+        float: right;
+    }
+</style>
 <div class="col-md-9 col-xs-7 content-div">
     <div class="row content-input-div">
         <input class="form-control" id="myComment" />
         <button class="btn btn-primary" id="submitComment">Add Comment</button>
     </div>
     <div class="row content-comment-div">
-        <div class="form-group col-12">
-            <p>Comments</p>
-            <hr />
-            <div class="col-12" id="allcomments">
+        <div class="row">
+            <div class="form-group col-12">
+                <p>Comments</p>
+                <hr />
+                <div class="col-12" id="allcomments">
 
-                @foreach (var item in Model.Comments)
-                {
-                    <b>@item.EMail</b><span>:</span> @item.Comment <small class="text-muted text-right">(@item.DateComment)</small><br />
-                }
+                    @foreach (var item in Model.Comments)
+                    {
+                       // @:
+                    <div class="@(Model.CurrentUserEmail.Equals(item.EMail) ? "my-comment" : "other-comment") ">
+                            <img src="~/imgs/about.jpg" style="width:30px; height:30px; border-radius:200px;" /> <b>@item.EMail</b><span class="text-body"> : @item.Comment</span> <small class="text-muted text-right">(@item.DateComment)</small>
+                        </div>
+                    }
+                </div>
             </div>
-            <div>
-                <button id="MoreComments" class="btn btn-outline-primary btn-sm">Show more comments...</button>
-            </div>
+        </div>
+        <div id="bottom-div" class="row" style="margin:20px">
+            <button id="MoreComments" class="btn btn-outline-primary btn-sm">Show more comments...</button>
         </div>
     </div>
 </div>
 <script>
+
     $("#submitComment").click(function () {
         $.ajax({
             url: "/Intern/SubmitComment",
@@ -29,8 +58,10 @@
             data: ({ comment: $("#myComment").val(), themeId: $("#theme").val() }),
             datatype: "html",
             success: function () {
-                $("#allcomments").prepend("<b>@Model.CurrentUserEmail</b> : " + $("#myComment").
-                    val() + " <small class='text-muted'>(@DateTime.Now.ToString())</span><br/>");
+                $("#allcomments").prepend("<div class='my-comment'>"+
+                    "<img src='~/imgs/about.jpg' style='width:30px;height:30px;border-radius:200px;'/> "+
+                    "<b>@Model.CurrentUserEmail</b><span class='text-body'> : " + $("#myComment").val() +
+                    " </span><small class='text-muted'>(@DateTime.Now.ToString())</span></div>");
                 $("#myComment").val("");
             },
             error: function () {
@@ -50,6 +81,7 @@
             datatype: "application/json",
             success: function (data) {
                 if (data.length < 10) {
+                    $("#bottom-div").prepend("<span class='text-danger'>Don't exist more comments!</span>");
                     $("#MoreComments").hide();
                     //$("#allcomments").append("<br/><span class='text-danger text-sm'>Don't exist more comments</span>");
                 }

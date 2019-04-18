@@ -5,9 +5,12 @@ using System.Threading.Tasks;
 using App.Data.Context;
 using App.Data.Domain.DomainModels.Concrete;
 using App.Data.Domain.DomainModels.Identity;
+using App.Data.Interfaces.RepositoryInterfaces;
+using App.Services.Interfaces;
 using App.Web.Models.ForIntern;
 using App.Web.Models.ForUser;
 using App.Web.Models.GeneralUser;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -22,31 +25,28 @@ namespace App.Web.Controllers
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly MyAppContext _context;
+        private readonly IUserService _userService;
+        private readonly IMapper _mapper;
 
-        public InternController(UserManager<User> userManager, SignInManager<User> signInManager, MyAppContext context)
+        public InternController(UserManager<User> userManager, SignInManager<User> signInManager, MyAppContext context, IUserService userService, IMapper mapper)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _context = context;
+            _userService = userService;
+            _mapper = mapper;
         }
         
         public async Task<IActionResult> Index()
         {
             var currentId = Convert.ToInt32(_signInManager.UserManager.GetUserId(User));
 
-            //IList<string> list = await _context.Modules.Select(x => x.Name).ToListAsync();
-            //ViewData["Modules"] = list;
-
-            //var res = await _context.ThemeMarks.Select(x => new InternMarks
-            //{
-            //    TName = x.theme.Name,
-            //    Mark = x.Mark,
-            //    Comment = x.Comment,
-            //    Id = x.Intern.User.Id
-            //}).Where(x => x.Id == currentId).ToListAsync();
-
             var person = new DataCurrentUser();
-            
+
+            //var user = _userService.GetById(currentId);
+
+            //person.PersonalData = _mapper.Map<PersonalData>(user);
+
             person.PersonalData = await _context.Users.Where(x => x.Id.Equals(currentId)).Select(x => new PersonalData()
             {
                 Id = x.Id,
@@ -173,6 +173,7 @@ namespace App.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> EditData(string fname, string lname, string phone, DateTime dbirth)
         {
+            //if (!ModelState.IsValid) { }
             long currentId = Convert.ToInt32(_signInManager.UserManager.GetUserId(User));
             var user = await _context.Users.FindAsync(currentId);
             user.FirstName = fname;

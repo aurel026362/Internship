@@ -1,11 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using App.Data.Context;
 using App.Data.Domain.DomainModels.Concrete;
 using App.Data.Domain.DomainModels.Identity;
+using App.Data.Interfaces.RepositoryInterfaces;
+using App.Data.Repository;
+using App.Services;
+using App.Services.Interfaces;
 using App.Web.Models;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -32,6 +38,12 @@ namespace App.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<DbContext, MyAppContext>();
+
+            services.AddScoped<IUserRepository, UserRepository>();
+
+            services.AddScoped<IUserService, UserService>();
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -49,7 +61,7 @@ namespace App.Web
                 opt.Password.RequireNonAlphanumeric = false;
 
             }).AddEntityFrameworkStores<MyAppContext>().AddDefaultTokenProviders();
-
+            
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.AddTransient<IEmailSender, EmailSender>();
@@ -75,6 +87,7 @@ namespace App.Web
             // using Microsoft.AspNetCore.Identity.UI.Services;
             //services.AddSingleton<IEmailSender, EmailSender>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddAutoMapper(config => config.AddProfiles(Assembly.GetExecutingAssembly()));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
