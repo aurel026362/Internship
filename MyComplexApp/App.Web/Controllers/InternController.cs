@@ -43,19 +43,20 @@ namespace App.Web.Controllers
 
             var person = new DataCurrentUser();
 
-            //var user = _userService.GetById(currentId);
+            var user = _userService.GetById(currentId);
 
-            //person.PersonalData = _mapper.Map<PersonalData>(user);
+            person.PersonalData = _mapper.Map<PersonalData>(user);
 
-            person.PersonalData = await _context.Users.Where(x => x.Id.Equals(currentId)).Select(x => new PersonalData()
-            {
-                Id = x.Id,
-                FirstName = x.FirstName,
-                LastName = x.LastName,
-                EMail = x.Email,
-                PhoneNumber = x.PhoneNumber,
-                DateOfBirth = x.DateOfBirth
-            }).FirstAsync();
+            //person.PersonalData = 
+                //await _context.Users.Where(x => x.Id.Equals(currentId)).Select(x => new PersonalData()
+            //{
+            //    Id = x.Id,
+            //    FirstName = x.FirstName,
+            //    LastName = x.LastName,
+            //    EMail = x.Email,
+            //    PhoneNumber = x.PhoneNumber,
+            //    DateOfBirth = x.DateOfBirth
+            //}).FirstAsync();
 
             var currentTMarks = await _context.ThemeMarks.Where(x=>x.Intern.User.Id.Equals(currentId)).Select(x => new InternTMark()
             {
@@ -87,7 +88,7 @@ namespace App.Web.Controllers
             {
                 EMail = x.User.Email,
                 ThemeName = x.Theme.Name,
-                Comment = x.Content,
+                Content = x.Content,
                 DateComment = x.DateComment.ToString("dd/MM/yyyy HH:mm")
             }).Take(10).OrderByDescending(x => x.DateComment).ToListAsync();
 
@@ -138,7 +139,7 @@ namespace App.Web.Controllers
              {
                  EMail = x.User.Email,
                  ThemeName = x.Theme.Name,
-                 Comment = x.Content,
+                 Content = x.Content,
                  DateComment = x.DateComment.ToString("dd/MM/yyyy HH:mm")
              }).OrderByDescending(x => x.DateComment).Take(10).ToListAsync();
 
@@ -152,7 +153,7 @@ namespace App.Web.Controllers
             {
                 EMail = x.User.Email,
                 ThemeName = x.Theme.Name,
-                Comment = x.Content,
+                Content = x.Content,
                 DateComment = x.DateComment.ToString("dd/MM/yyyy HH:mm")
             }).OrderByDescending(x => x.DateComment).Skip(10*pageNr).Take(10).ToList();
 

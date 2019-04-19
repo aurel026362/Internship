@@ -8,26 +8,26 @@ using System.Threading.Tasks;
 
 namespace App.Data.Interfaces.RepositoryInterfaces
 {
-    public interface IRepository<T> where T : Entity 
+    public interface IRepository<T> where T : class
     {
 
-        Task<T> GetById(long Id);
+        T GetById(long Id);
 
-        IList<T> GetNext10(int skipNr);
+        IList<T> GetNext10(int page);
 
-        Task<IList<T>> GetAll();
+        IList<T> GetAll();
         
         //Task<IList<T>> GetAll(Expression<Func<T, bool>> predicate);
 
-        Task Add(T element);
+        void Add(T element);
 
-        Task AddRange(IList<T> elements);
+        void AddRange(IList<T> elements);
 
         void Delete(T element);
 
         void Delete(long id);
 
-        Task Save();
+        void Save();
 
         long Count { get; }
     }

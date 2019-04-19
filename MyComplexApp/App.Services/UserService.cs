@@ -1,5 +1,6 @@
 ﻿using App.Data.Domain.DomainModels.Identity;
 using App.Data.Interfaces.RepositoryInterfaces;
+using App.Data.Interfaces.RepositoryInterfaces.IComplexRepositorty;
 using App.Services.Dtos.DTOs.User;
 using App.Services.Interfaces;
 using AutoMapper;
@@ -21,14 +22,34 @@ namespace App.Services
         {
             _userManager = userManager;
             _mapper = mapper;
-            _userManager = userManager;
+            _userRepository = userRepository;
         }
 
-        public async Task<UserDto> GetById(long Id)
+        public UserDto GetById(long Id)
         {
-            var user = await _userRepository.GetById(Id);
+            var user = _userRepository.GetById(Id);
             UserDto userMapped = _mapper.Map<UserDto>(user);
             return userMapped;
+        }
+
+        public IList<UserDto> GetInterns()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<UserDto> GetMenthors()
+        {
+            throw new NotImplementedException();
+        }
+
+        public UserDto GetUserById(long Id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<UserDto> GetUsers()
+        {
+            throw new NotImplementedException();
         }
     }
 }

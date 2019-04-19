@@ -10,10 +10,8 @@ using System.Threading.Tasks;
 
 namespace App.Data.Repository
 {
-    public class GenericRepository<T> : IRepository<T> where T : Entity
+    public class GenericRepository<T> : IRepository<T> where T : class
     {
-        
-    
         private readonly DbContext _context;
         protected readonly DbSet<T> DbSet;
 
@@ -23,14 +21,14 @@ namespace App.Data.Repository
             DbSet = _context.Set<T>();
         }
 
-        public Task<List<T>> GetAll()
+        public IList<T> GetAll()
         {
-            return DbSet.AsNoTracking().ToListAsync();
+            return DbSet.AsNoTracking().ToList();
         }
 
-        public IList<T> GetNext10(int skipNr)
+        public IList<T> GetNext10(int page)
         {
-            return  DbSet.Skip(10*skipNr).Take(10).ToList();
+            return  DbSet.Skip(10 * page).Take(10).ToList();
         }
 
         //public async List<T>> GetAll(Expression<Func<T, bool>> predicate)
@@ -39,25 +37,25 @@ namespace App.Data.Repository
         //}
 
 
-        public async Task<T> GetById(long id)
+        public T GetById(long id)
         {
-            return await DbSet.FirstOrDefaultAsync(t => t.Id == id);
+            return DbSet.Find(id);
         }
 
-        public async Task Add(T element)
+        public void Add(T element)
         {
             if (element == null)
                 throw new ArgumentNullException(paramName: nameof(element));
 
-            await DbSet.AddAsync(element);
+            DbSet.AddAsync(element);
         }
 
-        public async Task AddRange(IList<T> elements)
+        public void AddRange(IList<T> elements)
         {
             if (elements == null)
                 throw new ArgumentNullException(paramName: nameof(elements));
 
-            await DbSet.AddRangeAsync(elements);
+             DbSet.AddRange(elements);
         }
 
         public void Delete(T element)
@@ -78,16 +76,12 @@ namespace App.Data.Repository
             DbSet.Remove(element);
         }
 
-        public async Task Save()
+        public void Save()
         {
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
         
         public long Count => DbSet.Count();
-
-        Task<IList<T>> IRepository<T>.GetAll()
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

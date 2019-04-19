@@ -8,6 +8,9 @@ namespace App.Services.Interfaces
 {
     public interface IUserService
     {
-        Task<UserDto> GetById(long Id);
+        UserDto GetUserById(long Id);
+        IList<UserDto> GetUsers();
+        IList<UserDto> GetInterns();
+        IList<UserDto> GetMenthors();
     }
 }

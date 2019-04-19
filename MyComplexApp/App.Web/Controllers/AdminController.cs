@@ -27,8 +27,6 @@ namespace App.Web.Controllers
             _userManager = groupManager;
             _signInManager = signInManager;
             _context = context;
-
-
             //var userId = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
         }
         

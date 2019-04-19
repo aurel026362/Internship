@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace App.Services.Dtos.DTOs
+namespace App.Services.Dtos.DTOs.ThemeMark
 {
-    public class CommentDto
+    public class ThemeMarkDto
     {
-        public string EMail { get; set; }
+        public string UserEmail { get; set; }
         public string ThemeName { get; set; }
-        public string DateComment { get; set; }
+        public int Mark { get; set; }
         public string Comment { get; set; }
     }
 }
