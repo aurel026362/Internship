@@ -20,23 +20,23 @@ namespace App.Data.Repository.ComplexRepository
             _context = ctxt;
         }
 
-        public ComplexTMark GetThemeMark(long userId, long themeId)
+        public IList<ComplexTMark> GetThemeMarks(long userId, long moduleId)
         {
-            var result = DbSet.Where(x => x.Intern.UserId.Equals(userId) && x.ThemeId.Equals(themeId))
+            var list = _context.ThemeMarks.Where(x => x.Intern.UserId.Equals(userId) && x.theme.ModuleId.Equals(moduleId))
                 .Select(x => new ComplexTMark
                 {
                     UserEmail = x.Intern.User.Email,
                     ThemeName = x.theme.Name,
                     Mark = x.Mark,
                     Comment = x.Comment
-                }).FirstOrDefault();
+                }).ToList();
 
-            return result;
+            return list;
         }
 
         public IList<ComplexTMark> GetThemeMarks()
         {
-            var list = DbSet.Select(x => new ComplexTMark()
+            var list = _context.ThemeMarks.Select(x => new ComplexTMark()
             {
                 UserEmail = x.Intern.User.Email,
                 ThemeName = x.theme.Name,
@@ -47,9 +47,9 @@ namespace App.Data.Repository.ComplexRepository
             return list;
         }
 
-        public IList<ComplexTMark> GetThemeMarksByThemeId(long themeId)
+        public IList<ComplexTMark> GetThemeMarksByModuleId(long moduleId)
         {
-            var list = DbSet.Where(x => x.ThemeId.Equals(themeId))
+            var list = _context.ThemeMarks.Where(x => x.theme.ModuleId.Equals(moduleId))
                 .Select(x => new ComplexTMark()
                 {
                     UserEmail = x.Intern.User.Email,
@@ -63,7 +63,7 @@ namespace App.Data.Repository.ComplexRepository
 
         public IList<ComplexTMark> GetThemeMarksByUserId(long userId)
         {
-            var list = DbSet.Where(x => x.Intern.UserId.Equals(userId))
+            var list = _context.ThemeMarks.Where(x => x.Intern.UserId.Equals(userId))
                 .Select(x => new ComplexTMark()
                 {
                     UserEmail = x.Intern.User.Email,

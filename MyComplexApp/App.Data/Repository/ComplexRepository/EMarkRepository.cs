@@ -1,7 +1,7 @@
 ﻿using App.Data.Context;
 using App.Data.Domain.DomainModels.Concrete;
 using App.Data.Interfaces.Abstractions;
-using App.Data.Interfaces.RepositoryInterfaces.IComplexRepositorty;
+using App.Data.Interfaces.RepositoryInterfaces.IComplexRepository;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -22,7 +22,7 @@ namespace App.Data.Repository.ComplexRepository
 
         public ComplexEMark GetExamMark(long userId, long moduleId)
         {
-            var result = DbSet.Where(x => x.Intern.UserId.Equals(userId) && x.Exam.ModuleId.Equals(moduleId))
+            var result = _context.ExamMarks.Where(x => x.Intern.UserId.Equals(userId) && x.Exam.ModuleId.Equals(moduleId))
                 .Select(x => new ComplexEMark()
                 {
                     UserEmail = x.Intern.User.Email,
@@ -36,7 +36,7 @@ namespace App.Data.Repository.ComplexRepository
 
         public IList<ComplexEMark> GetExamMarks()
         {
-            var list = DbSet.Select(x => new ComplexEMark()
+            var list = _context.ExamMarks.Select(x => new ComplexEMark()
             {
                 UserEmail = x.Intern.User.Email,
                 ModuleName = x.Exam.Module.Name,
@@ -49,7 +49,7 @@ namespace App.Data.Repository.ComplexRepository
 
         public IList<ComplexEMark> GetExamMarksByModuleId(long moduleId)
         {
-            var list = DbSet.Where(x=>x.Exam.ModuleId.Equals(moduleId)).Select(x => new ComplexEMark()
+            var list = _context.ExamMarks.Where(x=>x.Exam.ModuleId.Equals(moduleId)).Select(x => new ComplexEMark()
             {
                 UserEmail = x.Intern.User.Email,
                 ModuleName = x.Exam.Module.Name,
@@ -62,7 +62,7 @@ namespace App.Data.Repository.ComplexRepository
 
         public IList<ComplexEMark> GetExamMarksByUserId(long userId)
         {
-            var list = DbSet.Where(x => x.Intern.UserId.Equals(userId)).Select(x => new ComplexEMark()
+            var list = _context.ExamMarks.Where(x => x.Intern.UserId.Equals(userId)).Select(x => new ComplexEMark()
             {
                 UserEmail = x.Intern.User.Email,
                 ModuleName = x.Exam.Module.Name,

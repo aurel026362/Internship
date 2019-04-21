@@ -7,9 +7,16 @@ using App.Data.Domain.DomainModels.Concrete;
 using App.Data.Domain.DomainModels.Identity;
 using App.Data.Interfaces.RepositoryInterfaces;
 using App.Services.Interfaces;
-using App.Web.Models.ForIntern;
-using App.Web.Models.ForUser;
+using App.Web.Model.ViewModel.CommentViewModel;
+using App.Web.Model.ViewModel.ExamMarkViewModel;
+using App.Web.Model.ViewModel.ModuleViewModel;
+using App.Web.Model.ViewModel.ThemeMarkViewModel;
+using App.Web.Model.ViewModel.ThemeViewModel;
+using App.Web.Model.ViewModel.UserViewModel;
+using App.Web.Models.ComplexViewModel.General;
+using App.Web.Models.ComplexViewModel.Intern;
 using App.Web.Models.GeneralUser;
+using App.Web.Models.ViewModel.ThemeViewModel;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -25,75 +32,52 @@ namespace App.Web.Controllers
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly MyAppContext _context;
-        private readonly IUserService _userService;
+        private readonly IInternAchievements _internAchievements;
         private readonly IMapper _mapper;
 
-        public InternController(UserManager<User> userManager, SignInManager<User> signInManager, MyAppContext context, IUserService userService, IMapper mapper)
+        public InternController(UserManager<User> userManager, SignInManager<User> signInManager, MyAppContext context, IInternAchievements internAchievements, IMapper mapper)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _context = context;
-            _userService = userService;
+            _internAchievements = internAchievements;
             _mapper = mapper;
         }
         
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var currentId = Convert.ToInt32(_signInManager.UserManager.GetUserId(User));
+            long currentId = Convert.ToInt32(_signInManager.UserManager.GetUserId(User));
 
-            var person = new DataCurrentUser();
+            var person = new CurrentDataInternViewModel();
+            var user = _internAchievements.GetUserById(currentId);
 
-            var user = _userService.GetById(currentId);
+            person.PersonalData = _mapper.Map<UserViewModel>(user);
 
-            person.PersonalData = _mapper.Map<PersonalData>(user);
+            var currentTMarks = _internAchievements.GetThemeMarksByUserId(currentId);
 
-            //person.PersonalData = 
-                //await _context.Users.Where(x => x.Id.Equals(currentId)).Select(x => new PersonalData()
-            //{
-            //    Id = x.Id,
-            //    FirstName = x.FirstName,
-            //    LastName = x.LastName,
-            //    EMail = x.Email,
-            //    PhoneNumber = x.PhoneNumber,
-            //    DateOfBirth = x.DateOfBirth
-            //}).FirstAsync();
+            var marks = new MarksViewModel();
 
-            var currentTMarks = await _context.ThemeMarks.Where(x=>x.Intern.User.Id.Equals(currentId)).Select(x => new InternTMark()
-            {
-                TName = x.theme.Name,
-                Mark = x.Mark,
-                Comment = x.Comment
-            }).ToListAsync();
+            marks.ThemeMarks = _mapper.Map<IList<ThemeMarkViewModel>>(currentTMarks);
 
-            var currentEMarks = await _context.ExamMarks.Where(x => x.Intern.User.Id.Equals(currentId)).Select(x => new InternExamMark()
-            {
-                ModuleName = x.Exam.Module.Name,
-                Mark = x.Mark,
-                Comment = x.Comment,
-                Date = x.Exam.Date
-            }).ToListAsync();
+            var currentEMarks = _internAchievements.GetExamMarksByUserId(currentId);
+            marks.ExamMarks = _mapper.Map<IList<ExamMarkViewModel>>(currentEMarks);
 
-            var mark = new Marks();
-            mark.ThemeMarks = currentTMarks;
-            mark.ExamMarks = currentEMarks;
-            person.Marks = mark;
+            person.Marks = marks;
 
-            person.Modules = await _context.Modules.ToListAsync();
+            var modules = _internAchievements.GetModules();
+            person.Modules = _context.Modules//_mapper.Map<IList<ModuleViewModel>>(modules);
+                .Select(x => new ModuleViewModel()
+                {
+                    Name= x.Name,
+                    Id = x.Id,
+                    DateStart = x.DateStart
+                }).ToList();
 
-            person.Themes = await _context.Themes.ToListAsync();
+            var themes = _internAchievements.GetThemes();
+            person.Themes = _mapper.Map<IList<ThemeViewModel>>(themes);
 
-            person.CurrentUserComms = new CurrentUserCommsViewModel();
-
-            person.CurrentUserComms.Comments = await _context.Comments.Select(x => new CommentsViewModel
-            {
-                EMail = x.User.Email,
-                ThemeName = x.Theme.Name,
-                Content = x.Content,
-                DateComment = x.DateComment.ToString("dd/MM/yyyy HH:mm")
-            }).Take(10).OrderByDescending(x => x.DateComment).ToListAsync();
-
-            //person.CurrentUserComms.Comments = cms;
-            person.CurrentUserComms.CurrentUserEmail = person.PersonalData.EMail;
+            var comments = _internAchievements.GetComments();
+            person.Comments = _mapper.Map<IList<CommentViewModel>>(comments);
 
             return View(person);
         }
@@ -101,64 +85,46 @@ namespace App.Web.Controllers
         public async Task<IActionResult> GetMarks(long moduleId)
         {
             var currentId = Convert.ToInt32(_signInManager.UserManager.GetUserId(User));
-            
-            List<InternTMark> marks;
-            
+
+           IList<ThemeMarkViewModel> tmarks;
+
             if (!moduleId.Equals(0))
             {
-                marks = _context.ThemeMarks
-                    .Where(x => x.theme.ModuleId.Equals(moduleId) && x.Intern.UserId.Equals(currentId)).Select(x => new InternTMark
-                {
-                    TName = x.theme.Name,
-                    Mark = x.Mark,
-                    Comment = x.Comment
-                }).ToList();
+                var list = _internAchievements.GetThemeMarksByUserId(currentId);
+                tmarks = _mapper.Map<IList<ThemeMarkViewModel>>(list);
             }
-            else {
-                marks = await _context.ThemeMarks.Where(x => x.Intern.UserId.Equals(currentId)).Select(x => new InternTMark
-                {
-                    TName = x.theme.Name,
-                    Mark = x.Mark,
-                    Comment = x.Comment
-                }).ToListAsync();
+            else
+            {
+                var list = _internAchievements.GetThemeMarks(currentId, moduleId);
+                tmarks = _mapper.Map<IList<ThemeMarkViewModel>>(list);
             }
 
-            return PartialView("GetMarks", marks);
+            return PartialView("GetMarks", tmarks);
         }
-        
+
         [HttpGet]
         public async Task<IActionResult> GetComments(long themeId)
         {
             var currentId = Convert.ToInt32(_signInManager.UserManager.GetUserId(User));
-            var currentUser = _context.Users.FirstOrDefault(x=>x.Id.Equals(currentId));
+            var currentUser = _internAchievements.GetUserById(currentId);
+                //_context.Users.FirstOrDefault(x => x.Id.Equals(currentId));
 
-            var data = new CurrentUserCommsViewModel();
+            var data = new CurrentDataInternViewModel();
 
-            data.CurrentUserEmail = currentUser.Email;
-             data.Comments = await _context.Comments.Where(x => x.ThemeId.Equals(themeId)).Select(x=>new CommentsViewModel()
-             {
-                 EMail = x.User.Email,
-                 ThemeName = x.Theme.Name,
-                 Content = x.Content,
-                 DateComment = x.DateComment.ToString("dd/MM/yyyy HH:mm")
-             }).OrderByDescending(x => x.DateComment).Take(10).ToListAsync();
+            var personaldata = _internAchievements.GetUserById(currentId);
+            data.PersonalData = _mapper.Map<UserViewModel>(personaldata);
 
+            var comments = _internAchievements.GetComments(themeId);
+            data.Comments = _mapper.Map<IList<CommentViewModel>>(comments);
+            
             return PartialView("GetComments", data);
         }
 
         [HttpGet]
         public ActionResult GetMoreComments(long themeId, int pageNr)
         {
-            var comments = _context.Comments.Where(x => x.ThemeId.Equals(themeId)).Select(x => new CommentsViewModel()
-            {
-                EMail = x.User.Email,
-                ThemeName = x.Theme.Name,
-                Content = x.Content,
-                DateComment = x.DateComment.ToString("dd/MM/yyyy HH:mm")
-            }).OrderByDescending(x => x.DateComment).Skip(10*pageNr).Take(10).ToList();
-
-            //return Json(comments);
-            var result = JsonConvert.SerializeObject(comments);
+            var comments = _internAchievements.GetComments(pageNr, themeId);
+            var result = JsonConvert.SerializeObject(_mapper.Map<IList<CommentViewModel>>(comments));
             return Content(result, "application/json");
         }
 
@@ -166,8 +132,9 @@ namespace App.Web.Controllers
         public async Task<IActionResult> SubmitComment(string comment, long themeId)
         {
             var currentId = Convert.ToInt32(_signInManager.UserManager.GetUserId(User));
-            await _context.Comments.AddAsync(new Comment() { UserId=currentId, Content = comment, DateComment = DateTime.Now, ThemeId = themeId});
-            await _context.SaveChangesAsync();
+            _internAchievements.AddComment(currentId, themeId, comment);
+            //await _context.Comments.AddAsync(new Comment() { UserId = currentId, Content = comment, DateComment = DateTime.Now, ThemeId = themeId });
+            //await _context.SaveChangesAsync();
             return StatusCode(200);
         }
 
@@ -176,15 +143,31 @@ namespace App.Web.Controllers
         {
             //if (!ModelState.IsValid) { }
             long currentId = Convert.ToInt32(_signInManager.UserManager.GetUserId(User));
-            var user = await _context.Users.FindAsync(currentId);
-            user.FirstName = fname;
-            user.LastName = lname;
-            user.PhoneNumber = phone;
-            user.DateOfBirth = dbirth;
-            _context.Update(user);
-            _context.SaveChanges();
+            _internAchievements.UpdateUser(currentId, fname, lname, phone, dbirth);
+            //var user = await _context.Users.FindAsync(currentId);
+            //user.FirstName = fname;
+            //user.LastName = lname;
+            //user.PhoneNumber = phone;
+            //user.DateOfBirth = dbirth;
+            //_context.Update(user);
+            //_context.SaveChanges();
             return StatusCode(200);
         }
-        
+
+        [HttpPost]
+        public async Task<IActionResult> AddTheme(AddThemeViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return StatusCode(400);
+            }
+
+            var theme = _mapper.Map<Theme>(model);
+            _context.Themes.Add(theme);
+            _context.SaveChanges();
+
+            return RedirectToAction("~/Home/Index");
+        }
+
     }
 }

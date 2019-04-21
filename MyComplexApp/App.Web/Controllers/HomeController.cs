@@ -10,7 +10,6 @@ using App.Data.Domain.DomainModels.Identity;
 using App.Data.Context;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Authorization;
-using App.Web.ViewModels;
 
 namespace App.Web.Controllers
 {

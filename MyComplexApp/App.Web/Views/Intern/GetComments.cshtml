@@ -1,4 +1,4 @@
-﻿@model App.Web.Models.GeneralUser.CurrentUserCommsViewModel
+﻿@model App.Web.Models.ComplexViewModel.Intern.CurrentDataInternViewModel
 <style>
     .my-comment {
         margin: 10px;
@@ -36,10 +36,10 @@
 
                     @foreach (var item in Model.Comments)
                     {
-                       // @:
-                    <div class="@(Model.CurrentUserEmail.Equals(item.EMail) ? "my-comment" : "other-comment") ">
-                            <img src="~/imgs/about.jpg" style="width:30px; height:30px; border-radius:200px;" /> <b>@item.EMail</b><span class="text-body"> : @item.Comment</span> <small class="text-muted text-right">(@item.DateComment)</small>
-                        </div>
+                        // @:
+                        <div class="@(Model.PersonalData.EMail.Equals(item.EMail) ? "my-comment" : "other-comment") ">
+                                <img src="~/imgs/about.jpg" style="width:30px; height:30px; border-radius:200px;" /> <b>@item.EMail</b><span class="text-body"> : @item.Content</span> <small class="text-muted text-right">(@item.DateComment)</small>
+                            </div>
                     }
                 </div>
             </div>
@@ -60,7 +60,7 @@
             success: function () {
                 $("#allcomments").prepend("<div class='my-comment'>"+
                     "<img src='~/imgs/about.jpg' style='width:30px;height:30px;border-radius:200px;'/> "+
-                    "<b>@Model.CurrentUserEmail</b><span class='text-body'> : " + $("#myComment").val() +
+                    "<b>@Model.PersonalData.EMail</b><span class='text-body'> : " + $("#myComment").val() +
                     " </span><small class='text-muted'>(@DateTime.Now.ToString())</span></div>");
                 $("#myComment").val("");
             },

@@ -13,22 +13,22 @@ namespace App.Data.Repository
     public class GenericRepository<T> : IRepository<T> where T : class
     {
         private readonly DbContext _context;
-        protected readonly DbSet<T> DbSet;
+        //protected readonly DbSet<T> DbSet;
 
         protected GenericRepository(DbContext context)
         {
             _context = context;
-            DbSet = _context.Set<T>();
+            //DbSet = _context.Set<T>();
         }
 
         public IList<T> GetAll()
         {
-            return DbSet.AsNoTracking().ToList();
+            return _context.Set<T>().AsNoTracking().ToList();
         }
 
         public IList<T> GetNext10(int page)
         {
-            return  DbSet.Skip(10 * page).Take(10).ToList();
+            return _context.Set<T>().Skip(10 * page).Take(10).ToList();
         }
 
         //public async List<T>> GetAll(Expression<Func<T, bool>> predicate)
@@ -39,7 +39,7 @@ namespace App.Data.Repository
 
         public T GetById(long id)
         {
-            return DbSet.Find(id);
+            return _context.Set<T>().Find(id);
         }
 
         public void Add(T element)
@@ -47,7 +47,7 @@ namespace App.Data.Repository
             if (element == null)
                 throw new ArgumentNullException(paramName: nameof(element));
 
-            DbSet.AddAsync(element);
+            _context.Set<T>().AddAsync(element);
         }
 
         public void AddRange(IList<T> elements)
@@ -55,7 +55,7 @@ namespace App.Data.Repository
             if (elements == null)
                 throw new ArgumentNullException(paramName: nameof(elements));
 
-             DbSet.AddRange(elements);
+            _context.Set<T>().AddRange(elements);
         }
 
         public void Delete(T element)
@@ -63,17 +63,17 @@ namespace App.Data.Repository
             //if (element == null)
             //    throw new EntityNotFoundException(nameof(element));
 
-            DbSet.Remove(element);
+            _context.Set<T>().Remove(element);
         }
 
         public void Delete(long id)
         {
-            T element = DbSet.Find(id);
+            T element = _context.Set<T>().Find(id);
 
             //if (element == null)
             //    throw new EntityNotFoundException(nameof(element));
 
-            DbSet.Remove(element);
+            _context.Set<T>().Remove(element);
         }
 
         public void Save()
@@ -81,7 +81,7 @@ namespace App.Data.Repository
             _context.SaveChanges();
         }
         
-        public long Count => DbSet.Count();
+        public long Count => _context.Set<T>().Count();
         
     }
 }

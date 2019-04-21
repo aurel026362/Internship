@@ -7,7 +7,9 @@ using App.Data.Context;
 using App.Data.Domain.DomainModels.Concrete;
 using App.Data.Domain.DomainModels.Identity;
 using App.Data.Interfaces.RepositoryInterfaces;
+using App.Data.Interfaces.RepositoryInterfaces.IComplexRepository;
 using App.Data.Repository;
+using App.Data.Repository.ComplexRepository;
 using App.Services;
 using App.Services.Interfaces;
 using App.Web.Models;
@@ -38,11 +40,19 @@ namespace App.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<DbContext, MyAppContext>();
-
+            //services.AddScoped<IUserService, UserService>();
+            //services.AddScoped<IRepository<App.Data.Domain.DomainModels.Concrete.Module>, 
+              //  GenericRepository<App.Data.Domain.DomainModels.Concrete.Module>>();
+            //services.AddScoped<IRepository<Group>, GenericRepository<Group>>();
             services.AddScoped<IUserRepository, UserRepository>();
-
-            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IInternAchievements, InternAchievements>();
+            services.AddScoped<ICommentRepository, CommentRepository>();
+            services.AddScoped<IEMarkRepository, EMarkRepository>();
+            services.AddScoped<IExamRepository, ExamRepository>();
+            services.AddScoped<IThemeRepository, ThemeRepository>();
+            services.AddScoped<ITMarkRepository, TMarkRepository>();
 
             services.Configure<CookiePolicyOptions>(options =>
             {
@@ -105,6 +115,7 @@ namespace App.Web
                 app.UseHsts();
             }
 
+            app.UseMiddleware<CustomMiddleware>();
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();

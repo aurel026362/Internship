@@ -8,8 +8,8 @@ namespace App.Services.Interfaces
     public interface ITMarkService
     {
         IList<ThemeMarkDto> GetThemeMarksByUserId(long userId);
-        ThemeMarkDto GetThemeMark(long userId, long themeId);
-        IList<ThemeMarkDto> GetThemeMarksByThemeId(long themeId);
+        IList<ThemeMarkDto> GetThemeMarks(long userId, long moduleId);
+        IList<ThemeMarkDto> GetThemeMarksByModuleId(long moduleId);
         IList<ThemeMarkDto> GetThemeMarks();
     }
 }

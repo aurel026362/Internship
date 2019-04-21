@@ -8,8 +8,8 @@ namespace App.Data.Interfaces.RepositoryInterfaces.IComplexRepository
     public interface ITMarkRepository
     {
         IList<ComplexTMark> GetThemeMarksByUserId(long userId);
-        ComplexTMark GetThemeMark(long userId, long themeId);
-        IList<ComplexTMark> GetThemeMarksByThemeId(long themeId);
+        IList<ComplexTMark> GetThemeMarks(long userId, long moduleId);
+        IList<ComplexTMark> GetThemeMarksByModuleId(long moduleId);
         IList<ComplexTMark> GetThemeMarks();
     }
 }

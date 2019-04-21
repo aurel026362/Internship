@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
@@ -26,6 +26,11 @@
 
 
   <ItemGroup>
+    <Folder Include="Models\ComplexViewModel\Admin\" />
+    <Folder Include="Models\ComplexViewModel\Menthor\" />
+    <Folder Include="Models\ViewModel\InternViewModel\" />
+    <Folder Include="Models\ViewModel\MenthorViewModel\" />
+    <Folder Include="Models\ViewModel\RequestedUserViewModel\" />
     <Folder Include="Views\Users\" />
   </ItemGroup>
 

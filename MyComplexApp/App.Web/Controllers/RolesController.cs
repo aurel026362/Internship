@@ -1,5 +1,5 @@
 ﻿using App.Data.Domain.DomainModels.Identity;
-using App.Web.ViewModels;
+using App.Web.Model.ViewModel.RoleViewModel;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;

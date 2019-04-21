@@ -2,7 +2,7 @@
 using App.Data.Domain.DomainModels.Concrete;
 using App.Data.Interfaces.Abstractions;
 using App.Data.Interfaces.RepositoryInterfaces;
-using App.Data.Interfaces.RepositoryInterfaces.IComplexRepositorty;
+using App.Data.Interfaces.RepositoryInterfaces.IComplexRepository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -62,6 +62,7 @@ namespace App.Data.Repository.ComplexRepository
         {
             com.DateComment = DateTime.Now.Date;
             _context.Comments.Add(com);
+            _context.SaveChanges();
         }
 
         public void AddComment(long userId, long themeId, string content)

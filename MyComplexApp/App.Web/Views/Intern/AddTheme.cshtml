@@ -1,0 +1,32 @@
+﻿@model App.Web.Models.ViewModel.ThemeViewModel.AddThemeViewModel
+@{
+    ViewData["Title"] = "AddTheme";
+}
+<!Doctype html>
+<html>
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+    </head>
+<body>
+    <h1>AddTheme</h1>
+
+    <form asp-action="AddTheme">
+        <div asp-validation-summary="ModelOnly">
+
+        </div>
+        <input asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+        <input asp-for="ModuleId" />
+        <span asp-validation-for="ModuleId"></span>
+        <input asp-for="MenthorId" />
+        <span asp-validation-for="MenthorId"></span>
+        <input asp-for="Source" />
+        <span asp-validation-for="Source"></span>
+        <input asp-for="TimeOfTheme" />
+        <span asp-validation-for="TimeOfTheme"></span>
+        <button type="submit">Send</button>
+    </form>
+</body>
+</html>

@@ -1,7 +1,7 @@
 ﻿using App.Data.Context;
 using App.Data.Domain.DomainModels.Identity;
 using App.Data.Interfaces.RepositoryInterfaces;
-using App.Data.Interfaces.RepositoryInterfaces.IComplexRepositorty;
+using App.Data.Interfaces.RepositoryInterfaces.IComplexRepository;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -24,17 +24,18 @@ namespace App.Data.Repository.ComplexRepository
 
         public User GetUserById(long Id)
         {
-            return DbSet.Find(Id);
+            var result = _context.Users.Find(Id);//DbSet.Where(x=>x.Id.Equals(Id)).FirstOrDefault();
+            return result;
         }
 
         public IList<User> GetUsers()
         {
-            return DbSet.AsNoTracking().ToList();
+            return _context.Users.AsNoTracking().ToList();
         }
 
         public IList<User> GetInterns()
         {
-            var list = DbSet.Join(_context.Interns,
+            var list = _context.Users.Join(_context.Interns,
                 user => user.Id,
                 intern => intern.UserId,
                 (user,intern)=>user).ToList();
@@ -43,7 +44,7 @@ namespace App.Data.Repository.ComplexRepository
 
         public IList<User> GetMenthors()
         {
-            var list = DbSet.Join(_context.Menthors,
+            var list = _context.Users.Join(_context.Menthors,
                 user => user.Id,
                 menthor => menthor.UserId,
                 (user, menthor) => user).ToList();
@@ -92,6 +93,15 @@ namespace App.Data.Repository.ComplexRepository
             _context.SaveChanges();
         }
 
-       
+        public void UpdateUser(long userId, string newFName, string newLName, string newPhone, DateTime newdDBirth)
+        {
+            User user = _context.Users.Find(userId);
+            user.FirstName = newFName;
+            user.LastName = newLName;
+            user.PhoneNumber = newPhone;
+            user.DateOfBirth = newdDBirth;
+            _context.Update(user);
+            Save();
+        }
     }
 }

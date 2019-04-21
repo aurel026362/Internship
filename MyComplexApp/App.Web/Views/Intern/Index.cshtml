@@ -1,4 +1,4 @@
-﻿@model App.Web.Models.ForUser.DataCurrentUser
+﻿@model App.Web.Models.ComplexViewModel.Intern.CurrentDataInternViewModel
 @{
     ViewData["Title"] = "Index";
 }
@@ -112,7 +112,7 @@
                             </select>
                         </div>
                         <div id="comment-div" class="col-md-9 col-xs-7">
-                            @await Html.PartialAsync("../Intern/GetComments", Model.CurrentUserComms)
+                            @await Html.PartialAsync("../Intern/GetComments", Model)
 
                             @*<div class="col-md-9 col-xs-7 content-div">
                                     <div class="row content-comment-div">

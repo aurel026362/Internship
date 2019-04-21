@@ -12,5 +12,6 @@ namespace App.Services.Interfaces
         IList<UserDto> GetUsers();
         IList<UserDto> GetInterns();
         IList<UserDto> GetMenthors();
+        void UpdateUser(long userId, string newFName, string newLName, string nenwPhone, DateTime newdDBirth);
     }
 }

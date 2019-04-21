@@ -4,7 +4,7 @@ using System.Text;
 
 namespace App.Services.Interfaces
 {
-    public interface IInternAchievements : IModuleService, IThemeService, IExamService, ITMarkService, IEMarkService, IGroupService, IUserService
+    public interface IInternAchievements : IModuleService, IThemeService, IExamService, ITMarkService, IEMarkService, IGroupService, IUserService, ICommentService
     {
     }
 }
