@@ -133,6 +133,7 @@ namespace App.Web.Controllers
         {
             var currentId = Convert.ToInt32(_signInManager.UserManager.GetUserId(User));
             _internAchievements.AddComment(currentId, themeId, comment);
+            _context.SaveChanges();
             //await _context.Comments.AddAsync(new Comment() { UserId = currentId, Content = comment, DateComment = DateTime.Now, ThemeId = themeId });
             //await _context.SaveChangesAsync();
             return StatusCode(200);
@@ -154,19 +155,48 @@ namespace App.Web.Controllers
             return StatusCode(200);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> AddTheme()
+        {
+            return View();
+        }
+
         [HttpPost]
         public async Task<IActionResult> AddTheme(AddThemeViewModel model)
         {
             if (!ModelState.IsValid)
             {
-                return StatusCode(400);
+                return View();
             }
 
-            var theme = _mapper.Map<Theme>(model);
+            //CreateMap
+
+             var theme = _mapper.Map<Theme>(model);
             _context.Themes.Add(theme);
             _context.SaveChanges();
 
-            return RedirectToAction("~/Home/Index");
+            return RedirectToAction("Home/Index");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> AddModule()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddModule(ModuleViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            var module = _mapper.Map<Module>(model);
+            _context.Modules.AddAsync(module);
+            _context.SaveChangesAsync();
+
+            return Ok();
         }
 
     }

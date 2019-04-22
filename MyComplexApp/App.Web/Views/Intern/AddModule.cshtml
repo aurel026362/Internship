@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "AddModule";
+}
+<!DOCTYPE html>
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+</head>
+<body>
+    <h1>AddModule</h1>
+
+    <form id="formId" class="form" method="post" action="/Intern/AddModule">
+        <label for="Name">Name</label><br />
+        <input type="text" id="Name" name="Name" data-val="true"  required data-val-required="Trebuie sa completeze" data-val-length-min="2" data-val-length-max="50" /><br />
+        <span class="field-validation-valid text-danger" data-valmsg-for="Name" data-valmsg-required="Data must have value!" data-valmsg-length="Data must be from 1 to 50 characters!"></span><br />
+        <label for="DateStart">Date Start</label><br />
+        <input type="date" id="DateStart" name="DateStart" required /><br />
+        <span class="field-validation-valid text-danger" data-valmsg-required="Data must have value!" data-valmsg-length="Data must be from 1 to 50 characters!"></span><br />
+
+        <button type="submit">Submit Mai</button><br />
+    </form>
+</body>
+</html>

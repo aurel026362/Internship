@@ -12,21 +12,26 @@
 <body>
     <h1>AddTheme</h1>
 
-    <form asp-action="AddTheme">
+    <form method="post" asp-action="AddTheme" asp-controller="Intern" class="form">
         <div asp-validation-summary="ModelOnly">
 
         </div>
-        <input asp-for="Name" />
-        <span asp-validation-for="Name"></span>
-        <input asp-for="ModuleId" />
-        <span asp-validation-for="ModuleId"></span>
-        <input asp-for="MenthorId" />
-        <span asp-validation-for="MenthorId"></span>
-        <input asp-for="Source" />
-        <span asp-validation-for="Source"></span>
-        <input asp-for="TimeOfTheme" />
-        <span asp-validation-for="TimeOfTheme"></span>
-        <button type="submit">Send</button>
+        <label asp-for="Name"></label><br />
+        <input asp-for="Name" /><br />
+        <span asp-validation-for="Name" clas="text-danger" ></span><br />
+        <label asp-for="ModuleId"></label><br />
+        <input asp-for="ModuleId" /><br />
+        <span clas="text-danger" asp-validation-for="ModuleId"></span><br />
+        <label asp-for="MenthorId"></label><br />
+        <input asp-for="MenthorId" /><br />
+        <span clas="text-danger" asp-validation-for="MenthorId"></span><br />
+        <label asp-for="Source"></label><br />
+        <input asp-for="Source" /><br />
+        <span clas="text-danger" asp-validation-for="Source"></span><br />
+        <label asp-for="TimeOfTheme"></label><br />
+        <input asp-for="TimeOfTheme" /><br />
+        <span clas="text-danger" asp-validation-for="TimeOfTheme"></span><br />
+        <button class="btn btn-success" type="submit">Send</button>
     </form>
 </body>
 </html>

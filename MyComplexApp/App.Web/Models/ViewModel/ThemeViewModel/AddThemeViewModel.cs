@@ -17,8 +17,8 @@ namespace App.Web.Models.ViewModel.ThemeViewModel
         [Required]
         public long MenthorId { get; set; }
 
-        [DataType(DataType.DateTime)]
-        public DateTime TimeOfTheme { get; set; }
+       [DataType(DataType.DateTime)]
+        public DateTime? TimeOfTheme { get; set; }
 
         [Required]
         [Display(Name="Module")]
