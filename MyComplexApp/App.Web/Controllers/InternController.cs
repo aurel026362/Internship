@@ -17,6 +17,7 @@ using App.Web.Models.ComplexViewModel.General;
 using App.Web.Models.ComplexViewModel.Intern;
 using App.Web.Models.GeneralUser;
 using App.Web.Models.ViewModel.ThemeViewModel;
+using App.Web.TEST;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -43,7 +44,7 @@ namespace App.Web.Controllers
             _internAchievements = internAchievements;
             _mapper = mapper;
         }
-        
+
         public IActionResult Index()
         {
             long currentId = Convert.ToInt32(_signInManager.UserManager.GetUserId(User));
@@ -68,7 +69,7 @@ namespace App.Web.Controllers
             person.Modules = _context.Modules//_mapper.Map<IList<ModuleViewModel>>(modules);
                 .Select(x => new ModuleViewModel()
                 {
-                    Name= x.Name,
+                    Name = x.Name,
                     Id = x.Id,
                     DateStart = x.DateStart
                 }).ToList();
@@ -86,7 +87,7 @@ namespace App.Web.Controllers
         {
             var currentId = Convert.ToInt32(_signInManager.UserManager.GetUserId(User));
 
-           IList<ThemeMarkViewModel> tmarks;
+            IList<ThemeMarkViewModel> tmarks;
 
             if (!moduleId.Equals(0))
             {
@@ -107,7 +108,7 @@ namespace App.Web.Controllers
         {
             var currentId = Convert.ToInt32(_signInManager.UserManager.GetUserId(User));
             var currentUser = _internAchievements.GetUserById(currentId);
-                //_context.Users.FirstOrDefault(x => x.Id.Equals(currentId));
+            //_context.Users.FirstOrDefault(x => x.Id.Equals(currentId));
 
             var data = new CurrentDataInternViewModel();
 
@@ -116,7 +117,7 @@ namespace App.Web.Controllers
 
             var comments = _internAchievements.GetComments(themeId);
             data.Comments = _mapper.Map<IList<CommentViewModel>>(comments);
-            
+
             return PartialView("GetComments", data);
         }
 
@@ -171,7 +172,7 @@ namespace App.Web.Controllers
 
             //CreateMap
 
-             var theme = _mapper.Map<Theme>(model);
+            var theme = _mapper.Map<Theme>(model);
             _context.Themes.Add(theme);
             _context.SaveChanges();
 
@@ -191,13 +192,55 @@ namespace App.Web.Controllers
             {
                 return View();
             }
+            Module module = _mapper.Map<Module>(model);
+            await _context.Modules.AddAsync(module);
+            await _context.SaveChangesAsync();
 
-            var module = _mapper.Map<Module>(model);
-            _context.Modules.AddAsync(module);
-            _context.SaveChangesAsync();
-
-            return Ok();
+            return RedirectToAction("~/Home/Index");
         }
 
+        [HttpGet]
+        public async Task<IActionResult> CheckModule(string Name)
+        {
+            var result = true;
+
+            var list = _context.Modules.Where(x => x.Name.Equals(Name)).Select(x=>x.Name).FirstOrDefault();
+
+            if (list != null)
+            {
+                result = false;
+                
+            }
+
+            return Json(result);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> FormExample()
+        {
+            var m = new MyModel
+            {
+                Languages = new List<LanguageOption>
+                {
+                    new LanguageOption
+                    {
+                        Name = "dsad",
+                        IsChecked = false
+                    }
+                }
+            };
+            return View();
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> FormExample(MyModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            return Ok();
+        }
     }
 }

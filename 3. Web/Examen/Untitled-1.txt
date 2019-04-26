@@ -1,0 +1,11 @@
+
+public class Form{
+
+    public string Name {get;set;}
+    public string Email {Get;set;}
+    public string Password{get;set;}
+    public string Gender{get;set;}
+    public IList<string> Languages{get;set;}
+    public string Country{get;set;}
+    public int ExperienceYear{get;set;}
+}

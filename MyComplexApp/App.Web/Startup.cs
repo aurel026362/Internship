@@ -97,7 +97,7 @@ namespace App.Web
             // using Microsoft.AspNetCore.Identity.UI.Services;
             //services.AddSingleton<IEmailSender, EmailSender>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddAutoMapper(config => config.AddProfiles(Assembly.GetExecutingAssembly()));
+            services.AddAutoMapper();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -115,7 +115,7 @@ namespace App.Web
                 app.UseHsts();
             }
 
-            app.UseMiddleware<CustomMiddleware>();
+            //app.UseMiddleware<CustomMiddleware>();
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();

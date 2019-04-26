@@ -239,3 +239,4 @@ C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2
 C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\Intern\AddTheme.g.cshtml.cs
 D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\Intern\AddTheme.g.cshtml.cs
 D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\Intern\AddModule.g.cshtml.cs
+D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\Intern\FormExample.g.cshtml.cs

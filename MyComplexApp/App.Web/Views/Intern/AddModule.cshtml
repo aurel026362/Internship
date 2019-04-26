@@ -1,24 +1,59 @@
-﻿@{
+﻿@model App.Web.Model.ViewModel.ModuleViewModel.ModuleViewModel
+@{
     ViewData["Title"] = "AddModule";
+    Layout = null;
 }
+
 <!DOCTYPE html>
+<html>
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>jQuery UI Dialog - Animation</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    @*<link rel="stylesheet" href="/resources/demos/style.css">*@
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+
 </head>
 <body>
-    <h1>AddModule</h1>
-
-    <form id="formId" class="form" method="post" action="/Intern/AddModule">
-        <label for="Name">Name</label><br />
-        <input type="text" id="Name" name="Name" data-val="true"  required data-val-required="Trebuie sa completeze" data-val-length-min="2" data-val-length-max="50" /><br />
-        <span class="field-validation-valid text-danger" data-valmsg-for="Name" data-valmsg-required="Data must have value!" data-valmsg-length="Data must be from 1 to 50 characters!"></span><br />
-        <label for="DateStart">Date Start</label><br />
-        <input type="date" id="DateStart" name="DateStart" required /><br />
-        <span class="field-validation-valid text-danger" data-valmsg-required="Data must have value!" data-valmsg-length="Data must be from 1 to 50 characters!"></span><br />
-
-        <button type="submit">Submit Mai</button><br />
+@*<form id="myform" action="/Intern/AddModule" method="post">
+    <input type="text" name="Name" required minlength="2"/>
+    <input type="date" name="DateStart required"/>
+    <button id="trimite">Trimite</button>
+</form>*@
+    <form>
+        <div asp-validation-summary="ModelOnly"></div>
+        <input asp-for="Name" required/>
+        <span asp-validation-for="Name"></span>
+        <input asp-for="DateStart" required/>
+        <span asp-validation-for="DateStart"></span>
+        <input type="submit" id="trimite"/>
     </form>
+
 </body>
 </html>
+<script>
+    $(document).ready(function () { 
+        $("#trimite").on("click", function () {
+            alert("oIntrat");
+            $.ajax({
+                url: "Intern/AddModule",
+                type: "POST",
+                datatype: "json",
+                data: JSON.stringify({
+                    Name: $("#Name").val(), DateStart: $("#DateStart").val()
+                }),
+                success: function () {
+                    alert("SUCCESS");
+                },
+                failure: function () {
+                    alert("FAILURE");
+                }
+            });
+        });
+    });
+</script>
