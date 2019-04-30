@@ -11,5 +11,6 @@ namespace App.Data.Interfaces.RepositoryInterfaces.IComplexRepository
         IList<ComplexTMark> GetThemeMarks(long userId, long moduleId);
         IList<ComplexTMark> GetThemeMarksByModuleId(long moduleId);
         IList<ComplexTMark> GetThemeMarks();
+        void Save();
     }
 }

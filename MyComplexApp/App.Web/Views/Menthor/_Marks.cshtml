@@ -1,0 +1,109 @@
+﻿@model App.Web.Models.ComplexViewModel.Intern.CurrentDataInternViewModel
+@{
+    ViewData["Title"] = "_Marks";
+}
+<div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+    <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#divTMarks" role="tab" aria-controls="nav-home" aria-selected="true">Theme Marks</a>
+            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#divEMarks" role="tab" aria-controls="nav-profile" aria-selected="false">Exam Marks</a>
+        </div>
+    </nav>
+    <div class="container-fluid text-center">
+        <div class="row bg-first">
+            <p>
+                My problem is that after translating up the image, the div that contains it remains
+                unchanged, and has lots of white space in the place where the image used to be.
+            </p>
+        </div>
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" role="tabpanel" aria-labelledby="profile-tab" id="divTMarks">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                User EMail <a href="#"><i class="fas fa-sort"></i></a>
+                            </th>
+                            <th>
+                                Theme Name <a href="#"><i class="fas fa-sort"></i></a>
+                            </th>
+                            <th>
+                                Mark <a href="#"><i class="fas fa-sort"></i></a>
+                            </th>
+                            <th>
+                                Comment
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Marks.ExamMarks != null)
+                        {
+                            @foreach (var item in Model.Marks.ThemeMarks)
+                            {
+                                <tr>
+                                    <td>
+                                        @item.UserEmail
+                                    </td>
+                                    <td>
+                                        @item.ThemeName
+                                    </td>
+                                    <td>
+                                        @item.Mark
+                                    </td>
+                                    <td>
+                                        @item.Comment
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else if (Model.Marks.ExamMarks == null)
+                        {
+                            <tr>
+                                <td colspan="3"><b>Don't exist marks!</b></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="tab-pane fade" role="tabpanel" aria-labelledby="profile-tab" id="divEMarks">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                User EMail <a href="#"><i class="fas fa-sort"></i></a>
+                            </th>
+                            <th>
+                                Module Name <a href="#"><i class="fas fa-sort"></i></a>
+                            </th>
+                            <th>
+                                Mark<a href="#"> <i class="fas fa-sort"></i></a>
+                            </th>
+                            <th>
+                                Comment 
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Marks.ExamMarks)
+                        {
+                            <tr>
+                                <td>
+                                    @item.UserEmail
+                                </td>
+                                <td>
+                                    @item.ModuleName
+                                </td>
+                                <td>
+                                    @item.Mark
+                                </td>
+                                <td>
+                                    @item.Comment
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

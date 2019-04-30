@@ -13,7 +13,6 @@ namespace App.Data.Repository.ComplexRepository
     public class ThemeRepository : IThemeRepository
     {
         private readonly MyAppContext _context;
-        private readonly DbSet<Theme> DbSet;
 
         public ThemeRepository(MyAppContext ctxt)
         {

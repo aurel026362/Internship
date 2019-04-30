@@ -26,7 +26,6 @@
 
 
   <ItemGroup>
-    <Folder Include="Models\ComplexViewModel\Admin\" />
     <Folder Include="Models\ComplexViewModel\Menthor\" />
     <Folder Include="Models\ViewModel\InternViewModel\" />
     <Folder Include="Models\ViewModel\MenthorViewModel\" />

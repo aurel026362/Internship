@@ -1,7 +1,20 @@
 ﻿using App.Data.Context;
 using App.Data.Domain.DomainModels.Identity;
+using App.Services.Interfaces;
+using App.Services.Interfaces.ContentInternshipService;
+using App.Services.Interfaces.UserService;
+using App.Web.Model.ViewModel.CommentViewModel;
+using App.Web.Model.ViewModel.ExamMarkViewModel;
+using App.Web.Model.ViewModel.ModuleViewModel;
+using App.Web.Model.ViewModel.ThemeMarkViewModel;
+using App.Web.Model.ViewModel.ThemeViewModel;
+using App.Web.Model.ViewModel.UserViewModel;
 using App.Web.Models.Admin;
+using App.Web.Models.ComplexViewModel.Admin;
+using App.Web.Models.ComplexViewModel.General;
+using App.Web.Models.ComplexViewModel.Intern;
 using App.Web.Models.ForUser;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -21,31 +34,71 @@ namespace App.Web.Controllers
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly MyAppContext _context;
+        private readonly IInternAchievements _internAchievements;
+        private readonly IUserService _userService;
+        private readonly IContentInternshipService _contentInternshipService;
+        private readonly IMapper _mapper;
 
-        public AdminController(UserManager<User> groupManager, SignInManager<User> signInManager, MyAppContext context, IHttpContextAccessor httpContextAccessor)
+        public AdminController(UserManager<User> userManager, SignInManager<User> signInManager, MyAppContext context, IMapper mapper,
+            IInternAchievements internAchievements, IUserService userService, IContentInternshipService contentInternshipService)
         {
-            _userManager = groupManager;
+            _userManager = userManager;
             _signInManager = signInManager;
             _context = context;
-            //var userId = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            _internAchievements = internAchievements;
+            _userService = userService;
+            _contentInternshipService = contentInternshipService;
+            _mapper = mapper;
         }
-        
+
         public async Task<IActionResult> Index()
         {
-            var currentId = Convert.ToInt32(_signInManager.UserManager.GetUserId(User));
-            //var user = _userManager.FindByEmailAsync();
-            var person = new AdminData();
-            person.PersonalData = await _context.Users.Where(x => x.Id.Equals(currentId)).Select(x => new PersonalData()
-            {
-                Id = x.Id,
-                FirstName = x.FirstName,
-                LastName = x.LastName,
-                EMail = x.Email,
-                PhoneNumber = x.PhoneNumber,
-                DateOfBirth = x.DateOfBirth
-            }).FirstAsync();
+            //var currentId = Convert.ToInt32(_signInManager.UserManager.GetUserId(User));
+            ////var user = _userManager.FindByEmailAsync();
+            //var person = new AdminData();
+            //person.PersonalData = await _context.Users.Where(x => x.Id.Equals(currentId)).Select(x => new PersonalData()
+            //{
+            //    Id = x.Id,
+            //    FirstName = x.FirstName,
+            //    LastName = x.LastName,
+            //    EMail = x.Email,
+            //    PhoneNumber = x.PhoneNumber,
+            //    DateOfBirth = x.DateOfBirth
+            //}).FirstAsync();
 
-            person.Users = await _context.Users.ToListAsync();
+            //person.Users = await _context.Users.ToListAsync();
+
+            //return View(person);
+            long currentId = Convert.ToInt32(_signInManager.UserManager.GetUserId(User));
+
+            var person = new AdminDataViewModel();
+            person.Data = new CurrentDataInternViewModel();
+            var user = _userService.GetUserById(currentId);
+            person.Data.PersonalData = _mapper.Map<UserViewModel>(user);
+            var currentTMarks = _internAchievements.GetThemeMarks();
+
+            var marks = new MarksViewModel();
+            marks.ThemeMarks = _mapper.Map<IList<ThemeMarkViewModel>>(currentTMarks);
+            var currentEMarks = _internAchievements.GetExamMarks();
+            marks.ExamMarks = _mapper.Map<IList<ExamMarkViewModel>>(currentEMarks);
+            person.Data.Marks = marks;
+            var modules = _contentInternshipService.GetModules();
+            person.Data.Modules = _mapper.Map<IList<ModuleViewModel>>(modules);
+            //.Select(x => new ModuleViewModel()
+            //{
+            //    Name = x.Name,
+            //    Id = x.Id,
+            //    DateStart = x.DateStart
+            //}).ToList();
+
+            var themes = _contentInternshipService.GetThemes();
+            person.Data.Themes = _mapper.Map<IList<ThemeViewModel>>(themes);
+
+            var comments = _contentInternshipService.GetComments();
+            person.Data.Comments = _mapper.Map<IList<CommentViewModel>>(comments);
+
+            var usersDto = _userService.GetUsers();
+            person.Users = _mapper.Map<IList<UserViewModel>>(usersDto);
 
             return View(person);
         }

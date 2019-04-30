@@ -27,7 +27,7 @@ namespace App.Data.Repository.ComplexRepository
                 ThemeName = x.Theme.Name,
                 Content = x.Content,
                 DateComment = x.DateComment.ToString("dd/MM/yyyy HH:mm")
-            }).ToList();
+            }).OrderByDescending(x=>x.DateComment).ToList();
 
             return comments;
         }
@@ -40,7 +40,7 @@ namespace App.Data.Repository.ComplexRepository
                 ThemeName = x.Theme.Name,
                 Content = x.Content,
                 DateComment = x.DateComment.ToString("dd/MM/yyyy HH:mm")
-            }).ToList();
+            }).OrderByDescending(x => x.DateComment).Take(10).ToList();
 
             return comments;
         }
@@ -53,7 +53,7 @@ namespace App.Data.Repository.ComplexRepository
                 ThemeName = x.Theme.Name,
                 Content = x.Content,
                 DateComment = x.DateComment.ToString("dd/MM/yyyy HH:mm")
-            }).Skip(page * 10).Take(10).ToList();
+            }).OrderByDescending(x => x.DateComment).Skip(page * 10).Take(10).ToList();
 
             return comments;
         }
@@ -62,7 +62,6 @@ namespace App.Data.Repository.ComplexRepository
         {
             com.DateComment = DateTime.Now.Date;
             _context.Comments.Add(com);
-            _context.SaveChanges();
         }
 
         public void AddComment(long userId, long themeId, string content)
@@ -72,10 +71,11 @@ namespace App.Data.Repository.ComplexRepository
                 UserId = userId,
                 ThemeId = themeId,
                 Content = content,
-                DateComment = DateTime.Now.Date
+                DateComment = DateTime.Now
             };
 
             _context.Comments.Add(com);
+            Save();
         }
 
         public void Save()

@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 
 namespace App.Data.Repository
 {
-    public class GenericRepository<T> : IRepository<T> where T : class
+    public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         private readonly DbContext _context;
         //protected readonly DbSet<T> DbSet;
 
-        protected GenericRepository(DbContext context)
+        public GenericRepository(DbContext context)
         {
             _context = context;
             //DbSet = _context.Set<T>();

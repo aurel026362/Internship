@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Threading.Tasks;
 using App.Data.Context;
 using App.Data.Domain.DomainModels.Concrete;
@@ -12,6 +11,8 @@ using App.Data.Repository;
 using App.Data.Repository.ComplexRepository;
 using App.Services;
 using App.Services.Interfaces;
+using App.Services.Interfaces.ContentInternshipService;
+using App.Services.Interfaces.UserService;
 using App.Web.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
@@ -47,12 +48,18 @@ namespace App.Web
               //  GenericRepository<App.Data.Domain.DomainModels.Concrete.Module>>();
             //services.AddScoped<IRepository<Group>, GenericRepository<Group>>();
             services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<IInternAchievements, InternAchievements>();
             services.AddScoped<ICommentRepository, CommentRepository>();
             services.AddScoped<IEMarkRepository, EMarkRepository>();
             services.AddScoped<IExamRepository, ExamRepository>();
             services.AddScoped<IThemeRepository, ThemeRepository>();
             services.AddScoped<ITMarkRepository, TMarkRepository>();
+            services.AddScoped<IGenericRepository<Group>, GenericRepository<Group>>();
+            services.AddScoped<IGenericRepository<Module>, GenericRepository<Module>>();
+
+            //add service dependence
+            services.AddScoped<IInternAchievements, InternAchievements>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IContentInternshipService, ContentInternshipService>();
 
             services.Configure<CookiePolicyOptions>(options =>
             {

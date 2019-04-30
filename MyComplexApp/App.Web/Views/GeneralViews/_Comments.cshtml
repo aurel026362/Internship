@@ -1,0 +1,20 @@
+﻿@model App.Web.Models.ComplexViewModel.Intern.CurrentDataInternViewModel
+@{
+    ViewData["Title"] = "_Comments";
+}
+
+<div class="tab-pane fade general-div" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+    <div class="row">
+        <div class="col-md-3 col-xs-5 theme-div">
+            <select class="form-control" id="theme" size="20">
+                @foreach (var item in Model.Themes)
+                {
+                    <option value=@item.Id>@item.Id  @item.Name</option>
+                }
+            </select>
+        </div>
+        <div id="comment-div" class="col-md-9 col-xs-7">
+            @await Html.PartialAsync("../GeneralViews/_GetComments", Model)
+        </div>
+    </div>
+</div>

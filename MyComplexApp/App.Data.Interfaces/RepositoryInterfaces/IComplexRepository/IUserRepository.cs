@@ -13,5 +13,6 @@ namespace App.Data.Interfaces.RepositoryInterfaces.IComplexRepository
         IList<User> GetInterns();
         IList<User> GetMenthors();
         void UpdateUser(long userId, string newFName, string newLName, string nenwPhone, DateTime newdDBirth);
+        void Save();
     }
 }
