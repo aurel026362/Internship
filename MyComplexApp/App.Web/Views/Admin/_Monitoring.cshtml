@@ -4,12 +4,14 @@
 }
 
 <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-    <div class="nav nav-tabs" id="nav-tab" role="tablist">
-        <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab" href="#divUsers" role="tab" aria-controls="nav-profile" aria-selected="false">Users</a>
-        <a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="#divTMarks" role="tab" aria-controls="nav-home" aria-selected="true">Theme Marks</a>
-        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#divEMarks" role="tab" aria-controls="nav-profile" aria-selected="false">Exam Marks</a>
+    <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab" href="#divUsers" role="tab" aria-controls="nav-profile" aria-selected="false">Users</a>
+            <a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="#divTMarks" role="tab" aria-controls="nav-home" aria-selected="true">Theme Marks</a>
+            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#divEMarks" role="tab" aria-controls="nav-profile" aria-selected="false">Exam Marks</a>
 
-    </div>
+        </div>
+    </nav>
     <div class="container-fluid text-center">
         <div class="row bg-first">
             <p>
@@ -77,93 +79,11 @@
                     </tbody>
                 </table>
             </div>
-            <div class="tab-pane fade" role="tabpanel" aria-labelledby="profile-tab" id="divTMarks">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>
-                                User EMail <a href="#"><i class="fas fa-sort"></i></a>
-                            </th>
-                            <th>
-                                Theme Name <a href="#"><i class="fas fa-sort"></i></a>
-                            </th>
-                            <th>
-                                Mark <a href="#"><i class="fas fa-sort"></i></a>
-                            </th>
-                            <th>
-                                Comment
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @if (Model.Data.Marks.ExamMarks != null)
-                        {
-                            @foreach (var item in Model.Data.Marks.ThemeMarks)
-                            {
-                                <tr>
-                                    <td>
-                                        @item.UserEmail
-                                    </td>
-                                    <td>
-                                        @item.ThemeName
-                                    </td>
-                                    <td>
-                                        @item.Mark
-                                    </td>
-                                    <td>
-                                        @item.Comment
-                                    </td>
-                                </tr>
-                            }
-                        }
-                        else if (Model.Data.Marks.ExamMarks == null)
-                        {
-                            <tr>
-                                <td colspan="3"><b>Don't exist marks!</b></td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
-            <div class="tab-pane fade" role="tabpanel" aria-labelledby="profile-tab" id="divEMarks">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>
-                                User EMail <a href="#"><i class="fas fa-sort"></i></a>
-                            </th>
-                            <th>
-                                Module Name <a href="#"><i class="fas fa-sort"></i></a>
-                            </th>
-                            <th>
-                                Mark<a href="#"> <i class="fas fa-sort"></i></a>
-                            </th>
-                            <th>
-                                Comment
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model.Data.Marks.ExamMarks)
-                        {
-                            <tr>
-                                <td>
-                                    @item.UserEmail
-                                </td>
-                                <td>
-                                    @item.ModuleName
-                                </td>
-                                <td>
-                                    @item.Mark
-                                </td>
-                                <td>
-                                    @item.Comment
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
+            @await Html.PartialAsync("../Menthor/_Marks", Model.Data)
+            <script>
+                $("#divTMarks").removeClass("show");
+                $("#divTMarks").removeClass("active");
+            </script>
         </div>
     </div>
 </div>

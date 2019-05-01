@@ -20,6 +20,11 @@ namespace App.Data.Repository.ComplexRepository
             _context = ctxt;
         }
 
+        public IList<ComplexTMark> GetMoreThemeMarks(int page, string orderby, string sorting)
+        {
+            throw new NotImplementedException();
+        }
+
         public IList<ComplexTMark> GetThemeMarks(long userId, long moduleId)
         {
             var list = _context.ThemeMarks.Where(x => x.Intern.UserId.Equals(userId) && x.theme.ModuleId.Equals(moduleId))
@@ -72,6 +77,97 @@ namespace App.Data.Repository.ComplexRepository
                     Comment = x.Comment
                 }).ToList();
 
+            return list;
+        }
+
+        public IList<ComplexTMark> GetThemeMarksSorted(string orderBy, string sorting)
+        {
+            IList<ComplexTMark> list = null;
+
+            
+            return list;
+        }
+
+        private IQueryable SortedTMarks(string orderBy, string sorting)
+        {
+            IQueryable list;
+
+            switch (orderBy)
+            {
+                case "theme":
+                    {
+                        if (sorting.Equals("asc"))
+                        {
+                            list = _context.ThemeMarks.Select(x => new ComplexTMark()
+                            {
+                                UserEmail = x.Intern.User.Email,
+                                ThemeName = x.theme.Name,
+                                Mark = x.Mark,
+                                Comment = x.Comment
+                            }).OrderBy(x => x.ThemeName).Take(10);
+                        }
+                        else
+                        {
+                            list = _context.ThemeMarks.Select(x => new ComplexTMark()
+                            {
+                                UserEmail = x.Intern.User.Email,
+                                ThemeName = x.theme.Name,
+                                Mark = x.Mark,
+                                Comment = x.Comment
+                            }).OrderByDescending(x => x.ThemeName).Take(10);
+                        }
+                    }
+                    break;
+                case "mark":
+                    {
+                        if (sorting.Equals("asc"))
+                        {
+                            list = _context.ThemeMarks.Select(x => new ComplexTMark()
+                            {
+                                UserEmail = x.Intern.User.Email,
+                                ThemeName = x.theme.Name,
+                                Mark = x.Mark,
+                                Comment = x.Comment
+                            }).OrderBy(x => x.Mark).Take(10);
+                        }
+                        else
+                        {
+                            list = _context.ThemeMarks.Select(x => new ComplexTMark()
+                            {
+                                UserEmail = x.Intern.User.Email,
+                                ThemeName = x.theme.Name,
+                                Mark = x.Mark,
+                                Comment = x.Comment
+                            }).OrderByDescending(x => x.Mark).Take(10);
+                        }
+                    }
+                    break;
+                case "email":
+                    {
+                        if (sorting.Equals("asc"))
+                        {
+                            list = _context.ThemeMarks.Select(x => new ComplexTMark()
+                            {
+                                UserEmail = x.Intern.User.Email,
+                                ThemeName = x.theme.Name,
+                                Mark = x.Mark,
+                                Comment = x.Comment
+                            }).OrderBy(x => x.UserEmail).Take(10);
+                        }
+                        else
+                        {
+                            list = _context.ThemeMarks.Select(x => new ComplexTMark()
+                            {
+                                UserEmail = x.Intern.User.Email,
+                                ThemeName = x.theme.Name,
+                                Mark = x.Mark,
+                                Comment = x.Comment
+                            }).OrderByDescending(x => x.UserEmail).Take(10);
+                        }
+                    }
+                    break;
+                default: { } break;
+            }
             return list;
         }
 

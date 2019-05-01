@@ -13,7 +13,7 @@ namespace App.Web.Models.ComplexViewModel.Admin
 {
     public class AdminDataViewModel
     {
-        public CurrentDataInternViewModel Data { get; set; }
+        public CurrentUserDataViewModel Data { get; set; }
         public IList<UserViewModel> Users { get; set; }
     }
 }

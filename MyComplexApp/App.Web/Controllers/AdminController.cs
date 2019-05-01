@@ -53,26 +53,10 @@ namespace App.Web.Controllers
 
         public async Task<IActionResult> Index()
         {
-            //var currentId = Convert.ToInt32(_signInManager.UserManager.GetUserId(User));
-            ////var user = _userManager.FindByEmailAsync();
-            //var person = new AdminData();
-            //person.PersonalData = await _context.Users.Where(x => x.Id.Equals(currentId)).Select(x => new PersonalData()
-            //{
-            //    Id = x.Id,
-            //    FirstName = x.FirstName,
-            //    LastName = x.LastName,
-            //    EMail = x.Email,
-            //    PhoneNumber = x.PhoneNumber,
-            //    DateOfBirth = x.DateOfBirth
-            //}).FirstAsync();
-
-            //person.Users = await _context.Users.ToListAsync();
-
-            //return View(person);
             long currentId = Convert.ToInt32(_signInManager.UserManager.GetUserId(User));
 
             var person = new AdminDataViewModel();
-            person.Data = new CurrentDataInternViewModel();
+            person.Data = new CurrentUserDataViewModel();
             var user = _userService.GetUserById(currentId);
             person.Data.PersonalData = _mapper.Map<UserViewModel>(user);
             var currentTMarks = _internAchievements.GetThemeMarks();
@@ -84,12 +68,6 @@ namespace App.Web.Controllers
             person.Data.Marks = marks;
             var modules = _contentInternshipService.GetModules();
             person.Data.Modules = _mapper.Map<IList<ModuleViewModel>>(modules);
-            //.Select(x => new ModuleViewModel()
-            //{
-            //    Name = x.Name,
-            //    Id = x.Id,
-            //    DateStart = x.DateStart
-            //}).ToList();
 
             var themes = _contentInternshipService.GetThemes();
             person.Data.Themes = _mapper.Map<IList<ThemeViewModel>>(themes);
@@ -103,7 +81,7 @@ namespace App.Web.Controllers
             return View(person);
         }
 
-        // GET: Users/Details/5
+        [HttpGet]
         public async Task<IActionResult> Details(long? id)
         {
             if (id == null)
@@ -121,15 +99,12 @@ namespace App.Web.Controllers
             return View(user);
         }
 
-        // GET: Users/Create
+        [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Users/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("FirstName,LastName,DateOfBirth,Id,UserName,NormalizedUserName,Email,NormalizedEmail,EmailConfirmed,PasswordHash,SecurityStamp,ConcurrencyStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEnd,LockoutEnabled,AccessFailedCount")] User user)
@@ -191,7 +166,6 @@ namespace App.Web.Controllers
             return View(user);
         }
 
-        // GET: Users/Delete/5
         public async Task<IActionResult> Delete(long? id)
         {
             if (id == null)
@@ -209,7 +183,6 @@ namespace App.Web.Controllers
             return View(user);
         }
 
-        // POST: Users/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(long id)

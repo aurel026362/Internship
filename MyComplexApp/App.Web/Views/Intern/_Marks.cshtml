@@ -1,23 +1,78 @@
-﻿@model App.Web.Models.ComplexViewModel.Intern.CurrentDataInternViewModel
+﻿@model App.Web.Models.ComplexViewModel.Intern.CurrentUserDataViewModel
 @{
     ViewData["Title"] = "_Marks";
 }
 
 <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-    <div class="container">
-        <div class="row" id="mydiv">
-            <select name="modules" style="width:100%" class="form-control" id="module">
-                @foreach (var item in Model.Modules)
-                {
-                    <option value=@item.Id>@item.Name</option>
-                }
-                <option value="0">All Modules</option>
-            </select>
-            <div id="marks-table" class="col-12">
+    <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#divTMarks" role="tab" aria-controls="nav-home" aria-selected="true">Theme Marks</a>
+            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#divEMarks" role="tab" aria-controls="nav-profile" aria-selected="false">Exam Marks</a>
+        </div>
+    </nav>
+    <div class="container-fluid text-center">
+        <div class="row bg-first">
+            <p>
+                My problem is that after translating up the image, the div that contains it remains
+                unchanged, and has lots of white space in the place where the image used to be.
+            </p>
+        </div>
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" role="tabpanel" aria-labelledby="profile-tab" id="divTMarks">
+                <select name="modules" style="width:100%" class="form-control" id="module">
+                    @foreach (var item in Model.Modules)
+                    {
+                        <option value=@item.Id>@item.Name</option>
+                    }
+                    <option value="0">All Modules</option>
+                </select>
                 @await Html.PartialAsync("_GetMarks", Model.Marks.ThemeMarks)
+            </div>
+            <div class="tab-pane fade" role="tabpanel" aria-labelledby="profile-tab" id="divEMarks">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                Module
+                            </th>
+                            <th>
+                                Mark
+                            </th>
+                            <th>
+                                Comment
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Marks.ExamMarks != null)
+                        {
+                            @foreach (var item in Model.Marks.ExamMarks)
+                            {
+                                <tr>
+                                    <td>
+                                        @item.ModuleName
+                                    </td>
+                                    <td>
+                                        @item.Mark
+                                    </td>
+                                    <td>
+                                        @item.Comment
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="3"><b>Don't exist items!</b></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
+
     <div class="container-fluid text-center">
         <div class="row">
             <div class="col-md-4 col-xs-12">

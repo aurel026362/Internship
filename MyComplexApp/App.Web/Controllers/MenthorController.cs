@@ -48,35 +48,9 @@ namespace App.Web.Controllers
 
         public async Task<IActionResult> Index()
         {
-            //var currentId = Convert.ToInt32(_signInManager.UserManager.GetUserId(User));
-
-            //var menthorData = new MenthorData();
-
-            //menthorData.PersonalData = await _context.Users.Where(x => x.Id.Equals(currentId)).Select(x => new PersonalData()
-            //{
-            //    Id = x.Id,
-            //    FirstName = x.FirstName,
-            //    LastName = x.LastName,
-            //    EMail = x.Email,
-            //    PhoneNumber = x.PhoneNumber,
-            //    DateOfBirth = x.DateOfBirth
-            //}).FirstAsync();
-
-
-            //menthorData.InternMarks = _context.ThemeMarks.Select(x => new InternAllMarks()
-            //{
-            //    Id = x.Intern.UserId,
-            //    FirstName = x.Intern.User.FirstName,
-            //    LastName = x.Intern.User.LastName,
-            //    EMail = x.Intern.User.Email,
-            //    Theme = x.theme.Name,
-            //    Mark = x.Mark,
-            //    Comment = x.Comment
-            //}).ToList();
-
             long currentId = Convert.ToInt32(_signInManager.UserManager.GetUserId(User));
 
-            var person = new CurrentDataInternViewModel();
+            var person = new CurrentUserDataViewModel();
             var user = _userService.GetUserById(currentId);
             person.PersonalData = _mapper.Map<UserViewModel>(user);
             var currentTMarks = _internAchievements.GetThemeMarks();
@@ -88,12 +62,6 @@ namespace App.Web.Controllers
             person.Marks = marks;
             var modules = _contentInternshipService.GetModules();
             person.Modules = _mapper.Map<IList<ModuleViewModel>>(modules);
-            //.Select(x => new ModuleViewModel()
-            //{
-            //    Name = x.Name,
-            //    Id = x.Id,
-            //    DateStart = x.DateStart
-            //}).ToList();
 
             var themes = _contentInternshipService.GetThemes();
             person.Themes = _mapper.Map<IList<ThemeViewModel>>(themes);
@@ -102,6 +70,26 @@ namespace App.Web.Controllers
             person.Comments = _mapper.Map<IList<CommentViewModel>>(comments);
 
             return View(person);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetTMarksSorted(string orderby, bool sorting)
+        {
+            string sort = "";
+            if (sorting == true) sort = "asc";
+            else sort = "desc";
+            var list = _internAchievements.GetThemeMarksSorted(orderby, sort);
+            var listViewModel = _mapper.Map<IList<ThemeMarkViewModel>>(list);
+
+            return Json(listViewModel);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetMoreTMarks(int page, string orderby="email", bool sorting=true)
+        {
+            var list = _internAchievements.GetMoreThemeMarks(page, orderby, sorting);
+            var listViewModel = _mapper.Map<IList<ThemeMarkViewModel>>(list);
+            return Json(listViewModel);
         }
     }
 }

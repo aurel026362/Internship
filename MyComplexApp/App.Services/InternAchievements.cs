@@ -116,6 +116,14 @@ namespace App.Services
             return listDto;
         }
 
+        public IList<ThemeMarkDto> GetThemeMarksSorted(string orderBy, string sorting)
+        {
+            var list = _TMarkRepository.GetThemeMarksSorted(orderBy, sorting);
+            var listDto = _mapper.Map<IList<ThemeMarkDto>>(list);
+
+            return listDto;
+        }
+
         public void Save()
         {
             _TMarkRepository.Save();

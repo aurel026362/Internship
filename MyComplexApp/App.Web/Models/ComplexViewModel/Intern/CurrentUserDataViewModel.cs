@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace App.Web.Models.ComplexViewModel.Intern
 {
-    public class CurrentDataInternViewModel
+    public class CurrentUserDataViewModel
     {
         public UserViewModel PersonalData { get; set; }
         public IList<ThemeViewModel> Themes { get; set; }

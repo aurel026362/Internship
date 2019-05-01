@@ -242,3 +242,7 @@ D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\Gener
 D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\GeneralViews\_Menu.g.cshtml.cs
 D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\Menthor\_Marks.g.cshtml.cs
 D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\Admin\_Monitoring.g.cshtml.cs
+D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\Account\Index.g.cshtml.cs
+D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\Account\Intern\_GetMarks.g.cshtml.cs
+D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\Account\Intern\_Marks.g.cshtml.cs
+D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\Account\Menthor\_Marks.g.cshtml.cs

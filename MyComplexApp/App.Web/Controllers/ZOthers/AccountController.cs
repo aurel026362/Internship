@@ -11,26 +11,26 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace App.Web.Controllers.ZOthers
 {
-    [Authorize]
-    public class AccountController : Controller
-    {
-        private readonly UserManager<User> _userManager;
-        private readonly SignInManager<User> _signInManager;
-        private readonly MyAppContext _context;
+    //[Authorize]
+    //public class AccountController : Controller
+    //{
+    //    private readonly UserManager<User> _userManager;
+    //    private readonly SignInManager<User> _signInManager;
+    //    private readonly MyAppContext _context;
 
-        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager, MyAppContext context, IHttpContextAccessor httpContextAccessor)
-        {
-            _userManager = userManager;
-            _signInManager = signInManager;
-            _context = context;
+    //    public AccountController(UserManager<User> userManager, SignInManager<User> signInManager, MyAppContext context, IHttpContextAccessor httpContextAccessor)
+    //    {
+    //        _userManager = userManager;
+    //        _signInManager = signInManager;
+    //        _context = context;
 
 
-            //var userId = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-        }
+    //        //var userId = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+    //    }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-    }
+    //    public IActionResult Index()
+    //    {
+    //        return View();
+    //    }
+    //}
 }

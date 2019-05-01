@@ -29,7 +29,7 @@ using Newtonsoft.Json;
 
 namespace App.Web.Controllers
 {
-    [Authorize(Roles = "Intern")]
+    [Authorize]
     public class InternController : Controller
     {
         private readonly SignInManager<User> _signInManager;
@@ -48,11 +48,12 @@ namespace App.Web.Controllers
             _mapper = mapper;
         }
 
+        [Authorize(Roles = "Intern")]
         public IActionResult Index()
         {
             long currentId = Convert.ToInt32(_signInManager.UserManager.GetUserId(User));
 
-            var person = new CurrentDataInternViewModel();
+            var person = new CurrentUserDataViewModel();
             var user = _userService.GetUserById(currentId);
             person.PersonalData = _mapper.Map<UserViewModel>(user);
             var currentTMarks = _internAchievements.GetThemeMarksByUserId(currentId);
@@ -64,12 +65,6 @@ namespace App.Web.Controllers
             person.Marks = marks;
             var modules = _contentInternshipService.GetModules();
             person.Modules = _mapper.Map<IList<ModuleViewModel>>(modules);
-                //.Select(x => new ModuleViewModel()
-                //{
-                //    Name = x.Name,
-                //    Id = x.Id,
-                //    DateStart = x.DateStart
-                //}).ToList();
 
             var themes = _contentInternshipService.GetThemes();
             person.Themes = _mapper.Map<IList<ThemeViewModel>>(themes);
@@ -81,6 +76,7 @@ namespace App.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Intern")]
         public async Task<IActionResult> GetMarks(long moduleId)
         {
             var currentId = Convert.ToInt32(_signInManager.UserManager.GetUserId(User));
@@ -102,13 +98,13 @@ namespace App.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles="Intern, Menthor, Admin")]
         public async Task<IActionResult> GetComments(long themeId)
         {
             var currentId = Convert.ToInt32(_signInManager.UserManager.GetUserId(User));
             var currentUser = _userService.GetUserById(currentId);
-            //_context.Users.FirstOrDefault(x => x.Id.Equals(currentId));
 
-            var data = new CurrentDataInternViewModel();
+            var data = new CurrentUserDataViewModel();
 
             var personaldata = _userService.GetUserById(currentId);
             data.PersonalData = _mapper.Map<UserViewModel>(personaldata);
@@ -120,6 +116,7 @@ namespace App.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Intern, Menthor, Admin")]
         public ActionResult GetMoreComments(long themeId, int pageNr)
         {
             var commentsDto = _contentInternshipService.GetComments(pageNr, themeId);
@@ -129,6 +126,7 @@ namespace App.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Intern, Menthor, Admin")]
         public async Task<IActionResult> SubmitComment(string comment, long themeId)
         {
             var currentId = Convert.ToInt32(_signInManager.UserManager.GetUserId(User));
@@ -153,6 +151,7 @@ namespace App.Web.Controllers
         //}
 
         [HttpPost]
+        [Authorize(Roles = "Intern, Menthor, Admin")]
         public async Task<IActionResult> EditData(UserViewModel model)
         {
             long currentId = Convert.ToInt32(_signInManager.UserManager.GetUserId(User));

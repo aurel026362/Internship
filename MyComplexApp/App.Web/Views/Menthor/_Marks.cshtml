@@ -1,109 +1,149 @@
-﻿@model App.Web.Models.ComplexViewModel.Intern.CurrentDataInternViewModel
+﻿@model App.Web.Models.ComplexViewModel.Intern.CurrentUserDataViewModel
 @{
     ViewData["Title"] = "_Marks";
 }
-<div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-    <nav>
-        <div class="nav nav-tabs" id="nav-tab" role="tablist">
-            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#divTMarks" role="tab" aria-controls="nav-home" aria-selected="true">Theme Marks</a>
-            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#divEMarks" role="tab" aria-controls="nav-profile" aria-selected="false">Exam Marks</a>
-        </div>
-    </nav>
-    <div class="container-fluid text-center">
-        <div class="row bg-first">
-            <p>
-                My problem is that after translating up the image, the div that contains it remains
-                unchanged, and has lots of white space in the place where the image used to be.
-            </p>
-        </div>
-        <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active" role="tabpanel" aria-labelledby="profile-tab" id="divTMarks">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>
-                                User EMail <a href="#"><i class="fas fa-sort"></i></a>
-                            </th>
-                            <th>
-                                Theme Name <a href="#"><i class="fas fa-sort"></i></a>
-                            </th>
-                            <th>
-                                Mark <a href="#"><i class="fas fa-sort"></i></a>
-                            </th>
-                            <th>
-                                Comment
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @if (Model.Marks.ExamMarks != null)
-                        {
-                            @foreach (var item in Model.Marks.ThemeMarks)
-                            {
-                                <tr>
-                                    <td>
-                                        @item.UserEmail
-                                    </td>
-                                    <td>
-                                        @item.ThemeName
-                                    </td>
-                                    <td>
-                                        @item.Mark
-                                    </td>
-                                    <td>
-                                        @item.Comment
-                                    </td>
-                                </tr>
-                            }
-                        }
-                        else if (Model.Marks.ExamMarks == null)
-                        {
-                            <tr>
-                                <td colspan="3"><b>Don't exist marks!</b></td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
-            <div class="tab-pane fade" role="tabpanel" aria-labelledby="profile-tab" id="divEMarks">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>
-                                User EMail <a href="#"><i class="fas fa-sort"></i></a>
-                            </th>
-                            <th>
-                                Module Name <a href="#"><i class="fas fa-sort"></i></a>
-                            </th>
-                            <th>
-                                Mark<a href="#"> <i class="fas fa-sort"></i></a>
-                            </th>
-                            <th>
-                                Comment 
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model.Marks.ExamMarks)
-                        {
-                            <tr>
-                                <td>
-                                    @item.UserEmail
-                                </td>
-                                <td>
-                                    @item.ModuleName
-                                </td>
-                                <td>
-                                    @item.Mark
-                                </td>
-                                <td>
-                                    @item.Comment
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
-        </div>
+<div class="tab-pane fade show active" role="tabpanel" aria-labelledby="profile-tab" id="divTMarks">
+    <div style="margin:20px" class="text-right">
+        <span class="text-muted"><i class="fas fa-search"></i>Search: </span> <input type="text" />
+    </div>
+    <table class="table" id="tableBody">
+        <thead>
+            <tr>
+                <th>
+                    User EMail <a href="#" id="email" class="property"><i class="fas fa-sort"></i></a>
+                </th>
+                <th>
+                    Theme Name <a href="#" id="theme" class="property"><i class="fas fa-sort"></i></a>
+                </th>
+                <th>
+                    Mark <a href="#" id="mark" class="property"><i class="fas fa-sort"></i></a>
+                </th>
+                <th>
+                    Comment
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Marks.ExamMarks != null)
+            {
+                @foreach (var item in Model.Marks.ThemeMarks)
+                {
+                    <tr>
+                        <td>
+                            @item.UserEmail
+                        </td>
+                        <td>
+                            @item.ThemeName
+                        </td>
+                        <td>
+                            @item.Mark
+                        </td>
+                        <td>
+                            @item.Comment
+                        </td>
+                    </tr>
+                }
+            }
+            else if (Model.Marks.ExamMarks == null)
+            {
+                <tr>
+                    <td colspan="3"><b>Don't exist marks!</b></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div style="margin:20px" class="text-right">
+        <button id="moreTMarks" class="btn btn-outline-primary">More...</button>
     </div>
 </div>
+<div class="tab-pane fade" role="tabpanel" aria-labelledby="profile-tab" id="divEMarks">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    User EMail <a href="#"><i class="fas fa-sort"></i></a>
+                </th>
+                <th>
+                    Module Name <a href="#"><i class="fas fa-sort"></i></a>
+                </th>
+                <th>
+                    Mark<a href="#"> <i class="fas fa-sort"></i></a>
+                </th>
+                <th>
+                    Comment
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Marks.ExamMarks != null)
+            {
+                @foreach (var item in Model.Marks.ExamMarks)
+                {
+                    <tr>
+                        <td>
+                            @item.UserEmail
+                        </td>
+                        <td>
+                            @item.ModuleName
+                        </td>
+                        <td>
+                            @item.Mark
+                        </td>
+                        <td>
+                            @item.Comment
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="4"><b>Don't exist marks!</b></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<script>
+    var ascending = true;
+    var page = -1;
+
+    $(".property").bind("click", function () {
+        if (ascending == true) ascending = false;
+        else ascending = true;
+        $.ajax({
+            url: "/Menthor/GetTMarksSorted",
+            type: "GET",
+            datatype: "json",
+            data: ({ page: page, orderby: $(this).attr('id'), sorting: ascending }),
+            success: function (data) {
+                page = -1;
+                $("#tableBody > tbody").empty();
+                $.each(data, function (i, item) {
+                    $('<tr>').append(
+                        $('<td>').text(item.userEmail),
+                        $('<td>').text(item.themeName),
+                        $('<td>').text(item.mark),
+                        $('<td>').text(item.comment)
+                    ).appendTo('#tableBody');
+                });
+            },
+            error: function () {
+                alert("Error");
+            }
+        });
+    });
+
+    $("#moreTMarks").bind("click", function () {
+        page++;
+        $.ajax({
+            url: "/Menthor/GetMoreTMarks",
+            type: "GET",
+            datatype: "json",
+            data: ({ page: page, orderby: $(this).attr('id'), sorting: ascending }),
+            success: function (data) {
+            }
+        });
+    });
+</script>
