@@ -85,7 +85,7 @@ namespace App.Web.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
-            returnUrl = returnUrl ?? Url.Content("~/Home/Success");
+            returnUrl = returnUrl ?? Url.Content("~/Home/Index");
             if (ModelState.IsValid)
             {
                 var user = new User

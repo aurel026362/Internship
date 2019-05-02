@@ -11,8 +11,11 @@ namespace App.Data.Interfaces.RepositoryInterfaces.IComplexRepository
         IList<ComplexTMark> GetThemeMarks(long userId, long moduleId);
         IList<ComplexTMark> GetThemeMarksByModuleId(long moduleId);
         IList<ComplexTMark> GetThemeMarks();
-        IList<ComplexTMark> GetThemeMarksSorted(string orderBy, string sorting);
-        IList<ComplexTMark> GetMoreThemeMarks(int page, string orderby, string sorting);
+        IList<ComplexTMark> GetThemeMarksSorted(int page, string orderby, bool sorting);
+        IList<ComplexTMark> GetTMarksByEmail(string email);
+        double GetAvgTMarks();
+        double GetAvgTMarksByUserId(long userId);
+        double GetAvgTMarksByModuleId(long moduleId);
         void Save();
     }
 }

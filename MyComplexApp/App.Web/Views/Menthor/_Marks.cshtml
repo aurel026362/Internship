@@ -4,8 +4,17 @@
 }
 <div class="tab-pane fade show active" role="tabpanel" aria-labelledby="profile-tab" id="divTMarks">
     <div style="margin:20px" class="text-right">
-        <span class="text-muted"><i class="fas fa-search"></i>Search: </span> <input type="text" />
+        <span class="text-muted"><i class="fas fa-search"></i>Search: </span> <input type="text" id="search" />
     </div>
+    
+    <select id="module" class="form-control">
+        @foreach(var item in Model.Modules)
+        {
+            <option value=@item.Id>@item.Name</option>
+        }
+        <option value="0" selected>All Modules</option>
+    </select>
+
     <table class="table" id="tableBody">
         <thead>
             <tr>
@@ -52,7 +61,7 @@
             }
         </tbody>
     </table>
-    <div style="margin:20px" class="text-right">
+    <div id="footerTMarks" style="margin:20px" class="text-right">
         <button id="moreTMarks" class="btn btn-outline-primary">More...</button>
     </div>
 </div>
@@ -107,18 +116,90 @@
 
 <script>
     var ascending = true;
-    var page = -1;
+    var page = 0;
+    var orderbyprop="email";
+
+    $("#module").bind("change", function () {
+        $.ajax({
+            url: "/Menthor/GetTMarksByModule",
+            type: "GET",
+            datatype: "json",
+            data: ({ moduleId: $("#module").val(), orderby: orderbyprop, sorting: ascending}),
+            success: function (data) {
+                page = 0;
+                try {
+                    $("#warningMarks").remove();
+                    $("#moreTMarks").show();
+                }
+                catch (Exception) {
+
+                }
+                $("#tableBody > tbody").empty();
+                $.each(data, function (i, item) {
+                    $('<tr>').append(
+                        $('<td>').text(item.userEmail),
+                        $('<td>').text(item.themeName),
+                        $('<td>').text(item.mark),
+                        $('<td>').text(item.comment)
+                    ).appendTo('#tableBody');
+                });
+            },
+            error: function () {
+
+            }
+        });
+    });
+
+    $("#search").bind("change", function () {
+        $.ajax({
+            url: "/Menthor/GetTMarksByEmail",
+            type: "GET",
+            datatype: "json",
+            data: ({ email: $("#search").val() }),
+            success: function (data) {
+                page = 0;
+                try {
+                    $("#warningMarks").remove();
+                    $("#moreTMarks").show();
+                }
+                catch (Exception) {
+
+                }
+                $("#tableBody > tbody").empty();
+                $.each(data, function (i, item) {
+                    $('<tr>').append(
+                        $('<td>').text(item.userEmail),
+                        $('<td>').text(item.themeName),
+                        $('<td>').text(item.mark),
+                        $('<td>').text(item.comment)
+                    ).appendTo('#tableBody');
+                });
+            },
+            error: function () {
+
+            }
+        });
+    });
 
     $(".property").bind("click", function () {
         if (ascending == true) ascending = false;
         else ascending = true;
+        orderbyprop = $(this).attr('id');
         $.ajax({
             url: "/Menthor/GetTMarksSorted",
             type: "GET",
             datatype: "json",
             data: ({ page: page, orderby: $(this).attr('id'), sorting: ascending }),
             success: function (data) {
-                page = -1;
+                try {
+                    $("#warningMarks").remove();
+                    $("#moreTMarks").show();
+                }
+                catch (Exception) {
+
+                }
+                page = 0;
+                $("#moreTMarks").show();
                 $("#tableBody > tbody").empty();
                 $.each(data, function (i, item) {
                     $('<tr>').append(
@@ -140,9 +221,24 @@
         $.ajax({
             url: "/Menthor/GetMoreTMarks",
             type: "GET",
-            datatype: "json",
-            data: ({ page: page, orderby: $(this).attr('id'), sorting: ascending }),
+            datatype: "application/json",
+            data: ({ page: page, orderby: orderbyprop, sorting: ascending }),
             success: function (data) {
+                if (data.length < 10) {
+                    $("#moreTMarks").hide();
+                    $("#footerTMarks").append("<span id='warningMarks' class='text-danger'>Don't exist more Theme Mark</span>");
+                }
+                $.each(data, function (i, item) {
+                    $('<tr>').append(
+                        $('<td>').text(item.userEmail),
+                        $('<td>').text(item.themeName),
+                        $('<td>').text(item.mark),
+                        $('<td>').text(item.comment)
+                    ).appendTo('#tableBody');
+                });
+            },
+            error: function () {
+                alert("Error");
             }
         });
     });

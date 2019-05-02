@@ -12,6 +12,8 @@ namespace App.Services.Interfaces.UserService
         IList<UserDto> GetUsers();
         IList<UserDto> GetInterns();
         IList<UserDto> GetMenthors();
+        IList<UserDetailedDto> GetUsersDetails();
+        UserDetailedDto GetUserDetails(long id);
         void UpdateUser(long userId, string newFName, string newLName, string nenwPhone, DateTime newdDBirth);
     }
 }

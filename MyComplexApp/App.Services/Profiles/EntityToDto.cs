@@ -30,6 +30,7 @@ namespace App.Services.Profiles
 
             CreateMap<Group, GroupDto>();
             CreateMap<User, UserDto>();
+            CreateMap<User, UserDetailedDto>(); 
         }
     }
 }

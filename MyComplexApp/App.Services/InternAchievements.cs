@@ -43,6 +43,9 @@ namespace App.Services
         private readonly ITMarkRepository _TMarkRepository;
         private readonly IMapper _mapper;
         private readonly UserManager<User> _userManager;
+        private double AvgTMark;
+        private double AvgEMark;
+
 
         public InternAchievements(IEMarkRepository examMarkRepository, ITMarkRepository TMarkRepository, IMapper mapper, UserManager<User> userManager)
         {
@@ -50,6 +53,24 @@ namespace App.Services
             _TMarkRepository = TMarkRepository;
             _userManager = userManager;
             _mapper = mapper;
+        }
+
+        public double GetAvgTMarks()
+        {
+            var result = _TMarkRepository.GetAvgTMarks();
+            return result;
+        }
+
+        public double GetAvgTMarksByModuleId(long moduleId)
+        {
+            var result = _TMarkRepository.GetAvgTMarksByModuleId(moduleId);
+            return result;
+        }
+
+        public double GetAvgTMarksByUserId(long userId)
+        {
+            var result = _TMarkRepository.GetAvgTMarksByUserId(userId);
+            return result;
         }
 
         public ExamMarkDto GetExamMark(long userId, long moduleId)
@@ -116,9 +137,17 @@ namespace App.Services
             return listDto;
         }
 
-        public IList<ThemeMarkDto> GetThemeMarksSorted(string orderBy, string sorting)
+        public IList<ThemeMarkDto> GetThemeMarksSorted(int page, string orderBy, bool sorting)
         {
-            var list = _TMarkRepository.GetThemeMarksSorted(orderBy, sorting);
+            var list = _TMarkRepository.GetThemeMarksSorted(page, orderBy, sorting);
+            var listDto = _mapper.Map<IList<ThemeMarkDto>>(list);
+
+            return listDto;
+        }
+
+        public IList<ThemeMarkDto> GetTMarksByEmail(string email)
+        {
+            var list = _TMarkRepository.GetTMarksByEmail(email);
             var listDto = _mapper.Map<IList<ThemeMarkDto>>(list);
 
             return listDto;

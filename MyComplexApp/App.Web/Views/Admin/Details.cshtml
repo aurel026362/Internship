@@ -1,120 +1,200 @@
-﻿@model App.Data.Domain.DomainModels.Identity.User
+﻿@model App.Web.Models.ViewModel.UserViewModel.UserAllDataViewModel
 
 @{
     ViewData["Title"] = "Details";
 }
-
-<h1>Details</h1>
-
-<div>
-    <h4>User</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DateOfBirth)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DateOfBirth)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.UserName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.UserName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.NormalizedUserName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.NormalizedUserName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.NormalizedEmail)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.NormalizedEmail)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.EmailConfirmed)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.EmailConfirmed)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PasswordHash)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PasswordHash)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.SecurityStamp)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.SecurityStamp)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ConcurrencyStamp)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ConcurrencyStamp)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PhoneNumber)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PhoneNumberConfirmed)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PhoneNumberConfirmed)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TwoFactorEnabled)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TwoFactorEnabled)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.LockoutEnd)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.LockoutEnd)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.LockoutEnabled)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.LockoutEnabled)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AccessFailedCount)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AccessFailedCount)
-        </dd>
-    </dl>
+<div class="container">
+    <div class="text-right">
+        <h1>Details</h1>
+    </div>
+    <div>
+        <h4>User    @Model.Details.EMail</h4>
+        <hr />
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <div>
+                <h5>First Name</h5>
+                @Model.Details.FirstName
+            </div>
+            <div>
+                <h5>
+                    Last Name
+                </h5>
+                @Model.Details.LastName
+            </div>
+            <div>
+                <h5>
+                    Date Of Birth
+                </h5>
+                @Model.Details.DateOfBirth
+            </div>
+            <div>
+                <h5>Email Confirmed</h5>@Model.Details.EmailConfirmed
+            </div>
+            <div>
+                <h5>Phone Number </h5> @Model.Details.PhoneNumber
+            </div>
+            <div>
+                <h5>Phone Number Confirmed </h5> @Model.Details.PhoneNumberConfirmed
+            </div>
+            <div>
+                <h5>Two Factor Enabled</h5> @Model.Details.TwoFactorEnabled
+            </div>
+            <div>
+                <h5>
+                    Access Failed Count
+                </h5> @Model.Details.AccessFailedCount
+            </div>
+        </div>
+        <div class="col-8">
+            <table class="table">
+                <thead>
+                <th>Theme</th>
+                <th>Mark</th>
+                <th>Comment</th>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Marks.ThemeMarks)
+                    {
+                        <tr>
+                            <td>@item.ThemeName</td>
+                            <td>@item.Mark </td>
+                            <td>@item.Comment</td>
+                        </tr>
+                    }
+                    <tr><td><b>Avg Marks:</b></td><td colspan="2"></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.Details.Id" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#exampleModal">Edit</a> |
+        <a asp-action="Index" class="btn btn-outline-primary btn-sm">Back to List</a>
+        <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmation" id="">Delete</button>
+    </div>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+
+<div class="modal fade" id="confirmation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <h5>Are you shure?!</h5>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Yes</button>
+                <button type="button" class="btn btn-success" data-dismiss="modal">No</button>
+            </div>
+        </div>
+    </div>
 </div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @* -------------------------------------------------------- *@
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for=Details.FirstName class="control-label"></label>
+                    <input asp-for=Details.FirstName class="form-control" id="fname" />
+                    <span asp-validation-for=Details.FirstName class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for=Details.LastName class="control-label"></label>
+                    <input asp-for=Details.LastName class="form-control" id="lname" />
+                    <span asp-validation-for=Details.LastName class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for=Details.DateOfBirth class="control-label"></label>
+                    <input asp-for=Details.DateOfBirth class="form-control" id="datebirth" />
+                    <span asp-validation-for=Details.DateOfBirth class="text-danger"></span>
+                </div>
+                <input type="hidden" asp-for=Details.Id id="userId" />
+                <div class="form-group">
+                    <label asp-for=Details.EMail class="control-label"></label>
+                    <input asp-for=Details.EMail class="form-control" id="email" />
+                    <span asp-validation-for=Details.EMail class="text-danger"></span>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for=Details.EmailConfirmed id="emailconfirmed" /> Email Confirmed
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label asp-for=Details.PhoneNumber class="control-label"></label>
+                    <input asp-for=Details.PhoneNumber class="form-control" id="phonenumber" />
+                    <span asp-validation-for=Details.PhoneNumber class="text-danger"></span>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for=Details.PhoneNumberConfirmed id="phoneconfirmed" /> Phone Number Confirmed
+                    </label>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for=Details.TwoFactorEnabled id="twofactorenabled" /> Two Factor Enabled
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label asp-for=Details.AccessFailedCount type="hidden" class="control-label"></label>
+                    <input asp-for=Details.AccessFailedCount type="hidden" class="form-control" id="accessfailed" />
+                    <span asp-validation-for=Details.AccessFailedCount type="hidden" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary form-control" id="sendform">Send</button>
+                </div>
+                @* -------------------------------------------------------- *@
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success" data-dismiss="modal">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $("#sendform").bind("click", function () {
+        var obj = ({
+            Id: $("#userId").val(),
+            FirstName: $("#fname").val(),
+            LastName: $("#lname").val(),
+            DateOfBirth: $("#datebirth").val(),
+            PhoneNumber: $("#phonenumber").val(),
+            EMail: $("#email").val(),
+            PhoneNumberConfirmed: $("#phoneconfirmed").val(),
+            EMailConfirmed: $("#emailconfirmed").val(),
+            TwoFactorEnabled: $("#twofactorenabled").val(),
+            AccessFailedCount: $("#accessfailed").val()
+        });
+        $.ajax({
+            url: "/Admin/Edit",
+            type: "post",
+            datatype: "application/json",
+            data: obj,
+            success: function () {
+                alert("Success");
+            },
+            error: function () {
+                alert("ERROR");
+            }
+        });
+    });
+
+
+
+</script>

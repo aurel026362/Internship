@@ -11,5 +11,7 @@ namespace App.Web.Models.ComplexViewModel.General
     {
         public IList<ThemeMarkViewModel> ThemeMarks { get; set; }
         public IList<ExamMarkViewModel> ExamMarks { get; set; }
+        public double AvgTMarks { get; set; }
+        public double AvgEMarks { get; set; }
     }
 }

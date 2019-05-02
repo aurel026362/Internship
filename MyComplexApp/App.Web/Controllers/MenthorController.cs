@@ -27,7 +27,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace App.Web.Controllers
 {
-    [Authorize(Roles = "Menthor")]
+    [Authorize]
     public class MenthorController : Controller
     {
         private readonly SignInManager<User> _signInManager;
@@ -46,6 +46,7 @@ namespace App.Web.Controllers
             _mapper = mapper;
         }
 
+        [Authorize(Roles = "Menthor")]
         public async Task<IActionResult> Index()
         {
             long currentId = Convert.ToInt32(_signInManager.UserManager.GetUserId(User));
@@ -73,23 +74,62 @@ namespace App.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Menthor, Admin")]
         public async Task<IActionResult> GetTMarksSorted(string orderby, bool sorting)
         {
-            string sort = "";
-            if (sorting == true) sort = "asc";
-            else sort = "desc";
-            var list = _internAchievements.GetThemeMarksSorted(orderby, sort);
+            var list = _internAchievements.GetThemeMarksSorted(0, orderby, sorting);
             var listViewModel = _mapper.Map<IList<ThemeMarkViewModel>>(list);
 
             return Json(listViewModel);
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetMoreTMarks(int page, string orderby="email", bool sorting=true)
+        [Authorize(Roles = "Menthor, Admin")]
+        public async Task<IActionResult> GetMoreTMarks(int page, string orderby, bool sorting)
         {
-            var list = _internAchievements.GetMoreThemeMarks(page, orderby, sorting);
+
+            var list = _internAchievements.GetThemeMarksSorted(page, orderby, sorting);
             var listViewModel = _mapper.Map<IList<ThemeMarkViewModel>>(list);
             return Json(listViewModel);
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "Menthor, Admin")]
+        public async Task<IActionResult> GetTMarksByEmail(string email)
+        {
+            var listDto = _internAchievements.GetTMarksByEmail(email);
+            var list = _mapper.Map<IList<ThemeMarkViewModel>>(listDto);
+
+            return Json(list);
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "Menthor, Admin")]
+        public async Task<IActionResult> GetTMarksByModule(long moduleId, string orderby, bool sorting)
+        {
+            IList<ThemeMarkViewModel> list = null;
+
+            if (moduleId != 0)
+            {
+                var listDto = _internAchievements.GetThemeMarksByModuleId(moduleId);
+                list = _mapper.Map<IList<ThemeMarkViewModel>>(listDto);
+            }
+            else
+            {
+                var listDto = _internAchievements.GetThemeMarksSorted(0, orderby, sorting);
+                list = _mapper.Map<IList<ThemeMarkViewModel>>(listDto);
+            }
+
+            return Json(list);
+        }
+
+        [HttpGet]
+        [Authorize(Roles ="Menthor, Admin")]
+        public async Task<IActionResult> GetTMarksByUserId(long userId)
+        {
+            var listDto = _internAchievements.GetThemeMarksByUserId(userId);
+            var list = _mapper.Map<IList<ThemeMarkViewModel>>(listDto);
+            return PartialView(list);
         }
     }
 }

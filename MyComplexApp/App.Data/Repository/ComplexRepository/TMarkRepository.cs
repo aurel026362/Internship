@@ -20,6 +20,24 @@ namespace App.Data.Repository.ComplexRepository
             _context = ctxt;
         }
 
+        public double GetAvgTMarks()
+        {
+            var result = _context.ThemeMarks.Average(x => x.Mark);
+            return result;
+        }
+
+        public double GetAvgTMarksByModuleId(long moduleId)
+        {
+            var result = _context.ThemeMarks.Where(x=>x.theme.ModuleId.Equals(moduleId)).Average(x => x.Mark);
+            return result;
+        }
+
+        public double GetAvgTMarksByUserId(long userId)
+        {
+            var result = _context.ThemeMarks.Where(x=>x.Intern.UserId.Equals(userId)).Average(x => x.Mark);
+            return result;
+        }
+
         public IList<ComplexTMark> GetMoreThemeMarks(int page, string orderby, string sorting)
         {
             throw new NotImplementedException();
@@ -47,7 +65,7 @@ namespace App.Data.Repository.ComplexRepository
                 ThemeName = x.theme.Name,
                 Mark = x.Mark,
                 Comment = x.Comment
-            }).ToList();
+            }).OrderBy(x=>x.UserEmail).Take(10).ToList();
 
             return list;
         }
@@ -80,23 +98,15 @@ namespace App.Data.Repository.ComplexRepository
             return list;
         }
 
-        public IList<ComplexTMark> GetThemeMarksSorted(string orderBy, string sorting)
+        public IList<ComplexTMark> GetThemeMarksSorted(int page, string orderBy, bool sorting)
         {
             IList<ComplexTMark> list = null;
-
-            
-            return list;
-        }
-
-        private IQueryable SortedTMarks(string orderBy, string sorting)
-        {
-            IQueryable list;
 
             switch (orderBy)
             {
                 case "theme":
                     {
-                        if (sorting.Equals("asc"))
+                        if (sorting==true)
                         {
                             list = _context.ThemeMarks.Select(x => new ComplexTMark()
                             {
@@ -104,7 +114,7 @@ namespace App.Data.Repository.ComplexRepository
                                 ThemeName = x.theme.Name,
                                 Mark = x.Mark,
                                 Comment = x.Comment
-                            }).OrderBy(x => x.ThemeName).Take(10);
+                            }).OrderBy(x => x.ThemeName).Skip(page*10).Take(10).ToList();
                         }
                         else
                         {
@@ -114,13 +124,13 @@ namespace App.Data.Repository.ComplexRepository
                                 ThemeName = x.theme.Name,
                                 Mark = x.Mark,
                                 Comment = x.Comment
-                            }).OrderByDescending(x => x.ThemeName).Take(10);
+                            }).OrderByDescending(x => x.ThemeName).Skip(page * 10).Take(10).ToList();
                         }
                     }
                     break;
                 case "mark":
                     {
-                        if (sorting.Equals("asc"))
+                        if (sorting == true)
                         {
                             list = _context.ThemeMarks.Select(x => new ComplexTMark()
                             {
@@ -128,7 +138,7 @@ namespace App.Data.Repository.ComplexRepository
                                 ThemeName = x.theme.Name,
                                 Mark = x.Mark,
                                 Comment = x.Comment
-                            }).OrderBy(x => x.Mark).Take(10);
+                            }).OrderBy(x => x.Mark).Skip(page * 10).Take(10).ToList();
                         }
                         else
                         {
@@ -138,13 +148,13 @@ namespace App.Data.Repository.ComplexRepository
                                 ThemeName = x.theme.Name,
                                 Mark = x.Mark,
                                 Comment = x.Comment
-                            }).OrderByDescending(x => x.Mark).Take(10);
+                            }).OrderByDescending(x => x.Mark).Skip(page * 10).Take(10).ToList();
                         }
                     }
                     break;
                 case "email":
                     {
-                        if (sorting.Equals("asc"))
+                        if (sorting == true)
                         {
                             list = _context.ThemeMarks.Select(x => new ComplexTMark()
                             {
@@ -152,7 +162,7 @@ namespace App.Data.Repository.ComplexRepository
                                 ThemeName = x.theme.Name,
                                 Mark = x.Mark,
                                 Comment = x.Comment
-                            }).OrderBy(x => x.UserEmail).Take(10);
+                            }).OrderBy(x => x.UserEmail).Skip(page * 10).Take(10).ToList();
                         }
                         else
                         {
@@ -162,12 +172,35 @@ namespace App.Data.Repository.ComplexRepository
                                 ThemeName = x.theme.Name,
                                 Mark = x.Mark,
                                 Comment = x.Comment
-                            }).OrderByDescending(x => x.UserEmail).Take(10);
+                            }).OrderByDescending(x => x.UserEmail).Skip(page * 10).Take(10).ToList();
                         }
                     }
                     break;
                 default: { } break;
             }
+            return list;
+        }
+
+        public IList<ComplexTMark> GetTMarksByEmail(string email)
+        {
+            IList<ComplexTMark> list = null;
+            if (email != null)
+            {
+                list = _context.ThemeMarks.Where(x => x.Intern.User.Email.Contains(email)).Select(x => new ComplexTMark()
+                {
+                    UserEmail = x.Intern.User.Email,
+                    ThemeName = x.theme.Name,
+                    Mark = x.Mark,
+                    Comment = x.Comment
+                }).ToList();
+
+                return list;
+            }
+            else
+            {
+                list = GetThemeMarks();
+            }
+
             return list;
         }
 

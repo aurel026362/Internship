@@ -11,7 +11,10 @@ namespace App.Services.Interfaces
         IList<ThemeMarkDto> GetThemeMarks(long userId, long moduleId);
         IList<ThemeMarkDto> GetThemeMarksByModuleId(long moduleId);
         IList<ThemeMarkDto> GetThemeMarks();
-        IList<ThemeMarkDto> GetThemeMarksSorted(string orderBy, string sorting);
-        IList<ThemeMarkDto> GetMoreThemeMarks(int page, string orderby, string sorting);
+        IList<ThemeMarkDto> GetThemeMarksSorted(int page, string orderby, bool sorting);
+        IList<ThemeMarkDto> GetTMarksByEmail(string email);
+        double GetAvgTMarks();
+        double GetAvgTMarksByUserId(long userId);
+        double GetAvgTMarksByModuleId(long moduleId);
     }
 }

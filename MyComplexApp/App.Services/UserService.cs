@@ -92,5 +92,21 @@ namespace App.Services
         {
             _userRepository.Save();
         }
+
+        public IList<UserDetailedDto> GetUsersDetails()
+        {
+            var list = _userRepository.GetUsersDetails();
+            var listDto = _mapper.Map<IList<UserDetailedDto>>(list);
+
+            return listDto;
+        }
+
+        public UserDetailedDto GetUserDetails(long id)
+        {
+            var user = _userRepository.GetUserDetails(id);
+            var userDto = _mapper.Map<UserDetailedDto>(user);
+
+            return userDto;
+        }
     }
 }

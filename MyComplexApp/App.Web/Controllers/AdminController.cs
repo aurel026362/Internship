@@ -1,5 +1,6 @@
 ﻿using App.Data.Context;
 using App.Data.Domain.DomainModels.Identity;
+using App.Services.Dtos.DTOs.User;
 using App.Services.Interfaces;
 using App.Services.Interfaces.ContentInternshipService;
 using App.Services.Interfaces.UserService;
@@ -14,6 +15,7 @@ using App.Web.Models.ComplexViewModel.Admin;
 using App.Web.Models.ComplexViewModel.General;
 using App.Web.Models.ComplexViewModel.Intern;
 using App.Web.Models.ForUser;
+using App.Web.Models.ViewModel.UserViewModel;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -75,8 +77,8 @@ namespace App.Web.Controllers
             var comments = _contentInternshipService.GetComments();
             person.Data.Comments = _mapper.Map<IList<CommentViewModel>>(comments);
 
-            var usersDto = _userService.GetUsers();
-            person.Users = _mapper.Map<IList<UserViewModel>>(usersDto);
+            var usersDto = _userService.GetUsersDetails();
+            person.Users = _mapper.Map<IList<UserDetailedViewModel>>(usersDto);
 
             return View(person);
         }
@@ -89,81 +91,34 @@ namespace App.Web.Controllers
                 return NotFound();
             }
 
-            var user = await _context.Users
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (user == null)
+            var userDto = _userService.GetUserDetails((long)id);
+            var user = _mapper.Map<UserDetailedViewModel>(userDto);
+
+            var alldatauser = new UserAllDataViewModel();
+            alldatauser.Details = user;
+            alldatauser.Marks = new MarksViewModel();
+
+            var tmarks = _internAchievements.GetThemeMarksByUserId((long) id);
+            var emarks = _internAchievements.GetExamMarksByUserId((long)id);
+
+            alldatauser.Marks.ThemeMarks = _mapper.Map<IList<ThemeMarkViewModel>>(tmarks);
+            alldatauser.Marks.ExamMarks = _mapper.Map<IList<ExamMarkViewModel>>(emarks);
+            
+            if (alldatauser == null)
             {
                 return NotFound();
             }
 
-            return View(user);
-        }
-
-        [HttpGet]
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("FirstName,LastName,DateOfBirth,Id,UserName,NormalizedUserName,Email,NormalizedEmail,EmailConfirmed,PasswordHash,SecurityStamp,ConcurrencyStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEnd,LockoutEnabled,AccessFailedCount")] User user)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(user);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(user);
-        }
-
-        // GET: Users/Edit/5
-        public async Task<IActionResult> Edit(long? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var user = await _context.Users.FindAsync(id);
-            if (user == null)
-            {
-                return NotFound();
-            }
-            return View(user);
+            return View(alldatauser);
         }
         
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long id, [Bind("FirstName,LastName,DateOfBirth,Id,UserName,NormalizedUserName,Email,NormalizedEmail,EmailConfirmed,PasswordHash,SecurityStamp,ConcurrencyStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEnd,LockoutEnabled,AccessFailedCount")] User user)
+        public async Task<IActionResult> Edit(UserDetailedViewModel userViewModel)
         {
-            if (id != user.Id)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(user);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!UserExists(user.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(user);
+            var userDto = _mapper.Map<UserDetailedDto>(userViewModel);
+            var user = _mapper.Map<User>(userDto);
+            _context.Update(user);
+            return Ok();
         }
 
         public async Task<IActionResult> Delete(long? id)

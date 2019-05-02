@@ -10,6 +10,8 @@ namespace App.Data.Interfaces.RepositoryInterfaces.IComplexRepository
     {
         User GetUserById(long Id);
         IList<User> GetUsers();
+        IList<User> GetUsersDetails();
+        User GetUserDetails(long id);
         IList<User> GetInterns();
         IList<User> GetMenthors();
         void UpdateUser(long userId, string newFName, string newLName, string nenwPhone, DateTime newdDBirth);

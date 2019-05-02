@@ -103,5 +103,19 @@ namespace App.Data.Repository.ComplexRepository
             _context.Update(user);
             Save();
         }
+
+        public IList<User> GetUsersDetails()
+        {
+            var list = _context.Users.ToList();
+
+            return list;
+        }
+
+        public User GetUserDetails(long id)
+        {
+            var user = _context.Users.Where(x=>x.Id.Equals(id)).FirstOrDefault();
+
+            return user;
+        }
     }
 }

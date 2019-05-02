@@ -59,6 +59,7 @@ namespace App.Web.Controllers
             var currentTMarks = _internAchievements.GetThemeMarksByUserId(currentId);
 
             var marks = new MarksViewModel();
+            marks.AvgTMarks = _internAchievements.GetAvgTMarksByUserId(currentId);
             marks.ThemeMarks = _mapper.Map<IList<ThemeMarkViewModel>>(currentTMarks);
             var currentEMarks = _internAchievements.GetExamMarksByUserId(currentId);
             marks.ExamMarks = _mapper.Map<IList<ExamMarkViewModel>>(currentEMarks);
