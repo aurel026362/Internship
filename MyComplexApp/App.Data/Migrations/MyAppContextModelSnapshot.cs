@@ -15,7 +15,7 @@ namespace App.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.4-servicing-10062")
+                .HasAnnotation("ProductVersion", "2.2.3-servicing-35854")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -47,7 +47,7 @@ namespace App.Data.Migrations
                         {
                             Id = 1L,
                             Content = "Nicjdsladj sal djsa dsadsa.",
-                            DateComment = new DateTime(2019, 4, 16, 20, 40, 51, 128, DateTimeKind.Local).AddTicks(638),
+                            DateComment = new DateTime(2019, 5, 3, 15, 20, 39, 158, DateTimeKind.Local).AddTicks(4823),
                             ThemeId = 1L,
                             UserId = 2L
                         },
@@ -55,7 +55,7 @@ namespace App.Data.Migrations
                         {
                             Id = 2L,
                             Content = "dsafdsda.",
-                            DateComment = new DateTime(2019, 4, 16, 20, 40, 51, 130, DateTimeKind.Local).AddTicks(2125),
+                            DateComment = new DateTime(2019, 5, 3, 15, 20, 39, 160, DateTimeKind.Local).AddTicks(8856),
                             ThemeId = 3L,
                             UserId = 1L
                         },
@@ -63,7 +63,7 @@ namespace App.Data.Migrations
                         {
                             Id = 3L,
                             Content = "qewqeqewqqewq.",
-                            DateComment = new DateTime(2019, 4, 16, 20, 40, 51, 130, DateTimeKind.Local).AddTicks(2142),
+                            DateComment = new DateTime(2019, 5, 3, 15, 20, 39, 160, DateTimeKind.Local).AddTicks(8880),
                             ThemeId = 1L,
                             UserId = 4L
                         },
@@ -71,7 +71,7 @@ namespace App.Data.Migrations
                         {
                             Id = 4L,
                             Content = "asdsadsa sadsadsa dsa.",
-                            DateComment = new DateTime(2019, 4, 16, 20, 40, 51, 130, DateTimeKind.Local).AddTicks(2147),
+                            DateComment = new DateTime(2019, 5, 3, 15, 20, 39, 160, DateTimeKind.Local).AddTicks(8883),
                             ThemeId = 4L,
                             UserId = 2L
                         },
@@ -79,7 +79,7 @@ namespace App.Data.Migrations
                         {
                             Id = 5L,
                             Content = "zxcxzcxz zc xz cxz z.",
-                            DateComment = new DateTime(2019, 4, 16, 20, 40, 51, 130, DateTimeKind.Local).AddTicks(2151),
+                            DateComment = new DateTime(2019, 5, 3, 15, 20, 39, 160, DateTimeKind.Local).AddTicks(8890),
                             ThemeId = 1L,
                             UserId = 3L
                         },
@@ -87,7 +87,7 @@ namespace App.Data.Migrations
                         {
                             Id = 6L,
                             Content = "iopoipio iop io io.",
-                            DateComment = new DateTime(2019, 4, 16, 20, 40, 51, 130, DateTimeKind.Local).AddTicks(2155),
+                            DateComment = new DateTime(2019, 5, 3, 15, 20, 39, 160, DateTimeKind.Local).AddTicks(8893),
                             ThemeId = 2L,
                             UserId = 1L
                         },
@@ -95,7 +95,7 @@ namespace App.Data.Migrations
                         {
                             Id = 7L,
                             Content = "qq q q q q q q",
-                            DateComment = new DateTime(2019, 4, 16, 20, 40, 51, 130, DateTimeKind.Local).AddTicks(2159),
+                            DateComment = new DateTime(2019, 5, 3, 15, 20, 39, 160, DateTimeKind.Local).AddTicks(8897),
                             ThemeId = 2L,
                             UserId = 3L
                         },
@@ -103,7 +103,7 @@ namespace App.Data.Migrations
                         {
                             Id = 8L,
                             Content = "N4354535 43.",
-                            DateComment = new DateTime(2019, 4, 16, 20, 40, 51, 130, DateTimeKind.Local).AddTicks(2163),
+                            DateComment = new DateTime(2019, 5, 3, 15, 20, 39, 160, DateTimeKind.Local).AddTicks(8904),
                             ThemeId = 1L,
                             UserId = 4L
                         },
@@ -111,7 +111,7 @@ namespace App.Data.Migrations
                         {
                             Id = 9L,
                             Content = "po'p'l';l;l'.",
-                            DateComment = new DateTime(2019, 4, 16, 20, 40, 51, 130, DateTimeKind.Local).AddTicks(2167),
+                            DateComment = new DateTime(2019, 5, 3, 15, 20, 39, 160, DateTimeKind.Local).AddTicks(8907),
                             ThemeId = 3L,
                             UserId = 2L
                         });
@@ -191,17 +191,85 @@ namespace App.Data.Migrations
                         });
                 });
 
+            modelBuilder.Entity("App.Data.Domain.DomainModels.Concrete.Intern", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<long?>("GroupId");
+
+                    b.Property<long?>("MenthorId");
+
+                    b.Property<long>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GroupId");
+
+                    b.HasIndex("MenthorId")
+                        .IsUnique()
+                        .HasFilter("[MenthorId] IS NOT NULL");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Interns");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            GroupId = 1L,
+                            MenthorId = 2L,
+                            UserId = 1L
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            GroupId = 1L,
+                            MenthorId = 1L,
+                            UserId = 2L
+                        });
+                });
+
+            modelBuilder.Entity("App.Data.Domain.DomainModels.Concrete.Menthor", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<long>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Menthors");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            UserId = 3L
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            UserId = 4L
+                        });
+                });
+
             modelBuilder.Entity("App.Data.Domain.DomainModels.Concrete.Module", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("DateStart")
-                        .HasColumnType("date");
-
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(20)");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("date");
 
                     b.HasKey("Id");
 
@@ -211,20 +279,20 @@ namespace App.Data.Migrations
                         new
                         {
                             Id = 1L,
-                            DateStart = new DateTime(2019, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "C#"
+                            Name = "C#",
+                            StartDate = new DateTime(2019, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 2L,
-                            DateStart = new DateTime(2019, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "SQL AND EF CORE"
+                            Name = "SQL AND EF CORE",
+                            StartDate = new DateTime(2019, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 3L,
-                            DateStart = new DateTime(2019, 4, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "WEB"
+                            Name = "WEB",
+                            StartDate = new DateTime(2019, 4, 4, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 
@@ -301,7 +369,7 @@ namespace App.Data.Migrations
                     b.Property<string>("Source")
                         .HasMaxLength(100);
 
-                    b.Property<DateTime?>("TimeOfTheme")
+                    b.Property<DateTime?>("StartDate")
                         .HasColumnType("smalldatetime");
 
                     b.HasKey("Id");
@@ -320,7 +388,7 @@ namespace App.Data.Migrations
                             ModuleId = 1L,
                             Name = "Creational Pattern",
                             Source = "S:\\Internship\\C#",
-                            TimeOfTheme = new DateTime(2019, 2, 6, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartDate = new DateTime(2019, 2, 6, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
@@ -329,7 +397,7 @@ namespace App.Data.Migrations
                             ModuleId = 2L,
                             Name = "SQL SELECT",
                             Source = "S:\\Internship\\SQL",
-                            TimeOfTheme = new DateTime(2019, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartDate = new DateTime(2019, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
@@ -338,7 +406,7 @@ namespace App.Data.Migrations
                             ModuleId = 2L,
                             Name = "EF Core Mapping",
                             Source = "S:\\Internship\\SQL",
-                            TimeOfTheme = new DateTime(2019, 3, 16, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartDate = new DateTime(2019, 3, 16, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
@@ -347,7 +415,7 @@ namespace App.Data.Migrations
                             ModuleId = 3L,
                             Name = "JS",
                             Source = "S:\\Internship\\WEB",
-                            TimeOfTheme = new DateTime(2019, 4, 2, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartDate = new DateTime(2019, 4, 2, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 
@@ -412,76 +480,6 @@ namespace App.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("App.Data.Domain.DomainModels.Concrete.UserIntern", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<long?>("GroupId");
-
-                    b.Property<long?>("MenthorId");
-
-                    b.Property<long>("UserId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("GroupId");
-
-                    b.HasIndex("MenthorId")
-                        .IsUnique()
-                        .HasFilter("[MenthorId] IS NOT NULL");
-
-                    b.HasIndex("UserId")
-                        .IsUnique();
-
-                    b.ToTable("Interns");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            GroupId = 1L,
-                            MenthorId = 2L,
-                            UserId = 1L
-                        },
-                        new
-                        {
-                            Id = 2L,
-                            GroupId = 1L,
-                            MenthorId = 1L,
-                            UserId = 2L
-                        });
-                });
-
-            modelBuilder.Entity("App.Data.Domain.DomainModels.Concrete.UserMenthor", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<long>("UserId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId")
-                        .IsUnique();
-
-                    b.ToTable("Menthors");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            UserId = 3L
-                        },
-                        new
-                        {
-                            Id = 2L,
-                            UserId = 4L
-                        });
-                });
-
             modelBuilder.Entity("App.Data.Domain.DomainModels.Identity.Role", b =>
                 {
                     b.Property<long>("Id")
@@ -510,21 +508,21 @@ namespace App.Data.Migrations
                         new
                         {
                             Id = 1L,
-                            ConcurrencyStamp = "1083708910",
+                            ConcurrencyStamp = "-1814523563",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = 2L,
-                            ConcurrencyStamp = "1962104277",
+                            ConcurrencyStamp = "-220528515",
                             Name = "Menthor",
                             NormalizedName = "MENTHOR"
                         },
                         new
                         {
                             Id = 3L,
-                            ConcurrencyStamp = "-1381086988",
+                            ConcurrencyStamp = "273795021",
                             Name = "Intern",
                             NormalizedName = "INTERN"
                         });
@@ -606,14 +604,14 @@ namespace App.Data.Migrations
                         {
                             Id = 1L,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "40c86b40-c688-4257-bae9-88b2b29874e0",
+                            ConcurrencyStamp = "441a332f-3e2a-4150-b71b-1fb68aa1f6dd",
                             DateOfBirth = new DateTime(1999, 5, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "aurel@mail.ru",
                             EmailConfirmed = false,
                             FirstName = "Aurel",
                             LastName = "Starciuc",
                             LockoutEnabled = false,
-                            PasswordHash = "-282861250",
+                            PasswordHash = "-969853658",
                             PhoneNumber = "+37367620932",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -623,14 +621,14 @@ namespace App.Data.Migrations
                         {
                             Id = 2L,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "acc116d7-f3b4-4684-aa2a-ccb04021162a",
+                            ConcurrencyStamp = "67d6966b-7406-4bf5-babf-a8a90e574420",
                             DateOfBirth = new DateTime(1989, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "cristi@mail.ru",
                             EmailConfirmed = false,
                             FirstName = "Cristi",
                             LastName = "Anghelenici",
                             LockoutEnabled = false,
-                            PasswordHash = "-1553169706",
+                            PasswordHash = "374953263",
                             PhoneNumber = "+37367665467",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -640,14 +638,14 @@ namespace App.Data.Migrations
                         {
                             Id = 3L,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "872fe9c9-dc19-41b7-8523-f3108ca65008",
+                            ConcurrencyStamp = "3c44a768-3963-4e86-8912-73d66b05d9d0",
                             DateOfBirth = new DateTime(1994, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "alexandr@mail.ru",
                             EmailConfirmed = false,
                             FirstName = "Alexandr",
                             LastName = "Racovschi",
                             LockoutEnabled = false,
-                            PasswordHash = "-480489247",
+                            PasswordHash = "455464726",
                             PhoneNumber = "+37336218321",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -657,14 +655,14 @@ namespace App.Data.Migrations
                         {
                             Id = 4L,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "adbec368-a723-433d-b111-ac7ac00c35cf",
+                            ConcurrencyStamp = "9f2cb5cd-9165-4030-8865-b79ca4052487",
                             DateOfBirth = new DateTime(1984, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "iong@mail.ru",
                             EmailConfirmed = false,
                             FirstName = "Ion",
                             LastName = "Gandrabura",
                             LockoutEnabled = false,
-                            PasswordHash = "-863648484",
+                            PasswordHash = "-1251415727",
                             PhoneNumber = "+373954035",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -674,14 +672,14 @@ namespace App.Data.Migrations
                         {
                             Id = 5L,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "6e963851-b666-48dd-bdfd-46c527dc0e62",
+                            ConcurrencyStamp = "67028cc3-927f-46a4-993b-a2b407cee51e",
                             DateOfBirth = new DateTime(1978, 5, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "gosa@mail.ru",
                             EmailConfirmed = false,
                             FirstName = "Gosa",
                             LastName = "Dudari",
                             LockoutEnabled = false,
-                            PasswordHash = "599350326",
+                            PasswordHash = "-2138642567",
                             PhoneNumber = "+37354354398",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -780,11 +778,13 @@ namespace App.Data.Migrations
                 {
                     b.HasOne("App.Data.Domain.DomainModels.Concrete.Theme", "Theme")
                         .WithMany("Comments")
-                        .HasForeignKey("ThemeId");
+                        .HasForeignKey("ThemeId")
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("App.Data.Domain.DomainModels.Identity.User", "User")
                         .WithMany("Comments")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("App.Data.Domain.DomainModels.Concrete.Exam", b =>
@@ -792,7 +792,7 @@ namespace App.Data.Migrations
                     b.HasOne("App.Data.Domain.DomainModels.Concrete.Module", "Module")
                         .WithOne("Exam")
                         .HasForeignKey("App.Data.Domain.DomainModels.Concrete.Exam", "ModuleId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("App.Data.Domain.DomainModels.Concrete.ExamMark", b =>
@@ -800,68 +800,72 @@ namespace App.Data.Migrations
                     b.HasOne("App.Data.Domain.DomainModels.Concrete.Exam", "Exam")
                         .WithMany("ExamMarks")
                         .HasForeignKey("ExamId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("App.Data.Domain.DomainModels.Concrete.UserIntern", "Intern")
+                    b.HasOne("App.Data.Domain.DomainModels.Concrete.Intern", "Intern")
                         .WithMany("ExamMarks")
                         .HasForeignKey("InternId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("App.Data.Domain.DomainModels.Concrete.Intern", b =>
+                {
+                    b.HasOne("App.Data.Domain.DomainModels.Concrete.Group", "Group")
+                        .WithMany("Interns")
+                        .HasForeignKey("GroupId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("App.Data.Domain.DomainModels.Concrete.Menthor", "Menthor")
+                        .WithOne("Intern")
+                        .HasForeignKey("App.Data.Domain.DomainModels.Concrete.Intern", "MenthorId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("App.Data.Domain.DomainModels.Identity.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("App.Data.Domain.DomainModels.Concrete.Menthor", b =>
+                {
+                    b.HasOne("App.Data.Domain.DomainModels.Identity.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("App.Data.Domain.DomainModels.Concrete.Theme", b =>
                 {
-                    b.HasOne("App.Data.Domain.DomainModels.Concrete.UserMenthor", "Menthor")
+                    b.HasOne("App.Data.Domain.DomainModels.Concrete.Menthor", "Menthor")
                         .WithMany("Themes")
                         .HasForeignKey("MenthorId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("App.Data.Domain.DomainModels.Concrete.Module", "Modulep")
+                    b.HasOne("App.Data.Domain.DomainModels.Concrete.Module", "Module")
                         .WithMany("Themes")
                         .HasForeignKey("ModuleId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("App.Data.Domain.DomainModels.Concrete.ThemeMark", b =>
                 {
-                    b.HasOne("App.Data.Domain.DomainModels.Concrete.UserIntern", "Intern")
+                    b.HasOne("App.Data.Domain.DomainModels.Concrete.Intern", "Intern")
                         .WithMany("ThemeMarks")
-                        .HasForeignKey("InternId");
+                        .HasForeignKey("InternId")
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("App.Data.Domain.DomainModels.Concrete.Theme", "theme")
                         .WithMany("ThemeMarks")
-                        .HasForeignKey("ThemeId");
-                });
-
-            modelBuilder.Entity("App.Data.Domain.DomainModels.Concrete.UserIntern", b =>
-                {
-                    b.HasOne("App.Data.Domain.DomainModels.Concrete.Group", "Group")
-                        .WithMany("Interns")
-                        .HasForeignKey("GroupId");
-
-                    b.HasOne("App.Data.Domain.DomainModels.Concrete.UserMenthor", "Menthor")
-                        .WithOne("Intern")
-                        .HasForeignKey("App.Data.Domain.DomainModels.Concrete.UserIntern", "MenthorId")
-                        .OnDelete(DeleteBehavior.SetNull);
-
-                    b.HasOne("App.Data.Domain.DomainModels.Identity.User", "User")
-                        .WithOne("Intern")
-                        .HasForeignKey("App.Data.Domain.DomainModels.Concrete.UserIntern", "UserId")
+                        .HasForeignKey("ThemeId")
                         .OnDelete(DeleteBehavior.Restrict);
-                });
-
-            modelBuilder.Entity("App.Data.Domain.DomainModels.Concrete.UserMenthor", b =>
-                {
-                    b.HasOne("App.Data.Domain.DomainModels.Identity.User", "User")
-                        .WithOne("Menthor")
-                        .HasForeignKey("App.Data.Domain.DomainModels.Concrete.UserMenthor", "UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("App.Data.Domain.DomainModels.Identity.User", b =>
                 {
                     b.HasOne("App.Data.Domain.DomainModels.Identity.Role")
                         .WithMany("Users")
-                        .HasForeignKey("RoleId");
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<long>", b =>
@@ -869,7 +873,7 @@ namespace App.Data.Migrations
                     b.HasOne("App.Data.Domain.DomainModels.Identity.Role")
                         .WithMany()
                         .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<long>", b =>
@@ -877,7 +881,7 @@ namespace App.Data.Migrations
                     b.HasOne("App.Data.Domain.DomainModels.Identity.User")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<long>", b =>
@@ -885,7 +889,7 @@ namespace App.Data.Migrations
                     b.HasOne("App.Data.Domain.DomainModels.Identity.User")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<long>", b =>
@@ -893,16 +897,17 @@ namespace App.Data.Migrations
                     b.HasOne("App.Data.Domain.DomainModels.Identity.Role")
                         .WithMany()
                         .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("App.Data.Domain.DomainModels.Identity.User")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("App.Data.Domain.DomainModels.Identity.User")
                         .WithMany("Roles")
-                        .HasForeignKey("UserId1");
+                        .HasForeignKey("UserId1")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<long>", b =>
@@ -910,7 +915,7 @@ namespace App.Data.Migrations
                     b.HasOne("App.Data.Domain.DomainModels.Identity.User")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 #pragma warning restore 612, 618
         }

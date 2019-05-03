@@ -11,8 +11,8 @@ using App.Data.Repository;
 using App.Data.Repository.ComplexRepository;
 using App.Services;
 using App.Services.Interfaces;
-using App.Services.Interfaces.ContentInternshipService;
-using App.Services.Interfaces.UserService;
+using App.Services.Interfaces.IServices;
+using App.Services.Services;
 using App.Web.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
@@ -57,9 +57,15 @@ namespace App.Web
             services.AddScoped<IGenericRepository<Module>, GenericRepository<Module>>();
 
             //add service dependence
-            services.AddScoped<IInternAchievements, InternAchievements>();
+            services.AddScoped<ICommentService, CommentService>();
+            services.AddScoped<IEMarkService, EMarkService>();
+            services.AddScoped<IExamService, ExamService>();
+            services.AddScoped<IGroupService, GroupService>();
+            services.AddScoped<IModuleService, ModuleService>();
+            services.AddScoped<IThemeService, ThemeService>();
+            services.AddScoped<ITMarkService, TMarkService>();
             services.AddScoped<IUserService, UserService>();
-            services.AddScoped<IContentInternshipService, ContentInternshipService>();
+
 
             services.Configure<CookiePolicyOptions>(options =>
             {

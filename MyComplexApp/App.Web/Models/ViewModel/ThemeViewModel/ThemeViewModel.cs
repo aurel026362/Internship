@@ -8,7 +8,7 @@ namespace App.Web.Model.ViewModel.ThemeViewModel
     {
         public long Id { get; set; }
         public string Name { get; set; }
-        public DateTime? TimeOfTheme { get; set; }
+        public DateTime? StartDate { get; set; }
         public string Source { get; set; }
         public string ModuleName { get; set; }
         public string MenthorEMail { get; set; }

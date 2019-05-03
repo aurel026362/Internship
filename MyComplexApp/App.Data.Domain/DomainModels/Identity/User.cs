@@ -15,8 +15,8 @@ namespace App.Data.Domain.DomainModels.Identity
         [DataType(DataType.Date)]
         public DateTime DateOfBirth { get; set; }
 
-        public UserIntern Intern { get; set; }
-        public UserMenthor Menthor { get; set; }
+        //public Intern Intern { get; set; }
+        //public Menthor Menthor { get; set; }
         public ICollection<Comment> Comments { get; set; }
         public ICollection<IdentityUserRole<long>> Roles { get; set; }
     }

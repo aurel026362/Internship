@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Specialized;
+using System.Linq;
 
 namespace App.Data.Context
 {
@@ -14,8 +15,8 @@ namespace App.Data.Context
            : IdentityDbContext<User, Role,long>
     {
         //public virtual DbSet<Domain.DomainModels.Identity.User> Users { get; set; }
-        public virtual DbSet<UserIntern> Interns { get; set; }
-        public virtual DbSet<UserMenthor> Menthors { get; set; }
+        public virtual DbSet<Intern> Interns { get; set; }
+        public virtual DbSet<Menthor> Menthors { get; set; }
         public virtual DbSet<Domain.DomainModels.Concrete.Module> Modules { get; set; }
         public virtual DbSet<Theme> Themes { get; set; }
         public virtual DbSet<ThemeMark> ThemeMarks { get; set; }
@@ -47,9 +48,9 @@ namespace App.Data.Context
             base.OnModelCreating(modelBuilder);
             // modelBuilder.HasAnnotation("ProductVersion", "2.2.3-servicing-35854");
 
-            modelBuilder.ApplyConfiguration(new UserConfigurations());
-            modelBuilder.ApplyConfiguration(new UserInternConfigurations());
-            modelBuilder.ApplyConfiguration(new UserMenthorConfigurations());
+            modelBuilder.ApplyConfiguration(new UserConfig());
+            modelBuilder.ApplyConfiguration(new InternConfig());
+            modelBuilder.ApplyConfiguration(new MenthorConfig());
             modelBuilder.ApplyConfiguration(new ModuleConfig());
             modelBuilder.ApplyConfiguration(new ThemeConfig());
             modelBuilder.ApplyConfiguration(new ThemeMarkConfig());
@@ -58,7 +59,7 @@ namespace App.Data.Context
             modelBuilder.ApplyConfiguration(new GroupConfig());
             modelBuilder.ApplyConfiguration(new CommentConfig());
             modelBuilder.ApplyConfiguration(new RequestedUserConfig());
-            modelBuilder.ApplyConfiguration(new RoleConfigs());
+            modelBuilder.ApplyConfiguration(new RoleConfig());
 
             //modelBuilder.Entity<User>().ToTable("Users");
             //modelBuilder.Entity<Role>().ToTable("Roles");
@@ -67,6 +68,10 @@ namespace App.Data.Context
             //modelBuilder.Entity<IdentityUserLogin<long>>().ToTable("UserLogins");
             //modelBuilder.Entity<IdentityUserClaim<long>>().ToTable("UserClaims");
             //modelBuilder.Entity<IdentityRoleClaim<long>>().ToTable("RoleClaims");
+            foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
+            {
+                relationship.DeleteBehavior = DeleteBehavior.Restrict;
+            }
 
         }
     }

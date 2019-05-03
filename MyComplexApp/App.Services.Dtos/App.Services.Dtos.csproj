@@ -5,8 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="DTOs\Intern\" />
-    <Folder Include="DTOs\Menthor\" />
     <Folder Include="DTOs\RequestedUser\" />
   </ItemGroup>
 

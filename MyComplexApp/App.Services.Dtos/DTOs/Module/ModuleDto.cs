@@ -8,6 +8,6 @@ namespace App.Services.Dtos.DTOs.Module
     {
         public long Id { get; set; }
         public string Name { get; set; }
-        public DateTime DateStart { get; set; }
+        public DateTime StartDate { get; set; }
     }
 }

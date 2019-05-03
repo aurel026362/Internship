@@ -1,4 +1,5 @@
 ﻿using App.Data.Context;
+using App.Data.Domain.DomainModels.Concrete;
 using App.Data.Domain.DomainModels.Identity;
 using App.Data.Interfaces.RepositoryInterfaces;
 using App.Data.Interfaces.RepositoryInterfaces.IComplexRepository;
@@ -38,16 +39,33 @@ namespace App.Data.Repository.ComplexRepository
             var list = _context.Users.Join(_context.Interns,
                 user => user.Id,
                 intern => intern.UserId,
-                (user,intern)=>user).ToList();
+                (user, intern) => user).ToList();
             return list;
         }
 
         public IList<User> GetMenthors()
         {
-            var list = _context.Users.Join(_context.Menthors,
-                user => user.Id,
-                menthor => menthor.UserId,
-                (user, menthor) => user).ToList();
+            //    var list = _context.Users.Join(_context.Menthors,
+            //        user => user.Id,
+            //        menthor => menthor.UserId,
+            //        (user, menthor) => user).ToList();
+
+            var list2 = _context.Menthors.Select(x => x.User).ToList();
+
+            return list2;
+        }
+
+        public IList<User> GetInternsAndMenthors()
+        {
+            var interns = GetInterns();
+            var menthors = GetMenthors();
+            var list = interns;
+
+            foreach (var item in menthors)
+            {
+                list.Add(item);
+            }
+
             return list;
         }
 
@@ -111,11 +129,50 @@ namespace App.Data.Repository.ComplexRepository
             return list;
         }
 
-        public User GetUserDetails(long id)
+        public void AddIntern(Intern intern)
         {
-            var user = _context.Users.Where(x=>x.Id.Equals(id)).FirstOrDefault();
+            _context.Interns.Add(intern);
+            _context.SaveChanges();
+        }
 
-            return user;
+        public void AddMenthor(Menthor menthor)
+        {
+            _context.Menthors.Add(menthor);
+            _context.SaveChanges();
+        }
+
+        public void DeleteUser(long userId)
+        {
+            using (var transaction = _context.Database.BeginTransaction())
+            {
+                try
+                {
+                    var menthor = _context.Menthors.Where(x => x.UserId.Equals(userId)).FirstOrDefault();
+
+                    if (menthor != null)
+                    {
+                        _context.Menthors.Remove(menthor);
+                    }
+                    else
+                    {
+                        var intern = _context.Interns.Where(x => x.UserId.Equals(userId)).FirstOrDefault();
+                        if (intern != null)
+                        {
+                            _context.Interns.Remove(intern);
+                        }
+                    }
+
+                    var user = _context.Users.Find(userId);
+                    _context.Users.Remove(user);
+
+                    _context.SaveChanges();
+                    transaction.Commit();
+                }
+                catch (Exception)
+                {
+                    transaction.Rollback();
+                }
+            }
         }
     }
 }

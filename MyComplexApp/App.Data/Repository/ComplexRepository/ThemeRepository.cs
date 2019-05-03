@@ -25,9 +25,9 @@ namespace App.Data.Repository.ComplexRepository
             {
                 Id = x.Id,
                 Name = x.Name,
-                TimeOfTheme = x.TimeOfTheme,
+                DateStart = x.StartDate,
                 Source = x.Source,
-                ModuleName = x.Modulep.Name,
+                ModuleName = x.Module.Name,
                 MenthorEMail = x.Menthor.User.Email
             }).ToList();
 
@@ -40,9 +40,9 @@ namespace App.Data.Repository.ComplexRepository
             {
                 Id = x.Id,
                 Name = x.Name,
-                TimeOfTheme = x.TimeOfTheme,
+                DateStart = x.StartDate,
                 Source = x.Source,
-                ModuleName = x.Modulep.Name,
+                ModuleName = x.Module.Name,
                 MenthorEMail = x.Menthor.User.Email
             }).ToList();
 
@@ -55,9 +55,9 @@ namespace App.Data.Repository.ComplexRepository
             {
                 Id = x.Id,
                 Name = x.Name,
-                TimeOfTheme = x.TimeOfTheme,
+                DateStart = x.StartDate,
                 Source = x.Source,
-                ModuleName = x.Modulep.Name,
+                ModuleName = x.Module.Name,
                 MenthorEMail = x.Menthor.User.Email
             }).ToList();
 

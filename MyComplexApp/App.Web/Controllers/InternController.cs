@@ -7,8 +7,7 @@ using App.Data.Domain.DomainModels.Concrete;
 using App.Data.Domain.DomainModels.Identity;
 using App.Data.Interfaces.RepositoryInterfaces;
 using App.Services.Interfaces;
-using App.Services.Interfaces.ContentInternshipService;
-using App.Services.Interfaces.UserService;
+using App.Services.Interfaces.IServices;
 using App.Web.Model.ViewModel.CommentViewModel;
 using App.Web.Model.ViewModel.ExamMarkViewModel;
 using App.Web.Model.ViewModel.ModuleViewModel;
@@ -33,18 +32,37 @@ namespace App.Web.Controllers
     public class InternController : Controller
     {
         private readonly SignInManager<User> _signInManager;
-        private readonly IInternAchievements _internAchievements;
         private readonly IUserService _userService;
-        private readonly IContentInternshipService _contentInternshipService;
+        private readonly ICommentService _commentService;
+        private readonly IEMarkService _examMarkService;
+        private readonly IExamService _examService;
+        private readonly IGroupService _groupService;
+        private readonly IModuleService _moduleService;
+        private readonly IThemeService _themeService;
+        private readonly ITMarkService _themeMarkService;
         private readonly IMapper _mapper;
 
         public InternController(SignInManager<User> signInManager, IMapper mapper,
-            IInternAchievements internAchievements, IUserService userService, IContentInternshipService contentInternshipService)
+            IUserService userService,
+            ICommentService commentService,
+            IEMarkService examMarkService,
+            IExamService examService,
+            IGroupService groupService,
+            IModuleService moduleService,
+            IThemeService themeService,
+            ITMarkService themeMarkService
+            )
         {
-            _signInManager = signInManager;
-            _internAchievements = internAchievements;
             _userService = userService;
-            _contentInternshipService = contentInternshipService;
+            _commentService = commentService;
+            _examMarkService = examMarkService;
+            _examService = examService;
+            _groupService = groupService;
+            _moduleService = moduleService;
+            _themeService = themeService;
+            _themeMarkService = themeMarkService;
+
+            _signInManager = signInManager;
             _mapper = mapper;
         }
 
@@ -56,21 +74,21 @@ namespace App.Web.Controllers
             var person = new CurrentUserDataViewModel();
             var user = _userService.GetUserById(currentId);
             person.PersonalData = _mapper.Map<UserViewModel>(user);
-            var currentTMarks = _internAchievements.GetThemeMarksByUserId(currentId);
+            var currentTMarks = _themeMarkService.GetThemeMarksByUserId(currentId);
 
             var marks = new MarksViewModel();
-            marks.AvgTMarks = _internAchievements.GetAvgTMarksByUserId(currentId);
+            marks.AvgTMarks = _themeMarkService.GetAvgTMarksByUserId(currentId);
             marks.ThemeMarks = _mapper.Map<IList<ThemeMarkViewModel>>(currentTMarks);
-            var currentEMarks = _internAchievements.GetExamMarksByUserId(currentId);
+            var currentEMarks = _examMarkService.GetExamMarksByUserId(currentId);
             marks.ExamMarks = _mapper.Map<IList<ExamMarkViewModel>>(currentEMarks);
             person.Marks = marks;
-            var modules = _contentInternshipService.GetModules();
+            var modules = _moduleService.GetModules();
             person.Modules = _mapper.Map<IList<ModuleViewModel>>(modules);
 
-            var themes = _contentInternshipService.GetThemes();
+            var themes = _themeService.GetThemes();
             person.Themes = _mapper.Map<IList<ThemeViewModel>>(themes);
 
-            var comments = _contentInternshipService.GetComments();
+            var comments = _commentService.GetComments();
             person.Comments = _mapper.Map<IList<CommentViewModel>>(comments);
 
             return View(person);
@@ -86,12 +104,12 @@ namespace App.Web.Controllers
 
             if (!moduleId.Equals(0))
             {
-                var list = _internAchievements.GetThemeMarksByUserId(currentId);
+                var list = _themeMarkService.GetThemeMarksByUserId(currentId);
                 tmarks = _mapper.Map<IList<ThemeMarkViewModel>>(list);
             }
             else
             {
-                var list = _internAchievements.GetThemeMarks(currentId, moduleId);
+                var list = _themeMarkService.GetThemeMarks(currentId, moduleId);
                 tmarks = _mapper.Map<IList<ThemeMarkViewModel>>(list);
             }
 
@@ -99,7 +117,7 @@ namespace App.Web.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles="Intern, Menthor, Admin")]
+        [Authorize(Roles = "Intern, Menthor, Admin")]
         public async Task<IActionResult> GetComments(long themeId)
         {
             var currentId = Convert.ToInt32(_signInManager.UserManager.GetUserId(User));
@@ -110,7 +128,7 @@ namespace App.Web.Controllers
             var personaldata = _userService.GetUserById(currentId);
             data.PersonalData = _mapper.Map<UserViewModel>(personaldata);
 
-            var comments = _contentInternshipService.GetComments(themeId);
+            var comments = _commentService.GetComments(themeId);
             data.Comments = _mapper.Map<IList<CommentViewModel>>(comments);
 
             return PartialView("../GeneralViews/_GetComments", data);
@@ -120,7 +138,7 @@ namespace App.Web.Controllers
         [Authorize(Roles = "Intern, Menthor, Admin")]
         public ActionResult GetMoreComments(long themeId, int pageNr)
         {
-            var commentsDto = _contentInternshipService.GetComments(pageNr, themeId);
+            var commentsDto = _commentService.GetComments(pageNr, themeId);
             var comments = _mapper.Map<IList<CommentViewModel>>(commentsDto);
             var result = JsonConvert.SerializeObject(comments);
             return Content(result, "application/json");
@@ -131,7 +149,7 @@ namespace App.Web.Controllers
         public async Task<IActionResult> SubmitComment(string comment, long themeId)
         {
             var currentId = Convert.ToInt32(_signInManager.UserManager.GetUserId(User));
-            _contentInternshipService.AddComment(currentId, themeId, comment);
+            _commentService.AddComment(currentId, themeId, comment);
             return StatusCode(200);
         }
 
@@ -161,7 +179,7 @@ namespace App.Web.Controllers
             user.LastName = model.LastName;
             user.DateOfBirth = model.DateOfBirth;
             user.PhoneNumber = model.PhoneNumber;
-            _userService.Save();
+            //_userService.Save();
             return StatusCode(200);
         }
     }

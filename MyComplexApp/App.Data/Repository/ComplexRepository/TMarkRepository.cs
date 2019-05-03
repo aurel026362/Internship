@@ -27,15 +27,30 @@ namespace App.Data.Repository.ComplexRepository
         }
 
         public double GetAvgTMarksByModuleId(long moduleId)
-        {
-            var result = _context.ThemeMarks.Where(x=>x.theme.ModuleId.Equals(moduleId)).Average(x => x.Mark);
+        { var result = 0.0;
+            try
+            {
+                result = _context.ThemeMarks.Where(x => x.theme.ModuleId.Equals(moduleId)).Average(x => x.Mark);
+            }
+            catch (Exception)
+            {
+
+            }
             return result;
         }
 
         public double GetAvgTMarksByUserId(long userId)
         {
-            var result = _context.ThemeMarks.Where(x=>x.Intern.UserId.Equals(userId)).Average(x => x.Mark);
-            return result;
+            var result = 0.0;
+            try
+            {
+               result = _context.ThemeMarks.Include(x => x.Intern).Where(x => x.Intern.UserId.Equals(userId)).Average(x => x.Mark);
+            }
+            catch (Exception)
+            {
+                
+            }
+                return result;
         }
 
         public IList<ComplexTMark> GetMoreThemeMarks(int page, string orderby, string sorting)

@@ -15,9 +15,9 @@ namespace App.Data.Domain.DomainModelsConfigs.ConcreteConfigs
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Name).HasMaxLength(20);
             builder.Property(x => x.Source).HasMaxLength(100);
-            builder.Property(x => x.TimeOfTheme).HasColumnType("smalldatetime");
+            builder.Property(x => x.StartDate).HasColumnType("smalldatetime");
             builder.Property(x => x.MenthorId).HasColumnName("MenthorId");
-            builder.HasOne(x => x.Modulep).WithMany(x => x.Themes).HasForeignKey(x => x.ModuleId);
+            builder.HasOne(x => x.Module).WithMany(x => x.Themes).HasForeignKey(x => x.ModuleId);
             builder.HasOne(x => x.Menthor).WithMany(x => x.Themes).HasForeignKey(x => x.MenthorId);
 
             builder.HasData(
@@ -25,7 +25,7 @@ namespace App.Data.Domain.DomainModelsConfigs.ConcreteConfigs
                 {
                     Id = 1,
                     Name = "Creational Pattern",
-                    TimeOfTheme = Convert.ToDateTime("2019/02/06"),
+                    StartDate = Convert.ToDateTime("2019/02/06"),
                     Source = "S:\\Internship\\C#",
                     MenthorId = 1,
                     ModuleId = 1
@@ -34,7 +34,7 @@ namespace App.Data.Domain.DomainModelsConfigs.ConcreteConfigs
                 {
                     Id = 2,
                     Name = "SQL SELECT",
-                    TimeOfTheme = Convert.ToDateTime("2019/03/01"),
+                    StartDate = Convert.ToDateTime("2019/03/01"),
                     Source = "S:\\Internship\\SQL",
                     MenthorId = 1,
                     ModuleId = 2
@@ -42,7 +42,7 @@ namespace App.Data.Domain.DomainModelsConfigs.ConcreteConfigs
                 {
                     Id = 3,
                     Name = "EF Core Mapping",
-                    TimeOfTheme = Convert.ToDateTime("2019/03/16"),
+                    StartDate = Convert.ToDateTime("2019/03/16"),
                     Source = "S:\\Internship\\SQL",
                     MenthorId = 2,
                     ModuleId = 2
@@ -51,7 +51,7 @@ namespace App.Data.Domain.DomainModelsConfigs.ConcreteConfigs
                 {
                     Id = 4,
                     Name = "JS",
-                    TimeOfTheme = Convert.ToDateTime("2019/04/02"),
+                    StartDate = Convert.ToDateTime("2019/04/02"),
                     Source = "S:\\Internship\\WEB",
                     MenthorId = 2,
                     ModuleId = 3

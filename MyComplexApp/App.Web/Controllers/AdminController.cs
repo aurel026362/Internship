@@ -2,8 +2,7 @@
 using App.Data.Domain.DomainModels.Identity;
 using App.Services.Dtos.DTOs.User;
 using App.Services.Interfaces;
-using App.Services.Interfaces.ContentInternshipService;
-using App.Services.Interfaces.UserService;
+using App.Services.Interfaces.IServices;
 using App.Web.Model.ViewModel.CommentViewModel;
 using App.Web.Model.ViewModel.ExamMarkViewModel;
 using App.Web.Model.ViewModel.ModuleViewModel;
@@ -30,26 +29,44 @@ using System.Threading.Tasks;
 
 namespace App.Web.Controllers
 {
-    [Authorize(Roles =("Admin"))]
+    [Authorize(Roles = ("Admin"))]
     public class AdminController : Controller
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly MyAppContext _context;
-        private readonly IInternAchievements _internAchievements;
         private readonly IUserService _userService;
-        private readonly IContentInternshipService _contentInternshipService;
+        private readonly ICommentService _commentService;
+        private readonly IEMarkService _examMarkService;
+        private readonly IExamService _examService;
+        private readonly IGroupService _groupService;
+        private readonly IModuleService _moduleService;
+        private readonly IThemeService _themeService;
+        private readonly ITMarkService _themeMarkService;
         private readonly IMapper _mapper;
 
-        public AdminController(UserManager<User> userManager, SignInManager<User> signInManager, MyAppContext context, IMapper mapper,
-            IInternAchievements internAchievements, IUserService userService, IContentInternshipService contentInternshipService)
+        public AdminController(UserManager<User> userManager, SignInManager<User> signInManager, IMapper mapper,
+            IUserService userService,
+            ICommentService commentService,
+            IEMarkService emarkService,
+            IExamService examService,
+            IGroupService groupService,
+            IModuleService moduleService,
+            IThemeService themeService,
+            ITMarkService themeMarkService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
-            _context = context;
-            _internAchievements = internAchievements;
+
             _userService = userService;
-            _contentInternshipService = contentInternshipService;
+            _commentService = commentService;
+            _examMarkService = emarkService;
+            _examService = examService;
+            _groupService = groupService;
+            _moduleService = moduleService;
+            _themeService = themeService;
+            _themeMarkService = themeMarkService;
+
             _mapper = mapper;
         }
 
@@ -61,20 +78,20 @@ namespace App.Web.Controllers
             person.Data = new CurrentUserDataViewModel();
             var user = _userService.GetUserById(currentId);
             person.Data.PersonalData = _mapper.Map<UserViewModel>(user);
-            var currentTMarks = _internAchievements.GetThemeMarks();
+            var currentTMarks = _themeMarkService.GetThemeMarks();
 
             var marks = new MarksViewModel();
             marks.ThemeMarks = _mapper.Map<IList<ThemeMarkViewModel>>(currentTMarks);
-            var currentEMarks = _internAchievements.GetExamMarks();
+            var currentEMarks = _examMarkService.GetExamMarks();
             marks.ExamMarks = _mapper.Map<IList<ExamMarkViewModel>>(currentEMarks);
             person.Data.Marks = marks;
-            var modules = _contentInternshipService.GetModules();
+            var modules = _moduleService.GetModules();
             person.Data.Modules = _mapper.Map<IList<ModuleViewModel>>(modules);
 
-            var themes = _contentInternshipService.GetThemes();
+            var themes = _themeService.GetThemes();
             person.Data.Themes = _mapper.Map<IList<ThemeViewModel>>(themes);
 
-            var comments = _contentInternshipService.GetComments();
+            var comments = _commentService.GetComments();
             person.Data.Comments = _mapper.Map<IList<CommentViewModel>>(comments);
 
             var usersDto = _userService.GetUsersDetails();
@@ -91,19 +108,24 @@ namespace App.Web.Controllers
                 return NotFound();
             }
 
-            var userDto = _userService.GetUserDetails((long)id);
+            var userDto = _userService.GetUserById((long)id);
             var user = _mapper.Map<UserDetailedViewModel>(userDto);
+
+            ////-------------
+            //var userDomen = _mapper.Map<User>(user);
+            //var roles = await _userManager.GetRolesAsync(userDomen);
+            //user.Role = roles[0];
 
             var alldatauser = new UserAllDataViewModel();
             alldatauser.Details = user;
             alldatauser.Marks = new MarksViewModel();
 
-            var tmarks = _internAchievements.GetThemeMarksByUserId((long) id);
-            var emarks = _internAchievements.GetExamMarksByUserId((long)id);
+            var tmarks = _themeMarkService.GetThemeMarksByUserId((long)id);
+            var emarks = _examMarkService.GetExamMarksByUserId((long)id);
 
             alldatauser.Marks.ThemeMarks = _mapper.Map<IList<ThemeMarkViewModel>>(tmarks);
             alldatauser.Marks.ExamMarks = _mapper.Map<IList<ExamMarkViewModel>>(emarks);
-            
+
             if (alldatauser == null)
             {
                 return NotFound();
@@ -111,7 +133,15 @@ namespace App.Web.Controllers
 
             return View(alldatauser);
         }
-        
+
+        [HttpPost]
+        public IActionResult DeleteUser(long userId)
+        {
+            _userService.DeleteUser(userId);
+
+            return RedirectToAction("Index", "Admin");
+        }
+
         [HttpPost]
         public async Task<IActionResult> Edit(UserDetailedViewModel userViewModel)
         {

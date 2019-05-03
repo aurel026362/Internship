@@ -18,14 +18,14 @@ namespace App.Web.Controllers
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly MyAppContext _context;
-        private readonly ILogger<AdminController> _logger;
+        //private readonly ILogger<AdminController> _logger;
 
         public HomeController(UserManager<User> userManager, SignInManager<User> signInManager,
-            MyAppContext context, ILogger<AdminController> logger)
+            MyAppContext context /*ILogger<AdminController> logger*/)
         {
             _userManager = userManager;
             _signInManager = signInManager;
-            _logger = logger;
+            //_logger = logger;
             _context = context;
         }
 

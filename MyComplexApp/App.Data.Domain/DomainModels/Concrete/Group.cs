@@ -9,6 +9,6 @@ namespace App.Data.Domain.DomainModels.Concrete
         public string Name { get; set; }
         public DateTime StartDate { get; set; }
 
-        public ICollection<UserIntern> Interns { get; set; }
+        public ICollection<Intern> Interns { get; set; }
     }
 }

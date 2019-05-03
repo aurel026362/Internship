@@ -91,7 +91,9 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Yes</button>
+                <form asp-action="DeleteUser" data-ajax="true" data-ajax-method="post" asp-route-id=@Model.Details.Id>
+                    <button type="submit" class="btn btn-danger" data-dismiss="modal">Yes</button>
+                </form>
                 <button type="button" class="btn btn-success" data-dismiss="modal">No</button>
             </div>
         </div>

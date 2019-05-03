@@ -8,7 +8,7 @@ namespace App.Data.Interfaces.Abstractions
     {
         public long Id { get; set; }
         public string Name { get; set; }
-        public DateTime? TimeOfTheme { get; set; }
+        public DateTime? DateStart { get; set; }
         public string Source { get; set; }
         public string ModuleName { get; set; }
         public string MenthorEMail { get; set; }

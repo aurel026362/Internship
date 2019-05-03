@@ -6,8 +6,7 @@ using App.Data.Context;
 using App.Data.Domain.DomainModels.Identity;
 using App.Data.Repository;
 using App.Services.Interfaces;
-using App.Services.Interfaces.ContentInternshipService;
-using App.Services.Interfaces.UserService;
+using App.Services.Interfaces.IServices;
 using App.Web.Model.ViewModel.CommentViewModel;
 using App.Web.Model.ViewModel.ExamMarkViewModel;
 using App.Web.Model.ViewModel.ModuleViewModel;
@@ -31,18 +30,36 @@ namespace App.Web.Controllers
     public class MenthorController : Controller
     {
         private readonly SignInManager<User> _signInManager;
-        private readonly IInternAchievements _internAchievements;
         private readonly IUserService _userService;
-        private readonly IContentInternshipService _contentInternshipService;
+        private readonly ICommentService _commentService;
+        private readonly IEMarkService _examMarkService;
+        private readonly IExamService _examService;
+        private readonly IGroupService _groupService;
+        private readonly IModuleService _moduleService;
+        private readonly IThemeService _themeService;
+        private readonly ITMarkService _themeMarkService;
         private readonly IMapper _mapper;
 
         public MenthorController(SignInManager<User> signInManager, IMapper mapper,
-            IInternAchievements internAchievements, IUserService userService, IContentInternshipService contentInternshipService)
+            IUserService userService,
+            ICommentService commentService,
+            IEMarkService examMarkService,
+            IExamService examService,
+            IGroupService groupService,
+            IModuleService moduleService,
+            IThemeService themeService,
+            ITMarkService themeMarkService)
         {
-            _signInManager = signInManager;
-            _internAchievements = internAchievements;
             _userService = userService;
-            _contentInternshipService = contentInternshipService;
+            _commentService = commentService;
+            _examMarkService = examMarkService;
+            _examService = examService;
+            _groupService = groupService;
+            _moduleService = moduleService;
+            _themeService = themeService;
+            _themeMarkService = themeMarkService;
+
+            _signInManager = signInManager;
             _mapper = mapper;
         }
 
@@ -54,20 +71,20 @@ namespace App.Web.Controllers
             var person = new CurrentUserDataViewModel();
             var user = _userService.GetUserById(currentId);
             person.PersonalData = _mapper.Map<UserViewModel>(user);
-            var currentTMarks = _internAchievements.GetThemeMarks();
+            var currentTMarks = _themeMarkService.GetThemeMarks();
 
             var marks = new MarksViewModel();
             marks.ThemeMarks = _mapper.Map<IList<ThemeMarkViewModel>>(currentTMarks);
-            var currentEMarks = _internAchievements.GetExamMarks();
+            var currentEMarks = _examMarkService.GetExamMarks();
             marks.ExamMarks = _mapper.Map<IList<ExamMarkViewModel>>(currentEMarks);
             person.Marks = marks;
-            var modules = _contentInternshipService.GetModules();
+            var modules = _moduleService.GetModules();
             person.Modules = _mapper.Map<IList<ModuleViewModel>>(modules);
 
-            var themes = _contentInternshipService.GetThemes();
+            var themes = _themeService.GetThemes();
             person.Themes = _mapper.Map<IList<ThemeViewModel>>(themes);
 
-            var comments = _contentInternshipService.GetComments();
+            var comments = _commentService.GetComments();
             person.Comments = _mapper.Map<IList<CommentViewModel>>(comments);
 
             return View(person);
@@ -77,7 +94,7 @@ namespace App.Web.Controllers
         [Authorize(Roles = "Menthor, Admin")]
         public async Task<IActionResult> GetTMarksSorted(string orderby, bool sorting)
         {
-            var list = _internAchievements.GetThemeMarksSorted(0, orderby, sorting);
+            var list = _themeMarkService.GetThemeMarksSorted(0, orderby, sorting);
             var listViewModel = _mapper.Map<IList<ThemeMarkViewModel>>(list);
 
             return Json(listViewModel);
@@ -88,7 +105,7 @@ namespace App.Web.Controllers
         public async Task<IActionResult> GetMoreTMarks(int page, string orderby, bool sorting)
         {
 
-            var list = _internAchievements.GetThemeMarksSorted(page, orderby, sorting);
+            var list = _themeMarkService.GetThemeMarksSorted(page, orderby, sorting);
             var listViewModel = _mapper.Map<IList<ThemeMarkViewModel>>(list);
             return Json(listViewModel);
         }
@@ -97,7 +114,7 @@ namespace App.Web.Controllers
         [Authorize(Roles = "Menthor, Admin")]
         public async Task<IActionResult> GetTMarksByEmail(string email)
         {
-            var listDto = _internAchievements.GetTMarksByEmail(email);
+            var listDto = _themeMarkService.GetTMarksByEmail(email);
             var list = _mapper.Map<IList<ThemeMarkViewModel>>(listDto);
 
             return Json(list);
@@ -111,12 +128,12 @@ namespace App.Web.Controllers
 
             if (moduleId != 0)
             {
-                var listDto = _internAchievements.GetThemeMarksByModuleId(moduleId);
+                var listDto = _themeMarkService.GetThemeMarksByModuleId(moduleId);
                 list = _mapper.Map<IList<ThemeMarkViewModel>>(listDto);
             }
             else
             {
-                var listDto = _internAchievements.GetThemeMarksSorted(0, orderby, sorting);
+                var listDto = _themeMarkService.GetThemeMarksSorted(0, orderby, sorting);
                 list = _mapper.Map<IList<ThemeMarkViewModel>>(listDto);
             }
 
@@ -124,10 +141,10 @@ namespace App.Web.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles ="Menthor, Admin")]
+        [Authorize(Roles = "Menthor, Admin")]
         public async Task<IActionResult> GetTMarksByUserId(long userId)
         {
-            var listDto = _internAchievements.GetThemeMarksByUserId(userId);
+            var listDto = _themeMarkService.GetThemeMarksByUserId(userId);
             var list = _mapper.Map<IList<ThemeMarkViewModel>>(listDto);
             return PartialView(list);
         }

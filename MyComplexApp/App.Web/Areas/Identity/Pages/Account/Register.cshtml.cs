@@ -12,6 +12,9 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using App.Data.Context;
 using App.Data.Domain.DomainModels.Concrete;
+using App.Services.Interfaces.IServices;
+using App.Services.Dtos.DTOs.Intern;
+using App.Services.Dtos.DTOs.Menthor;
 
 namespace App.Web.Areas.Identity.Pages.Account
 {
@@ -21,6 +24,7 @@ namespace App.Web.Areas.Identity.Pages.Account
         private readonly SignInManager<User> _signInManager;
         private readonly UserManager<User> _userManager;
         private readonly MyAppContext _context;
+        private readonly IUserService _userService;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
 
@@ -28,12 +32,14 @@ namespace App.Web.Areas.Identity.Pages.Account
             UserManager<User> userManager,
             SignInManager<User> signInManager,
             MyAppContext context,
+            IUserService userService,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _context = context;
+            _userService = userService;
             _logger = logger;
             _emailSender = emailSender;
         }
@@ -109,14 +115,14 @@ namespace App.Web.Areas.Identity.Pages.Account
                         await _userManager.AddToRoleAsync(user, Input.Role);
                         switch (Input.Role)
                         {
-                            case "Menthor": { await _context.Menthors.AddAsync(new UserMenthor() { User = user }); await _context.SaveChangesAsync(); } break;
-                            case "Intern": { await _context.Interns.AddAsync(new UserIntern() { User = user }); await _context.SaveChangesAsync(); } break;
+                            case "Menthor": { _userService.AddMenthor(new MenthorDto() { UserId = user.Id });} break;
+                            case "Intern": { _userService.AddIntern(new InternDto() { UserId = user.Id });} break;
                             case "Admin": break;
                             default: throw new Exception();
                         }
                         transaction.Commit();
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         transaction.Rollback();
                         throw new Exception();

@@ -3,6 +3,7 @@ using App.Data.Domain.DomainModels.Concrete;
 using App.Data.Interfaces.Abstractions;
 using App.Data.Interfaces.RepositoryInterfaces;
 using App.Data.Interfaces.RepositoryInterfaces.IComplexRepository;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,7 +35,7 @@ namespace App.Data.Repository.ComplexRepository
 
         public IList<ComplexComment> GetComments(long themeId)
         {
-            var comments = _context.Comments.Where(x=>x.ThemeId.Equals(themeId)).Select(x => new ComplexComment()
+            var comments = _context.Comments.Include(x=>x.User).Include(x=>x.Theme).Where(x=>x.ThemeId.Equals(themeId)).Select(x => new ComplexComment()
             {
                 EMail = x.User.Email,
                 ThemeName = x.Theme.Name,

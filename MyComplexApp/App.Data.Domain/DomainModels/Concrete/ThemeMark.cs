@@ -11,7 +11,7 @@ namespace App.Data.Domain.DomainModels.Concrete
         public long? InternId { get; set; }
         public long? ThemeId { get; set; }
 
-        public UserIntern Intern { get; set; }
+        public Intern Intern { get; set; }
         public Theme theme { get; set; }
         public byte[] RowVersion { get; set; }
     }

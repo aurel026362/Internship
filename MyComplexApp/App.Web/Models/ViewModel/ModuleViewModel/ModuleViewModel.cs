@@ -15,6 +15,6 @@ namespace App.Web.Model.ViewModel.ModuleViewModel
         public string Name { get; set; }
 
         [Display(Name="Date Start")]
-        public DateTime DateStart { get; set; }
+        public DateTime StartDate { get; set; }
     }
 }
