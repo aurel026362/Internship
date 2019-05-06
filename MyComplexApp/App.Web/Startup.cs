@@ -15,6 +15,8 @@ using App.Services.Interfaces.IServices;
 using App.Services.Services;
 using App.Web.Models;
 using AutoMapper;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.Facebook;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -106,6 +108,23 @@ namespace App.Web
                 options.LogoutPath = $"/Identity/Account/Logout";
                 options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
             });
+
+            //------
+            //services.AddAuthentication(options=> {
+            //    options.DefaultChallengeScheme = FacebookDefaults.AuthenticationScheme;
+            //    options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            //    options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            //}).AddFacebook(options =>
+            //{
+            //    options.AppId = "806605686400556";
+            //    options.AppSecret = "72dc791ece58b9bb0a6543d43a7af3c4";
+            //});
+
+            //services.AddAuthentication().AddGoogle(options =>
+            //{
+            //    options.ClientId = Configuration["GoogleId"];
+            //    options.ClientSecret = Configuration["GoogleSecret"];
+            //});
 
             // using Microsoft.AspNetCore.Identity.UI.Services;
             //services.AddSingleton<IEmailSender, EmailSender>();

@@ -1,4 +1,4 @@
-﻿@model App.Web.Models.ComplexViewModel.Intern.CurrentUserDataViewModel
+﻿@model App.Web.Models.ComplexViewModel.General.CurrentUserDataViewModel
 @{
     ViewData["Title"] = "_Comments";
 }
@@ -18,3 +18,22 @@
         </div>
     </div>
 </div>
+
+<script>
+    $("#theme").bind("change", function () {
+        alert($('#theme').val());
+        $.ajax({
+            url: "/Intern/GetComments",
+            type: "Get",
+            data: ({ themeId: $('#theme').val() }),
+            datatype: "json",
+            success: function (data) {
+                //alert("success");
+                $("#comment-div").html(data);
+            },
+            error: function (data) {
+                alert("error");
+            }
+        });
+    });
+</script>

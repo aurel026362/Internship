@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace App.Web.Models.ViewModel.UserViewModel
 {
-    public class UserAllDataViewModel
+    public class UserAndMarksViewModel
     {
         public UserDetailedViewModel Details { get; set; }
         public MarksViewModel Marks { get; set; }

@@ -10,7 +10,7 @@ namespace App.Data.Domain.DomainModels.Concrete
         public DateTime? StartDate { get; set; }
         public string Source { get; set; }
         public long ModuleId { get; set; }
-        public long MenthorId { get; set; }
+        public long? MenthorId { get; set; }
 
         public Module Module { get; set; }
         public Menthor Menthor { get; set; }

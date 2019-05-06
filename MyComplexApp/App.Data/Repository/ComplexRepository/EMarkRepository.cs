@@ -22,9 +22,11 @@ namespace App.Data.Repository.ComplexRepository
 
         public ComplexEMark GetExamMark(long userId, long moduleId)
         {
-            var result = _context.ExamMarks.Where(x => x.Intern.UserId.Equals(userId) && x.Exam.ModuleId.Equals(moduleId))
+            var result = _context.ExamMarks.Include(x => x.Intern).ThenInclude(x => x.User).Include(x => x.Exam).ThenInclude(x => x.Module)
+                .Where(x => x.Intern.UserId.Equals(userId) && x.Exam.ModuleId.Equals(moduleId))
                 .Select(x => new ComplexEMark()
                 {
+                    UserId = x.Intern.UserId,
                     UserEmail = x.Intern.User.Email,
                     ModuleName = x.Exam.Module.Name,
                     Mark = x.Mark,
@@ -36,39 +38,45 @@ namespace App.Data.Repository.ComplexRepository
 
         public IList<ComplexEMark> GetExamMarks()
         {
-            var list = _context.ExamMarks.Select(x => new ComplexEMark()
-            {
-                UserEmail = x.Intern.User.Email,
-                ModuleName = x.Exam.Module.Name,
-                Mark = x.Mark,
-                Comment = x.Comment
-            }).ToList();
+            var list = _context.ExamMarks.Include(x => x.Intern).ThenInclude(x => x.User).Include(x => x.Exam).ThenInclude(x => x.Module)
+                .Select(x => new ComplexEMark()
+                {
+                    UserId = x.Intern.UserId,
+                    UserEmail = x.Intern.User.Email,
+                    ModuleName = x.Exam.Module.Name,
+                    Mark = x.Mark,
+                    Comment = x.Comment
+                }).ToList();
 
             return list;
         }
 
         public IList<ComplexEMark> GetExamMarksByModuleId(long moduleId)
         {
-            var list = _context.ExamMarks.Where(x=>x.Exam.ModuleId.Equals(moduleId)).Select(x => new ComplexEMark()
-            {
-                UserEmail = x.Intern.User.Email,
-                ModuleName = x.Exam.Module.Name,
-                Mark = x.Mark,
-                Comment = x.Comment
-            }).ToList();
+            var list = _context.ExamMarks.Include(x => x.Intern).ThenInclude(x => x.User).Include(x => x.Exam).ThenInclude(x => x.Module)
+                .Where(x => x.Exam.ModuleId.Equals(moduleId)).Select(x => new ComplexEMark()
+                {
+                    UserId = x.Intern.UserId,
+                    UserEmail = x.Intern.User.Email,
+                    ModuleName = x.Exam.Module.Name,
+                    Mark = x.Mark,
+                    Comment = x.Comment
+                }).ToList();
 
             return list;
         }
 
         public IList<ComplexEMark> GetExamMarksByUserId(long userId)
         {
-            var list = _context.ExamMarks.Where(x => x.Intern.UserId.Equals(userId)).Select(x => new ComplexEMark()
-            {
-                UserEmail = x.Intern.User.Email,
-                ModuleName = x.Exam.Module.Name,
-                Mark = x.Mark,
-                Comment = x.Comment
-            }).ToList();
+            var list = _context.ExamMarks.Include(x => x.Intern).ThenInclude(x => x.User).Include(x => x.Exam).ThenInclude(x => x.Module)
+                .Where(x => x.Intern.UserId.Equals(userId)).Select(x => new ComplexEMark()
+                {
+                    UserId = x.Intern.UserId,
+                    UserEmail = x.Intern.User.Email,
+                    ModuleName = x.Exam.Module.Name,
+                    Mark = x.Mark,
+                    Comment = x.Comment
+                }).ToList();
 
             return list;
         }

@@ -27,8 +27,6 @@
 
 
   <ItemGroup>
-    <Folder Include="Controllers\Other\" />
-    <Folder Include="Models\ComplexViewModel\Menthor\" />
     <Folder Include="Models\ViewModel\RequestedUserViewModel\" />
     <Folder Include="Views\Users\" />
     <Folder Include="Views\zOther\" />

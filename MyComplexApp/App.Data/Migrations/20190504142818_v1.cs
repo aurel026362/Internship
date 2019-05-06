@@ -98,7 +98,7 @@ namespace App.Data.Migrations
                         column: x => x.RoleId,
                         principalTable: "AspNetRoles",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -154,7 +154,7 @@ namespace App.Data.Migrations
                         column: x => x.ModuleId,
                         principalTable: "Modules",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -175,7 +175,7 @@ namespace App.Data.Migrations
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -195,7 +195,7 @@ namespace App.Data.Migrations
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -214,13 +214,13 @@ namespace App.Data.Migrations
                         column: x => x.RoleId,
                         principalTable: "AspNetRoles",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_AspNetUserRoles_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_AspNetUserRoles_AspNetUsers_UserId1",
                         column: x => x.UserId1,
@@ -246,7 +246,7 @@ namespace App.Data.Migrations
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -265,7 +265,7 @@ namespace App.Data.Migrations
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -286,13 +286,13 @@ namespace App.Data.Migrations
                         column: x => x.GroupId,
                         principalTable: "Groups",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
                         name: "FK_Interns_Menthors_MenthorId",
                         column: x => x.MenthorId,
                         principalTable: "Menthors",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
                         name: "FK_Interns_AspNetUsers_UserId",
                         column: x => x.UserId,
@@ -311,7 +311,7 @@ namespace App.Data.Migrations
                     StartDate = table.Column<DateTime>(type: "smalldatetime", nullable: true),
                     Source = table.Column<string>(maxLength: 100, nullable: true),
                     ModuleId = table.Column<long>(nullable: false),
-                    MenthorId = table.Column<long>(nullable: false)
+                    MenthorId = table.Column<long>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -321,13 +321,13 @@ namespace App.Data.Migrations
                         column: x => x.MenthorId,
                         principalTable: "Menthors",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
                         name: "FK_Themes_Modules_ModuleId",
                         column: x => x.ModuleId,
                         principalTable: "Modules",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -349,13 +349,13 @@ namespace App.Data.Migrations
                         column: x => x.ExamId,
                         principalTable: "Exams",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_ExamMarks_Interns_InternId",
                         column: x => x.InternId,
                         principalTable: "Interns",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -377,13 +377,13 @@ namespace App.Data.Migrations
                         column: x => x.ThemeId,
                         principalTable: "Themes",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Comments_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -406,13 +406,13 @@ namespace App.Data.Migrations
                         column: x => x.InternId,
                         principalTable: "Interns",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_ThemeMarks_Themes_ThemeId",
                         column: x => x.ThemeId,
                         principalTable: "Themes",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
@@ -420,9 +420,9 @@ namespace App.Data.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { 1L, "-1814523563", "Admin", "ADMIN" },
-                    { 2L, "-220528515", "Menthor", "MENTHOR" },
-                    { 3L, "273795021", "Intern", "INTERN" }
+                    { 1L, "-1173628420", "Admin", "ADMIN" },
+                    { 2L, "789838944", "Menthor", "MENTHOR" },
+                    { 3L, "-26898352", "Intern", "INTERN" }
                 });
 
             migrationBuilder.InsertData(
@@ -430,11 +430,11 @@ namespace App.Data.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "DateOfBirth", "EMail", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "RoleId", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { 1L, 0, "441a332f-3e2a-4150-b71b-1fb68aa1f6dd", new DateTime(1999, 5, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "aurel@mail.ru", false, "Aurel", "Starciuc", false, null, null, null, "-969853658", "+37367620932", false, null, null, false, "aurel@mail.ru" },
-                    { 2L, 0, "67d6966b-7406-4bf5-babf-a8a90e574420", new DateTime(1989, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "cristi@mail.ru", false, "Cristi", "Anghelenici", false, null, null, null, "374953263", "+37367665467", false, null, null, false, "cristi@mail.ru" },
-                    { 3L, 0, "3c44a768-3963-4e86-8912-73d66b05d9d0", new DateTime(1994, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), "alexandr@mail.ru", false, "Alexandr", "Racovschi", false, null, null, null, "455464726", "+37336218321", false, null, null, false, "alexandr@mail.ru" },
-                    { 4L, 0, "9f2cb5cd-9165-4030-8865-b79ca4052487", new DateTime(1984, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "iong@mail.ru", false, "Ion", "Gandrabura", false, null, null, null, "-1251415727", "+373954035", false, null, null, false, "iong@mail.ru" },
-                    { 5L, 0, "67028cc3-927f-46a4-993b-a2b407cee51e", new DateTime(1978, 5, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "gosa@mail.ru", false, "Gosa", "Dudari", false, null, null, null, "-2138642567", "+37354354398", false, null, null, false, "gosa@mail.ru" }
+                    { 1L, 0, "1077fc9f-d29a-48b3-a37d-bfbeb69abe0c", new DateTime(1999, 5, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "aurel@mail.ru", false, "Aurel", "Starciuc", false, null, null, null, "-318062771", "+37367620932", false, null, null, false, "aurel@mail.ru" },
+                    { 2L, 0, "b17dd8d7-d03a-46d0-8ccc-886d890d31a1", new DateTime(1989, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "cristi@mail.ru", false, "Cristi", "Anghelenici", false, null, null, null, "-481353250", "+37367665467", false, null, null, false, "cristi@mail.ru" },
+                    { 3L, 0, "dce143c8-ee54-4b63-a97b-b3fa208362e6", new DateTime(1994, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), "alexandr@mail.ru", false, "Alexandr", "Racovschi", false, null, null, null, "141415814", "+37336218321", false, null, null, false, "alexandr@mail.ru" },
+                    { 4L, 0, "c4104344-7fb1-4e37-927f-8ad74094da62", new DateTime(1984, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "iong@mail.ru", false, "Ion", "Gandrabura", false, null, null, null, "-1061961899", "+373954035", false, null, null, false, "iong@mail.ru" },
+                    { 5L, 0, "4a9caf5c-ff79-4b24-bedf-eefae658897a", new DateTime(1978, 5, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "gosa@mail.ru", false, "Gosa", "Dudari", false, null, null, null, "853031378", "+37354354398", false, null, null, false, "gosa@mail.ru" }
                 });
 
             migrationBuilder.InsertData(
@@ -491,15 +491,15 @@ namespace App.Data.Migrations
                 columns: new[] { "Id", "Content", "DateComment", "ThemeId", "UserId" },
                 values: new object[,]
                 {
-                    { 1L, "Nicjdsladj sal djsa dsadsa.", new DateTime(2019, 5, 3, 15, 20, 39, 158, DateTimeKind.Local).AddTicks(4823), 1L, 2L },
-                    { 3L, "qewqeqewqqewq.", new DateTime(2019, 5, 3, 15, 20, 39, 160, DateTimeKind.Local).AddTicks(8880), 1L, 4L },
-                    { 5L, "zxcxzcxz zc xz cxz z.", new DateTime(2019, 5, 3, 15, 20, 39, 160, DateTimeKind.Local).AddTicks(8890), 1L, 3L },
-                    { 8L, "N4354535 43.", new DateTime(2019, 5, 3, 15, 20, 39, 160, DateTimeKind.Local).AddTicks(8904), 1L, 4L },
-                    { 6L, "iopoipio iop io io.", new DateTime(2019, 5, 3, 15, 20, 39, 160, DateTimeKind.Local).AddTicks(8893), 2L, 1L },
-                    { 7L, "qq q q q q q q", new DateTime(2019, 5, 3, 15, 20, 39, 160, DateTimeKind.Local).AddTicks(8897), 2L, 3L },
-                    { 2L, "dsafdsda.", new DateTime(2019, 5, 3, 15, 20, 39, 160, DateTimeKind.Local).AddTicks(8856), 3L, 1L },
-                    { 9L, "po'p'l';l;l'.", new DateTime(2019, 5, 3, 15, 20, 39, 160, DateTimeKind.Local).AddTicks(8907), 3L, 2L },
-                    { 4L, "asdsadsa sadsadsa dsa.", new DateTime(2019, 5, 3, 15, 20, 39, 160, DateTimeKind.Local).AddTicks(8883), 4L, 2L }
+                    { 1L, "Nicjdsladj sal djsa dsadsa.", new DateTime(2019, 5, 4, 17, 28, 18, 202, DateTimeKind.Local).AddTicks(648), 1L, 2L },
+                    { 3L, "qewqeqewqqewq.", new DateTime(2019, 5, 4, 17, 28, 18, 205, DateTimeKind.Local).AddTicks(337), 1L, 4L },
+                    { 5L, "zxcxzcxz zc xz cxz z.", new DateTime(2019, 5, 4, 17, 28, 18, 205, DateTimeKind.Local).AddTicks(350), 1L, 3L },
+                    { 8L, "N4354535 43.", new DateTime(2019, 5, 4, 17, 28, 18, 205, DateTimeKind.Local).AddTicks(370), 1L, 4L },
+                    { 6L, "iopoipio iop io io.", new DateTime(2019, 5, 4, 17, 28, 18, 205, DateTimeKind.Local).AddTicks(357), 2L, 1L },
+                    { 7L, "qq q q q q q q", new DateTime(2019, 5, 4, 17, 28, 18, 205, DateTimeKind.Local).AddTicks(363), 2L, 3L },
+                    { 2L, "dsafdsda.", new DateTime(2019, 5, 4, 17, 28, 18, 205, DateTimeKind.Local).AddTicks(310), 3L, 1L },
+                    { 9L, "po'p'l';l;l'.", new DateTime(2019, 5, 4, 17, 28, 18, 205, DateTimeKind.Local).AddTicks(377), 3L, 2L },
+                    { 4L, "asdsadsa sadsadsa dsa.", new DateTime(2019, 5, 4, 17, 28, 18, 205, DateTimeKind.Local).AddTicks(345), 4L, 2L }
                 });
 
             migrationBuilder.InsertData(
@@ -612,12 +612,14 @@ namespace App.Data.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Interns_UserId",
                 table: "Interns",
-                column: "UserId");
+                column: "UserId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Menthors_UserId",
                 table: "Menthors",
-                column: "UserId");
+                column: "UserId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_ThemeMarks_ThemeId",

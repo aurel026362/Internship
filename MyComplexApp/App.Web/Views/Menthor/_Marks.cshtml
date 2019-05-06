@@ -1,4 +1,4 @@
-﻿@model App.Web.Models.ComplexViewModel.Intern.CurrentUserDataViewModel
+﻿@model App.Web.Models.ComplexViewModel.General.CurrentUserDataViewModel
 @{
     ViewData["Title"] = "_Marks";
 }
@@ -6,9 +6,9 @@
     <div style="margin:20px" class="text-right">
         <span class="text-muted"><i class="fas fa-search"></i>Search: </span> <input type="text" id="search" />
     </div>
-    
+
     <select id="module" class="form-control">
-        @foreach(var item in Model.Modules)
+        @foreach (var item in Model.Modules)
         {
             <option value=@item.Id>@item.Name</option>
         }
@@ -39,7 +39,7 @@
                 {
                     <tr>
                         <td>
-                            @item.UserEmail
+                            <a asp-action="Details" asp-controller="Admin" asp-route-id="@item.UserId"><i class="fas fa-user"></i> @item.UserEmail</a>
                         </td>
                         <td>
                             @item.ThemeName
@@ -52,8 +52,9 @@
                         </td>
                     </tr>
                 }
+                <tr><td colspan="2"><b>AVG Marks: </b></td><td><span class="text-muted"><b>@Model.Marks.AvgTMarks</b></span></td><td></td></tr>
             }
-            else if (Model.Marks.ExamMarks == null)
+            else if (Model.Marks.ThemeMarks == null)
             {
                 <tr>
                     <td colspan="3"><b>Don't exist marks!</b></td>
@@ -90,19 +91,20 @@
                 {
                     <tr>
                         <td>
-                            @item.UserEmail
+                            <a asp-action="Details" asp-controller="Admin"><i class="fas fa-user"></i> @item.UserEmail</a>
                         </td>
                         <td>
                             @item.ModuleName
                         </td>
                         <td>
-                            @item.Mark
+                            <span class="tmakrs">@item.Mark</span>
                         </td>
                         <td>
                             @item.Comment
                         </td>
                     </tr>
                 }
+                <tr><td colspan="2"><b>AVG Marks: </b></td><td>@Model.Marks.AvgEMarks</td><td> </td></tr>
             }
             else
             {
@@ -118,6 +120,26 @@
     var ascending = true;
     var page = 0;
     var orderbyprop="email";
+
+    function avg() {
+        
+        var total = 0,
+            valid_labels = 0,
+            average=0;
+
+        $('.tmakrs').each(function (i, item) {
+            total = total + parseInt(item);
+            valid_labels = valid_labels + 1;
+        });
+
+        average = total / valid_labels;
+
+        $('<tr>').append(
+            $('<td colspan="2">').html('<b>AVG Marks: </b>'),
+            $('<td>').html('<span class= "text-muted" > <b>' + average + '</b></span >'),
+                    $('<td>').html('')
+                ).appendTo("#tableBody");
+    }
 
     $("#module").bind("change", function () {
         $.ajax({
@@ -143,6 +165,13 @@
                         $('<td>').text(item.comment)
                     ).appendTo('#tableBody');
                 });
+
+                avg();
+                @*$('<tr>').append(
+                    $('<td colspan="2">').html('<b>AVG Marks: </b>'),
+                    $('<td>').html('<span class= "text-muted" > <b>@Model.Marks.AvgTMarks</b></span >'),
+                    $('<td>').html('')
+                ).appendTo("#tableBody");*@
             },
             error: function () {
 

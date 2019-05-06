@@ -11,6 +11,7 @@ namespace App.Data.Domain.DomainModelsConfigs.IdentityConfigs
     {
         public void Configure(EntityTypeBuilder<IdentityUserRole<long>> builder)
         {
+
             builder.HasData(
                 new IdentityUserRole<long>()
                 {

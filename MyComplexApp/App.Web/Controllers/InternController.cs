@@ -15,8 +15,6 @@ using App.Web.Model.ViewModel.ThemeMarkViewModel;
 using App.Web.Model.ViewModel.ThemeViewModel;
 using App.Web.Model.ViewModel.UserViewModel;
 using App.Web.Models.ComplexViewModel.General;
-using App.Web.Models.ComplexViewModel.Intern;
-using App.Web.Models.GeneralUser;
 using App.Web.Models.ViewModel.ThemeViewModel;
 using App.Web.Models.ViewModel.UserViewModel;
 using AutoMapper;
@@ -73,7 +71,7 @@ namespace App.Web.Controllers
 
             var person = new CurrentUserDataViewModel();
             var user = _userService.GetUserById(currentId);
-            person.PersonalData = _mapper.Map<UserViewModel>(user);
+            person.PersonalData = _mapper.Map<UserDetailedViewModel>(user);
             var currentTMarks = _themeMarkService.GetThemeMarksByUserId(currentId);
 
             var marks = new MarksViewModel();
@@ -95,29 +93,33 @@ namespace App.Web.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "Intern")]
-        public async Task<IActionResult> GetMarks(long moduleId)
+        public async Task<IActionResult> GetMarks(long moduleId, long userId)
         {
-            var currentId = Convert.ToInt32(_signInManager.UserManager.GetUserId(User));
+            //var currentId = Convert.ToInt32(_signInManager.UserManager.GetUserId(User));
 
             IList<ThemeMarkViewModel> tmarks;
 
             if (!moduleId.Equals(0))
             {
-                var list = _themeMarkService.GetThemeMarksByUserId(currentId);
+                var list = _themeMarkService.GetThemeMarks(userId, moduleId);
                 tmarks = _mapper.Map<IList<ThemeMarkViewModel>>(list);
             }
             else
             {
-                var list = _themeMarkService.GetThemeMarks(currentId, moduleId);
+                var list = _themeMarkService.GetThemeMarksByUserId(userId);
                 tmarks = _mapper.Map<IList<ThemeMarkViewModel>>(list);
             }
 
-            return PartialView("_GetMarks", tmarks);
+            var examMarksDto = _examMarkService.GetExamMarksByUserId(userId);
+
+            var marks = new MarksViewModel();
+            marks.ThemeMarks = tmarks;
+            marks.ExamMarks = _mapper.Map<IList<ExamMarkViewModel>>(examMarksDto);
+            return Json(marks);
+            //return PartialView("_GetMarks", tmarks);
         }
 
         [HttpGet]
-        [Authorize(Roles = "Intern, Menthor, Admin")]
         public async Task<IActionResult> GetComments(long themeId)
         {
             var currentId = Convert.ToInt32(_signInManager.UserManager.GetUserId(User));
@@ -126,7 +128,7 @@ namespace App.Web.Controllers
             var data = new CurrentUserDataViewModel();
 
             var personaldata = _userService.GetUserById(currentId);
-            data.PersonalData = _mapper.Map<UserViewModel>(personaldata);
+            data.PersonalData = _mapper.Map<UserDetailedViewModel>(personaldata);
 
             var comments = _commentService.GetComments(themeId);
             data.Comments = _mapper.Map<IList<CommentViewModel>>(comments);
@@ -135,7 +137,6 @@ namespace App.Web.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "Intern, Menthor, Admin")]
         public ActionResult GetMoreComments(long themeId, int pageNr)
         {
             var commentsDto = _commentService.GetComments(pageNr, themeId);
@@ -145,7 +146,6 @@ namespace App.Web.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Intern, Menthor, Admin")]
         public async Task<IActionResult> SubmitComment(string comment, long themeId)
         {
             var currentId = Convert.ToInt32(_signInManager.UserManager.GetUserId(User));
@@ -170,7 +170,6 @@ namespace App.Web.Controllers
         //}
 
         [HttpPost]
-        [Authorize(Roles = "Intern, Menthor, Admin")]
         public async Task<IActionResult> EditData(UserViewModel model)
         {
             long currentId = Convert.ToInt32(_signInManager.UserManager.GetUserId(User));

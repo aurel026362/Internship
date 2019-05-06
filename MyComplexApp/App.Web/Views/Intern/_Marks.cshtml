@@ -1,9 +1,9 @@
-﻿@model App.Web.Models.ComplexViewModel.Intern.CurrentUserDataViewModel
+﻿@model App.Web.Models.ComplexViewModel.General.CurrentUserDataViewModel
 @{
     ViewData["Title"] = "_Marks";
 }
 
-<div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+<div class="tab-pane fade show active" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
     <nav>
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
             <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#divTMarks" role="tab" aria-controls="nav-home" aria-selected="true">Theme Marks</a>
@@ -26,10 +26,43 @@
                     }
                     <option value="0">All Modules</option>
                 </select>
-                @await Html.PartialAsync("_GetMarks", Model.Marks.ThemeMarks)
+                <div>
+                    <table class="table" id="tableTmarks">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Theme
+                                </th>
+                                <th>
+                                    Mark
+                                </th>
+                                <th>
+                                    Comment
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Marks.ThemeMarks)
+                            {
+                                <tr>
+                                    <td>
+                                        @item.ThemeName
+                                    </td>
+                                    <td>
+                                        @item.Mark
+                                    </td>
+                                    <td>
+                                        @item.Comment
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                @*@await Html.PartialAsync("../Intern/_GetMarks", Model.Marks.ThemeMarks)*@
             </div>
             <div class="tab-pane fade" role="tabpanel" aria-labelledby="profile-tab" id="divEMarks">
-                <table class="table">
+                <table class="table" id="tableEmarks">
                     <thead>
                         <tr>
                             <th>
@@ -96,3 +129,25 @@
         </div>
     </div>
 </div>
+<script>
+    $("#module").bind("change", function () {
+        $.ajax({
+            url: "/Intern/GetMarks",
+            type: "GET",
+            data: ({ moduleId: $("#module").val(), userId:@Model.PersonalData.Id}),
+            datatype: "json",
+            success: function (data) {
+
+                $("#tableTmarks > tbody").empty();
+                console.log(data);
+                $.each(data.themeMarks, function (i, item) {
+                    $('<tr>').append(
+                        $('<td>').text(item.themeName),
+                        $('<td>').text(item.mark),
+                        $('<td>').text(item.comment)
+                    ).appendTo('#tableTmarks');
+                });
+            }
+        });
+    });
+</script>

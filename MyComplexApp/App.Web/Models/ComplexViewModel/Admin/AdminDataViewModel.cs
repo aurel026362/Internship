@@ -3,7 +3,6 @@ using App.Web.Model.ViewModel.ModuleViewModel;
 using App.Web.Model.ViewModel.ThemeViewModel;
 using App.Web.Model.ViewModel.UserViewModel;
 using App.Web.Models.ComplexViewModel.General;
-using App.Web.Models.ComplexViewModel.Intern;
 using App.Web.Models.ViewModel.UserViewModel;
 using System;
 using System.Collections.Generic;

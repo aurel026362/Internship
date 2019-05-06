@@ -8,12 +8,8 @@ using App.Web.Model.ViewModel.ExamMarkViewModel;
 using App.Web.Model.ViewModel.ModuleViewModel;
 using App.Web.Model.ViewModel.ThemeMarkViewModel;
 using App.Web.Model.ViewModel.ThemeViewModel;
-using App.Web.Model.ViewModel.UserViewModel;
-using App.Web.Models.Admin;
 using App.Web.Models.ComplexViewModel.Admin;
 using App.Web.Models.ComplexViewModel.General;
-using App.Web.Models.ComplexViewModel.Intern;
-using App.Web.Models.ForUser;
 using App.Web.Models.ViewModel.UserViewModel;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
@@ -29,7 +25,7 @@ using System.Threading.Tasks;
 
 namespace App.Web.Controllers
 {
-    [Authorize(Roles = ("Admin"))]
+    //[Authorize(Roles = ("Admin"))]
     public class AdminController : Controller
     {
         private readonly UserManager<User> _userManager;
@@ -53,11 +49,12 @@ namespace App.Web.Controllers
             IGroupService groupService,
             IModuleService moduleService,
             IThemeService themeService,
-            ITMarkService themeMarkService)
+            ITMarkService themeMarkService,
+            MyAppContext context)
         {
+            _context = context;
             _userManager = userManager;
             _signInManager = signInManager;
-
             _userService = userService;
             _commentService = commentService;
             _examMarkService = emarkService;
@@ -66,7 +63,6 @@ namespace App.Web.Controllers
             _moduleService = moduleService;
             _themeService = themeService;
             _themeMarkService = themeMarkService;
-
             _mapper = mapper;
         }
 
@@ -77,14 +73,16 @@ namespace App.Web.Controllers
             var person = new AdminDataViewModel();
             person.Data = new CurrentUserDataViewModel();
             var user = _userService.GetUserById(currentId);
-            person.Data.PersonalData = _mapper.Map<UserViewModel>(user);
-            var currentTMarks = _themeMarkService.GetThemeMarks();
+            person.Data.PersonalData = _mapper.Map<UserDetailedViewModel>(user);
 
             var marks = new MarksViewModel();
+            var currentTMarks = _themeMarkService.GetThemeMarks();
             marks.ThemeMarks = _mapper.Map<IList<ThemeMarkViewModel>>(currentTMarks);
             var currentEMarks = _examMarkService.GetExamMarks();
             marks.ExamMarks = _mapper.Map<IList<ExamMarkViewModel>>(currentEMarks);
             person.Data.Marks = marks;
+            marks.AvgTMarks = _themeMarkService.GetAvgTMarks();
+
             var modules = _moduleService.GetModules();
             person.Data.Modules = _mapper.Map<IList<ModuleViewModel>>(modules);
 
@@ -116,71 +114,44 @@ namespace App.Web.Controllers
             //var roles = await _userManager.GetRolesAsync(userDomen);
             //user.Role = roles[0];
 
-            var alldatauser = new UserAllDataViewModel();
-            alldatauser.Details = user;
-            alldatauser.Marks = new MarksViewModel();
+            //var alldatauser = new UserAndMarksViewModel();
+            var userdata = new CurrentUserDataViewModel();
+            userdata.PersonalData = user;
+            userdata.Marks = new MarksViewModel();
+
+            var modules = _moduleService.GetModules();
+            userdata.Modules = _mapper.Map<IList<ModuleViewModel>>(modules);
 
             var tmarks = _themeMarkService.GetThemeMarksByUserId((long)id);
             var emarks = _examMarkService.GetExamMarksByUserId((long)id);
 
-            alldatauser.Marks.ThemeMarks = _mapper.Map<IList<ThemeMarkViewModel>>(tmarks);
-            alldatauser.Marks.ExamMarks = _mapper.Map<IList<ExamMarkViewModel>>(emarks);
+            userdata.Marks.ThemeMarks = _mapper.Map<IList<ThemeMarkViewModel>>(tmarks);
+            userdata.Marks.ExamMarks = _mapper.Map<IList<ExamMarkViewModel>>(emarks);
 
-            if (alldatauser == null)
+            if (userdata == null)
             {
                 return NotFound();
             }
 
-            return View(alldatauser);
+            return View(userdata);
         }
 
         [HttpPost]
         public IActionResult DeleteUser(long userId)
         {
-            _userService.DeleteUser(userId);
+            //_userService.DeleteUser(userId);
 
-            return RedirectToAction("Index", "Admin");
+            return RedirectToAction("Index", "~/Admin/Index");
         }
 
         [HttpPost]
         public async Task<IActionResult> Edit(UserDetailedViewModel userViewModel)
         {
             var userDto = _mapper.Map<UserDetailedDto>(userViewModel);
-            var user = _mapper.Map<User>(userDto);
-            _context.Update(user);
-            return Ok();
+            _userService.UpdateUser(userDto);
+
+            return Redirect("~/Admin/Index");
         }
 
-        public async Task<IActionResult> Delete(long? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var user = await _context.Users
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            return View(user);
-        }
-
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(long id)
-        {
-            var user = await _context.Users.FindAsync(id);
-            _context.Users.Remove(user);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool UserExists(long id)
-        {
-            return _context.Users.Any(e => e.Id == id);
-        }
     }
 }

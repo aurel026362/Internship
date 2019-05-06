@@ -1,4 +1,5 @@
 ﻿using App.Data.Domain.DomainModels.Concrete;
+using App.Data.Domain.DomainModels.Identity;
 using App.Data.Interfaces.RepositoryInterfaces.IComplexRepository;
 using App.Services.Dtos.DTOs.Intern;
 using App.Services.Dtos.DTOs.Menthor;
@@ -97,6 +98,12 @@ namespace App.Services.Services
         public void DeleteUser(long UserId)
         {
             _userRepository.DeleteUser(UserId);
+        }
+
+        public void UpdateUser(UserDetailedDto user)
+        {
+            var userEntity = _mapper.Map<User>(user);
+            _userRepository.UpdateUser(userEntity);
         }
     }
 }

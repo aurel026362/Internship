@@ -22,7 +22,7 @@ namespace App.Data.Repository.ComplexRepository
 
         public ComplexExam GetExam(long moduleId)
         {
-            var result = _context.Exams.Where(x => x.ModuleId.Equals(moduleId))
+            var result = _context.Exams.Include(x=>x.Module).Where(x => x.ModuleId.Equals(moduleId))
                 .Select(x => new ComplexExam()
                 {
                     ModuleName = x.Module.Name,
@@ -34,7 +34,7 @@ namespace App.Data.Repository.ComplexRepository
 
         public IList<ComplexExam> GetExams()
         {
-            var list = _context.Exams.Select(x => new ComplexExam()
+            var list = _context.Exams.Include(x=>x.Module).Select(x => new ComplexExam()
             {
                 ModuleName = x.Module.Name,
                 Date = x.Date

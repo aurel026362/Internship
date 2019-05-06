@@ -20,6 +20,6 @@ namespace App.Web.Models.ViewModel.UserViewModel
         [Required]
         [StringLength(6)]
         [Compare("NewPassword", ErrorMessage = "The password does not coincide!")]
-        public string ConfirmPassword { get; set; }
+        public string ConfirmNewPassword { get; set; }
     }
 }

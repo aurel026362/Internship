@@ -125,6 +125,7 @@ namespace App.Data.Repository.ComplexRepository
         public IList<User> GetUsersDetails()
         {
             var list = _context.Users.ToList();
+            //var role = _context.Roles.Where(x => x.Users.Select(y => y.Id).Equals(1)).FirstOrDefault();
 
             return list;
         }
@@ -173,6 +174,24 @@ namespace App.Data.Repository.ComplexRepository
                     transaction.Rollback();
                 }
             }
+        }
+
+        public void UpdateUser(User user)
+        {
+            var oldUser = GetUserById(user.Id);
+
+            oldUser.FirstName = user.FirstName;
+            oldUser.LastName = user.LastName;
+            oldUser.DateOfBirth = user.DateOfBirth;
+            oldUser.Email = user.Email;
+            oldUser.PhoneNumber = user.PhoneNumber;
+            oldUser.PhoneNumberConfirmed = user.PhoneNumberConfirmed;
+            oldUser.EmailConfirmed = user.EmailConfirmed;
+            oldUser.TwoFactorEnabled = user.TwoFactorEnabled;
+            oldUser.AccessFailedCount = user.AccessFailedCount;
+            
+            _context.Update(oldUser);
+            _context.SaveChanges();
         }
     }
 }

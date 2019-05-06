@@ -16,9 +16,9 @@ namespace App.Data.Domain.DomainModelsConfigs.ConcreteConfigs
             builder.HasIndex(x=> new { x.InternId, x.ThemeId});
             builder.Property(x => x.Comment).HasMaxLength(200);
 
-            builder.HasOne(x => x.Intern).WithMany(x => x.ThemeMarks).HasForeignKey(x => x.InternId);
+            builder.HasOne(x => x.Intern).WithMany(x => x.ThemeMarks).HasForeignKey(x => x.InternId).OnDelete(DeleteBehavior.Cascade);
 
-            builder.HasOne(x => x.theme).WithMany(x => x.ThemeMarks).HasForeignKey(x => x.ThemeId);
+            builder.HasOne(x => x.Theme).WithMany(x => x.ThemeMarks).HasForeignKey(x => x.ThemeId).OnDelete(DeleteBehavior.Cascade);
 
             builder.Property(x => x.RowVersion).IsRowVersion();
 

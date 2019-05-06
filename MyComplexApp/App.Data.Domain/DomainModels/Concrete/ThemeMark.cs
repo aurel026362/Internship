@@ -12,7 +12,7 @@ namespace App.Data.Domain.DomainModels.Concrete
         public long? ThemeId { get; set; }
 
         public Intern Intern { get; set; }
-        public Theme theme { get; set; }
+        public Theme Theme { get; set; }
         public byte[] RowVersion { get; set; }
     }
 }

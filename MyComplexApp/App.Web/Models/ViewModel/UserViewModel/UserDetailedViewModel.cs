@@ -33,7 +33,7 @@ namespace App.Web.Models.ViewModel.UserViewModel
         public bool PhoneNumberConfirmed { get; set; }
         public bool EmailConfirmed { get; set; }
         public int AccessFailedCount { get; set; }
-        public string Role { get; set; }
+        //public string Role { get; set; }
         
     }
 }

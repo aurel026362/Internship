@@ -13,7 +13,7 @@ namespace App.Data.Domain.DomainModelsConfigs.ConcreteConfigs
             builder.ToTable("Exams");
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Date).HasColumnType("smalldatetime");
-            builder.HasOne(x => x.Module).WithOne(x => x.Exam).HasForeignKey<Exam>(x => x.ModuleId);
+            builder.HasOne(x => x.Module).WithOne(x => x.Exam).HasForeignKey<Exam>(x => x.ModuleId).OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

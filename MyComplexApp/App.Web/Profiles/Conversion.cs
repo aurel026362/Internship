@@ -43,6 +43,7 @@ namespace App.Web.Profiles
             CreateMap<UserDetailedDto, UserDetailedViewModel>().ReverseMap();
             CreateMap<GroupDto, GroupViewModel>().ReverseMap();
             CreateMap<UserDto, UserViewModel>().ReverseMap();
+            CreateMap<User, UserDto>().ReverseMap();
             CreateMap<User, UserDetailedViewModel>().ReverseMap();
 
             CreateMap<InternDto, InternViewModel>().ReverseMap();

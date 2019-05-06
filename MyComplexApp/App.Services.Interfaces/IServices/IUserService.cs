@@ -20,5 +20,6 @@ namespace App.Services.Interfaces.IServices
         void AddMenthor(MenthorDto menthor);
         void DeleteUser(long UserId);
         void UpdateUser(long userId, string newFName, string newLName, string nenwPhone, DateTime newdDBirth);
+        void UpdateUser(UserDetailedDto user);
     }
 }

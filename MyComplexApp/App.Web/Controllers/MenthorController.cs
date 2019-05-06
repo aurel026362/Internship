@@ -14,9 +14,7 @@ using App.Web.Model.ViewModel.ThemeMarkViewModel;
 using App.Web.Model.ViewModel.ThemeViewModel;
 using App.Web.Model.ViewModel.UserViewModel;
 using App.Web.Models.ComplexViewModel.General;
-using App.Web.Models.ComplexViewModel.Intern;
-using App.Web.Models.ForMenthor;
-using App.Web.Models.ForUser;
+using App.Web.Models.ViewModel.UserViewModel;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -70,7 +68,7 @@ namespace App.Web.Controllers
 
             var person = new CurrentUserDataViewModel();
             var user = _userService.GetUserById(currentId);
-            person.PersonalData = _mapper.Map<UserViewModel>(user);
+            person.PersonalData = _mapper.Map<UserDetailedViewModel>(user);
             var currentTMarks = _themeMarkService.GetThemeMarks();
 
             var marks = new MarksViewModel();

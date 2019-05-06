@@ -1,8 +1,7 @@
-﻿@model App.Web.Models.ComplexViewModel.Intern.CurrentUserDataViewModel
+﻿@model App.Web.Models.ComplexViewModel.General.CurrentUserDataViewModel
 @{
     ViewData["Title"] = "Index";
 }
-
 <div class="row" style="width:100%">
     @await Html.PartialAsync("../GeneralViews/_Menu")
     <div class="col-10">
@@ -32,36 +31,6 @@
         </div>
     </div>
 </div>
-<script>
-    $('#myTab a[href="#profile"]').tab('show') // Select tab by name
-    $('#myTab li:first-child a').tab('show') // Select first tab
-    $('#myTab li:last-child a').tab('show') // Select last tab
-    $('#myTab li:nth-child(3) a').tab('show')
 
-
-    $("#theme").bind("change", function () {
-        $.get("/Intern/GetComments", { themeId: $('#theme').val() })
-            .done(function (data) {
-                $("#comment-div").html(data);
-            })
-            .fail(function (data) {
-            })
-            .always(function () {
-            });
-    });
-</script>
-<footer class="container-fluid" id="footer">
-    <div class="container-fluid">
-        <div class="row padding text-center">
-            <div class="col-12">
-                <h2>Our Contacts</h2>
-            </div>
-            <div class="col-12 social padding">
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
-            </div>
-        </div>
-    </div>
-</footer>
+<script src="~/js/Calendar.js"></script>
+<script src="~/js/Ajaxs.js"></script>

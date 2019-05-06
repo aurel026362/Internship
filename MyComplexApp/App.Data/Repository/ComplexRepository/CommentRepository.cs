@@ -22,7 +22,7 @@ namespace App.Data.Repository.ComplexRepository
 
         public IList<ComplexComment> GetComments()
         {
-            var comments = _context.Comments.Select(x => new ComplexComment()
+            var comments = _context.Comments.Include(x=>x.Theme).Include(x=>x.User).Select(x => new ComplexComment()
             {
                 EMail = x.User.Email,
                 ThemeName = x.Theme.Name,
@@ -35,7 +35,8 @@ namespace App.Data.Repository.ComplexRepository
 
         public IList<ComplexComment> GetComments(long themeId)
         {
-            var comments = _context.Comments.Include(x=>x.User).Include(x=>x.Theme).Where(x=>x.ThemeId.Equals(themeId)).Select(x => new ComplexComment()
+            var comments = _context.Comments.Include(x=>x.User).Include(x=>x.Theme)
+                .Where(x=>x.ThemeId.Equals(themeId)).Select(x => new ComplexComment()
             {
                 EMail = x.User.Email,
                 ThemeName = x.Theme.Name,
@@ -48,7 +49,8 @@ namespace App.Data.Repository.ComplexRepository
 
         public IList<ComplexComment> GetComments(int page, long themeId)
         {
-            var comments = _context.Comments.Where(x => x.ThemeId.Equals(themeId)).Select(x => new ComplexComment()
+            var comments = _context.Comments.Include(x=>x.Theme).Include(x=>x.User)
+                .Where(x => x.ThemeId.Equals(themeId)).Select(x => new ComplexComment()
             {
                 EMail = x.User.Email,
                 ThemeName = x.Theme.Name,

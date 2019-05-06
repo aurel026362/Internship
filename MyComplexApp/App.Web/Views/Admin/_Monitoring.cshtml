@@ -21,8 +21,6 @@
         </div>
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active" role="tabpanel" aria-labelledby="profile-tab" id="divUsers">
-                <h4>Users   </h4>
-                <hr />
                 <table class="table">
                     <thead>
                         <tr>
@@ -50,29 +48,29 @@
                     <tbody>
                         @foreach (var item in Model.Users)
                         {
-                        <tr>
-                            <td>
-                                @item.Id
-                            </td>
-                            <td>
-                                <a asp-action="Details" asp-route-id="@item.Id"><i class="fas fa-user"></i> @item.EMail</a> 
-                            </td>
-                            <td>
-                                @item.FirstName
-                            </td>
-                            <td>
-                                @item.LastName
-                            </td>
-                            <td>
-                                @item.PhoneNumber
-                            </td>
-                            <td>
-                                @item.DateOfBirth
-                            </td>
-                            <td>
-                                <a asp-action="Details" asp-route-id="@item.Id"><i class="fas fa-info-circle"></i> Details / <i class="far fa-edit"></i> Edit</a>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>
+                                    @item.Id
+                                </td>
+                                <td>
+                                    <a asp-action="Details" asp-route-id="@item.Id"><i class="fas fa-user"></i> @item.EMail</a>
+                                </td>
+                                <td>
+                                    @item.FirstName
+                                </td>
+                                <td>
+                                    @item.LastName
+                                </td>
+                                <td>
+                                    @item.PhoneNumber
+                                </td>
+                                <td>
+                                    @item.DateOfBirth.ToString("dd/MM/yyyy")
+                                </td>
+                                <td>
+                                    <a asp-action="Details" asp-route-id="@item.Id"><i class="fas fa-info-circle"></i> Details / <i class="far fa-edit"></i> Edit</a>
+                                </td>
+                            </tr>
                         }
                     </tbody>
                 </table>

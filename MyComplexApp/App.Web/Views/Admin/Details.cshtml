@@ -1,4 +1,4 @@
-﻿@model App.Web.Models.ViewModel.UserViewModel.UserAllDataViewModel
+﻿@model App.Web.Models.ComplexViewModel.General.CurrentUserDataViewModel
 
 @{
     ViewData["Title"] = "Details";
@@ -8,47 +8,55 @@
         <h1>Details</h1>
     </div>
     <div>
-        <h4>User    @Model.Details.EMail</h4>
+        <h4>User    <span id="_email">@Model.PersonalData.EMail</span></h4>
         <hr />
     </div>
     <div class="row">
         <div class="col-4">
             <div>
+                <h5>Id</h5>@Model.PersonalData.Id
+            </div>
+            <div>
                 <h5>First Name</h5>
-                @Model.Details.FirstName
+                <span id="_fname">@Model.PersonalData.FirstName </span>
             </div>
             <div>
                 <h5>
                     Last Name
                 </h5>
-                @Model.Details.LastName
+                <span id="_lname">@Model.PersonalData.LastName</span>
             </div>
             <div>
                 <h5>
                     Date Of Birth
                 </h5>
-                @Model.Details.DateOfBirth
+                <span id="_datebirth">@Model.PersonalData.DateOfBirth.ToString("dd/MM/yyyy")</span>
             </div>
             <div>
-                <h5>Email Confirmed</h5>@Model.Details.EmailConfirmed
+                <h5>Email Confirmed</h5>
+                <input type="checkbox" id="_emailconfirmed" value=@Model.PersonalData.EmailConfirmed disabled="disabled" />
             </div>
             <div>
-                <h5>Phone Number </h5> @Model.Details.PhoneNumber
+                <h5>Phone Number </h5>
+                <span id="_phonenumber">@Model.PersonalData.PhoneNumber</span>
             </div>
             <div>
-                <h5>Phone Number Confirmed </h5> @Model.Details.PhoneNumberConfirmed
+                <h5>Phone Number Confirmed </h5>
+                <input type="checkbox" id="_phoneconfirmed" value=@Model.PersonalData.PhoneNumberConfirmed disabled="disabled" />
             </div>
             <div>
-                <h5>Two Factor Enabled</h5> @Model.Details.TwoFactorEnabled
+                <h5>Two Factor Enabled</h5>
+                <input type="checkbox" id="_twofactorenabled" value=@Model.PersonalData.TwoFactorEnabled disabled="disabled" />
             </div>
             <div>
                 <h5>
                     Access Failed Count
-                </h5> @Model.Details.AccessFailedCount
+                </h5> <span id="_accessfailed">@Model.PersonalData.AccessFailedCount</span>
             </div>
         </div>
         <div class="col-8">
-            <table class="table">
+            @await Html.PartialAsync("../Intern/_Marks", Model)
+            @*<table class="table">
                 <thead>
                 <th>Theme</th>
                 <th>Mark</th>
@@ -57,21 +65,22 @@
                 <tbody>
                     @foreach (var item in Model.Marks.ThemeMarks)
                     {
-                        <tr>
-                            <td>@item.ThemeName</td>
-                            <td>@item.Mark </td>
-                            <td>@item.Comment</td>
-                        </tr>
+                    <tr>
+                        <td>@item.ThemeName</td>
+                        <td>@item.Mark </td>
+                        <td>@item.Comment</td>
+                    </tr>
                     }
                     <tr><td><b>Avg Marks:</b></td><td colspan="2"></td></tr>
                 </tbody>
-            </table>
+            </table>*@
         </div>
     </div>
     <div>
-        <a asp-action="Edit" asp-route-id="@Model.Details.Id" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#exampleModal">Edit</a> |
-        <a asp-action="Index" class="btn btn-outline-primary btn-sm">Back to List</a>
+        <a asp-action="Index" class="btn btn-outline-primary btn-sm">Back to List</a> |
+        <a asp-action="Edit" asp-route-id="@Model.PersonalData.Id" class="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target="#exampleModal">Edit</a> |
         <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmation" id="">Delete</button>
+
     </div>
 </div>
 
@@ -88,12 +97,9 @@
                 <div>
                     <h5>Are you shure?!</h5>
                 </div>
-
             </div>
             <div class="modal-footer">
-                <form asp-action="DeleteUser" data-ajax="true" data-ajax-method="post" asp-route-id=@Model.Details.Id>
-                    <button type="submit" class="btn btn-danger" data-dismiss="modal">Yes</button>
-                </form>
+                <button type="submit" class="btn btn-danger" data-dismiss="modal" id="userDeleting">Yes</button>
                 <button type="button" class="btn btn-success" data-dismiss="modal">No</button>
             </div>
         </div>
@@ -112,64 +118,72 @@
                 @* -------------------------------------------------------- *@
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
-                    <label asp-for=Details.FirstName class="control-label"></label>
-                    <input asp-for=Details.FirstName class="form-control" id="fname" />
-                    <span asp-validation-for=Details.FirstName class="text-danger"></span>
+                    <label asp-for=PersonalData.FirstName class="control-label"></label>
+                    <input asp-for=PersonalData.FirstName class="form-control" id="fname" />
+                    <span asp-validation-for=PersonalData.FirstName class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for=Details.LastName class="control-label"></label>
-                    <input asp-for=Details.LastName class="form-control" id="lname" />
-                    <span asp-validation-for=Details.LastName class="text-danger"></span>
+                    <label asp-for=PersonalData.LastName class="control-label"></label>
+                    <input asp-for=PersonalData.LastName class="form-control" id="lname" />
+                    <span asp-validation-for=PersonalData.LastName class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for=Details.DateOfBirth class="control-label"></label>
-                    <input asp-for=Details.DateOfBirth class="form-control" id="datebirth" />
-                    <span asp-validation-for=Details.DateOfBirth class="text-danger"></span>
+                    <label asp-for=PersonalData.DateOfBirth class="control-label"></label>
+                    <input asp-for=PersonalData.DateOfBirth class="form-control" id="datebirth" />
+                    <span asp-validation-for=PersonalData.DateOfBirth class="text-danger"></span>
                 </div>
-                <input type="hidden" asp-for=Details.Id id="userId" />
+                <div>
+                    <input type="hidden" asp-for=PersonalData.Id id="userId" />
+                </div>
                 <div class="form-group">
-                    <label asp-for=Details.EMail class="control-label"></label>
-                    <input asp-for=Details.EMail class="form-control" id="email" />
-                    <span asp-validation-for=Details.EMail class="text-danger"></span>
+                    <label asp-for=PersonalData.EMail class="control-label"></label>
+                    <input asp-for=PersonalData.EMail class="form-control" id="email" />
+                    <span asp-validation-for=PersonalData.EMail class="text-danger"></span>
                 </div>
                 <div class="form-group form-check">
                     <label class="form-check-label">
-                        <input class="form-check-input" asp-for=Details.EmailConfirmed id="emailconfirmed" /> Email Confirmed
+                        <input class="form-check-input" asp-for=PersonalData.EmailConfirmed id="emailconfirmed" /> Email Confirmed
                     </label>
                 </div>
                 <div class="form-group">
-                    <label asp-for=Details.PhoneNumber class="control-label"></label>
-                    <input asp-for=Details.PhoneNumber class="form-control" id="phonenumber" />
-                    <span asp-validation-for=Details.PhoneNumber class="text-danger"></span>
+                    <label asp-for=PersonalData.PhoneNumber class="control-label"></label>
+                    <input asp-for=PersonalData.PhoneNumber class="form-control" id="phonenumber" />
+                    <span asp-validation-for=PersonalData.PhoneNumber class="text-danger"></span>
                 </div>
                 <div class="form-group form-check">
                     <label class="form-check-label">
-                        <input class="form-check-input" asp-for=Details.PhoneNumberConfirmed id="phoneconfirmed" /> Phone Number Confirmed
+                        <input class="form-check-input" asp-for=PersonalData.PhoneNumberConfirmed id="phoneconfirmed" /> Phone Number Confirmed
                     </label>
                 </div>
                 <div class="form-group form-check">
                     <label class="form-check-label">
-                        <input class="form-check-input" asp-for=Details.TwoFactorEnabled id="twofactorenabled" /> Two Factor Enabled
+                        <input class="form-check-input" asp-for=PersonalData.TwoFactorEnabled id="twofactorenabled" /> Two Factor Enabled
                     </label>
                 </div>
                 <div class="form-group">
-                    <label asp-for=Details.AccessFailedCount type="hidden" class="control-label"></label>
-                    <input asp-for=Details.AccessFailedCount type="hidden" class="form-control" id="accessfailed" />
-                    <span asp-validation-for=Details.AccessFailedCount type="hidden" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-primary form-control" id="sendform">Send</button>
+                    <label asp-for=PersonalData.AccessFailedCount type="text" class="control-label"></label>
+                    <input asp-for=PersonalData.AccessFailedCount type="text" class="form-control" id="accessfailed" />
+                    <span asp-validation-for=PersonalData.AccessFailedCount type="text" class="text-danger"></span>
                 </div>
                 @* -------------------------------------------------------- *@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-success" data-dismiss="modal">Save changes</button>
+                <button type="button" class="btn btn-success" data-dismiss="modal" id="sendform">Save changes</button>
             </div>
         </div>
     </div>
 </div>
 <script>
+    $("#userDeleting").bind("click", function () {
+        $.ajax({
+            url: "/Admin/DeleteUser",
+            type: "POST",
+            datatype: "application/json",
+            data: ({userId:@Model.PersonalData.Id})
+        });
+    });
+
     $("#sendform").bind("click", function () {
         var obj = ({
             Id: $("#userId").val(),
@@ -189,7 +203,17 @@
             datatype: "application/json",
             data: obj,
             success: function () {
-                alert("Success");
+
+                $("#_fname").text($("#fname").val());
+                $("#_lname").text($("#lname").val());
+                $("#_datebirth").text($("#datebirth").val());
+                $("#_email").text($("#email").val());
+                $("#_phonenumber").text($("#phonenumber").val());
+                $("#_emailconfirmed").val($("#emailconfirmed").val());
+                $("#_phoneconfirmed").val($("#phoneconfirmed").val());
+                $("#_twofactoredenabled").val($("#twofactorenabled").val());
+                $("#_accessfailed").text($("#accessfailed").val());
+
             },
             error: function () {
                 alert("ERROR");

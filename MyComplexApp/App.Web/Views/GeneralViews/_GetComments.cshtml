@@ -1,4 +1,4 @@
-﻿@model App.Web.Models.ComplexViewModel.Intern.CurrentUserDataViewModel
+﻿@model App.Web.Models.ComplexViewModel.General.CurrentUserDataViewModel
 <style>
     .my-comment {
         margin: 10px;
@@ -36,7 +36,6 @@
 
                     @foreach (var item in Model.Comments)
                     {
-                        // @:
                         <div class="@(Model.PersonalData.EMail.Equals(item.EMail) ? "my-comment" : "other-comment") ">
                             <img src="~/imgs/about.jpg" style="width:30px; height:30px; border-radius:200px;" /> <b>@item.EMail</b><span class="text-body"> : @item.Content</span> <small class="text-muted text-right">(@item.DateComment)</small>
                         </div>
@@ -72,7 +71,6 @@
 
     $("#MoreComments").click(function () {
         pageNr++;
-        //if(pageNr != -1)
         $.ajax({
             url: "/Intern/GetMoreComments",
             type: "GET",
@@ -82,7 +80,6 @@
                 if (data.length < 10) {
                     $("#bottom-div").prepend("<span class='text-danger'>Don't exist more comments!</span>");
                     $("#MoreComments").hide();
-                    //$("#allcomments").append("<br/><span class='text-danger text-sm'>Don't exist more comments</span>");
                 }
                 $.each(data, function (i, item) {
                     $('#allcomments').append("<b>" + item.EMail+"</b> : " + item.Comment + " <small class='text-muted'>(" + item.DateComment+")</span><br/>");

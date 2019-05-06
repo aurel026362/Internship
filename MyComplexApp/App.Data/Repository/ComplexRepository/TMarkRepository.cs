@@ -27,10 +27,12 @@ namespace App.Data.Repository.ComplexRepository
         }
 
         public double GetAvgTMarksByModuleId(long moduleId)
-        { var result = 0.0;
+        {
+            var result = 0.0;
             try
             {
-                result = _context.ThemeMarks.Where(x => x.theme.ModuleId.Equals(moduleId)).Average(x => x.Mark);
+                result = _context.ThemeMarks.Include(x => x.Theme)
+                    .Where(x => x.Theme.ModuleId.Equals(moduleId)).Average(x => x.Mark);
             }
             catch (Exception)
             {
@@ -44,13 +46,13 @@ namespace App.Data.Repository.ComplexRepository
             var result = 0.0;
             try
             {
-               result = _context.ThemeMarks.Include(x => x.Intern).Where(x => x.Intern.UserId.Equals(userId)).Average(x => x.Mark);
+                result = _context.ThemeMarks.Include(x => x.Intern).Where(x => x.Intern.UserId.Equals(userId)).Average(x => x.Mark);
             }
             catch (Exception)
             {
-                
+
             }
-                return result;
+            return result;
         }
 
         public IList<ComplexTMark> GetMoreThemeMarks(int page, string orderby, string sorting)
@@ -60,11 +62,13 @@ namespace App.Data.Repository.ComplexRepository
 
         public IList<ComplexTMark> GetThemeMarks(long userId, long moduleId)
         {
-            var list = _context.ThemeMarks.Where(x => x.Intern.UserId.Equals(userId) && x.theme.ModuleId.Equals(moduleId))
+            var list = _context.ThemeMarks.Include(x => x.Intern).ThenInclude(x => x.User).Include(x => x.Theme)
+                .Where(x => x.Intern.UserId.Equals(userId) && x.Theme.ModuleId.Equals(moduleId))
                 .Select(x => new ComplexTMark
                 {
+                    UserId = x.Intern.UserId,
                     UserEmail = x.Intern.User.Email,
-                    ThemeName = x.theme.Name,
+                    ThemeName = x.Theme.Name,
                     Mark = x.Mark,
                     Comment = x.Comment
                 }).ToList();
@@ -74,24 +78,28 @@ namespace App.Data.Repository.ComplexRepository
 
         public IList<ComplexTMark> GetThemeMarks()
         {
-            var list = _context.ThemeMarks.Select(x => new ComplexTMark()
-            {
-                UserEmail = x.Intern.User.Email,
-                ThemeName = x.theme.Name,
-                Mark = x.Mark,
-                Comment = x.Comment
-            }).OrderBy(x=>x.UserEmail).Take(10).ToList();
+            var list = _context.ThemeMarks.Include(x => x.Intern).ThenInclude(x => x.User).Include(x => x.Theme)
+                .Select(x => new ComplexTMark()
+                {
+                    UserId = x.Intern.UserId,
+                    UserEmail = x.Intern.User.Email,
+                    ThemeName = x.Theme.Name,
+                    Mark = x.Mark,
+                    Comment = x.Comment
+                }).OrderBy(x => x.UserEmail).Take(10).ToList();
 
             return list;
         }
 
         public IList<ComplexTMark> GetThemeMarksByModuleId(long moduleId)
         {
-            var list = _context.ThemeMarks.Where(x => x.theme.ModuleId.Equals(moduleId))
+            var list = _context.ThemeMarks.Include(x => x.Intern).ThenInclude(x => x.User).Include(x => x.Theme)
+                .Where(x => x.Theme.ModuleId.Equals(moduleId))
                 .Select(x => new ComplexTMark()
                 {
+                    UserId = x.Intern.UserId,
                     UserEmail = x.Intern.User.Email,
-                    ThemeName = x.theme.Name,
+                    ThemeName = x.Theme.Name,
                     Mark = x.Mark,
                     Comment = x.Comment
                 }).ToList();
@@ -101,11 +109,13 @@ namespace App.Data.Repository.ComplexRepository
 
         public IList<ComplexTMark> GetThemeMarksByUserId(long userId)
         {
-            var list = _context.ThemeMarks.Where(x => x.Intern.UserId.Equals(userId))
+            var list = _context.ThemeMarks.Include(x => x.Intern).ThenInclude(x => x.User).Include(x => x.Theme)
+                .Where(x => x.Intern.UserId.Equals(userId))
                 .Select(x => new ComplexTMark()
                 {
+                    UserId = x.Intern.UserId,
                     UserEmail = x.Intern.User.Email,
-                    ThemeName = x.theme.Name,
+                    ThemeName = x.Theme.Name,
                     Mark = x.Mark,
                     Comment = x.Comment
                 }).ToList();
@@ -121,25 +131,29 @@ namespace App.Data.Repository.ComplexRepository
             {
                 case "theme":
                     {
-                        if (sorting==true)
+                        if (sorting == true)
                         {
-                            list = _context.ThemeMarks.Select(x => new ComplexTMark()
-                            {
-                                UserEmail = x.Intern.User.Email,
-                                ThemeName = x.theme.Name,
-                                Mark = x.Mark,
-                                Comment = x.Comment
-                            }).OrderBy(x => x.ThemeName).Skip(page*10).Take(10).ToList();
+                            list = _context.ThemeMarks.Include(x => x.Intern).ThenInclude(x => x.User).Include(x => x.Theme)
+                                .Select(x => new ComplexTMark()
+                                {
+                                    UserId = x.Intern.UserId,
+                                    UserEmail = x.Intern.User.Email,
+                                    ThemeName = x.Theme.Name,
+                                    Mark = x.Mark,
+                                    Comment = x.Comment
+                                }).OrderBy(x => x.ThemeName).Skip(page * 10).Take(10).ToList();
                         }
                         else
                         {
-                            list = _context.ThemeMarks.Select(x => new ComplexTMark()
-                            {
-                                UserEmail = x.Intern.User.Email,
-                                ThemeName = x.theme.Name,
-                                Mark = x.Mark,
-                                Comment = x.Comment
-                            }).OrderByDescending(x => x.ThemeName).Skip(page * 10).Take(10).ToList();
+                            list = _context.ThemeMarks.Include(x => x.Intern).ThenInclude(x => x.User).Include(x => x.Theme)
+                                .Select(x => new ComplexTMark()
+                                {
+                                    UserId = x.Intern.UserId,
+                                    UserEmail = x.Intern.User.Email,
+                                    ThemeName = x.Theme.Name,
+                                    Mark = x.Mark,
+                                    Comment = x.Comment
+                                }).OrderByDescending(x => x.ThemeName).Skip(page * 10).Take(10).ToList();
                         }
                     }
                     break;
@@ -147,23 +161,27 @@ namespace App.Data.Repository.ComplexRepository
                     {
                         if (sorting == true)
                         {
-                            list = _context.ThemeMarks.Select(x => new ComplexTMark()
-                            {
-                                UserEmail = x.Intern.User.Email,
-                                ThemeName = x.theme.Name,
-                                Mark = x.Mark,
-                                Comment = x.Comment
-                            }).OrderBy(x => x.Mark).Skip(page * 10).Take(10).ToList();
+                            list = _context.ThemeMarks.Include(x => x.Intern).ThenInclude(x => x.User).Include(x => x.Theme)
+                                .Select(x => new ComplexTMark()
+                                {
+                                    UserId = x.Intern.UserId,
+                                    UserEmail = x.Intern.User.Email,
+                                    ThemeName = x.Theme.Name,
+                                    Mark = x.Mark,
+                                    Comment = x.Comment
+                                }).OrderBy(x => x.Mark).Skip(page * 10).Take(10).ToList();
                         }
                         else
                         {
-                            list = _context.ThemeMarks.Select(x => new ComplexTMark()
-                            {
-                                UserEmail = x.Intern.User.Email,
-                                ThemeName = x.theme.Name,
-                                Mark = x.Mark,
-                                Comment = x.Comment
-                            }).OrderByDescending(x => x.Mark).Skip(page * 10).Take(10).ToList();
+                            list = _context.ThemeMarks.Include(x => x.Intern).ThenInclude(x => x.User).Include(x => x.Theme)
+                                .Select(x => new ComplexTMark()
+                                {
+                                    UserId = x.Intern.UserId,
+                                    UserEmail = x.Intern.User.Email,
+                                    ThemeName = x.Theme.Name,
+                                    Mark = x.Mark,
+                                    Comment = x.Comment
+                                }).OrderByDescending(x => x.Mark).Skip(page * 10).Take(10).ToList();
                         }
                     }
                     break;
@@ -171,23 +189,27 @@ namespace App.Data.Repository.ComplexRepository
                     {
                         if (sorting == true)
                         {
-                            list = _context.ThemeMarks.Select(x => new ComplexTMark()
-                            {
-                                UserEmail = x.Intern.User.Email,
-                                ThemeName = x.theme.Name,
-                                Mark = x.Mark,
-                                Comment = x.Comment
-                            }).OrderBy(x => x.UserEmail).Skip(page * 10).Take(10).ToList();
+                            list = _context.ThemeMarks.Include(x => x.Intern).ThenInclude(x => x.User).Include(x => x.Theme)
+                                .Select(x => new ComplexTMark()
+                                {
+                                    UserId = x.Intern.UserId,
+                                    UserEmail = x.Intern.User.Email,
+                                    ThemeName = x.Theme.Name,
+                                    Mark = x.Mark,
+                                    Comment = x.Comment
+                                }).OrderBy(x => x.UserEmail).Skip(page * 10).Take(10).ToList();
                         }
                         else
                         {
-                            list = _context.ThemeMarks.Select(x => new ComplexTMark()
-                            {
-                                UserEmail = x.Intern.User.Email,
-                                ThemeName = x.theme.Name,
-                                Mark = x.Mark,
-                                Comment = x.Comment
-                            }).OrderByDescending(x => x.UserEmail).Skip(page * 10).Take(10).ToList();
+                            list = _context.ThemeMarks.Include(x => x.Intern).ThenInclude(x => x.User).Include(x => x.Theme)
+                                .Select(x => new ComplexTMark()
+                                {
+                                    UserId = x.Intern.UserId,
+                                    UserEmail = x.Intern.User.Email,
+                                    ThemeName = x.Theme.Name,
+                                    Mark = x.Mark,
+                                    Comment = x.Comment
+                                }).OrderByDescending(x => x.UserEmail).Skip(page * 10).Take(10).ToList();
                         }
                     }
                     break;
@@ -201,13 +223,15 @@ namespace App.Data.Repository.ComplexRepository
             IList<ComplexTMark> list = null;
             if (email != null)
             {
-                list = _context.ThemeMarks.Where(x => x.Intern.User.Email.Contains(email)).Select(x => new ComplexTMark()
-                {
-                    UserEmail = x.Intern.User.Email,
-                    ThemeName = x.theme.Name,
-                    Mark = x.Mark,
-                    Comment = x.Comment
-                }).ToList();
+                list = _context.ThemeMarks.Include(x => x.Intern).ThenInclude(x => x.User).Include(x => x.Theme)
+                    .Where(x => x.Intern.User.Email.Contains(email)).Select(x => new ComplexTMark()
+                    {
+                        UserId = x.Intern.UserId,
+                        UserEmail = x.Intern.User.Email,
+                        ThemeName = x.Theme.Name,
+                        Mark = x.Mark,
+                        Comment = x.Comment
+                    }).ToList();
 
                 return list;
             }

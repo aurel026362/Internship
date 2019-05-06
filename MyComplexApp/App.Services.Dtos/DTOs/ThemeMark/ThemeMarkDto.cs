@@ -6,6 +6,7 @@ namespace App.Services.Dtos.DTOs.ThemeMark
 {
     public class ThemeMarkDto
     {
+        public long UserId { get; set; }
         public string UserEmail { get; set; }
         public string ThemeName { get; set; }
         public int Mark { get; set; }

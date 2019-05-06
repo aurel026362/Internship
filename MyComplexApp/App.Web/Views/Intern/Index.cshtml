@@ -1,8 +1,7 @@
-﻿@model App.Web.Models.ComplexViewModel.Intern.CurrentUserDataViewModel
+﻿@model App.Web.Models.ComplexViewModel.General.CurrentUserDataViewModel
 @{
     ViewData["Title"] = "Index";
 }
-
 <div class="row" style="width:100%">
     @await Html.PartialAsync("../GeneralViews/_Menu")
     <div class="col-10">
@@ -14,113 +13,6 @@
         </div>
     </div>
 </div>
-<footer class="container-fluid" id="footer">
-    <div class="container-fluid">
-        <div class="row padding text-center">
-            <div class="col-12">
-                <h2>Our Contacts</h2>
-            </div>
-            <div class="col-12 social padding">
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
-            </div>
-        </div>
-    </div>
-</footer>
 
-<script>
-    $('#myTab li:first-child a');
-    $('#myTab li:first-child a');
-    $('#myTab li:last-child a');
-    $('#myTab li:nth-child(3) a');
-
-    $(document).ready(function () {
-        $("#PersonalData").bind("click", function () {
-            var obj = ({
-                FirstName: $("#FName").val(),
-                LastName: $("#LName").val(),
-                PhoneNumber: $("#PhoneNumber").val(),
-                DateOfBirth: $("#DateBirth").val()
-            });
-            $.ajax({
-                url: "/Intern/EditData",
-                type: "POST",
-                data: obj,
-                datatype: "json",
-                success: function () {
-                }
-            });
-        });
-
-        $("#module").bind("change", function () {
-            $.get("/Intern/GetMarks", { moduleId: $('#module').val() })
-                .done(function (data) {
-                    $("#marks-table").html(data);
-                })
-                .fail(function (data) {
-                })
-                .always(function () {
-                });
-        });
-
-        $("#theme").bind("change", function () {
-            $.get("/Intern/GetComments", { themeId: $('#theme').val() })
-                .done(function (data) {
-                    $("#comment-div").html(data);
-                })
-                .fail(function (data) {
-                })
-                .always(function () {
-                });
-        });
-    });
-
-
-</script>
-
-<script>
-    $('#calendar').fullCalendar({
-
-        header: {
-            left: 'prev,next today',
-            center: 'title',
-            right: 'month,agendaWeek,agendaDay,listWeek'
-        },
-        defaultDate: '2018-11-16',
-        navLinks: true,
-        eventLimit: true,
-        events: [{
-            title: 'Front-End Conference',
-            start: '2018-11-16',
-            end: '2018-11-18'
-        },
-        {
-            title: 'Hair stylist with Mike',
-            start: '2018-11-20',
-            allDay: true
-        },
-        {
-            title: 'Car mechanic',
-            start: '2018-11-14T09:00:00',
-            end: '2018-11-14T11:00:00'
-        },
-        {
-            title: 'Dinner with Mike',
-            start: '2018-11-21T19:00:00',
-            end: '2018-11-21T22:00:00'
-        },
-        {
-            title: 'Chillout',
-            start: '2018-11-15',
-            allDay: true
-        },
-        {
-            title: 'Vacation',
-            start: '2018-11-23',
-            end: '2018-11-29'
-        },
-        ]
-    });
-</script>
+<script src="~/js/Ajaxs.js"></script>
+<script src="~/js/Calendar.js"></script>

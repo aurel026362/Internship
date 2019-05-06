@@ -4,6 +4,7 @@ using App.Services.Interfaces.IServices;
 using AutoMapper;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace App.Services.Services
@@ -18,22 +19,27 @@ namespace App.Services.Services
             _tMarkRepository = tMarkRepository;
             _mapper = mapper;
         }
-
+        
         public double GetAvgTMarks()
         {
-            var result = _tMarkRepository.GetAvgTMarks();
+            var marks = _tMarkRepository.GetThemeMarks();
+            var result = marks.Average(x => x.Mark);
+
             return result;
         }
 
         public double GetAvgTMarksByModuleId(long moduleId)
         {
-            var result = _tMarkRepository.GetAvgTMarksByModuleId(moduleId);
+            var marks = _tMarkRepository.GetThemeMarksByModuleId(moduleId);
+            var result = marks.Average(x => x.Mark);
+
             return result;
         }
 
         public double GetAvgTMarksByUserId(long userId)
         {
-            var result = _tMarkRepository.GetAvgTMarksByUserId(userId);
+            var marks = _tMarkRepository.GetThemeMarksByUserId(userId);
+            var result = marks.Average(x => x.Mark);
             return result;
         }
 

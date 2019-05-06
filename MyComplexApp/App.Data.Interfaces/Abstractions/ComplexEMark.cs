@@ -6,6 +6,7 @@ namespace App.Data.Interfaces.Abstractions
 {
     public class ComplexEMark
     {
+        public long UserId { get; set; }
         public string UserEmail { get; set; }
         public string ModuleName { get; set; }
         public int Mark { get; set; }

@@ -17,8 +17,8 @@ namespace App.Data.Domain.DomainModelsConfigs.ConcreteConfigs
             builder.Property(x => x.Source).HasMaxLength(100);
             builder.Property(x => x.StartDate).HasColumnType("smalldatetime");
             builder.Property(x => x.MenthorId).HasColumnName("MenthorId");
-            builder.HasOne(x => x.Module).WithMany(x => x.Themes).HasForeignKey(x => x.ModuleId);
-            builder.HasOne(x => x.Menthor).WithMany(x => x.Themes).HasForeignKey(x => x.MenthorId);
+            builder.HasOne(x => x.Module).WithMany(x => x.Themes).HasForeignKey(x => x.ModuleId).OnDelete(DeleteBehavior.Cascade);
+            builder.HasOne(x => x.Menthor).WithMany(x => x.Themes).HasForeignKey(x => x.MenthorId).OnDelete(DeleteBehavior.SetNull);
 
             builder.HasData(
                 new Theme

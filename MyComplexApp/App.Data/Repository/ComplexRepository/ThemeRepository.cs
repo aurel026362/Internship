@@ -21,7 +21,8 @@ namespace App.Data.Repository.ComplexRepository
 
         public IList<ComplexTheme> GetThemes()
         {
-            var list = _context.Themes.Select(x => new ComplexTheme()
+            var list = _context.Themes.Include(x=>x.Module).Include(x=>x.Menthor).ThenInclude(x=>x.User)
+                .Select(x => new ComplexTheme()
             {
                 Id = x.Id,
                 Name = x.Name,
@@ -36,7 +37,8 @@ namespace App.Data.Repository.ComplexRepository
 
         public IList<ComplexTheme> GetThemesByMenthorId(long menthorId)
         {
-            var list = _context.Themes.Where(x=>x.MenthorId.Equals(menthorId)).Select(x => new ComplexTheme()
+            var list = _context.Themes.Include(x => x.Module).Include(x => x.Menthor).ThenInclude(x => x.User)
+                .Where(x=>x.MenthorId.Equals(menthorId)).Select(x => new ComplexTheme()
             {
                 Id = x.Id,
                 Name = x.Name,
@@ -51,7 +53,8 @@ namespace App.Data.Repository.ComplexRepository
 
         public IList<ComplexTheme> GetThemesByModuleId(long moduleId)
         {
-            var list = _context.Themes.Where(x=>x.ModuleId.Equals(moduleId)).Select(x => new ComplexTheme()
+            var list = _context.Themes.Include(x => x.Module).Include(x => x.Menthor).ThenInclude(x => x.User)
+                .Where(x=>x.ModuleId.Equals(moduleId)).Select(x => new ComplexTheme()
             {
                 Id = x.Id,
                 Name = x.Name,
