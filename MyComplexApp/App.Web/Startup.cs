@@ -110,7 +110,8 @@ namespace App.Web
             });
 
             //------
-            //services.AddAuthentication(options=> {
+            //services.AddAuthentication(options =>
+            //{
             //    options.DefaultChallengeScheme = FacebookDefaults.AuthenticationScheme;
             //    options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
             //    options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;

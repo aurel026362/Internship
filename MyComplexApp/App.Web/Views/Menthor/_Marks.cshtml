@@ -3,10 +3,60 @@
     ViewData["Title"] = "_Marks";
 }
 <div class="tab-pane fade show active" role="tabpanel" aria-labelledby="profile-tab" id="divTMarks">
-    <div style="margin:20px" class="text-right">
-        <span class="text-muted"><i class="fas fa-search"></i>Search: </span> <input type="text" id="search" />
-    </div>
+    <div class="row div-padding-vertical">
+        <div class="col-9 text-left">
+            <button class="btn btn-success" data-toggle="modal" data-target="#modalAddMark" id=""><i class="fas fa-plus"></i> Add Mark</button>
+        </div>
 
+        <div class="modal fade" id="modalAddMark" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Adding Mark</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body text-left">
+                        <div class="md-form mb-4">
+                            Module
+                            <select class="form-control" id="addmarkmodule">
+                                @foreach (var item in Model.Modules)
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="md-form mb-4">
+                            Theme
+                            <select class="form-control" id="addmarktheme">
+                                @*@foreach (var item in Model.Themes)
+                                {
+                                    <option>@item.Name</option>
+                                }*@
+                            </select>
+                        </div>
+                        <div class="md-form mb-4">
+                            Mark
+                            <input type="number" class="form-control" min="1" max="10" required id="addmark" />
+                        </div>
+                        <div class="md-form mb-4">
+                            Comment
+                            <input type="text" class="form-control" id="addmarkcomment" />
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success" data-dismiss="modal" id="addMarkConfirm">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-3" class="text-right">
+            <span class="text-muted"><i class="fas fa-search"></i>Search: </span> <input type="text" id="search" />
+        </div>
+    </div>
     <select id="module" class="form-control">
         @foreach (var item in Model.Modules)
         {
@@ -22,7 +72,7 @@
                     User EMail <a href="#" id="email" class="property"><i class="fas fa-sort"></i></a>
                 </th>
                 <th>
-                    Theme Name <a href="#" id="theme" class="property"><i class="fas fa-sort"></i></a>
+                    Theme Name <a href="#" id="themename" class="property"><i class="fas fa-sort"></i></a>
                 </th>
                 <th>
                     Mark <a href="#" id="mark" class="property"><i class="fas fa-sort"></i></a>
@@ -33,7 +83,7 @@
             </tr>
         </thead>
         <tbody>
-            @if (Model.Marks.ExamMarks != null)
+            @if (Model.Marks.ThemeMarks != null)
             {
                 @foreach (var item in Model.Marks.ThemeMarks)
                 {
@@ -45,14 +95,14 @@
                             @item.ThemeName
                         </td>
                         <td>
-                            @item.Mark
+                            <span class="tmakrs">@item.Mark</span>
                         </td>
                         <td>
                             @item.Comment
                         </td>
                     </tr>
                 }
-                <tr><td colspan="2"><b>AVG Marks: </b></td><td><span class="text-muted"><b>@Model.Marks.AvgTMarks</b></span></td><td></td></tr>
+
             }
             else if (Model.Marks.ThemeMarks == null)
             {
@@ -96,15 +146,15 @@
                         <td>
                             @item.ModuleName
                         </td>
-                        <td>
-                            <span class="tmakrs">@item.Mark</span>
+                        <td class="emarks">
+                            <span class="emakrs">@item.Mark</span>
                         </td>
                         <td>
                             @item.Comment
                         </td>
                     </tr>
                 }
-                <tr><td colspan="2"><b>AVG Marks: </b></td><td>@Model.Marks.AvgEMarks</td><td> </td></tr>
+
             }
             else
             {
@@ -115,31 +165,33 @@
         </tbody>
     </table>
 </div>
+<script src="~/js/Calculate.js"></script>
 
 <script>
     var ascending = true;
     var page = 0;
-    var orderbyprop="email";
+    var orderbyprop = "email";
 
-    function avg() {
-        
-        var total = 0,
-            valid_labels = 0,
-            average=0;
+    avg();
 
-        $('.tmakrs').each(function (i, item) {
-            total = total + parseInt(item);
-            valid_labels = valid_labels + 1;
+    $("#addmarkmodule").bind("change", function () {
+        $.ajax({
+            url: "/Menthor/GetThemesByModuleId",
+            type: "GET",
+            datatype: "json",
+            data: ({ moduleId: $("#addmarkmodule").val() }),
+            success: function (data) {
+                $("#addmarktheme").empty();
+                $.each(data, function (i, item) {
+                    console.log(item);
+                    $("#addmarktheme").append(new Option((item.name), item.id)/*"<select value='" + item.id + "'>" + item.themeName + "</option>"*/);
+                });
+            },
+            error: function () {
+                alert("Error");
+            }
         });
-
-        average = total / valid_labels;
-
-        $('<tr>').append(
-            $('<td colspan="2">').html('<b>AVG Marks: </b>'),
-            $('<td>').html('<span class= "text-muted" > <b>' + average + '</b></span >'),
-                    $('<td>').html('')
-                ).appendTo("#tableBody");
-    }
+    });
 
     $("#module").bind("change", function () {
         $.ajax({
@@ -157,15 +209,7 @@
 
                 }
                 $("#tableBody > tbody").empty();
-                $.each(data, function (i, item) {
-                    $('<tr>').append(
-                        $('<td>').text(item.userEmail),
-                        $('<td>').text(item.themeName),
-                        $('<td>').text(item.mark),
-                        $('<td>').text(item.comment)
-                    ).appendTo('#tableBody');
-                });
-
+                AppendToTable(data);
                 avg();
                 @*$('<tr>').append(
                     $('<td colspan="2">').html('<b>AVG Marks: </b>'),
@@ -195,14 +239,8 @@
 
                 }
                 $("#tableBody > tbody").empty();
-                $.each(data, function (i, item) {
-                    $('<tr>').append(
-                        $('<td>').text(item.userEmail),
-                        $('<td>').text(item.themeName),
-                        $('<td>').text(item.mark),
-                        $('<td>').text(item.comment)
-                    ).appendTo('#tableBody');
-                });
+                AppendToTable(data);
+                avg();
             },
             error: function () {
 
@@ -230,14 +268,8 @@
                 page = 0;
                 $("#moreTMarks").show();
                 $("#tableBody > tbody").empty();
-                $.each(data, function (i, item) {
-                    $('<tr>').append(
-                        $('<td>').text(item.userEmail),
-                        $('<td>').text(item.themeName),
-                        $('<td>').text(item.mark),
-                        $('<td>').text(item.comment)
-                    ).appendTo('#tableBody');
-                });
+                AppendToTable(data);
+                avg();
             },
             error: function () {
                 alert("Error");
@@ -257,18 +289,23 @@
                     $("#moreTMarks").hide();
                     $("#footerTMarks").append("<span id='warningMarks' class='text-danger'>Don't exist more Theme Mark</span>");
                 }
-                $.each(data, function (i, item) {
-                    $('<tr>').append(
-                        $('<td>').text(item.userEmail),
-                        $('<td>').text(item.themeName),
-                        $('<td>').text(item.mark),
-                        $('<td>').text(item.comment)
-                    ).appendTo('#tableBody');
-                });
+                AppendToTable(data);
+                avg();
             },
             error: function () {
                 alert("Error");
             }
         });
     });
+
+    function AppendToTable(data) {
+                $.each(data, function (i, item) {
+                    $('<tr>').append(
+                        $('<td>').html("<a href='/Admin/Details/" + item.userId+"' ><i class='fas fa-user'></i> " + item.userEmail + "</a>"),
+                        $('<td>').text(item.themeName),
+                        $('<td>').html("<span class='tmakrs'>"+item.mark+"</span>"),
+                        $('<td>').text(item.comment)
+                    ).appendTo('#tableBody');
+                });
+    }
 </script>

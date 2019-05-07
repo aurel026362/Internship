@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Details";
 }
-<div class="container">
+<div class="container-fluid div-padding-vertical">
     <div class="text-right">
         <h1>Details</h1>
     </div>
@@ -11,8 +11,8 @@
         <h4>User    <span id="_email">@Model.PersonalData.EMail</span></h4>
         <hr />
     </div>
-    <div class="row">
-        <div class="col-4">
+    <div class="row div-padding-vertical">
+        <div class="col-md-3 col-xs-12">
             <div>
                 <h5>Id</h5>@Model.PersonalData.Id
             </div>
@@ -53,34 +53,18 @@
                     Access Failed Count
                 </h5> <span id="_accessfailed">@Model.PersonalData.AccessFailedCount</span>
             </div>
-        </div>
-        <div class="col-8">
-            @await Html.PartialAsync("../Intern/_Marks", Model)
-            @*<table class="table">
-                <thead>
-                <th>Theme</th>
-                <th>Mark</th>
-                <th>Comment</th>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model.Marks.ThemeMarks)
-                    {
-                    <tr>
-                        <td>@item.ThemeName</td>
-                        <td>@item.Mark </td>
-                        <td>@item.Comment</td>
-                    </tr>
-                    }
-                    <tr><td><b>Avg Marks:</b></td><td colspan="2"></td></tr>
-                </tbody>
-            </table>*@
-        </div>
-    </div>
-    <div>
-        <a asp-action="Index" class="btn btn-outline-primary btn-sm">Back to List</a> |
-        <a asp-action="Edit" asp-route-id="@Model.PersonalData.Id" class="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target="#exampleModal">Edit</a> |
-        <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmation" id="">Delete</button>
+            <div>
+                <a asp-action="Index" class="btn btn-outline-primary btn-sm">Back to List</a> |
+                <a asp-action="Edit" asp-route-id="@Model.PersonalData.Id" class="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target="#exampleModal">Edit</a> |
+                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmation" id="">Delete</button>
 
+            </div>
+        </div>
+        <div class="col-md-9 col-xs-12">
+            <div class="div-padding-vertical">
+                @await Html.PartialAsync("../Intern/_Marks", Model)
+            </div>
+        </div>
     </div>
 </div>
 
@@ -220,7 +204,4 @@
             }
         });
     });
-
-
-
 </script>

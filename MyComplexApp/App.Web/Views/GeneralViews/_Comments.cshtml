@@ -3,9 +3,9 @@
     ViewData["Title"] = "_Comments";
 }
 
-<div class="tab-pane fade general-div" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+<div class="tab-pane fade div-padding-vertical" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
     <div class="row">
-        <div class="col-md-3 col-xs-5 theme-div">
+        <div class="col-md-3 col-xs-12 theme-div">
             <select class="form-control" id="theme" size="20">
                 @foreach (var item in Model.Themes)
                 {
@@ -13,27 +13,154 @@
                 }
             </select>
         </div>
-        <div id="comment-div" class="col-md-9 col-xs-7">
-            @await Html.PartialAsync("../GeneralViews/_GetComments", Model)
+        <div id="comment-div" class="col-md-9 col-xs-12">
+            @*@await Html.PartialAsync("../GeneralViews/_GetComments", Model)*@
+            <style>
+                .my-comment {
+                    margin: 10px;
+                    padding: 5px;
+                    border-radius: 5px;
+                    background-color:#ccebff;
+                    color: black;
+                    height: auto;
+                    width: 100%;
+                    float: left;
+                }
+
+                .other-comment {
+                    margin: 10px;
+                    margin-left: 30px;
+                    padding: 5px;
+                    border-radius: 5px;
+                    background-color: #d9d9d9;
+                    color: black;
+                    height: auto;
+                    width: 100%;
+                    float: right;
+                }
+            </style>
+            <div class="content-div">
+                <div class="row content-input-div div-padding-vertical">
+                    <div class="col-8 col-xs-12">
+                        <input class="form-control" id="myComment" />
+                    </div>
+                    <div class="col-4 col-xs-12">
+                        <button class="btn btn-primary" id="submitComment">Add Comment</button>
+                    </div>
+                </div>
+                <div class="content-comment-div">
+                    <div>
+                        <div class="form-group">
+                            <br />
+                            <h5>Comments</h5>
+                            <hr />
+                            <div class="col-12" id="allcomments">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div id="bottom-div" style="margin:20px">
+                        <button id="MoreComments" class="btn btn-outline-primary btn-sm form-control">Show more comments...</button>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
-
 <script>
-    $("#theme").bind("change", function () {
-        alert($('#theme').val());
+    $(document).ready(function () {
+
+        $("#MoreComments").hide();
+
+         $("#theme").bind("change", function () {
         $.ajax({
             url: "/Intern/GetComments",
             type: "Get",
             data: ({ themeId: $('#theme').val() }),
             datatype: "json",
             success: function (data) {
-                //alert("success");
-                $("#comment-div").html(data);
+                pageNr = 0;
+                $("#allcomments").empty();
+                $("#MoreComments").show();
+                try {
+                    $("#endMarks").remove();
+                }
+                catch (Exception) {
+
+                }
+
+                AppendComment(data.comments);
             },
             error: function (data) {
                 alert("error");
             }
         });
+        });
+
+        $("#submitComment").click(function () {
+            $.ajax({
+                url: "/Intern/SubmitComment",
+                type: "POST",
+                data: ({ comment: $("#myComment").val(), themeId: $("#theme").val() }),
+                datatype: "html",
+                success: function () {
+                    $("#allcomments").prepend("<div class='my-comment'>" +
+                        "<i class='far fa-user-circle'></i> " +
+                        "<b>@Model.PersonalData.EMail</b><span class='text-body'> : " + $("#myComment").val() +
+                        " </span><small class='text-muted'>(@DateTime.Now.ToString())</span></div>");
+                    $("#myComment").val("");
+                },
+                error: function () {
+                    alert("Error! Choose a theme!");
+                }
+            });
+        });
+
+        $("#MoreComments").click(function () {
+            pageNr++;
+            $.ajax({
+                url: "/Intern/GetMoreComments",
+                type: "GET",
+                data: ({ themeId: $("#theme").val(), pageNr: pageNr }),
+                datatype: "application/json",
+                success: function (data) {
+                    if (data.length < 10) {
+                        $("#bottom-div").prepend("<span class='text-danger' id='endMarks'>Don't exist more comments!</span>");
+                        $("#MoreComments").hide();
+                    }
+                    AppendComment(data);
+                }
+            });
+        });
     });
+
+    function AppendComment(data){
+        $.each(data, function (i, item) {
+            var classcomment = "";
+            if (item.eMail == '@Model.PersonalData.EMail') classcomment = "my-comment";
+            else classcomment = "other-comment";
+            $('#allcomments').append("<div class='" + classcomment + "'> <i class='far fa-user-circle'></i> <b>" + item.eMail + "</b> : "
+                + item.content + " <small class='text-muted'> (" + item.dateComment + ")</span></div>");
+        });
+    }
+
 </script>
+
+@*<script>
+        $("#theme").bind("change", function () {
+            $.ajax({
+                url: "/Intern/GetComments",
+                type: "Get",
+                data: ({ themeId: $('#theme').val() }),
+                datatype: "json",
+                success: function (data) {
+                    //alert("success");
+                    $("#comment-div").html(data);
+                },
+                error: function (data) {
+                    alert("error");
+                }
+            });
+        });
+    </script>*@

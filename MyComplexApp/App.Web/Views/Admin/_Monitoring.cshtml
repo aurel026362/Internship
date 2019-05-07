@@ -19,61 +19,66 @@
                 unchanged, and has lots of white space in the place where the image used to be.
             </p>
         </div>
+        <div class="clearfix"></div>
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active" role="tabpanel" aria-labelledby="profile-tab" id="divUsers">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>
-                                Id
-                            </th>
-                            <th>
-                                EMail
-                            </th>
-                            <th>
-                                First Name
-                            </th>
-                            <th>
-                                Last Name
-                            </th>
-                            <th>
-                                Phone Number
-                            </th>
-                            <th>
-                                Date of Birth
-                            </th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model.Users)
-                        {
-                            <tr>
-                                <td>
-                                    @item.Id
-                                </td>
-                                <td>
-                                    <a asp-action="Details" asp-route-id="@item.Id"><i class="fas fa-user"></i> @item.EMail</a>
-                                </td>
-                                <td>
-                                    @item.FirstName
-                                </td>
-                                <td>
-                                    @item.LastName
-                                </td>
-                                <td>
-                                    @item.PhoneNumber
-                                </td>
-                                <td>
-                                    @item.DateOfBirth.ToString("dd/MM/yyyy")
-                                </td>
-                                <td>
-                                    <a asp-action="Details" asp-route-id="@item.Id"><i class="fas fa-info-circle"></i> Details / <i class="far fa-edit"></i> Edit</a>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
+                <div class="row">
+                    <div class="col-12">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Id
+                                    </th>
+                                    <th>
+                                        EMail
+                                    </th>
+                                    <th>
+                                        First Name
+                                    </th>
+                                    <th>
+                                        Last Name
+                                    </th>
+                                    <th>
+                                        Phone Number
+                                    </th>
+                                    <th>
+                                        Date of Birth
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Users)
+                                {
+                                    <tr>
+                                        <td>
+                                            @item.Id
+                                        </td>
+                                        <td>
+                                            <a asp-action="Details" asp-route-id="@item.Id"><i class="fas fa-user"></i> @item.EMail</a>
+                                        </td>
+                                        <td>
+                                            @item.FirstName
+                                        </td>
+                                        <td>
+                                            @item.LastName
+                                        </td>
+                                        <td>
+                                            @item.PhoneNumber
+                                        </td>
+                                        <td>
+                                            @item.DateOfBirth.ToString("dd/MM/yyyy")
+                                        </td>
+                                        <td>
+                                            <a asp-action="Details" asp-route-id="@item.Id"><i class="fas fa-info-circle"></i> Details / <i class="far fa-edit"></i> Edit</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
             @await Html.PartialAsync("../Menthor/_Marks", Model.Data)
             <script>

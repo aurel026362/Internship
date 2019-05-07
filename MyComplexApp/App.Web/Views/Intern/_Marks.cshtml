@@ -3,31 +3,33 @@
     ViewData["Title"] = "_Marks";
 }
 
-<div class="tab-pane fade show active" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+<div class="tab-pane fade show active row" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
     <nav>
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
             <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#divTMarks" role="tab" aria-controls="nav-home" aria-selected="true">Theme Marks</a>
             <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#divEMarks" role="tab" aria-controls="nav-profile" aria-selected="false">Exam Marks</a>
         </div>
     </nav>
-    <div class="container-fluid text-center">
+    <div class="text-center">
         <div class="row bg-first">
             <p>
                 My problem is that after translating up the image, the div that contains it remains
                 unchanged, and has lots of white space in the place where the image used to be.
             </p>
         </div>
-        <div class="tab-content" id="nav-tabContent">
+        <div class="tab-content div-padding-vertical" id="nav-tabContent">
             <div class="tab-pane fade show active" role="tabpanel" aria-labelledby="profile-tab" id="divTMarks">
-                <select name="modules" style="width:100%" class="form-control" id="module">
-                    @foreach (var item in Model.Modules)
-                    {
-                        <option value=@item.Id>@item.Name</option>
-                    }
-                    <option value="0">All Modules</option>
-                </select>
+                <div class="div-margin-topbottom">
+                    <select name="modules" style="width:100%" class="form-control" id="module">
+                        @foreach (var item in Model.Modules)
+                        {
+                            <option value=@item.Id>@item.Name</option>
+                        }
+                        <option value="0" selected>All Modules</option>
+                    </select>
+                </div>
                 <div>
-                    <table class="table" id="tableTmarks">
+                    <table class="table table-hover" id="tableBody">
                         <thead>
                             <tr>
                                 <th>
@@ -49,7 +51,7 @@
                                         @item.ThemeName
                                     </td>
                                     <td>
-                                        @item.Mark
+                                        <span class='tmakrs'>@item.Mark</span>
                                     </td>
                                     <td>
                                         @item.Comment
@@ -106,7 +108,7 @@
         </div>
     </div>
 
-    <div class="container-fluid text-center">
+    <div class="text-center">
         <div class="row">
             <div class="col-md-4 col-xs-12">
                 <canvas id="mychart"></canvas>
@@ -129,25 +131,32 @@
         </div>
     </div>
 </div>
+<script src="~/js/Calculate.js"></script>
 <script>
-    $("#module").bind("change", function () {
-        $.ajax({
-            url: "/Intern/GetMarks",
-            type: "GET",
-            data: ({ moduleId: $("#module").val(), userId:@Model.PersonalData.Id}),
-            datatype: "json",
-            success: function (data) {
+    $(document).ready(function () {
+        
+        $("#module").bind("change", function () {
+            $.ajax({
+                url: "/Intern/GetMarks",
+                type: "GET",
+                data: ({ moduleId: $("#module").val(), userId:@Model.PersonalData.Id}),
+                datatype: "json",
+                success: function (data) {
 
-                $("#tableTmarks > tbody").empty();
-                console.log(data);
-                $.each(data.themeMarks, function (i, item) {
-                    $('<tr>').append(
-                        $('<td>').text(item.themeName),
-                        $('<td>').text(item.mark),
-                        $('<td>').text(item.comment)
-                    ).appendTo('#tableTmarks');
-                });
-            }
+                    $("#tableBody > tbody").empty();
+                    $.each(data.themeMarks, function (i, item) {
+                        $('<tr>').append(
+                            $('<td>').text(item.themeName),
+                            $('<td>').html("<span class='tmakrs'>" + item.mark + "</span>"),
+                            $('<td>').text(item.comment)
+                        ).appendTo('#tableBody');
+                    });
+                    avg();
+                }
+            });
         });
+
+        avg();
     });
 </script>
+<script src="~/js/javsc.js"></script>

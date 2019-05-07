@@ -27,8 +27,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
     @*<script src="~/lib/jquery-validation-unobtrusive/jquery.unobtrusive-ajax.min.js"></script>*@
     <link rel="stylesheet" href="~/css/style.css" />
-    <link rel="stylesheet" href="~/css/style.css">
-    <link rel="stylesheet" href="~/css/UserStyle.css">
+    <link rel="stylesheet" href="~/css/style.css" />
+    <link rel="stylesheet" href="~/css/UserStyle.css" />
+    <link rel="stylesheet" href="~/js/Chart.min.css" />
+
+    <script src="~/js/Chart.min.js"></script>
+
 
     <link href='~/Calendar/assets/css/fullcalendar.css' rel='stylesheet' />
     @*<link href='~/Calendar/assets/css/fullcalendar.print.css' rel='stylesheet' media='print' />*@
@@ -92,7 +96,6 @@
             </div>
         </div>
     </nav>
-
     <partial name="_CookieConsentPartial" />
 
     <div class="body-content">
@@ -106,7 +109,6 @@
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
     </environment>
     <environment exclude="Development">
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
@@ -121,7 +123,6 @@
                 crossorigin="anonymous"
                 integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd">
         </script>
-        <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
 
     @RenderSection("Scripts", required: false)

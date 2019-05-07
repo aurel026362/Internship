@@ -129,7 +129,7 @@ namespace App.Data.Repository.ComplexRepository
 
             switch (orderBy)
             {
-                case "theme":
+                case "themename":
                     {
                         if (sorting == true)
                         {

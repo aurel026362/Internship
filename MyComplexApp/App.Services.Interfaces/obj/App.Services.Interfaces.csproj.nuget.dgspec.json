@@ -1,26 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Aurel\\Desktop\\Got\\Internship\\MyComplexApp\\App.Services.Interfaces\\App.Services.Interfaces.csproj": {}
+    "D:\\Git\\Internship\\MyComplexApp\\App.Services.Interfaces\\App.Services.Interfaces.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Aurel\\Desktop\\Got\\Internship\\MyComplexApp\\App.Data.Domain\\App.Data.Domain.csproj": {
+    "D:\\Git\\Internship\\MyComplexApp\\App.Data.Domain\\App.Data.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Aurel\\Desktop\\Got\\Internship\\MyComplexApp\\App.Data.Domain\\App.Data.Domain.csproj",
+        "projectUniqueName": "D:\\Git\\Internship\\MyComplexApp\\App.Data.Domain\\App.Data.Domain.csproj",
         "projectName": "App.Data.Domain",
-        "projectPath": "C:\\Users\\Aurel\\Desktop\\Got\\Internship\\MyComplexApp\\App.Data.Domain\\App.Data.Domain.csproj",
-        "packagesPath": "C:\\Users\\Aurel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Aurel\\Desktop\\Got\\Internship\\MyComplexApp\\App.Data.Domain\\obj\\",
+        "projectPath": "D:\\Git\\Internship\\MyComplexApp\\App.Data.Domain\\App.Data.Domain.csproj",
+        "packagesPath": "C:\\Users\\aurel.starciuc\\.nuget\\packages\\",
+        "outputPath": "D:\\Git\\Internship\\MyComplexApp\\App.Data.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\ProgramData\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Aurel\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\aurel.starciuc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.2"
@@ -88,23 +86,21 @@
         }
       }
     },
-    "C:\\Users\\Aurel\\Desktop\\Got\\Internship\\MyComplexApp\\App.Infrastructure\\App.Infrastructure.csproj": {
+    "D:\\Git\\Internship\\MyComplexApp\\App.Infrastructure\\App.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Aurel\\Desktop\\Got\\Internship\\MyComplexApp\\App.Infrastructure\\App.Infrastructure.csproj",
+        "projectUniqueName": "D:\\Git\\Internship\\MyComplexApp\\App.Infrastructure\\App.Infrastructure.csproj",
         "projectName": "App.Infrastructure",
-        "projectPath": "C:\\Users\\Aurel\\Desktop\\Got\\Internship\\MyComplexApp\\App.Infrastructure\\App.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\Aurel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Aurel\\Desktop\\Got\\Internship\\MyComplexApp\\App.Infrastructure\\obj\\",
+        "projectPath": "D:\\Git\\Internship\\MyComplexApp\\App.Infrastructure\\App.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\aurel.starciuc\\.nuget\\packages\\",
+        "outputPath": "D:\\Git\\Internship\\MyComplexApp\\App.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\ProgramData\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Aurel\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\aurel.starciuc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.2"
@@ -116,8 +112,8 @@
         "frameworks": {
           "netcoreapp2.2": {
             "projectReferences": {
-              "C:\\Users\\Aurel\\Desktop\\Got\\Internship\\MyComplexApp\\App.Data.Domain\\App.Data.Domain.csproj": {
-                "projectPath": "C:\\Users\\Aurel\\Desktop\\Got\\Internship\\MyComplexApp\\App.Data.Domain\\App.Data.Domain.csproj"
+              "D:\\Git\\Internship\\MyComplexApp\\App.Data.Domain\\App.Data.Domain.csproj": {
+                "projectPath": "D:\\Git\\Internship\\MyComplexApp\\App.Data.Domain\\App.Data.Domain.csproj"
               }
             }
           }
@@ -146,23 +142,21 @@
         }
       }
     },
-    "C:\\Users\\Aurel\\Desktop\\Got\\Internship\\MyComplexApp\\App.Services.Dtos\\App.Services.Dtos.csproj": {
+    "D:\\Git\\Internship\\MyComplexApp\\App.Services.Dtos\\App.Services.Dtos.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Aurel\\Desktop\\Got\\Internship\\MyComplexApp\\App.Services.Dtos\\App.Services.Dtos.csproj",
+        "projectUniqueName": "D:\\Git\\Internship\\MyComplexApp\\App.Services.Dtos\\App.Services.Dtos.csproj",
         "projectName": "App.Services.Dtos",
-        "projectPath": "C:\\Users\\Aurel\\Desktop\\Got\\Internship\\MyComplexApp\\App.Services.Dtos\\App.Services.Dtos.csproj",
-        "packagesPath": "C:\\Users\\Aurel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Aurel\\Desktop\\Got\\Internship\\MyComplexApp\\App.Services.Dtos\\obj\\",
+        "projectPath": "D:\\Git\\Internship\\MyComplexApp\\App.Services.Dtos\\App.Services.Dtos.csproj",
+        "packagesPath": "C:\\Users\\aurel.starciuc\\.nuget\\packages\\",
+        "outputPath": "D:\\Git\\Internship\\MyComplexApp\\App.Services.Dtos\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\ProgramData\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Aurel\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\aurel.starciuc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.2"
@@ -200,23 +194,21 @@
         }
       }
     },
-    "C:\\Users\\Aurel\\Desktop\\Got\\Internship\\MyComplexApp\\App.Services.Interfaces\\App.Services.Interfaces.csproj": {
+    "D:\\Git\\Internship\\MyComplexApp\\App.Services.Interfaces\\App.Services.Interfaces.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Aurel\\Desktop\\Got\\Internship\\MyComplexApp\\App.Services.Interfaces\\App.Services.Interfaces.csproj",
+        "projectUniqueName": "D:\\Git\\Internship\\MyComplexApp\\App.Services.Interfaces\\App.Services.Interfaces.csproj",
         "projectName": "App.Services.Interfaces",
-        "projectPath": "C:\\Users\\Aurel\\Desktop\\Got\\Internship\\MyComplexApp\\App.Services.Interfaces\\App.Services.Interfaces.csproj",
-        "packagesPath": "C:\\Users\\Aurel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Aurel\\Desktop\\Got\\Internship\\MyComplexApp\\App.Services.Interfaces\\obj\\",
+        "projectPath": "D:\\Git\\Internship\\MyComplexApp\\App.Services.Interfaces\\App.Services.Interfaces.csproj",
+        "packagesPath": "C:\\Users\\aurel.starciuc\\.nuget\\packages\\",
+        "outputPath": "D:\\Git\\Internship\\MyComplexApp\\App.Services.Interfaces\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\ProgramData\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Aurel\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\aurel.starciuc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.2"
@@ -228,11 +220,11 @@
         "frameworks": {
           "netcoreapp2.2": {
             "projectReferences": {
-              "C:\\Users\\Aurel\\Desktop\\Got\\Internship\\MyComplexApp\\App.Infrastructure\\App.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\Aurel\\Desktop\\Got\\Internship\\MyComplexApp\\App.Infrastructure\\App.Infrastructure.csproj"
+              "D:\\Git\\Internship\\MyComplexApp\\App.Infrastructure\\App.Infrastructure.csproj": {
+                "projectPath": "D:\\Git\\Internship\\MyComplexApp\\App.Infrastructure\\App.Infrastructure.csproj"
               },
-              "C:\\Users\\Aurel\\Desktop\\Got\\Internship\\MyComplexApp\\App.Services.Dtos\\App.Services.Dtos.csproj": {
-                "projectPath": "C:\\Users\\Aurel\\Desktop\\Got\\Internship\\MyComplexApp\\App.Services.Dtos\\App.Services.Dtos.csproj"
+              "D:\\Git\\Internship\\MyComplexApp\\App.Services.Dtos\\App.Services.Dtos.csproj": {
+                "projectPath": "D:\\Git\\Internship\\MyComplexApp\\App.Services.Dtos\\App.Services.Dtos.csproj"
               }
             }
           }

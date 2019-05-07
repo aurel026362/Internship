@@ -9,10 +9,10 @@
             <img src="https://w2w.fund/Content/img/default.png"
                  class="rounded-circle mx-auto d-block">
             <br>
-            <button class="btn btn-outline-primary mx-auto d-block">
+            @*<button class="btn btn-outline-primary mx-auto d-block">
                 Change Profile
                 Photo
-            </button>
+            </button>*@
         </div>
         <div class="col-12 d-flex justify-content-center">
             <div class="col-sm-8 text-center">
@@ -20,46 +20,8 @@
                     <tr>
                         <th>Personal Data</th>
                         <th>
-                            <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-                                 aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content text-left">
-                                        <div class="modal-header text-center">
-                                            <h4 class="modal-title w-100 font-weight-bold">Personal Data</h4>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                            <div class="modal-body mx-4">
-                                                <div class="md-form mb-4">
-                                                    <i class="fas fa-file-signature indigo-text"></i><label>First Name</label>
-                                                    <input type="text" id="FName" class="form-control validate" value=@Model.FirstName required maxlength="20">
-                                                </div>
-
-                                                <div class="md-form mb-4">
-                                                    <i class="fas fa-file-signature"></i> <label>Last Name</label>
-                                                    <input type="text" id="LName" class="form-control validate" value=@Model.LastName required maxlength="20">
-                                                </div>
-
-                                                <div class="md-form mb-4">
-                                                    <i class="fas fa-mobile-alt"></i> <label>Phone Number</label>
-                                                    <input type="text" id="PhoneNumber" class="form-control validate" value=@Model.PhoneNumber  required maxlength="20">
-                                                </div>
-
-                                                <div class="md-form mb-4">
-                                                    <i class="fas fa-birthday-cake"></i> <label></label>
-                                                    <input type="date" id="DateBirth" class="form-control validate" value=@(Model.DateOfBirth.ToString("yyyy-MM-dd")) >
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer d-flex justify-content-center">
-                                                <button id="PersonalData" class="btn btn-default" type="submit">Change Data</button>
-                                            </div>
-                                    </div>
-                                </div>
-                            </div>
-
                             <div>
-                                <a class="btn btn-outline-primary" href="" data-toggle="modal" data-target="#modalLoginForm">
+                                <a class="btn btn-outline-primary" href="" data-toggle="modal" data-target="#modalPersonalData">
                                     Change Personal Data
                                 </a>
                             </div>
@@ -75,7 +37,7 @@
                     </tr>
                     <tr>
                         <td>Date of Birth</td>
-                        <td>@Model.DateOfBirth</td>
+                        <td>@(Model.DateOfBirth.ToString("dd/MM/yyyy"))</td>
                     </tr>
                     <tr>
                         <td>Number Phone</td>
@@ -88,35 +50,8 @@
                     <tr>
                         <th>Account Data</th>
                         <th>
-                            <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-                                 aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content text-left">
-                                        <div class="modal-header">
-                                            <h4 class="modal-title w-100 font-weight-bold">Sign up</h4>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body mx-3">
-                                            <div class="md-form mb-5">
-                                                <i class="fas fa-user prefix grey-text"></i><label>EMail</label>
-                                                <input type="text" class="form-control validate" value=@Model.EMail>
-                                            </div>
-                                            <div class="md-form mb-5">
-                                                <i class="fas fa-envelope prefix grey-text"></i><label>Password</label>
-                                                <input type="email" class="form-control validate" value=@Model.EMail>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer d-flex justify-content-center">
-                                            <button class="btn btn-deep-orange">Sign up</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
                             <div>
-                                <a href="" class="btn btn-outline-primary" data-toggle="modal" data-target="#modalRegisterForm">
+                                <a href="#" class="btn btn-outline-primary" data-toggle="modal" data-target="#modalAccountData">
                                     Change Account Data
                                 </a>
                             </div>
@@ -132,7 +67,7 @@
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <button class="btn btn-danger">Delete Account</button>
+                            <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#modalConfirmDelete">Delete Account</a>
                         </td>
                     </tr>
                 </table>
@@ -140,36 +75,129 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="modalConfirmDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content text-left">
+            <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Confirmation</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body mx-4">
+                <h5>Are you sure?</h5>
+                <div class="modal-footer text-right">
+                    <button class="btn btn-info" data-dismiss="modal" aria-label="Close">No</button>
+                    <button id="PersonalData" class="btn btn-danger" type="submit" data-dismiss="modal" aria-label="Close">Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalPersonalData" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content text-left">
+            <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Personal Data</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body mx-4">
+                <div class="md-form mb-4">
+                    <i class="fas fa-user"></i> <label>First Name</label>
+                    <input type="text" id="FName" class="form-control validate" value=@Model.FirstName required maxlength="20">
+                </div>
+
+                <div class="md-form mb-4">
+                    <i class="fas fa-user"></i> <label>Last Name</label>
+                    <input type="text" id="LName" class="form-control validate" value=@Model.LastName required maxlength="20">
+                </div>
+
+                <div class="md-form mb-4">
+                    <i class="fas fa-mobile-alt"></i> <label>Phone Number</label>
+                    <input type="text" id="PhoneNumber" class="form-control validate" value=@Model.PhoneNumber required maxlength="20">
+                </div>
+
+                <div class="md-form mb-4">
+                    <i class="fas fa-birthday-cake"></i> <label>Date of Birth</label>
+                    <input type="date" id="DateBirth" class="form-control validate" value=@(Model.DateOfBirth.ToString("yyyy-MM-dd"))>
+                </div>
+            </div>
+            <div class="modal-footer text-right">
+                <button class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Close</button>
+                <button id="PersonalData" class="btn btn-success" type="submit" data-dismiss="modal" aria-label="Close">Save Changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalAccountData" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content text-left">
+            <div class="modal-header">
+                <h4 class="modal-title w-100 font-weight-bold">Change Password</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body mx-3">
+                <div class="md-form mb-4">
+                    <i class="fas fa-unlock"></i>   <label> Old Password</label>
+                    <input type="password" class="form-control" value="">
+                </div>
+                <div class="md-form mb-2">
+                    <i class="fas fa-key"></i>  <label> New Password</label>
+                    <input type="password" class="form-control" value="">
+                </div>
+                <div class="md-form mb-2">
+                    <i class="fas fa-key"></i>  <label> Confirm New Password</label>
+                    <input type="password" class="form-control" value="">
+                </div>
+            </div>
+            <div class="modal-footer text-right">
+                <button class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Close</button>
+                <button class="btn btn-success" data-dismiss="modal" aria-label="Close">Save Changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
-        //$(document).ready(function () {
-        //    $("#PersonalData").bind("click", function () {
-        //            alert(name);
-        //            $.ajax({
-        //                url: "/Intern/EditData",
-        //                type: "POST",
-        //                data: ({ fname: $("#FName").val(), lname: $("#LName").val(), phone: $("#PhoneNumber").val(), dbirth: $("#DateBirth").val() }),
-        //                datatype: "html",
-        //                success: function () { alert("success"); }
-        //            });
+                        //$(document).ready(function () {
+                        //    $("#PersonalData").bind("click", function () {
+                        //            alert(name);
+                        //            $.ajax({
+                        //                url: "/Intern/EditData",
+                        //                type: "POST",
+                        //                data: ({ fname: $("#FName").val(), lname: $("#LName").val(), phone: $("#PhoneNumber").val(), dbirth: $("#DateBirth").val() }),
+                        //                datatype: "html",
+                        //                success: function () { alert("success"); }
+                        //            });
 
-        //    //$.post("/Intern/EditData", { name })
-        //    //    .done(function () {
-        //    //        alert("succes");
-        //    //    })
-        //    //    .fail(function () {
-        //    //        alert("error");
-        //    //    }).
-        //    //    always(function () {
-        //    //        alert("Always");
-        //    //    });
-        //    });
-        //});
+                        //    //$.post("/Intern/EditData", { name })
+                        //    //    .done(function () {
+                        //    //        alert("succes");
+                        //    //    })
+                        //    //    .fail(function () {
+                        //    //        alert("error");
+                        //    //    }).
+                        //    //    always(function () {
+                        //    //        alert("Always");
+                        //    //    });
+                        //    });
+                        //});
 
-    //function myfunction(var fname) {
-    //    var request = new XMLHttpRequest();
-    //alert(fname);
-    //    request.open('Post', 'Intern/EditData');
-    //    request.send(fname);
-    //}
+                    //function myfunction(var fname) {
+                    //    var request = new XMLHttpRequest();
+                    //alert(fname);
+                    //    request.open('Post', 'Intern/EditData');
+                    //    request.send(fname);
+                    //}
 
 </script>

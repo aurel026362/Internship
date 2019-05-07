@@ -75,7 +75,6 @@ namespace App.Web.Controllers
             var currentTMarks = _themeMarkService.GetThemeMarksByUserId(currentId);
 
             var marks = new MarksViewModel();
-            marks.AvgTMarks = _themeMarkService.GetAvgTMarksByUserId(currentId);
             marks.ThemeMarks = _mapper.Map<IList<ThemeMarkViewModel>>(currentTMarks);
             var currentEMarks = _examMarkService.GetExamMarksByUserId(currentId);
             marks.ExamMarks = _mapper.Map<IList<ExamMarkViewModel>>(currentEMarks);
@@ -133,7 +132,8 @@ namespace App.Web.Controllers
             var comments = _commentService.GetComments(themeId);
             data.Comments = _mapper.Map<IList<CommentViewModel>>(comments);
 
-            return PartialView("../GeneralViews/_GetComments", data);
+            //return PartialView("../GeneralViews/_GetComments", data);
+            return Json(data);
         }
 
         [HttpGet]
@@ -141,8 +141,9 @@ namespace App.Web.Controllers
         {
             var commentsDto = _commentService.GetComments(pageNr, themeId);
             var comments = _mapper.Map<IList<CommentViewModel>>(commentsDto);
-            var result = JsonConvert.SerializeObject(comments);
-            return Content(result, "application/json");
+            //var result = JsonConvert.SerializeObject(comments);
+            //return Content(result, "application/json");
+            return Json(comments);
         }
 
         [HttpPost]

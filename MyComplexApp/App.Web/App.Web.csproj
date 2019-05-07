@@ -28,8 +28,8 @@
 
   <ItemGroup>
     <Folder Include="Models\ViewModel\RequestedUserViewModel\" />
-    <Folder Include="Views\Users\" />
-    <Folder Include="Views\zOther\" />
+    <Folder Include="Views\zOther\Users\" />
+    <Folder Include="wwwroot\js\ForAdmin\" />
   </ItemGroup>
 
 </Project>

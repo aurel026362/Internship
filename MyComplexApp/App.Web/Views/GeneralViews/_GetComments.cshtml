@@ -82,7 +82,11 @@
                     $("#MoreComments").hide();
                 }
                 $.each(data, function (i, item) {
-                    $('#allcomments').append("<b>" + item.EMail+"</b> : " + item.Comment + " <small class='text-muted'>(" + item.DateComment+")</span><br/>");
+                    $('#allcomments').append("<b>" + item.eMail + "</b> : " + item.content + " <small class='text-muted'> (" + item.dateComment + ")</span><br/>");
+                    @*var class=@(Model.PersonalData.EMail.Equals("qwe") ? "'my-comment'" : "'other-comment'");
+                    $("#allcomments").append("<div class=" + class+ ">"+
+                        +"<img src='~/imgs/about.jpg' style='width:30px; height:30px; border-radius:200px;'/> <b>"+item.EMail+"</b> <span class='text-body'> : "+item.content+" </span> <small class='text-muted text-right'>("+item.dateComment+")</small>"+
+                        +"</div>");*@
                 });
              }
         });

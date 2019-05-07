@@ -23,7 +23,12 @@ namespace App.Services.Services
         public double GetAvgTMarks()
         {
             var marks = _tMarkRepository.GetThemeMarks();
-            var result = marks.Average(x => x.Mark);
+            double result = 0;
+
+            if ((marks != null) & (marks.Any()))
+            {
+                result = marks.Average(x => x.Mark);
+            }
 
             return result;
         }
@@ -31,7 +36,12 @@ namespace App.Services.Services
         public double GetAvgTMarksByModuleId(long moduleId)
         {
             var marks = _tMarkRepository.GetThemeMarksByModuleId(moduleId);
-            var result = marks.Average(x => x.Mark);
+            double result = 0;
+
+            if ((marks != null) & (marks.Any()))
+            {
+                result = marks.Average(x => x.Mark);
+            }
 
             return result;
         }
@@ -39,7 +49,13 @@ namespace App.Services.Services
         public double GetAvgTMarksByUserId(long userId)
         {
             var marks = _tMarkRepository.GetThemeMarksByUserId(userId);
-            var result = marks.Average(x => x.Mark);
+            double result = 0;
+
+            if ((marks != null) & (marks.Any()))
+            {
+                result = marks.Average(x => x.Mark);
+            }
+
             return result;
         }
 

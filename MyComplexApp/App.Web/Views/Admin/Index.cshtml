@@ -2,15 +2,16 @@
 @{
     ViewData["Title"] = "Index";
 }
-
-<div class="row" style="width:100%">
-    @await Html.PartialAsync("../GeneralViews/_Menu")
-    <div class="col-10">
-        <div class="tab-content" id="v-pills-tabContent">
-            @await Html.PartialAsync("../GeneralViews/_Profile", Model.Data.PersonalData)
-            @await Html.PartialAsync("_Monitoring", Model)
-            @await Html.PartialAsync("../GeneralViews/_Comments", Model.Data)
-            @await Html.PartialAsync("../GeneralViews/_Settings", Model.Data.PersonalData)
+<div class="container-fluid">
+    <div class="row">
+        @await Html.PartialAsync("../GeneralViews/_Menu")
+        <div class="col-md-10 col-xs-12">
+            <div class="tab-content" id="v-pills-tabContent">
+                @await Html.PartialAsync("../GeneralViews/_Profile", Model.Data.PersonalData)
+                @await Html.PartialAsync("_Monitoring", Model)
+                @await Html.PartialAsync("../GeneralViews/_Comments", Model.Data)
+                @await Html.PartialAsync("../GeneralViews/_Settings", Model.Data.PersonalData)
+            </div>
         </div>
     </div>
 </div>

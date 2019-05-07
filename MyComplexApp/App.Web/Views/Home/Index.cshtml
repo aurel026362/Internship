@@ -33,6 +33,7 @@
         border: 2px dotted gray;
     }
 </style>
+
 <div class="carousel slide" data-ride="carousel" id="slides">
     <ul class="carousel-indicators">
         <li data-target="#slides" data-slide-to="0" class="active"></li>
@@ -65,22 +66,22 @@
         </div>
     </div>
 </div>
-<div class="row">
+<div>
     @if (User.IsInRole("Admin"))
     {
-        <a id="BGoToProfile" href="~/Admin/Index" class="btn btn-primary" style="width:100%">GO TO PROFILE</a>
+        <a id="BGoToProfile" href="~/Admin/Index" class="btn btn-primary form-control" >GO TO PROFILE</a>
     }
     else if (User.IsInRole("Menthor"))
     {
-        <a id="BGoToProfile" href="~/Menthor/Index" class="btn btn-primary" style="width:100%">GO TO PROFILE</a>
+        <a id="BGoToProfile" href="~/Menthor/Index" class="btn btn-primary form-control" >GO TO PROFILE</a>
     }
     else if (User.IsInRole("Intern"))
     {
-        <a id="BGoToProfile" href="~/Intern/Index" class="btn btn-primary" style="width:100%">GO TO PROFILE</a>
+        <a id="BGoToProfile" href="~/Intern/Index" class="btn btn-primary form-control">GO TO PROFILE</a>
     }
     else
     {
-        <a id="BGoToProfile" href="~/identity/account/Login" class="btn btn-primary" style="width:100%">GO TO PROFILE</a>
+        <a id="BGoToProfile" href="~/identity/account/Login" class="btn btn-primary form-control">GO TO PROFILE</a>
     }
 </div>
 <hr>
@@ -114,28 +115,9 @@
 <figure>
     <div class="fixed-wrap">
         <div id="fixed">
-
         </div>
     </div>
 </figure>
-@*<div id="gifs" class="collapse">
-    <div class="container-fluid padding">
-        <div class="row text-center">
-            <div class="col-sm-6 col-md-3">
-                <img src="~/imgs/foto4.jpg" class="gif">
-            </div>
-            <div class="col-sm-6 col-md-3">
-                <img src="~/imgs/foto5.jpg" class="gif">
-            </div>
-            <div class="col-sm-6 col-md-3">
-                <img src="~/imgs/foto6.jpg" class="gif">
-            </div>
-            <div class="col-sm-6 col-md-3">
-                <img src="~/imgs/foto7.jpeg" class="gif">
-            </div>
-        </div>
-    </div>
-</div>*@
 
 <div class="container-fluid padding">
     <div class="row aler text-center">
@@ -146,7 +128,7 @@
     </div>
 </div>
 
-<div id="qqq" class="container padding">
+<div class="container padding">
     <div class="row padding">
         <div class="col-md-4 ShowUp" >
             <div class="card">
@@ -155,9 +137,9 @@
                 <div class="card-body">
                     <h4 class="card-title">UNREAL ENGINE</h4>
                     <p class="card-text">
-                        salkdj slakdjsa lkdsald jdk sada sadsad sa
-                        fds fd asd fa ffds fsd fsdf sdf sd
-                        dsf dsgf fds gsdfg sg dfsd fsa
+                        We use cookies to offer you a better browsing experience, analyze site traffic, and personalize content.
+                        Read about how we use cookies and how you can control them by visiting our Cookie Settings page.
+                        If you continue to use this site, you consent to our use of cookies.
                     </p>
                     <a href="#" class="btn btn-warning">Watch</a>
                 </div>
@@ -170,25 +152,25 @@
                 <div class="card-body">
                     <h4 class="card-title">Other</h4>
                     <p class="card-text">
-                        salkdj slakdjsa lkdsald jdk sada sadsad sa
-                        fds fd asd fa ffds fsd fsdf sdf sd
-                        dsf dsgf fds gsdfg sg dfsd fsa
+                        We use cookies to offer you a better browsing experience, analyze site traffic, and personalize content. 
+                        Read about how we use cookies and how you can control them by visiting our Cookie Settings page. 
+                        If you continue to use this site, you consent to our use of cookies.	
                     </p>
                     <a href="#" class="btn btn-warning">Watch</a>
                 </div>
             </div>
         </div>
 
-        <div class="col-md-4 div-card">
+        <div class="col-md-4 ShowUp">
             <div class="card ShowUp">
-                <img src="https://telegraf.com.ua/files/2019/03/pejzazhi-i-nochnoe-nebo-na-snimkax-dilana-najta-16.jpg"
+                <img src="https://image.freepik.com/free-vector/bokeh-lights-glitter-background_1048-8548.jpg"
                      class="card-img-top" alt="">
                 <div class="card-body">
                     <h4 class="card-title">Other2</h4>
                     <p class="card-text">
-                        salkdj slakdjsa lkdsald jdk sada sadsad sa
-                        fds fd asd fa ffds fsd fsdf sdf sd
-                        dsf dsgf fds gsdfg sg dfsd fsa
+                        We use cookies to offer you a better browsing experience, analyze site traffic, and personalize content.
+                        Read about how we use cookies and how you can control them by visiting our Cookie Settings page.
+                        If you continue to use this site, you consent to our use of cookies.
                     </p>
                     <a href="#" class="btn btn-warning">Watch</a>
                 </div>
@@ -196,8 +178,6 @@
         </div>
     </div>
 </div>
-<email>CustomEmail</email>
-<phone>+4873947823</phone>
 <script>
     $(document).ready(function () {
         

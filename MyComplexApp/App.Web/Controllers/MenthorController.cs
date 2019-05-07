@@ -146,5 +146,15 @@ namespace App.Web.Controllers
             var list = _mapper.Map<IList<ThemeMarkViewModel>>(listDto);
             return PartialView(list);
         }
+
+        [HttpGet]
+        [Authorize(Roles ="Menthor, Admin")]
+        public async Task<IActionResult> GetThemesByModuleId(long moduleId)
+        {
+            var listDto = _themeService.GetThemesByModuleId(moduleId);
+            var list = _mapper.Map<IList<ThemeViewModel>>(listDto);
+
+            return Json(list);
+        }
     }
 }

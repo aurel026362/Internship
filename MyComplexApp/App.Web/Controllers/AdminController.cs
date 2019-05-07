@@ -81,7 +81,6 @@ namespace App.Web.Controllers
             var currentEMarks = _examMarkService.GetExamMarks();
             marks.ExamMarks = _mapper.Map<IList<ExamMarkViewModel>>(currentEMarks);
             person.Data.Marks = marks;
-            marks.AvgTMarks = _themeMarkService.GetAvgTMarks();
 
             var modules = _moduleService.GetModules();
             person.Data.Modules = _mapper.Map<IList<ModuleViewModel>>(modules);
