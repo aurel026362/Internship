@@ -1,0 +1,23 @@
+﻿@model IList<App.Web.Model.ViewModel.ThemeMarkViewModel.ThemeMarkViewModel>
+@{
+    ViewData["Title"] = "_Lesson";
+}
+
+    <div class="tab-pane fade" id="v-pills-lesson" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+        <iframe src="https://calendar.google.com/calendar/embed?src=u45dgjvivusijr4guvbofbh328%40group.calendar.google.com&ctz=Europe%2FChisinau"
+                style="border: 0" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
+        @{
+            string minMark = Model.OrderByDescending(x => x.Mark).Select(x => x.ThemeName).FirstOrDefault();
+
+            <p> Your badest mark is at theme:</p>
+            <h5>Search on:</h5>
+            <a href="https://www.google.com/search?source=hp&ei=WvPSXNa4N8L5wQLjhqXoDQ&q=@minMark">
+                Google
+            </a>
+            <a href="https://www.youtube.com/results?search_query=@minMark">
+                Youtube
+            </a>
+        }
+    </div>
+
+

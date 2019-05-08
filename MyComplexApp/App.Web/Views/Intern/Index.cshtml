@@ -11,6 +11,7 @@
                 @await Html.PartialAsync("_Marks", Model)
                 @await Html.PartialAsync("../GeneralViews/_Comments", Model)
                 @await Html.PartialAsync("../GeneralViews/_Settings", Model.PersonalData)
+                @await Html.PartialAsync("../GeneralViews/_Lesson", Model.Marks.ThemeMarks)
             </div>
         </div>
     </div>

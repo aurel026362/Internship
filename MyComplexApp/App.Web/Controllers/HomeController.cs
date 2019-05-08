@@ -10,6 +10,7 @@ using App.Data.Domain.DomainModels.Identity;
 using App.Data.Context;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Authorization;
+using System.IO;
 
 namespace App.Web.Controllers
 {
@@ -27,6 +28,12 @@ namespace App.Web.Controllers
             _signInManager = signInManager;
             //_logger = logger;
             _context = context;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Download()
+        {
+            return PhysicalFile(@"D:\test.mp4", "application/octet-stream");
         }
 
         public IActionResult Index()
