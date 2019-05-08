@@ -1,6 +1,5 @@
 ﻿using App.Data.Context;
 using App.Data.Domain.DomainModels.Concrete;
-using App.Data.Interfaces.Abstractions;
 using App.Data.Interfaces.RepositoryInterfaces;
 using App.Data.Interfaces.RepositoryInterfaces.IComplexRepository;
 using Microsoft.EntityFrameworkCore;
@@ -20,43 +19,25 @@ namespace App.Data.Repository.ComplexRepository
             _context = ctxt;
         }
 
-        public IList<ComplexComment> GetComments()
+        public IList<Comment> GetComments()
         {
-            var comments = _context.Comments.Include(x=>x.Theme).Include(x=>x.User).Select(x => new ComplexComment()
-            {
-                EMail = x.User.Email,
-                ThemeName = x.Theme.Name,
-                Content = x.Content,
-                DateComment = x.DateComment.ToString("dd/MM/yyyy HH:mm")
-            }).OrderByDescending(x=>x.DateComment).ToList();
+            var comments = _context.Comments.Include(x=>x.Theme).Include(x=>x.User).OrderByDescending(x=>x.DateComment).ToList();
 
             return comments;
         }
 
-        public IList<ComplexComment> GetComments(long themeId)
+        public IList<Comment> GetComments(long themeId)
         {
             var comments = _context.Comments.Include(x=>x.User).Include(x=>x.Theme)
-                .Where(x=>x.ThemeId.Equals(themeId)).Select(x => new ComplexComment()
-            {
-                EMail = x.User.Email,
-                ThemeName = x.Theme.Name,
-                Content = x.Content,
-                DateComment = x.DateComment.ToString("dd/MM/yyyy HH:mm")
-            }).OrderByDescending(x => x.DateComment).Take(10).ToList();
+                .Where(x=>x.ThemeId.Equals(themeId)).OrderByDescending(x => x.DateComment).Take(10).ToList();
 
             return comments;
         }
 
-        public IList<ComplexComment> GetComments(int page, long themeId)
+        public IList<Comment> GetComments(int page, long themeId)
         {
             var comments = _context.Comments.Include(x=>x.Theme).Include(x=>x.User)
-                .Where(x => x.ThemeId.Equals(themeId)).Select(x => new ComplexComment()
-            {
-                EMail = x.User.Email,
-                ThemeName = x.Theme.Name,
-                Content = x.Content,
-                DateComment = x.DateComment.ToString("dd/MM/yyyy HH:mm")
-            }).OrderByDescending(x => x.DateComment).Skip(page * 10).Take(10).ToList();
+                .Where(x => x.ThemeId.Equals(themeId)).OrderByDescending(x => x.DateComment).Skip(page * 10).Take(10).ToList();
 
             return comments;
         }

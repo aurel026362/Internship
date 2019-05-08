@@ -11,9 +11,9 @@ using System.Threading.Tasks;
 
 namespace App.Web.Models.ComplexViewModel.Admin
 {
-    public class AdminDataViewModel
+    public class UserProfileListViewModel
     {
-        public CurrentUserDataViewModel Data { get; set; }
+        public UserProfileViewModel Data { get; set; }
         public IList<UserDetailedViewModel> Users { get; set; }
     }
 }

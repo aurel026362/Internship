@@ -1,4 +1,4 @@
-﻿@model App.Web.Models.ComplexViewModel.General.CurrentUserDataViewModel
+﻿@model App.Web.Models.ComplexViewModel.General.UserProfileViewModel
 <style>
     .my-comment {
         margin: 10px;
@@ -51,7 +51,7 @@
 <script>
     $("#submitComment").click(function () {
         $.ajax({
-            url: "/Intern/SubmitComment",
+            url: "/Comment/SubmitComment",
             type: "POST",
             data: ({ comment: $("#myComment").val(), themeId: $("#theme").val() }),
             datatype: "html",
@@ -72,7 +72,7 @@
     $("#MoreComments").click(function () {
         pageNr++;
         $.ajax({
-            url: "/Intern/GetMoreComments",
+            url: "/Comment/GetMoreComments",
             type: "GET",
             data: ({ themeId: $("#theme").val() , pageNr: pageNr}),
             datatype: "application/json",

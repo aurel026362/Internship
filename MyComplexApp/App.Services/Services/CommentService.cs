@@ -4,6 +4,7 @@ using App.Services.Interfaces.IServices;
 using AutoMapper;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace App.Services.Services
@@ -32,26 +33,41 @@ namespace App.Services.Services
 
         public IList<CommentDto> GetComments()
         {
-            var list = _commentRepository.GetComments();
-            var listDto = _mapper.Map<IList<CommentDto>>(list);
-
-            return listDto;
+            var list = _commentRepository.GetComments().Select(x => new CommentDto()
+            {
+                EMail = x.User.Email,
+                ThemeName = x.Theme.Name,
+                Content = x.Content,
+                DateComment = x.DateComment.ToString("dd/mm/yyyy")
+            }).ToList();
+            
+            return list;
         }
 
         public IList<CommentDto> GetComments(long themeId)
         {
-            var list = _commentRepository.GetComments(themeId);
-            var listDto = _mapper.Map<IList<CommentDto>>(list);
-
-            return listDto;
+            var list = _commentRepository.GetComments(themeId).Select(x => new CommentDto()
+            {
+                EMail = x.User.Email,
+                ThemeName = x.Theme.Name,
+                Content = x.Content,
+                DateComment = x.DateComment.ToString("dd/mm/yyyy")
+            }).ToList();
+            
+            return list;
         }
 
         public IList<CommentDto> GetComments(int page, long themeId)
         {
-            var list = _commentRepository.GetComments(page, themeId);
-            var listDto = _mapper.Map<IList<CommentDto>>(list);
+            var list = _commentRepository.GetComments(page, themeId).Select(x => new CommentDto()
+            {
+                EMail = x.User.Email,
+                ThemeName = x.Theme.Name,
+                Content = x.Content,
+                DateComment = x.DateComment.ToString("dd/mm/yyyy")
+            }).ToList();
 
-            return listDto;
+            return list;
         }
     }
 }

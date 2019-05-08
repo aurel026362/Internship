@@ -70,8 +70,8 @@ namespace App.Web.Controllers
         {
             long currentId = Convert.ToInt32(_signInManager.UserManager.GetUserId(User));
 
-            var person = new AdminDataViewModel();
-            person.Data = new CurrentUserDataViewModel();
+            var person = new UserProfileListViewModel();
+            person.Data = new UserProfileViewModel();
             var user = _userService.GetUserById(currentId);
             person.Data.PersonalData = _mapper.Map<UserDetailedViewModel>(user);
 
@@ -114,7 +114,7 @@ namespace App.Web.Controllers
             //user.Role = roles[0];
 
             //var alldatauser = new UserAndMarksViewModel();
-            var userdata = new CurrentUserDataViewModel();
+            var userdata = new UserProfileViewModel();
             userdata.PersonalData = user;
             userdata.Marks = new MarksViewModel();
 
@@ -134,23 +134,5 @@ namespace App.Web.Controllers
 
             return View(userdata);
         }
-
-        [HttpPost]
-        public IActionResult DeleteUser(long userId)
-        {
-            //_userService.DeleteUser(userId);
-
-            return RedirectToAction("Index", "~/Admin/Index");
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Edit(UserDetailedViewModel userViewModel)
-        {
-            var userDto = _mapper.Map<UserDetailedDto>(userViewModel);
-            _userService.UpdateUser(userDto);
-
-            return Redirect("~/Admin/Index");
-        }
-
     }
 }

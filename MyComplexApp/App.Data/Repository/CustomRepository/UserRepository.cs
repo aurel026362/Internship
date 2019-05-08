@@ -36,37 +36,34 @@ namespace App.Data.Repository.ComplexRepository
 
         public IList<User> GetInterns()
         {
-            var list = _context.Users.Join(_context.Interns,
-                user => user.Id,
-                intern => intern.UserId,
-                (user, intern) => user).ToList();
-            return list;
+            var interns = _context.Interns.Include(x => x.User).Select(x => new User()
+            {
+                Id = x.Id,
+                FirstName = x.User.FirstName,
+                LastName = x.User.LastName,
+                Email = x.User.Email
+            }).ToList();
+            return interns;
         }
 
         public IList<User> GetMenthors()
         {
-            //    var list = _context.Users.Join(_context.Menthors,
-            //        user => user.Id,
-            //        menthor => menthor.UserId,
-            //        (user, menthor) => user).ToList();
-
-            var list2 = _context.Menthors.Select(x => x.User).ToList();
-
-            return list2;
+            var menthors = _context.Menthors.Select(x => x.User).ToList();
+            return menthors;
         }
 
         public IList<User> GetInternsAndMenthors()
         {
             var interns = GetInterns();
             var menthors = GetMenthors();
-            var list = interns;
+            var users = interns;
 
             foreach (var item in menthors)
             {
-                list.Add(item);
+                users.Add(item);
             }
 
-            return list;
+            return users;
         }
 
         //public long Count => _context.Users.Count();

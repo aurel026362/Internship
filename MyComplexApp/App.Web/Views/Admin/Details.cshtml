@@ -1,4 +1,4 @@
-﻿@model App.Web.Models.ComplexViewModel.General.CurrentUserDataViewModel
+﻿@model App.Web.Models.ComplexViewModel.General.UserProfileViewModel
 
 @{
     ViewData["Title"] = "Details";
@@ -159,49 +159,75 @@
     </div>
 </div>
 <script>
-    $("#userDeleting").bind("click", function () {
-        $.ajax({
-            url: "/Admin/DeleteUser",
-            type: "POST",
-            datatype: "application/json",
-            data: ({userId:@Model.PersonalData.Id})
-        });
-    });
+    $(document).ready(function () {
+        $("#internScript").remove();
 
-    $("#sendform").bind("click", function () {
-        var obj = ({
-            Id: $("#userId").val(),
-            FirstName: $("#fname").val(),
-            LastName: $("#lname").val(),
-            DateOfBirth: $("#datebirth").val(),
-            PhoneNumber: $("#phonenumber").val(),
-            EMail: $("#email").val(),
-            PhoneNumberConfirmed: $("#phoneconfirmed").val(),
-            EMailConfirmed: $("#emailconfirmed").val(),
-            TwoFactorEnabled: $("#twofactorenabled").val(),
-            AccessFailedCount: $("#accessfailed").val()
+        $("#userDeleting").bind("click", function () {
+            $.ajax({
+                url: "/User/DeleteUser",
+                type: "POST",
+                datatype: "application/json",
+                data: ({ userId:@Model.PersonalData.Id})
+            });
         });
-        $.ajax({
-            url: "/Admin/Edit",
-            type: "post",
-            datatype: "application/json",
-            data: obj,
-            success: function () {
 
-                $("#_fname").text($("#fname").val());
-                $("#_lname").text($("#lname").val());
-                $("#_datebirth").text($("#datebirth").val());
-                $("#_email").text($("#email").val());
-                $("#_phonenumber").text($("#phonenumber").val());
-                $("#_emailconfirmed").val($("#emailconfirmed").val());
-                $("#_phoneconfirmed").val($("#phoneconfirmed").val());
-                $("#_twofactoredenabled").val($("#twofactorenabled").val());
-                $("#_accessfailed").text($("#accessfailed").val());
+        $("#sendform").bind("click", function () {
+            var obj = ({
+                Id: $("#userId").val(),
+                FirstName: $("#fname").val(),
+                LastName: $("#lname").val(),
+                DateOfBirth: $("#datebirth").val(),
+                PhoneNumber: $("#phonenumber").val(),
+                EMail: $("#email").val(),
+                PhoneNumberConfirmed: $("#phoneconfirmed").prop("checked"),
+                EMailConfirmed: $("#emailconfirmed").prop("checked"),
+                TwoFactorEnabled: $("#twofactorenabled").prop("checked"),
+                AccessFailedCount: $("#accessfailed").val()
+            });
+            $.ajax({
+                url: "/User/Edit",
+                type: "post",
+                datatype: "application/json",
+                data: obj,
+                success: function () {
 
-            },
-            error: function () {
-                alert("ERROR");
-            }
+                    $("#_fname").text($("#fname").val());
+                    $("#_lname").text($("#lname").val());
+                    $("#_datebirth").text($("#datebirth").val());
+                    $("#_email").text($("#email").val());
+                    $("#_phonenumber").text($("#phonenumber").val());
+                    $("#_emailconfirmed").prop("checked", $("#emailconfirmed").prop("checked"));
+                    $("#_phoneconfirmed").prop("checked", $("#phoneconfirmed").prop("checked"));
+                    $("#_twofactorenabled").prop("checked", $("#twofactorenabled").prop("checked"));
+                    $("#_accessfailed").text($("#accessfailed").val());
+
+                },
+                error: function () {
+                    alert("ERROR");
+                }
+            });
         });
-    });
+
+        $("#module").bind("change", function () {
+            $.ajax({
+                url: "/Mark/GetThemeMarksByModuleUser",
+                type: "GET",
+                data: ({ moduleId: $("#module").val(), userId:"@Model.PersonalData.Id"}),
+                datatype: "json",
+                success: function (data) {
+
+                    $("#tableBody > tbody").empty();
+                    $.each(data, function (i, item) {
+                        $('<tr>').append(
+                            $('<td>').text(item.themeName),
+                            $('<td>').html("<span class='tmakrs'>" + item.mark + "</span>"),
+                            $('<td>').text(item.comment)
+                        ).appendTo('#tableBody');
+                    });
+                    avg();
+                }
+            });
+        });
+
+        });
 </script>

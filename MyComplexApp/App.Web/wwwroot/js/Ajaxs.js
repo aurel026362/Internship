@@ -14,7 +14,7 @@ $(document).ready(function () {
             DateOfBirth: $("#DateBirth").val()
         });
         $.ajax({
-            url: "/Intern/EditData",
+            url: "/User/EditData",
             type: "POST",
             data: obj,
             datatype: "json",

@@ -11,5 +11,10 @@ namespace App.Data.Domain.DomainModels.Concrete
 
         public Module Module { get; set; }
         public ICollection<ExamMark> ExamMarks { get; set; }
+
+        public object Select(Func<object, object> p)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

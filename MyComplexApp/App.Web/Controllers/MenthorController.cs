@@ -66,7 +66,7 @@ namespace App.Web.Controllers
         {
             long currentId = Convert.ToInt32(_signInManager.UserManager.GetUserId(User));
 
-            var person = new CurrentUserDataViewModel();
+            var person = new UserProfileViewModel();
             var user = _userService.GetUserById(currentId);
             person.PersonalData = _mapper.Map<UserDetailedViewModel>(user);
             var currentTMarks = _themeMarkService.GetThemeMarks();
@@ -86,75 +86,6 @@ namespace App.Web.Controllers
             person.Comments = _mapper.Map<IList<CommentViewModel>>(comments);
 
             return View(person);
-        }
-
-        [HttpGet]
-        [Authorize(Roles = "Menthor, Admin")]
-        public async Task<IActionResult> GetTMarksSorted(string orderby, bool sorting)
-        {
-            var list = _themeMarkService.GetThemeMarksSorted(0, orderby, sorting);
-            var listViewModel = _mapper.Map<IList<ThemeMarkViewModel>>(list);
-
-            return Json(listViewModel);
-        }
-
-        [HttpGet]
-        [Authorize(Roles = "Menthor, Admin")]
-        public async Task<IActionResult> GetMoreTMarks(int page, string orderby, bool sorting)
-        {
-
-            var list = _themeMarkService.GetThemeMarksSorted(page, orderby, sorting);
-            var listViewModel = _mapper.Map<IList<ThemeMarkViewModel>>(list);
-            return Json(listViewModel);
-        }
-
-        [HttpGet]
-        [Authorize(Roles = "Menthor, Admin")]
-        public async Task<IActionResult> GetTMarksByEmail(string email)
-        {
-            var listDto = _themeMarkService.GetTMarksByEmail(email);
-            var list = _mapper.Map<IList<ThemeMarkViewModel>>(listDto);
-
-            return Json(list);
-        }
-
-        [HttpGet]
-        [Authorize(Roles = "Menthor, Admin")]
-        public async Task<IActionResult> GetTMarksByModule(long moduleId, string orderby, bool sorting)
-        {
-            IList<ThemeMarkViewModel> list = null;
-
-            if (moduleId != 0)
-            {
-                var listDto = _themeMarkService.GetThemeMarksByModuleId(moduleId);
-                list = _mapper.Map<IList<ThemeMarkViewModel>>(listDto);
-            }
-            else
-            {
-                var listDto = _themeMarkService.GetThemeMarksSorted(0, orderby, sorting);
-                list = _mapper.Map<IList<ThemeMarkViewModel>>(listDto);
-            }
-
-            return Json(list);
-        }
-
-        [HttpGet]
-        [Authorize(Roles = "Menthor, Admin")]
-        public async Task<IActionResult> GetTMarksByUserId(long userId)
-        {
-            var listDto = _themeMarkService.GetThemeMarksByUserId(userId);
-            var list = _mapper.Map<IList<ThemeMarkViewModel>>(listDto);
-            return PartialView(list);
-        }
-
-        [HttpGet]
-        [Authorize(Roles ="Menthor, Admin")]
-        public async Task<IActionResult> GetThemesByModuleId(long moduleId)
-        {
-            var listDto = _themeService.GetThemesByModuleId(moduleId);
-            var list = _mapper.Map<IList<ThemeViewModel>>(listDto);
-
-            return Json(list);
         }
     }
 }

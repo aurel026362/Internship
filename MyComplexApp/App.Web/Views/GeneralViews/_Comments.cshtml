@@ -1,4 +1,4 @@
-﻿@model App.Web.Models.ComplexViewModel.General.CurrentUserDataViewModel
+﻿@model App.Web.Models.ComplexViewModel.General.UserProfileViewModel
 @{
     ViewData["Title"] = "_Comments";
 }
@@ -75,7 +75,7 @@
 
          $("#theme").bind("change", function () {
         $.ajax({
-            url: "/Intern/GetComments",
+            url: "/Comment/GetComments",
             type: "Get",
             data: ({ themeId: $('#theme').val() }),
             datatype: "json",
@@ -100,7 +100,7 @@
 
         $("#submitComment").click(function () {
             $.ajax({
-                url: "/Intern/SubmitComment",
+                url: "/Comment/SubmitComment",
                 type: "POST",
                 data: ({ comment: $("#myComment").val(), themeId: $("#theme").val() }),
                 datatype: "html",
@@ -120,7 +120,7 @@
         $("#MoreComments").click(function () {
             pageNr++;
             $.ajax({
-                url: "/Intern/GetMoreComments",
+                url: "/Comment/GetMoreComments",
                 type: "GET",
                 data: ({ themeId: $("#theme").val(), pageNr: pageNr }),
                 datatype: "application/json",

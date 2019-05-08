@@ -1,6 +1,5 @@
 ﻿using App.Data.Context;
 using App.Data.Domain.DomainModels.Concrete;
-using App.Data.Interfaces.Abstractions;
 using App.Data.Interfaces.RepositoryInterfaces.IComplexRepository;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -20,25 +19,16 @@ namespace App.Data.Repository.ComplexRepository
             _context = ctxt;
         }
 
-        public ComplexExam GetExam(long moduleId)
+        public Exam GetExam(long moduleId)
         {
-            var result = _context.Exams.Include(x=>x.Module).Where(x => x.ModuleId.Equals(moduleId))
-                .Select(x => new ComplexExam()
-                {
-                    ModuleName = x.Module.Name,
-                    Date = x.Date
-                }).FirstOrDefault();
+            var result = _context.Exams.Include(x=>x.Module).Where(x => x.ModuleId.Equals(moduleId)).FirstOrDefault();
 
             return result;
         }
 
-        public IList<ComplexExam> GetExams()
+        public IList<Exam> GetExams()
         {
-            var list = _context.Exams.Include(x=>x.Module).Select(x => new ComplexExam()
-            {
-                ModuleName = x.Module.Name,
-                Date = x.Date
-            }).ToList();
+            var list = _context.Exams.Include(x=>x.Module).ToList();
 
             return list;
         }

@@ -69,7 +69,7 @@ namespace App.Web.Controllers
         {
             long currentId = Convert.ToInt32(_signInManager.UserManager.GetUserId(User));
 
-            var person = new CurrentUserDataViewModel();
+            var person = new UserProfileViewModel();
             var user = _userService.GetUserById(currentId);
             person.PersonalData = _mapper.Map<UserDetailedViewModel>(user);
             var currentTMarks = _themeMarkService.GetThemeMarksByUserId(currentId);
@@ -89,98 +89,6 @@ namespace App.Web.Controllers
             person.Comments = _mapper.Map<IList<CommentViewModel>>(comments);
 
             return View(person);
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> GetMarks(long moduleId, long userId)
-        {
-            //var currentId = Convert.ToInt32(_signInManager.UserManager.GetUserId(User));
-
-            IList<ThemeMarkViewModel> tmarks;
-
-            if (!moduleId.Equals(0))
-            {
-                var list = _themeMarkService.GetThemeMarks(userId, moduleId);
-                tmarks = _mapper.Map<IList<ThemeMarkViewModel>>(list);
-            }
-            else
-            {
-                var list = _themeMarkService.GetThemeMarksByUserId(userId);
-                tmarks = _mapper.Map<IList<ThemeMarkViewModel>>(list);
-            }
-
-            var examMarksDto = _examMarkService.GetExamMarksByUserId(userId);
-
-            var marks = new MarksViewModel();
-            marks.ThemeMarks = tmarks;
-            marks.ExamMarks = _mapper.Map<IList<ExamMarkViewModel>>(examMarksDto);
-            return Json(marks);
-            //return PartialView("_GetMarks", tmarks);
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> GetComments(long themeId)
-        {
-            var currentId = Convert.ToInt32(_signInManager.UserManager.GetUserId(User));
-            var currentUser = _userService.GetUserById(currentId);
-
-            var data = new CurrentUserDataViewModel();
-
-            var personaldata = _userService.GetUserById(currentId);
-            data.PersonalData = _mapper.Map<UserDetailedViewModel>(personaldata);
-
-            var comments = _commentService.GetComments(themeId);
-            data.Comments = _mapper.Map<IList<CommentViewModel>>(comments);
-
-            //return PartialView("../GeneralViews/_GetComments", data);
-            return Json(data);
-        }
-
-        [HttpGet]
-        public ActionResult GetMoreComments(long themeId, int pageNr)
-        {
-            var commentsDto = _commentService.GetComments(pageNr, themeId);
-            var comments = _mapper.Map<IList<CommentViewModel>>(commentsDto);
-            //var result = JsonConvert.SerializeObject(comments);
-            //return Content(result, "application/json");
-            return Json(comments);
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> SubmitComment(string comment, long themeId)
-        {
-            var currentId = Convert.ToInt32(_signInManager.UserManager.GetUserId(User));
-            _commentService.AddComment(currentId, themeId, comment);
-            return StatusCode(200);
-        }
-
-        //[HttpPost]
-        //public async Task<IActionResult> EditData(string fname, string lname, string phone, DateTime dbirth)
-        //{
-        //    //if (!ModelState.IsValid) { }
-        //    long currentId = Convert.ToInt32(_signInManager.UserManager.GetUserId(User));
-        //    _userService.UpdateUser(currentId, fname, lname, phone, dbirth);
-        //    //var user = await _context.Users.FindAsync(currentId);
-        //    //user.FirstName = fname;
-        //    //user.LastName = lname;
-        //    //user.PhoneNumber = phone;
-        //    //user.DateOfBirth = dbirth;
-        //    //_context.Update(user);
-        //    //_context.SaveChanges();
-        //    return StatusCode(200);
-        //}
-
-        [HttpPost]
-        public async Task<IActionResult> EditData(UserViewModel model)
-        {
-            long currentId = Convert.ToInt32(_signInManager.UserManager.GetUserId(User));
-            var user = _userService.GetUserById(currentId);
-            user.FirstName = model.FirstName;
-            user.LastName = model.LastName;
-            user.DateOfBirth = model.DateOfBirth;
-            user.PhoneNumber = model.PhoneNumber;
-            //_userService.Save();
-            return StatusCode(200);
         }
     }
 }

@@ -4,6 +4,7 @@ using App.Services.Interfaces.IServices;
 using AutoMapper;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace App.Services.Services
@@ -22,17 +23,24 @@ namespace App.Services.Services
         public ExamDto GetExam(long moduleId)
         {
             var result = _examRepository.GetExam(moduleId);
-            var resultDto = _mapper.Map<ExamDto>(result);
+            var resultDto = new ExamDto()
+            {
+                ModuleName = result.Module.Name,
+                Date = result.Date
+            };
 
             return resultDto;
         }
 
         public IList<ExamDto> GetExams()
         {
-            var list = _examRepository.GetExams();
-            var listDto = _mapper.Map<IList<ExamDto>>(list);
+            var list = _examRepository.GetExams().Select(x => new ExamDto()
+            {
+                ModuleName = x.Module.Name,
+                Date = x.Date
+            }).ToList();
 
-            return listDto;
+            return list;
         }
     }
 }

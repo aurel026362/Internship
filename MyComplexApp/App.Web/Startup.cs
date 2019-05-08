@@ -51,21 +51,21 @@ namespace App.Web
             //services.AddScoped<IRepository<Group>, GenericRepository<Group>>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ICommentRepository, CommentRepository>();
-            services.AddScoped<IEMarkRepository, EMarkRepository>();
+            services.AddScoped<IExamMarkRepository, ExamMarkRepository>();
             services.AddScoped<IExamRepository, ExamRepository>();
             services.AddScoped<IThemeRepository, ThemeRepository>();
-            services.AddScoped<ITMarkRepository, TMarkRepository>();
+            services.AddScoped<IThemeMarkRepository, ThemeMarkRepository>();
             services.AddScoped<IGenericRepository<Group>, GenericRepository<Group>>();
             services.AddScoped<IGenericRepository<Module>, GenericRepository<Module>>();
 
             //add service dependence
             services.AddScoped<ICommentService, CommentService>();
-            services.AddScoped<IEMarkService, EMarkService>();
+            services.AddScoped<IEMarkService, ExamMarkService>();
             services.AddScoped<IExamService, ExamService>();
             services.AddScoped<IGroupService, GroupService>();
             services.AddScoped<IModuleService, ModuleService>();
             services.AddScoped<IThemeService, ThemeService>();
-            services.AddScoped<ITMarkService, TMarkService>();
+            services.AddScoped<ITMarkService, ThemeMarkService>();
             services.AddScoped<IUserService, UserService>();
 
 

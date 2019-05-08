@@ -1,9 +1,9 @@
-﻿@model App.Web.Models.ComplexViewModel.General.CurrentUserDataViewModel
+﻿@model App.Web.Models.ComplexViewModel.General.UserProfileViewModel
 @{
     ViewData["Title"] = "_Marks";
 }
 
-<div class="tab-pane fade show active row" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+<div class="tab-pane fade show active" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
     <nav>
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
             <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#divTMarks" role="tab" aria-controls="nav-home" aria-selected="true">Theme Marks</a>
@@ -60,6 +60,19 @@
                             }
                         </tbody>
                     </table>
+                    <div class="text-center">
+                        <div class="col-12">
+                            <canvas id="mychart"></canvas>
+                        </div>
+                        <div class="row">
+                            <p class="text-center text-muted">
+                                Coding Just Got Easy!
+
+                                Free Plugin for IntelliJ,
+                                Android Studio, and Eclipse: Write fast & error free code with AI code completions.
+                            </p>
+                        </div>
+                    </div>
                 </div>
                 @*@await Html.PartialAsync("../Intern/_GetMarks", Model.Marks.ThemeMarks)*@
             </div>
@@ -107,39 +120,19 @@
             </div>
         </div>
     </div>
-
-    <div class="text-center">
-        <div class="row">
-            <div class="col-md-4 col-xs-12">
-                <canvas id="mychart"></canvas>
-            </div>
-            <div class="col-md-6 col-xs-12">
-                <canvas id="mychart2"></canvas>
-            </div>
-        </div>
-        <div class="row">
-            <p class="text-center text-muted">
-                Coding Just Got Easy!
-
-                Free Plugin for IntelliJ,
-                Android Studio, and Eclipse: Write fast & error free code with AI code completions.
-            </p>
-        </div>
-        <div class="row">
-            <canvas id="mychart3"></canvas>
-            <script src="~/js/Chart.min.js"></script>
-        </div>
-    </div>
 </div>
 <script src="~/js/Calculate.js"></script>
-<script>
+<script src="~/js/ChartsInterns.js"></script>
+<script id="internScript">
     $(document).ready(function () {
-        
+
+        AjaxGetMarks();
+
         $("#module").bind("change", function () {
             $.ajax({
-                url: "/Intern/GetMarks",
+                url: "/Mark/GetMarks",
                 type: "GET",
-                data: ({ moduleId: $("#module").val(), userId:@Model.PersonalData.Id}),
+                data: ({ moduleId: $("#module").val() }),
                 datatype: "json",
                 success: function (data) {
 
@@ -154,9 +147,10 @@
                     avg();
                 }
             });
+            AjaxGetMarks();
         });
-
         avg();
     });
+
+
 </script>
-<script src="~/js/javsc.js"></script>

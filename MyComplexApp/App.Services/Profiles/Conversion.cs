@@ -1,6 +1,5 @@
 ﻿using App.Data.Domain.DomainModels.Concrete;
 using App.Data.Domain.DomainModels.Identity;
-using App.Data.Interfaces.Abstractions;
 using App.Services.Dtos.DTOs.Comment;
 using App.Services.Dtos.DTOs.Exam;
 using App.Services.Dtos.DTOs.ExamMark;
@@ -22,13 +21,14 @@ namespace App.Services.Profiles
     {
         public Conversion()
         {
-            CreateMap<ComplexComment, CommentDto>().ReverseMap();
-            CreateMap<ComplexExam, ExamDto>().ReverseMap();
+            CreateMap<Comment, CommentDto>().ReverseMap();
+            CreateMap<Exam, ExamDto>().ReverseMap();
             CreateMap<Module, ModuleDto>().ReverseMap();
-            CreateMap<ComplexTheme, ThemeDto>().ReverseMap();
+            CreateMap<Theme, ThemeDto>().ReverseMap();
 
-            CreateMap<ComplexEMark, ExamMarkDto>().ReverseMap();
-            CreateMap<ComplexTMark, ThemeMarkDto>().ReverseMap();
+            CreateMap<ExamMark, ExamMarkDto>().ReverseMap();
+            CreateMap<ThemeMark, ThemeMarkDto>().ReverseMap();
+            CreateMap<ThemeMark, AddThemeMarkDto>().ReverseMap();
 
             CreateMap<Group, GroupDto>().ReverseMap();
             CreateMap<User, UserDto>().ReverseMap();

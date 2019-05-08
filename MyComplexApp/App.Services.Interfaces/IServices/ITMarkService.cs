@@ -13,8 +13,6 @@ namespace App.Services.Interfaces.IServices
         IList<ThemeMarkDto> GetThemeMarks();
         IList<ThemeMarkDto> GetThemeMarksSorted(int page, string orderby, bool sorting);
         IList<ThemeMarkDto> GetTMarksByEmail(string email);
-        double GetAvgTMarks();
-        double GetAvgTMarksByUserId(long userId);
-        double GetAvgTMarksByModuleId(long moduleId);
+        string AddOrUpdateThemeMark(AddThemeMarkDto themeMark);
     }
 }

@@ -4,6 +4,7 @@ using App.Services.Interfaces.IServices;
 using AutoMapper;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace App.Services.Services
@@ -21,26 +22,47 @@ namespace App.Services.Services
 
         public IList<ThemeDto> GetThemes()
         {
-            var list = _themeRepository.GetThemes();
-            var listDto = _mapper.Map<IList<ThemeDto>>(list);
+            var list = _themeRepository.GetThemes().Select(x => new ThemeDto()
+            {
+                Id = x.Id,
+                Name = x.Name,
+                StartDate = x.StartDate,
+                Source = x.Source,
+                ModuleName = x.Module.Name,
+                MenthorEMail = x.Menthor.User.Email
+            }).ToList();
 
-            return listDto;
+            return list;
         }
 
         public IList<ThemeDto> GetThemesByMenthorId(long menthorId)
         {
-            var list = _themeRepository.GetThemesByMenthorId(menthorId);
-            var listDto = _mapper.Map<IList<ThemeDto>>(list);
+            var list = _themeRepository.GetThemesByMenthorId(menthorId).Select(x => new ThemeDto()
+            {
+                Id = x.Id,
+                Name = x.Name,
+                StartDate = x.StartDate,
+                Source = x.Source,
+                ModuleName = x.Module.Name,
+                MenthorEMail = x.Menthor.User.Email
+            }).ToList();
 
-            return listDto;
+            return list;
         }
 
         public IList<ThemeDto> GetThemesByModuleId(long moduleId)
         {
-            var list = _themeRepository.GetThemesByModuleId(moduleId);
-            var listDto = _mapper.Map<IList<ThemeDto>>(list);
+            var list = _themeRepository.GetThemesByModuleId(moduleId).Select(x => new ThemeDto()
+            {
+                Id = x.Id,
+                Name = x.Name,
+                StartDate = x.StartDate,
+                Source = x.Source,
+                ModuleName = x.Module.Name,
+                MenthorEMail = x.Menthor.User.Email
+            }).ToList();
 
-            return listDto;
+            return list;
         }
     }
 }

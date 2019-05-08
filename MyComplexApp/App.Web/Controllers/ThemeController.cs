@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using App.Services.Interfaces.IServices;
+using App.Web.Model.ViewModel.ThemeViewModel;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace App.Web.Controllers
@@ -19,9 +21,14 @@ namespace App.Web.Controllers
             _mapper = mapper;
         }
 
-        public IActionResult Index()
+        [HttpGet]
+        [Authorize(Roles = "Menthor, Admin")]
+        public async Task<IActionResult> GetThemesByModuleId(long moduleId)
         {
-            return View();
+            var listDto = _themeService.GetThemesByModuleId(moduleId);
+            var list = _mapper.Map<IList<ThemeViewModel>>(listDto);
+
+            return Json(list);
         }
     }
 }

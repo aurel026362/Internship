@@ -1,4 +1,4 @@
-﻿@model App.Web.Models.ComplexViewModel.General.CurrentUserDataViewModel
+﻿@model App.Web.Models.ComplexViewModel.General.UserProfileViewModel
 @{
     ViewData["Title"] = "_Marks";
 }
@@ -21,6 +21,7 @@
                         <div class="md-form mb-4">
                             Module
                             <select class="form-control" id="addmarkmodule">
+                                <option value="-1">Chose Module...</option>
                                 @foreach (var item in Model.Modules)
                                 {
                                     <option value="@item.Id">@item.Name</option>
@@ -30,10 +31,13 @@
                         <div class="md-form mb-4">
                             Theme
                             <select class="form-control" id="addmarktheme">
-                                @*@foreach (var item in Model.Themes)
-                                {
-                                    <option>@item.Name</option>
-                                }*@
+                                <option value="-1">Chose Theme...</option>
+                            </select>
+                        </div>
+                        <div class="md-form mb-4">
+                            Intern
+                            <select class="form-control" id="addmarkintern">
+                                <option value="-1">Chose Intern...</option>
                             </select>
                         </div>
                         <div class="md-form mb-4">
@@ -52,9 +56,11 @@
                 </div>
             </div>
         </div>
-
-        <div class="col-3" class="text-right">
-            <span class="text-muted"><i class="fas fa-search"></i>Search: </span> <input type="text" id="search" />
+        <div class="col-1">
+            <span class="text-muted"><i class="fas fa-search"></i>Search: </span>
+        </div>
+        <div class="col-2" class="text-right">
+             <input type="text" class="form-control" id="search" />
         </div>
     </div>
     <select id="module" class="form-control">
@@ -168,144 +174,183 @@
 <script src="~/js/Calculate.js"></script>
 
 <script>
-    var ascending = true;
-    var page = 0;
-    var orderbyprop = "email";
+    $(document).ready(function () {
+        var ascending = true;
+        var page = 0;
+        var orderbyprop = "email";
 
-    avg();
+        avg();
 
-    $("#addmarkmodule").bind("change", function () {
+        $("#addMarkConfirm").bind("click", function () {
+            var mark = ({
+                themeId: $("#addmarktheme").val(),
+                internId: $("#addmarkintern").val(),
+                mark: $("#addmark").val(),
+                comment: $("#addmarkcomment").val()
+            });
+
+            $.ajax({
+                url: "/Mark/AddOrUpdateThemeMark",
+                type: "POST",
+                datatype: "json",
+                data: (mark),
+                success: function (result) {
+                    
+                },
+                error: function () {
+                    alert("ERROR!");
+                }
+            });
+        });
+
         $.ajax({
-            url: "/Menthor/GetThemesByModuleId",
+            url: "/User/GetInterns",
             type: "GET",
             datatype: "json",
-            data: ({ moduleId: $("#addmarkmodule").val() }),
             success: function (data) {
-                $("#addmarktheme").empty();
+                $("#addmarkintern").empty();
                 $.each(data, function (i, item) {
-                    console.log(item);
-                    $("#addmarktheme").append(new Option((item.name), item.id)/*"<select value='" + item.id + "'>" + item.themeName + "</option>"*/);
+                    $("#addmarkintern").append(new Option((item.eMail), item.id));
                 });
             },
             error: function () {
                 alert("Error");
             }
         });
-    });
 
-    $("#module").bind("change", function () {
-        $.ajax({
-            url: "/Menthor/GetTMarksByModule",
-            type: "GET",
-            datatype: "json",
-            data: ({ moduleId: $("#module").val(), orderby: orderbyprop, sorting: ascending}),
-            success: function (data) {
-                page = 0;
-                try {
-                    $("#warningMarks").remove();
-                    $("#moreTMarks").show();
+        $("#addmarkmodule").bind("change", function () {
+            $.ajax({
+                url: "/Theme/GetThemesByModuleId",
+                type: "GET",
+                datatype: "json",
+                data: ({ moduleId: $("#addmarkmodule").val() }),
+                success: function (data) {
+                    $("#addmarktheme").empty();
+                    $.each(data, function (i, item) {
+                        $("#addmarktheme").append(new Option((item.name), item.id));
+                    });
+                },
+                error: function () {
+                    alert("Error");
                 }
-                catch (Exception) {
+            });
 
-                }
-                $("#tableBody > tbody").empty();
-                AppendToTable(data);
-                avg();
+        });
+
+        $("#module").bind("change", function () {
+            $.ajax({
+                url: "/Mark/GetThemeMarksByModule",
+                type: "GET",
+                datatype: "json",
+                data: ({ moduleId: $("#module").val(), orderby: orderbyprop, sorting: ascending }),
+                success: function (data) {
+                    page = 0;
+                    try {
+                        $("#warningMarks").remove();
+                        $("#moreTMarks").show();
+                    }
+                    catch (Exception) {
+
+                    }
+                    $("#tableBody > tbody").empty();
+                    AppendToTable(data);
+                    avg();
                 @*$('<tr>').append(
                     $('<td colspan="2">').html('<b>AVG Marks: </b>'),
                     $('<td>').html('<span class= "text-muted" > <b>@Model.Marks.AvgTMarks</b></span >'),
                     $('<td>').html('')
                 ).appendTo("#tableBody");*@
-            },
-            error: function () {
+                },
+                error: function () {
 
-            }
+                }
+            });
         });
-    });
 
-    $("#search").bind("change", function () {
-        $.ajax({
-            url: "/Menthor/GetTMarksByEmail",
-            type: "GET",
-            datatype: "json",
-            data: ({ email: $("#search").val() }),
-            success: function (data) {
-                page = 0;
-                try {
-                    $("#warningMarks").remove();
+        $("#search").bind("change", function () {
+            $.ajax({
+                url: "/Mark/GetThemeMarksByEmail",
+                type: "GET",
+                datatype: "json",
+                data: ({ email: $("#search").val() }),
+                success: function (data) {
+                    page = 0;
+                    try {
+                        $("#warningMarks").remove();
+                        $("#moreTMarks").show();
+                    }
+                    catch (Exception) {
+
+                    }
+                    $("#tableBody > tbody").empty();
+                    AppendToTable(data);
+                    avg();
+                },
+                error: function () {
+
+                }
+            });
+        });
+
+        $(".property").bind("click", function () {
+            if (ascending == true) ascending = false;
+            else ascending = true;
+            orderbyprop = $(this).attr('id');
+            $.ajax({
+                url: "/Mark/GetThemeMarksSorted",
+                type: "GET",
+                datatype: "json",
+                data: ({ page: page, orderby: $(this).attr('id'), sorting: ascending }),
+                success: function (data) {
+                    try {
+                        $("#warningMarks").remove();
+                        $("#moreTMarks").show();
+                    }
+                    catch (Exception) {
+
+                    }
+                    page = 0;
                     $("#moreTMarks").show();
+                    $("#tableBody > tbody").empty();
+                    AppendToTable(data);
+                    avg();
+                },
+                error: function () {
+                    alert("Error");
                 }
-                catch (Exception) {
-
-                }
-                $("#tableBody > tbody").empty();
-                AppendToTable(data);
-                avg();
-            },
-            error: function () {
-
-            }
+            });
         });
-    });
 
-    $(".property").bind("click", function () {
-        if (ascending == true) ascending = false;
-        else ascending = true;
-        orderbyprop = $(this).attr('id');
-        $.ajax({
-            url: "/Menthor/GetTMarksSorted",
-            type: "GET",
-            datatype: "json",
-            data: ({ page: page, orderby: $(this).attr('id'), sorting: ascending }),
-            success: function (data) {
-                try {
-                    $("#warningMarks").remove();
-                    $("#moreTMarks").show();
+        $("#moreTMarks").bind("click", function () {
+            page++;
+            $.ajax({
+                url: "/Mark/GetMoreThemeMarks",
+                type: "GET",
+                datatype: "application/json",
+                data: ({ page: page, orderby: orderbyprop, sorting: ascending }),
+                success: function (data) {
+                    if (data.length < 10) {
+                        $("#moreTMarks").hide();
+                        $("#footerTMarks").append("<span id='warningMarks' class='text-danger'>Don't exist more Theme Mark</span>");
+                    }
+                    AppendToTable(data);
+                    avg();
+                },
+                error: function () {
+                    alert("Error");
                 }
-                catch (Exception) {
-
-                }
-                page = 0;
-                $("#moreTMarks").show();
-                $("#tableBody > tbody").empty();
-                AppendToTable(data);
-                avg();
-            },
-            error: function () {
-                alert("Error");
-            }
+            });
         });
-    });
 
-    $("#moreTMarks").bind("click", function () {
-        page++;
-        $.ajax({
-            url: "/Menthor/GetMoreTMarks",
-            type: "GET",
-            datatype: "application/json",
-            data: ({ page: page, orderby: orderbyprop, sorting: ascending }),
-            success: function (data) {
-                if (data.length < 10) {
-                    $("#moreTMarks").hide();
-                    $("#footerTMarks").append("<span id='warningMarks' class='text-danger'>Don't exist more Theme Mark</span>");
-                }
-                AppendToTable(data);
-                avg();
-            },
-            error: function () {
-                alert("Error");
-            }
-        });
+        function AppendToTable(data) {
+            $.each(data, function (i, item) {
+                $('<tr>').append(
+                    $('<td>').html("<a href='/Admin/Details/" + item.userId + "' ><i class='fas fa-user'></i> " + item.userEmail + "</a>"),
+                    $('<td>').text(item.themeName),
+                    $('<td>').html("<span class='tmakrs'>" + item.mark + "</span>"),
+                    $('<td>').text(item.comment)
+                ).appendTo('#tableBody');
+            });
+        }
     });
-
-    function AppendToTable(data) {
-                $.each(data, function (i, item) {
-                    $('<tr>').append(
-                        $('<td>').html("<a href='/Admin/Details/" + item.userId+"' ><i class='fas fa-user'></i> " + item.userEmail + "</a>"),
-                        $('<td>').text(item.themeName),
-                        $('<td>').html("<span class='tmakrs'>"+item.mark+"</span>"),
-                        $('<td>').text(item.comment)
-                    ).appendTo('#tableBody');
-                });
-    }
 </script>

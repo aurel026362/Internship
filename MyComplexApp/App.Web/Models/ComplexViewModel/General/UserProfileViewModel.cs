@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace App.Web.Models.ComplexViewModel.General
 {
-    public class CurrentUserDataViewModel
+    public class UserProfileViewModel
     {
         public UserDetailedViewModel PersonalData { get; set; }
         public ExamAndThemeViewModel ExamsAndThemes { get; set; }
