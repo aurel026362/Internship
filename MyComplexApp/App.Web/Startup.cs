@@ -47,7 +47,7 @@ namespace App.Web
             services.AddScoped<DbContext, MyAppContext>();
             //services.AddScoped<IUserService, UserService>();
             //services.AddScoped<IRepository<App.Data.Domain.DomainModels.Concrete.Module>, 
-              //  GenericRepository<App.Data.Domain.DomainModels.Concrete.Module>>();
+            //  GenericRepository<App.Data.Domain.DomainModels.Concrete.Module>>();
             //services.AddScoped<IRepository<Group>, GenericRepository<Group>>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ICommentRepository, CommentRepository>();
@@ -60,12 +60,12 @@ namespace App.Web
 
             //add service dependence
             services.AddScoped<ICommentService, CommentService>();
-            services.AddScoped<IEMarkService, ExamMarkService>();
+            services.AddScoped<IExamMarkService, ExamMarkService>();
             services.AddScoped<IExamService, ExamService>();
             services.AddScoped<IGroupService, GroupService>();
             services.AddScoped<IModuleService, ModuleService>();
             services.AddScoped<IThemeService, ThemeService>();
-            services.AddScoped<ITMarkService, ThemeMarkService>();
+            services.AddScoped<IThemeMarkService, ThemeMarkService>();
             services.AddScoped<IUserService, UserService>();
 
 
@@ -75,6 +75,25 @@ namespace App.Web
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+            
+            //-1-
+            //services.AddAuthentication(options =>
+            //{
+            //    //options.defaultchallengescheme = facebookdefaults.authenticationscheme;
+            //    //options.defaultsigninscheme = cookieauthenticationdefaults.authenticationscheme;
+            //    //options.defaultauthenticatescheme = cookieauthenticationdefaults.authenticationscheme;
+
+            //    options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            //    options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            //    options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            //}).AddFacebook(options =>
+            //{
+            //    options.AppId = "806605686400556";
+            //    options.AppSecret = "72dc791ece58b9bb0a6543d43a7af3c4";
+            //}).AddCookie(options =>
+            //{
+            //    options.LoginPath = "/auth/signin";
+            //});
 
             services.AddIdentity<User, Role>(opt =>
             {
@@ -84,9 +103,8 @@ namespace App.Web
                 opt.Password.RequireNonAlphanumeric = false;
                 opt.Password.RequireUppercase = false;
                 opt.Password.RequireNonAlphanumeric = false;
-
             }).AddEntityFrameworkStores<MyAppContext>().AddDefaultTokenProviders();
-            
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.AddTransient<IEmailSender, EmailSender>();
@@ -95,12 +113,12 @@ namespace App.Web
             options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
-        .AddRazorPagesOptions(options =>
-        {
+            .AddRazorPagesOptions(options =>
+            {
             options.AllowAreas = true;
             options.Conventions.AuthorizeAreaFolder("Identity", "/Account/Manage");
             options.Conventions.AuthorizeAreaPage("Identity", "/Account/Logout");
-        });
+            });
 
             services.ConfigureApplicationCookie(options =>
             {
@@ -110,16 +128,24 @@ namespace App.Web
             });
 
             //------
-            //services.AddAuthentication(options =>
+            //services.addauthentication(options =>
             //{
-            //    options.DefaultChallengeScheme = FacebookDefaults.AuthenticationScheme;
-            //    options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-            //    options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-            //}).AddFacebook(options =>
+            //    //options.defaultchallengescheme = facebookdefaults.authenticationscheme;
+            //    //options.defaultsigninscheme = cookieauthenticationdefaults.authenticationscheme;
+            //    //options.defaultauthenticatescheme = cookieauthenticationdefaults.authenticationscheme;
+
+            //    options.defaultauthenticatescheme = cookieauthenticationdefaults.authenticationscheme;
+            //    options.defaultchallengescheme = cookieauthenticationdefaults.authenticationscheme;
+            //    options.defaultsigninscheme = cookieauthenticationdefaults.authenticationscheme;
+            //}).addfacebook(options =>
             //{
-            //    options.AppId = "806605686400556";
-            //    options.AppSecret = "72dc791ece58b9bb0a6543d43a7af3c4";
+            //    options.appid = "806605686400556";
+            //    options.appsecret = "72dc791ece58b9bb0a6543d43a7af3c4";
+            //}).addcookie(options =>
+            //{
+            //    options.loginpath = "/auth/signin";
             //});
+
 
             //services.AddAuthentication().AddGoogle(options =>
             //{
@@ -127,8 +153,8 @@ namespace App.Web
             //    options.ClientSecret = Configuration["GoogleSecret"];
             //});
 
-            // using Microsoft.AspNetCore.Identity.UI.Services;
-            //services.AddSingleton<IEmailSender, EmailSender>();
+            //using Microsoft.AspNetCore.Identity.UI.Services;
+            services.AddSingleton<IEmailSender, EmailSender>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddAutoMapper();
         }
@@ -155,7 +181,7 @@ namespace App.Web
             app.UseCookiePolicy();
 
             app.UseAuthentication();
-            
+
 
             app.UseMvc(routes =>
             {

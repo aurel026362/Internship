@@ -31,6 +31,9 @@
     <link rel="stylesheet" href="~/css/UserStyle.css" />
     <link rel="stylesheet" href="~/js/Chart.min.css" />
 
+    <link rel="stylesheet" href="~/css/font.css" />
+    <link rel="stylesheet" href="~/css/header.css" />
+
     <script src="~/js/Chart.min.js"></script>
 
 
@@ -39,63 +42,75 @@
     @*<script src='~/Calendar/assets/js/jquery-1.10.2.js' type="text/javascript"></script>*@
     @*<script src='~/Calendar/assets/js/jquery-ui.custom.min.js' type="text/javascript"></script>*@
     <script src='~/Calendar/assets/js/fullcalendar.js' type="text/javascript"></script>
-
+    <style>
+        #nav-menu{
+            border:1px solid white;
+            border-radius:5px;
+            margin:10px;
+        }
+    </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
-        <div class="container-fluid">
-            <h4><a href="/" class="navbar-brad">Internship</a></h4>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
-                <span class="navbar-toggler-icon">
-                </span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto" id="menuId">
-                    <li class="nav-item">
-                        <a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a asp-area="" asp-controller="Home" asp-action="About" class="nav-link">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a asp-area="" asp-controller="Home" asp-action="Contacts" class="nav-link">Contacts</a>
-                    </li>
-                    @if (!SignInManager.IsSignedIn(User))
-                    {
-                        <li class="nav-item active isLoggedIn">
-                            <a href="~/identity/account/register" class="nav-link">Register</a>
+    <div id="nav-menu">
+        <nav class="navbar navbar-expand-md  sticky-top">
+            @*navbar-light bg-light*@
+            <div class="container-fluid">
+                <h4><a href="/" class="navbar-brad">Internship</a></h4>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+                    <span class="navbar-toggler-icon">
+                    </span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto" id="menuId">
+                        <li class="nav-item">
+                            <a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link">Home</a>
                         </li>
-                        <li class="nav-item active isLoggedIn">
-                            <a href="~/identity/account/login" class="nav-link">Log In</a>
+                        <li class="nav-item">
+                            <a asp-area="" asp-controller="Home" asp-action="About" class="nav-link">About</a>
                         </li>
-                    }
-                    else
-                    {
-                        <li class="nav-item active isLoggedOut">
-                            @if (User.IsInRole("Admin"))
-                            {
-                                <a href="~/Admin/Index" class="nav-link"><span class="text-primary">Hi @UserManager.GetUserName(User)</span></a>
-                            }
-                            else if (User.IsInRole("Menthor"))
-                            {
-                                <a href="~/Menthor/Index" class="nav-link"><span class="text-primary">Hi @UserManager.GetUserName(User)</span></a>
-                            }
-                            else if (User.IsInRole("Intern"))
-                            {
-                                <a href="~/Intern/Index" class="nav-link"><span class="text-primary">Hi @UserManager.GetUserName(User)</span></a>
-                            }
+                        <li class="nav-item">
+                            <a asp-area="" asp-controller="Home" asp-action="Contacts" class="nav-link">Contacts</a>
                         </li>
+                        @if (!SignInManager.IsSignedIn(User))
+                        {
+                            <li class="nav-item active isLoggedIn">
+                                <a href="~/identity/account/register" class="nav-link">Register</a>
+                            </li>
+                            <li class="nav-item active isLoggedIn">
+                                <a href="~/identity/account/login" class="nav-link">Log In</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="">
+                                <a href="#">@User.Identity.Name</a>
+                            </li>
+                            <li class="nav-item active isLoggedOut">
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <a href="~/Admin/Index" class="nav-link"><span class="text-primary">Hi @UserManager.GetUserName(User)</span></a>
+                                }
+                                else if (User.IsInRole("Menthor"))
+                                {
+                                    <a href="~/Menthor/Index" class="nav-link"><span class="text-primary">Hi @UserManager.GetUserName(User)</span></a>
+                                }
+                                else if (User.IsInRole("Intern"))
+                                {
+                                    <a href="~/Intern/Index" class="nav-link"><span class="text-primary">Hi @UserManager.GetUserName(User)</span></a>
+                                }
+                            </li>
 
-                        <li class="nav-item isLoggedOut">
-                            <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout">
-                                <button id="logout" type="submit" class="nav-link btn btn-link text-dark"><span class="text-danger"><span class="text-danger">Log Out</span></button>
-                            </form>
-                        </li>
-                    }
-                </ul>
+                            <li class="nav-item isLoggedOut">
+                                <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout">
+                                    <button id="logout" type="submit" class="nav-link btn btn-link text-dark"><span class="text-danger"><span class="text-danger">Log Out</span></button>
+                                </form>
+                            </li>
+                        }
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </div>
     <partial name="_CookieConsentPartial" />
 
     <div class="body-content">

@@ -10,6 +10,7 @@ using App.Web.Model.ViewModel.ThemeMarkViewModel;
 using App.Web.Model.ViewModel.ThemeViewModel;
 using App.Web.Models.ComplexViewModel.Admin;
 using App.Web.Models.ComplexViewModel.General;
+using App.Web.Models.ViewModel.ThemeViewModel;
 using App.Web.Models.ViewModel.UserViewModel;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
@@ -33,23 +34,23 @@ namespace App.Web.Controllers
         private readonly MyAppContext _context;
         private readonly IUserService _userService;
         private readonly ICommentService _commentService;
-        private readonly IEMarkService _examMarkService;
+        private readonly IExamMarkService _examMarkService;
         private readonly IExamService _examService;
         private readonly IGroupService _groupService;
         private readonly IModuleService _moduleService;
         private readonly IThemeService _themeService;
-        private readonly ITMarkService _themeMarkService;
+        private readonly IThemeMarkService _themeMarkService;
         private readonly IMapper _mapper;
 
         public AdminController(UserManager<User> userManager, SignInManager<User> signInManager, IMapper mapper,
             IUserService userService,
             ICommentService commentService,
-            IEMarkService emarkService,
+            IExamMarkService emarkService,
             IExamService examService,
             IGroupService groupService,
             IModuleService moduleService,
             IThemeService themeService,
-            ITMarkService themeMarkService,
+            IThemeMarkService themeMarkService,
             MyAppContext context)
         {
             _context = context;
@@ -81,7 +82,7 @@ namespace App.Web.Controllers
             var currentEMarks = _examMarkService.GetExamMarks();
             marks.ExamMarks = _mapper.Map<IList<ExamMarkViewModel>>(currentEMarks);
             person.Data.Marks = marks;
-
+            
             var modules = _moduleService.GetModules();
             person.Data.Modules = _mapper.Map<IList<ModuleViewModel>>(modules);
 

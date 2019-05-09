@@ -33,8 +33,18 @@
         border: 2px dotted gray;
     }
 </style>
-
-<div class="carousel slide" data-ride="carousel" id="slides">
+<div id="header" class="text-center">
+    <a href="#" id="logo">Welcome</a>
+    <div class="text-center">
+        <ul id="menu">
+            <li><a href="#"><span>Home</span></a></li>
+            <li><a href="#"><span>About</span></a></li>
+            <li><a href="#"><span>Contact</span></a></li>
+            <li><a href="#"><span>Profile</span></a></li>
+        </ul>
+    </div>
+</div>
+@*<div class="carousel slide" data-ride="carousel" id="slides">
     <ul class="carousel-indicators">
         <li data-target="#slides" data-slide-to="0" class="active"></li>
         <li data-target="#slides" data-slide-to="1"></li>
@@ -65,25 +75,26 @@
             </div>
         </div>
     </div>
-</div>
-<div>
+</div>*@
+@*<div>
     @if (User.IsInRole("Admin"))
     {
-        <a id="BGoToProfile" href="~/Admin/Index" class="btn btn-primary form-control" >GO TO PROFILE</a>
+        <a id="BGoToProfile" href="~/Admin/Index" class="btn btn-secondary form-control" >GO TO PROFILE</a>
     }
     else if (User.IsInRole("Menthor"))
     {
-        <a id="BGoToProfile" href="~/Menthor/Index" class="btn btn-primary form-control" >GO TO PROFILE</a>
+        <a id="BGoToProfile" href="~/Menthor/Index" class="btn btn-secondary form-control" >GO TO PROFILE</a>
     }
     else if (User.IsInRole("Intern"))
     {
-        <a id="BGoToProfile" href="~/Intern/Index" class="btn btn-primary form-control">GO TO PROFILE</a>
+        <a id="BGoToProfile" href="~/Intern/Index" class="btn btn-secondary form-control">GO TO PROFILE</a>
     }
     else
     {
         <a id="BGoToProfile" href="~/identity/account/Login" class="btn btn-primary form-control">GO TO PROFILE</a>
     }
 </div>
+    *@
 <hr>
 <div  id="but" class="container-fluid padding ShowUp">
     <div class="row padding">

@@ -9,6 +9,7 @@ using App.Web.Model.ViewModel.ExamMarkViewModel;
 using App.Web.Model.ViewModel.ThemeMarkViewModel;
 using App.Web.Models.ComplexViewModel.General;
 using App.Web.Models.ViewModel.ThemeMarkViewModel;
+using App.Web.Models.ViewModel.ThemeViewModel;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -18,12 +19,12 @@ namespace App.Web.Controllers
 {
     public class MarkController : Controller
     {
-        private readonly ITMarkService _themeMarkService;
-        private readonly IEMarkService _examMarkService;
+        private readonly IThemeMarkService _themeMarkService;
+        private readonly IExamMarkService _examMarkService;
         private readonly SignInManager<User> _signInManager;
         private readonly IMapper _mapper;
 
-        public MarkController(ITMarkService themeMarkService, IEMarkService examMarkService, SignInManager<User> signInManager, IMapper mapper)
+        public MarkController(IThemeMarkService themeMarkService, IExamMarkService examMarkService, SignInManager<User> signInManager, IMapper mapper)
         {
             _signInManager = signInManager;
             _themeMarkService = themeMarkService;
@@ -31,18 +32,22 @@ namespace App.Web.Controllers
             _mapper = mapper;
         }
 
-        //[HttpGet]
-        //public async Task<IActionResult> GetThemeMarks(long userId)
-        //{
-        //    var listDto = _themeMarkService.GetThemeMarksByUserId(userId);
-        //    var list = _mapper.Map<IList<ThemeMarkViewModel>>(listDto);
+        [HttpGet]
+        public async Task<IActionResult> GetHardThemess()
+        {
+            var hardthemesDto = _themeMarkService.GetBadThemeMarks();
+            var hardThemes = _mapper.Map<IList<HardThemeViewModel>>(hardthemesDto);
 
-        //    return Json(new
-        //    {
-        //        themes = list.Select(x => x.ThemeName),
-        //        marks = list.Select(x => x.Mark)
-        //    });
-        //}
+            return Json(hardThemes);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetHardThemes(long userId)
+        {
+            var hardThemes = _themeMarkService.GetBadThemeMarks(userId);
+
+            return Json(hardThemes);
+        }
 
         [HttpPost]
         [Authorize(Roles ="Menthor, Admin")]
@@ -82,7 +87,7 @@ namespace App.Web.Controllers
         [Authorize(Roles = "Menthor, Admin")]
         public async Task<IActionResult> GetThemeMarksByEmail(string email)
         {
-            var listDto = _themeMarkService.GetTMarksByEmail(email);
+            var listDto = _themeMarkService.GetThemeMarksByEmail(email);
             var list = _mapper.Map<IList<ThemeMarkViewModel>>(listDto);
 
             return Json(list);

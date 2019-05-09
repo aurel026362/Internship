@@ -10,7 +10,7 @@ using System.Text;
 
 namespace App.Services.Services
 {
-    public class ExamMarkService : IEMarkService
+    public class ExamMarkService : IExamMarkService
     {
         private readonly IExamMarkRepository _eMarkRepository;
         private readonly IMapper _mapper;

@@ -26,6 +26,7 @@ using App.Services.Dtos.DTOs.Menthor;
 using App.Web.Models.ViewModel.MenthorViewModel;
 using App.Web.Models.ViewModel.InternViewModel;
 using App.Web.Models.ViewModel.ThemeMarkViewModel;
+using App.Web.Models.ViewModel.ThemeViewModel;
 
 namespace App.Web.Profiles
 {
@@ -37,6 +38,7 @@ namespace App.Web.Profiles
             CreateMap<ExamDto, ExamViewModel>().ReverseMap();
             CreateMap<ModuleDto, ModuleViewModel>().ReverseMap();
             CreateMap<ThemeDto, ThemeViewModel>().ReverseMap();
+            CreateMap<HardThemeDto, HardThemeViewModel>().ReverseMap();
 
             CreateMap<ExamMarkDto, ExamMarkViewModel>().ReverseMap(); 
             CreateMap<ThemeMarkDto, ThemeMarkViewModel>().ReverseMap();

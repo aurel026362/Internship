@@ -29,6 +29,7 @@
                 </div>
                 @await Html.PartialAsync("../GeneralViews/_Comments", Model)
                 @await Html.PartialAsync("../GeneralViews/_Settings", Model.PersonalData)
+                @await Html.PartialAsync("../GeneralViews/_Lesson", Model.PersonalData.Id)
             </div>
         </div>
     </div>

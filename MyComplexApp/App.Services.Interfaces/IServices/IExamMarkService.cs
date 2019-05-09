@@ -5,7 +5,7 @@ using System.Text;
 
 namespace App.Services.Interfaces.IServices
 {
-    public interface IEMarkService 
+    public interface IExamMarkService 
     {
         IList<ExamMarkDto> GetExamMarksByUserId(long userId);
         ExamMarkDto GetExamMark(long userId, long moduleId);

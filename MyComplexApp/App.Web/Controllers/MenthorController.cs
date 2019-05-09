@@ -30,23 +30,23 @@ namespace App.Web.Controllers
         private readonly SignInManager<User> _signInManager;
         private readonly IUserService _userService;
         private readonly ICommentService _commentService;
-        private readonly IEMarkService _examMarkService;
+        private readonly IExamMarkService _examMarkService;
         private readonly IExamService _examService;
         private readonly IGroupService _groupService;
         private readonly IModuleService _moduleService;
         private readonly IThemeService _themeService;
-        private readonly ITMarkService _themeMarkService;
+        private readonly IThemeMarkService _themeMarkService;
         private readonly IMapper _mapper;
 
         public MenthorController(SignInManager<User> signInManager, IMapper mapper,
             IUserService userService,
             ICommentService commentService,
-            IEMarkService examMarkService,
+            IExamMarkService examMarkService,
             IExamService examService,
             IGroupService groupService,
             IModuleService moduleService,
             IThemeService themeService,
-            ITMarkService themeMarkService)
+            IThemeMarkService themeMarkService)
         {
             _userService = userService;
             _commentService = commentService;
@@ -75,6 +75,7 @@ namespace App.Web.Controllers
             marks.ThemeMarks = _mapper.Map<IList<ThemeMarkViewModel>>(currentTMarks);
             var currentEMarks = _examMarkService.GetExamMarks();
             marks.ExamMarks = _mapper.Map<IList<ExamMarkViewModel>>(currentEMarks);
+            
             person.Marks = marks;
             var modules = _moduleService.GetModules();
             person.Modules = _mapper.Map<IList<ModuleViewModel>>(modules);

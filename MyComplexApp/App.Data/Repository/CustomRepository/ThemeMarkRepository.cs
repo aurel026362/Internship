@@ -40,9 +40,21 @@ namespace App.Data.Repository.ComplexRepository
             return result;
         }
 
-        public IList<ThemeMark> GetMoreThemeMarks(int page, string orderby, string sorting)
+        public IList<ThemeMark> GetAllThemeMarks()
         {
-            throw new NotImplementedException();
+            var list = _context.ThemeMarks.ToList();
+            return list;
+        }
+
+        //public IList<ThemeMark> GetMoreThemeMarks(int page, string orderby, string sorting)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        public IList<ThemeMark> GetThemeMarkByThemeId(long themeId)
+        {
+            var list = _context.ThemeMarks.Where(x => x.ThemeId.Equals(themeId)).ToList();
+            return list; 
         }
 
         public IList<ThemeMark> GetThemeMarks(long userId, long moduleId)
