@@ -7,11 +7,11 @@
         @await Html.PartialAsync("../GeneralViews/_Menu")
         <div class="col-md-10 col-xs-12">
             <div class="tab-content" id="v-pills-tabContent">
-                @await Html.PartialAsync("../GeneralViews/_Profile", Model.Data.PersonalData)
-                @await Html.PartialAsync("_Monitoring", Model)
-                @await Html.PartialAsync("../GeneralViews/_Comments", Model.Data)
-                @await Html.PartialAsync("../GeneralViews/_Settings", Model.Data.PersonalData)
-                @await Html.PartialAsync("../GeneralViews/_Lesson", Model.Data.PersonalData.Id)
+                @await Html.PartialAsync("../GeneralViews/_Profile", Model.UserProfile.PersonalData)
+                @await Html.PartialAsync("../Admin/_Monitoring", Model)
+                @await Html.PartialAsync("../GeneralViews/_Comments", Model.UserProfile)
+                @await Html.PartialAsync("../GeneralViews/_Settings", Model.UserProfile.PersonalData)
+                @await Html.PartialAsync("../GeneralViews/_Lesson", Model.UserProfile.PersonalData.Id)
             </div>
         </div>
     </div>

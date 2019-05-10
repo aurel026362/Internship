@@ -13,8 +13,8 @@ namespace App.Data.Domain.DomainModelsConfigs.ConcreteConfigs
         {
             builder.ToTable("Themes");
             builder.HasKey(x => x.Id);
-            builder.Property(x => x.Name).HasMaxLength(20);
-            builder.Property(x => x.Source).HasMaxLength(100);
+            builder.Property(x => x.Name).HasMaxLength(50);
+            builder.Property(x => x.Source).HasMaxLength(200);
             builder.Property(x => x.StartDate).HasColumnType("smalldatetime");
             builder.Property(x => x.MenthorId).HasColumnName("MenthorId");
             builder.HasOne(x => x.Module).WithMany(x => x.Themes).HasForeignKey(x => x.ModuleId).OnDelete(DeleteBehavior.Cascade);

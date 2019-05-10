@@ -13,7 +13,7 @@ namespace App.Data.Domain.DomainModelsConfigs.ConcreteConfigs
         {
             builder.ToTable("Groups");
             builder.HasKey(x => x.Id);
-            builder.Property(x => x.Name).HasMaxLength(30);
+            builder.Property(x => x.Name).HasMaxLength(50);
             builder.Property(x => x.StartDate).HasColumnType("date");
 
             builder.HasData(

@@ -10,7 +10,7 @@ namespace App.Web.Models.ViewModel.ThemeMarkViewModel
     {
         [Required]
         [Range(1,10, ErrorMessage ="Input value(min:1, max:10)!")]
-        public int Mark { get; set; }
+        public double Mark { get; set; }
 
         public string Comment { get; set; }
 

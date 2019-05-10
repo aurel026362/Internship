@@ -9,13 +9,11 @@ using System.Text;
 
 namespace App.Data.Repository.ComplexRepository
 {
-    public class ThemeRepository : IThemeRepository
+    public class ThemeRepository : GenericRepository<Theme>, IThemeRepository
     {
-        private readonly MyAppContext _context;
 
-        public ThemeRepository(MyAppContext ctxt)
+        public ThemeRepository(MyAppContext context) : base(context)
         {
-            _context = ctxt;
         }
 
         public IList<Theme> GetThemes()

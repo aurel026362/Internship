@@ -47,7 +47,7 @@ namespace App.Data.Migrations
                         {
                             Id = 1L,
                             Content = "Nicjdsladj sal djsa dsadsa.",
-                            DateComment = new DateTime(2019, 5, 9, 18, 54, 4, 49, DateTimeKind.Local).AddTicks(4487),
+                            DateComment = new DateTime(2019, 5, 10, 17, 9, 58, 41, DateTimeKind.Local).AddTicks(4083),
                             ThemeId = 1L,
                             UserId = 2L
                         },
@@ -55,7 +55,7 @@ namespace App.Data.Migrations
                         {
                             Id = 2L,
                             Content = "dsafdsda.",
-                            DateComment = new DateTime(2019, 5, 9, 18, 54, 4, 51, DateTimeKind.Local).AddTicks(9204),
+                            DateComment = new DateTime(2019, 5, 10, 17, 9, 58, 43, DateTimeKind.Local).AddTicks(7404),
                             ThemeId = 3L,
                             UserId = 1L
                         },
@@ -63,7 +63,7 @@ namespace App.Data.Migrations
                         {
                             Id = 3L,
                             Content = "qewqeqewqqewq.",
-                            DateComment = new DateTime(2019, 5, 9, 18, 54, 4, 51, DateTimeKind.Local).AddTicks(9224),
+                            DateComment = new DateTime(2019, 5, 10, 17, 9, 58, 43, DateTimeKind.Local).AddTicks(7428),
                             ThemeId = 1L,
                             UserId = 4L
                         },
@@ -71,7 +71,7 @@ namespace App.Data.Migrations
                         {
                             Id = 4L,
                             Content = "asdsadsa sadsadsa dsa.",
-                            DateComment = new DateTime(2019, 5, 9, 18, 54, 4, 51, DateTimeKind.Local).AddTicks(9231),
+                            DateComment = new DateTime(2019, 5, 10, 17, 9, 58, 43, DateTimeKind.Local).AddTicks(7431),
                             ThemeId = 4L,
                             UserId = 2L
                         },
@@ -79,7 +79,7 @@ namespace App.Data.Migrations
                         {
                             Id = 5L,
                             Content = "zxcxzcxz zc xz cxz z.",
-                            DateComment = new DateTime(2019, 5, 9, 18, 54, 4, 51, DateTimeKind.Local).AddTicks(9238),
+                            DateComment = new DateTime(2019, 5, 10, 17, 9, 58, 43, DateTimeKind.Local).AddTicks(7438),
                             ThemeId = 1L,
                             UserId = 3L
                         },
@@ -87,7 +87,7 @@ namespace App.Data.Migrations
                         {
                             Id = 6L,
                             Content = "iopoipio iop io io.",
-                            DateComment = new DateTime(2019, 5, 9, 18, 54, 4, 51, DateTimeKind.Local).AddTicks(9241),
+                            DateComment = new DateTime(2019, 5, 10, 17, 9, 58, 43, DateTimeKind.Local).AddTicks(7441),
                             ThemeId = 2L,
                             UserId = 1L
                         },
@@ -95,7 +95,7 @@ namespace App.Data.Migrations
                         {
                             Id = 7L,
                             Content = "qq q q q q q q",
-                            DateComment = new DateTime(2019, 5, 9, 18, 54, 4, 51, DateTimeKind.Local).AddTicks(9245),
+                            DateComment = new DateTime(2019, 5, 10, 17, 9, 58, 43, DateTimeKind.Local).AddTicks(7445),
                             ThemeId = 2L,
                             UserId = 3L
                         },
@@ -103,7 +103,7 @@ namespace App.Data.Migrations
                         {
                             Id = 8L,
                             Content = "N4354535 43.",
-                            DateComment = new DateTime(2019, 5, 9, 18, 54, 4, 51, DateTimeKind.Local).AddTicks(9248),
+                            DateComment = new DateTime(2019, 5, 10, 17, 9, 58, 43, DateTimeKind.Local).AddTicks(7448),
                             ThemeId = 1L,
                             UserId = 4L
                         },
@@ -111,7 +111,7 @@ namespace App.Data.Migrations
                         {
                             Id = 9L,
                             Content = "po'p'l';l;l'.",
-                            DateComment = new DateTime(2019, 5, 9, 18, 54, 4, 51, DateTimeKind.Local).AddTicks(9255),
+                            DateComment = new DateTime(2019, 5, 10, 17, 9, 58, 43, DateTimeKind.Local).AddTicks(7455),
                             ThemeId = 3L,
                             UserId = 2L
                         });
@@ -149,7 +149,7 @@ namespace App.Data.Migrations
 
                     b.Property<long>("InternId");
 
-                    b.Property<int>("Mark");
+                    b.Property<double>("Mark");
 
                     b.HasKey("Id");
 
@@ -167,7 +167,7 @@ namespace App.Data.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
-                        .HasMaxLength(30);
+                        .HasMaxLength(50);
 
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("date");
@@ -268,7 +268,7 @@ namespace App.Data.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(20)");
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("date");
@@ -300,12 +300,9 @@ namespace App.Data.Migrations
 
             modelBuilder.Entity("App.Data.Domain.DomainModels.Concrete.RequestedUser", b =>
                 {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("AccessFailedCount");
-
-                    b.Property<string>("ConcurrencyStamp");
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("date");
@@ -316,8 +313,6 @@ namespace App.Data.Migrations
                         .HasMaxLength(30)
                         .IsUnicode(false);
 
-                    b.Property<bool>("EmailConfirmed");
-
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasMaxLength(20);
@@ -326,28 +321,12 @@ namespace App.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(20);
 
-                    b.Property<bool>("LockoutEnabled");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd");
-
-                    b.Property<string>("NormalizedEmail");
-
-                    b.Property<string>("NormalizedUserName");
-
-                    b.Property<string>("PasswordHash");
+                    b.Property<string>("Password");
 
                     b.Property<string>("PhoneNumber");
 
-                    b.Property<bool>("PhoneNumberConfirmed");
-
-                    b.Property<string>("SecurityStamp");
-
-                    b.Property<bool>("TwoFactorEnabled");
-
                     b.Property<string>("TypeUser")
                         .HasMaxLength(20);
-
-                    b.Property<string>("UserName");
 
                     b.HasKey("Id");
 
@@ -366,10 +345,10 @@ namespace App.Data.Migrations
                     b.Property<long>("ModuleId");
 
                     b.Property<string>("Name")
-                        .HasMaxLength(20);
+                        .HasMaxLength(50);
 
                     b.Property<string>("Source")
-                        .HasMaxLength(100);
+                        .HasMaxLength(200);
 
                     b.Property<DateTime?>("StartDate")
                         .HasColumnType("smalldatetime");
@@ -432,7 +411,7 @@ namespace App.Data.Migrations
 
                     b.Property<long?>("InternId");
 
-                    b.Property<int>("Mark");
+                    b.Property<double>("Mark");
 
                     b.Property<byte[]>("RowVersion")
                         .IsConcurrencyToken()
@@ -454,7 +433,7 @@ namespace App.Data.Migrations
                             Id = 1L,
                             Comment = "Good",
                             InternId = 1L,
-                            Mark = 9,
+                            Mark = 9.0,
                             ThemeId = 1L
                         },
                         new
@@ -462,7 +441,7 @@ namespace App.Data.Migrations
                             Id = 2L,
                             Comment = "No Comment",
                             InternId = 1L,
-                            Mark = 1,
+                            Mark = 1.0,
                             ThemeId = 2L
                         },
                         new
@@ -470,14 +449,14 @@ namespace App.Data.Migrations
                             Id = 3L,
                             Comment = "The Best",
                             InternId = 2L,
-                            Mark = 10,
+                            Mark = 10.0,
                             ThemeId = 2L
                         },
                         new
                         {
                             Id = 4L,
                             InternId = 1L,
-                            Mark = 8,
+                            Mark = 8.0,
                             ThemeId = 4L
                         });
                 });
@@ -510,21 +489,21 @@ namespace App.Data.Migrations
                         new
                         {
                             Id = 1L,
-                            ConcurrencyStamp = "-151350337",
+                            ConcurrencyStamp = "-1689975465",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = 2L,
-                            ConcurrencyStamp = "756961811",
+                            ConcurrencyStamp = "1998290627",
                             Name = "Menthor",
                             NormalizedName = "MENTHOR"
                         },
                         new
                         {
                             Id = 3L,
-                            ConcurrencyStamp = "1727800283",
+                            ConcurrencyStamp = "-1168802217",
                             Name = "Intern",
                             NormalizedName = "INTERN"
                         });
@@ -547,18 +526,18 @@ namespace App.Data.Migrations
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnName("EMail")
-                        .HasMaxLength(30)
+                        .HasMaxLength(50)
                         .IsUnicode(false);
 
                     b.Property<bool>("EmailConfirmed");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasMaxLength(20);
+                        .HasMaxLength(50);
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasMaxLength(20);
+                        .HasMaxLength(50);
 
                     b.Property<bool>("LockoutEnabled");
 
@@ -574,7 +553,7 @@ namespace App.Data.Migrations
 
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
-                        .HasMaxLength(15);
+                        .HasMaxLength(50);
 
                     b.Property<bool>("PhoneNumberConfirmed");
 
@@ -606,14 +585,14 @@ namespace App.Data.Migrations
                         {
                             Id = 1L,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "dfcaf29c-e40a-4827-90b7-7c4f82b6f3cb",
+                            ConcurrencyStamp = "4a828646-7c52-4102-b153-9e5368520930",
                             DateOfBirth = new DateTime(1999, 5, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "aurel@mail.ru",
                             EmailConfirmed = false,
                             FirstName = "Aurel",
                             LastName = "Starciuc",
                             LockoutEnabled = false,
-                            PasswordHash = "-676656470",
+                            PasswordHash = "517659222",
                             PhoneNumber = "+37367620932",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -623,14 +602,14 @@ namespace App.Data.Migrations
                         {
                             Id = 2L,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "19c3808b-901d-4a80-9cd2-068dbd62a802",
+                            ConcurrencyStamp = "68b2294b-0047-407f-871f-bd72a1e687c3",
                             DateOfBirth = new DateTime(1989, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "cristi@mail.ru",
                             EmailConfirmed = false,
                             FirstName = "Cristi",
                             LastName = "Anghelenici",
                             LockoutEnabled = false,
-                            PasswordHash = "2106376617",
+                            PasswordHash = "75786608",
                             PhoneNumber = "+37367665467",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -640,14 +619,14 @@ namespace App.Data.Migrations
                         {
                             Id = 3L,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "cffb2a68-ce21-4e7d-b757-2832602b51ca",
+                            ConcurrencyStamp = "2c05bc6a-dff6-4f11-a56f-4ee04df8a2f2",
                             DateOfBirth = new DateTime(1994, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "alexandr@mail.ru",
                             EmailConfirmed = false,
                             FirstName = "Alexandr",
                             LastName = "Racovschi",
                             LockoutEnabled = false,
-                            PasswordHash = "-156999296",
+                            PasswordHash = "1555676843",
                             PhoneNumber = "+37336218321",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -657,14 +636,14 @@ namespace App.Data.Migrations
                         {
                             Id = 4L,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "bf794cc2-a4c3-44d9-89a8-7ddddec7f980",
+                            ConcurrencyStamp = "f71cca3a-08b9-415c-ad93-b7ab92850a77",
                             DateOfBirth = new DateTime(1984, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "iong@mail.ru",
                             EmailConfirmed = false,
                             FirstName = "Ion",
                             LastName = "Gandrabura",
                             LockoutEnabled = false,
-                            PasswordHash = "-695038195",
+                            PasswordHash = "-1754930925",
                             PhoneNumber = "+373954035",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
@@ -674,14 +653,14 @@ namespace App.Data.Migrations
                         {
                             Id = 5L,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9fe82a53-cf15-4c9d-bbef-0ed7bee7279d",
+                            ConcurrencyStamp = "76c39cd4-74bb-44b0-b80b-cc47b6953f2a",
                             DateOfBirth = new DateTime(1978, 5, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "gosa@mail.ru",
                             EmailConfirmed = false,
                             FirstName = "Gosa",
                             LastName = "Dudari",
                             LockoutEnabled = false,
-                            PasswordHash = "1929270129",
+                            PasswordHash = "1297788367",
                             PhoneNumber = "+37354354398",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,

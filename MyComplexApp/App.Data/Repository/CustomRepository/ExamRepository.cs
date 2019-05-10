@@ -9,19 +9,16 @@ using System.Text;
 
 namespace App.Data.Repository.ComplexRepository
 {
-    public class ExamRepository : IExamRepository
+    public class ExamRepository : GenericRepository<Exam>, IExamRepository
     {
-        private readonly MyAppContext _context;
-        private readonly DbSet<Exam> DbSet;
 
-        public ExamRepository(MyAppContext ctxt)
+        public ExamRepository(MyAppContext context) : base(context)
         {
-            _context = ctxt;
         }
 
         public Exam GetExam(long moduleId)
         {
-            var result = _context.Exams.Include(x=>x.Module).Where(x => x.ModuleId.Equals(moduleId)).FirstOrDefault();
+            var result = _context.Exams.Include(x=>x.Module).FirstOrDefault(x => x.ModuleId.Equals(moduleId));
 
             return result;
         }

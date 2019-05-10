@@ -9,20 +9,17 @@ using System.Text;
 
 namespace App.Data.Repository.ComplexRepository
 {
-    public class ExamMarkRepository : IExamMarkRepository
+    public class ExamMarkRepository : GenericRepository<ExamMark>, IExamMarkRepository
     {
-        private readonly MyAppContext _context;
-        private readonly DbSet<ExamMark> DbSet;
-
-        public ExamMarkRepository(MyAppContext ctxt)
+        
+        public ExamMarkRepository(MyAppContext context) : base(context)
         {
-            _context = ctxt;
         }
 
         public ExamMark GetExamMark(long userId, long moduleId)
         {
             var result = _context.ExamMarks.Include(x => x.Intern).ThenInclude(x => x.User).Include(x => x.Exam).ThenInclude(x => x.Module)
-                .Where(x => x.Intern.UserId.Equals(userId) && x.Exam.ModuleId.Equals(moduleId)).FirstOrDefault();
+                .FirstOrDefault(x => x.Intern.UserId.Equals(userId) && x.Exam.ModuleId.Equals(moduleId));
 
             return result;
         }

@@ -59,9 +59,6 @@
                 <h4>Use another service to log in.</h4>
                 <hr />
                 <div>
-                    <button type="submit" asp-area="" asp-controller="Auth" asp-action="SignIn" class="btn btn-outline-primary"><i class="fab fa-facebook-f"></i> Facebook</button>
-                    <button asp-area="" asp-controller="Auth" asp-action="SignIn" class="btn btn-outline-primary"><i class="fab fa-google-plus-g"></i> Google</button>
-                    <button asp-area="" asp-controller="Auth" asp-action="SignIn" class="btn btn-outline-primary"><i class="fab fa-facebook-f"></i> Other+</button>
                 </div>
                 @{
                     if ((Model.ExternalLogins?.Count ?? 0) == 0)
@@ -80,15 +77,8 @@
                                 <p>
                                     @foreach (var provider in Model.ExternalLogins)
                                     {
-                                        <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                        <button type="submit" class="btn btn-outline-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
                                     }
-                                    @*@foreach (var provider in await SchemeProvider.GetRequestHandlerSchemesAsync())
-                                        {
-                                            <a class="btn btn-lg btn-default"
-                                               asp-route-returnUrl="@"
-                                               asp-route-provider="@provider.Name"
-                                               asp-action="SignIn"><i class="fa fa-@provider.Name.ToLower()"></i>@provider.Name</a>
-                                        }*@
                                 </p>
                             </div>
                         </form>

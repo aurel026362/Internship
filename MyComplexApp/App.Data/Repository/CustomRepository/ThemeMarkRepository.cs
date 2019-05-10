@@ -9,20 +9,17 @@ using System.Text;
 
 namespace App.Data.Repository.ComplexRepository
 {
-    public class ThemeMarkRepository : IThemeMarkRepository
+    public class ThemeMarkRepository : GenericRepository<ThemeMark>, IThemeMarkRepository
     {
-        private readonly MyAppContext _context;
-        private readonly DbSet<ThemeMark> DbSet;
 
-        public ThemeMarkRepository(MyAppContext ctxt)
+        public ThemeMarkRepository(MyAppContext context):base(context)
         {
-            _context = ctxt;
         }
 
         public string AddOrUpdateThemeMark(ThemeMark themeMark)
         {   
             var result="";
-            var oldmark = _context.ThemeMarks.Where(x => x.ThemeId.Equals(themeMark.ThemeId) && x.InternId.Equals(themeMark.InternId)).FirstOrDefault();
+            var oldmark = _context.ThemeMarks.FirstOrDefault(x => x.ThemeId.Equals(themeMark.ThemeId) && x.InternId.Equals(themeMark.InternId));
 
             if (oldmark != null)
             {
@@ -46,11 +43,6 @@ namespace App.Data.Repository.ComplexRepository
             return list;
         }
 
-        //public IList<ThemeMark> GetMoreThemeMarks(int page, string orderby, string sorting)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
         public IList<ThemeMark> GetThemeMarkByThemeId(long themeId)
         {
             var list = _context.ThemeMarks.Where(x => x.ThemeId.Equals(themeId)).ToList();
@@ -68,7 +60,7 @@ namespace App.Data.Repository.ComplexRepository
         public IList<ThemeMark> GetThemeMarks()
         {
             var list = _context.ThemeMarks.Include(x => x.Intern).ThenInclude(x => x.User)
-                .Include(x => x.Theme).OrderBy(x => x.Intern.User.Email).Take(10).ToList();
+                .Include(x => x.Theme).OrderBy(x => x.Intern.User.Email).TakeNext10();
 
             return list;
         }
@@ -97,43 +89,43 @@ namespace App.Data.Repository.ComplexRepository
             {
                 case "themename":
                     {
-                        if (sorting == true)
+                        if (sorting)
                         {
                             list = _context.ThemeMarks.Include(x => x.Intern).ThenInclude(x => x.User).Include(x => x.Theme)
-                                .OrderBy(x => x.Theme.Name).Skip(page * 10).Take(10).ToList();
+                                .OrderBy(x => x.Theme.Name).SkipTakeNext10(page);
                         }
                         else
                         {
                             list = _context.ThemeMarks.Include(x => x.Intern).ThenInclude(x => x.User).Include(x => x.Theme)
-                                .OrderByDescending(x => x.Theme.Name).Skip(page * 10).Take(10).ToList();
+                                .OrderByDescending(x => x.Theme.Name).SkipTakeNext10(page);
                         }
                     }
                     break;
                 case "mark":
                     {
-                        if (sorting == true)
+                        if (sorting)
                         {
                             list = _context.ThemeMarks.Include(x => x.Intern).ThenInclude(x => x.User).Include(x => x.Theme)
-                                .OrderBy(x => x.Mark).Skip(page * 10).Take(10).ToList();
+                                .OrderBy(x => x.Mark).SkipTakeNext10(page);
                         }
                         else
                         {
                             list = _context.ThemeMarks.Include(x => x.Intern).ThenInclude(x => x.User).Include(x => x.Theme)
-                                .OrderByDescending(x => x.Mark).Skip(page * 10).Take(10).ToList();
+                                .OrderByDescending(x => x.Mark).SkipTakeNext10(page);
                         }
                     }
                     break;
                 case "email":
                     {
-                        if (sorting == true)
+                        if (sorting)
                         {
                             list = _context.ThemeMarks.Include(x => x.Intern).ThenInclude(x => x.User).Include(x => x.Theme)
-                                .OrderBy(x => x.Intern.User.Email).Skip(page * 10).Take(10).ToList();
+                                .OrderBy(x => x.Intern.User.Email).SkipTakeNext10(page);
                         }
                         else
                         {
                             list = _context.ThemeMarks.Include(x => x.Intern).ThenInclude(x => x.User).Include(x => x.Theme)
-                                .OrderByDescending(x => x.Intern.User.Email).Skip(page * 10).Take(10).ToList();
+                                .OrderByDescending(x => x.Intern.User.Email).SkipTakeNext10(page);
                         }
                     }
                     break;

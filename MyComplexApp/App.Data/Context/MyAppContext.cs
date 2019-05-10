@@ -11,8 +11,7 @@ using System.Linq;
 
 namespace App.Data.Context
 {
-    public class MyAppContext // : DbContext
-           : IdentityDbContext<User, Role,long>
+    public class MyAppContext : IdentityDbContext<User, Role,long>
     {
         //public virtual DbSet<Domain.DomainModels.Identity.User> Users { get; set; }
         public virtual DbSet<Intern> Interns { get; set; }
@@ -28,7 +27,6 @@ namespace App.Data.Context
 
         public MyAppContext()
         {
-            //Database.EnsureCreated();
         }
 
         public MyAppContext(DbContextOptions<MyAppContext> options) 
@@ -46,7 +44,6 @@ namespace App.Data.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            // modelBuilder.HasAnnotation("ProductVersion", "2.2.3-servicing-35854");
 
             modelBuilder.ApplyConfiguration(new UserConfig());
             modelBuilder.ApplyConfiguration(new InternConfig());
@@ -60,19 +57,6 @@ namespace App.Data.Context
             modelBuilder.ApplyConfiguration(new CommentConfig());
             modelBuilder.ApplyConfiguration(new RequestedUserConfig());
             modelBuilder.ApplyConfiguration(new RoleConfig());
-
-            //modelBuilder.Entity<User>().ToTable("Users");
-            //modelBuilder.Entity<Role>().ToTable("Roles");
-            //modelBuilder.Entity<IdentityUserRole<long>>().ToTable("UserRoles");
-            //modelBuilder.Entity<IdentityUserToken<long>>().ToTable("UserTokens");
-            //modelBuilder.Entity<IdentityUserLogin<long>>().ToTable("UserLogins");
-            //modelBuilder.Entity<IdentityUserClaim<long>>().ToTable("UserClaims");
-            //modelBuilder.Entity<IdentityRoleClaim<long>>().ToTable("RoleClaims");
-            //foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
-            //{
-            //    relationship.DeleteBehavior = DeleteBehavior.Restrict;
-            //}
-
         }
     }
 }

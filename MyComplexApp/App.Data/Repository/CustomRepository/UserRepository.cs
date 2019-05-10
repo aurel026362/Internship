@@ -13,19 +13,16 @@ using System.Threading.Tasks;
 
 namespace App.Data.Repository.ComplexRepository
 {
-    public class UserRepository : IUserRepository
+    public class UserRepository : GenericRepository<User>, IUserRepository
     {
-        private readonly MyAppContext _context;
-        protected readonly DbSet<User> DbSet;
 
-        public UserRepository(MyAppContext ctxt)
+        public UserRepository(MyAppContext context) : base(context)
         {
-            _context = ctxt;
         }
 
         public User GetUserById(long Id)
         {
-            var result = _context.Users.Find(Id);//DbSet.Where(x=>x.Id.Equals(Id)).FirstOrDefault();
+            var result = _context.Users.Find(Id);
             return result;
         }
 
@@ -66,48 +63,6 @@ namespace App.Data.Repository.ComplexRepository
             return users;
         }
 
-        //public long Count => _context.Users.Count();
-
-        //public void Add(User element)
-        //{
-        //    DbSet.Add(element);
-        //}
-
-        //public void AddRange(IList<User> elements)
-        //{
-        //    DbSet.AddRange(elements);
-        //}
-
-        //public void Delete(User element)
-        //{
-        //    DbSet.Remove(element);
-        //}
-
-        //public void Delete(long id)
-        //{
-        //    DbSet.Remove(DbSet.Find(id));
-        //}
-
-        //public IList<User> GetAll()
-        //{
-        //    return DbSet.ToList();
-        //}
-
-        //public User GetById(long Id)
-        //{
-        //    return DbSet.Find(Id);
-        //}
-
-        //public IList<User> GetNext10(int skipNr)
-        //{
-        //    return DbSet.Skip(skipNr * 10).Take(10).ToList();
-        //}
-
-        public void Save()
-        {
-            _context.SaveChanges();
-        }
-
         public void UpdateUser(long userId, string newFName, string newLName, string newPhone, DateTime newdDBirth)
         {
             User user = _context.Users.Find(userId);
@@ -122,7 +77,6 @@ namespace App.Data.Repository.ComplexRepository
         public IList<User> GetUsersDetails()
         {
             var list = _context.Users.ToList();
-            //var role = _context.Roles.Where(x => x.Users.Select(y => y.Id).Equals(1)).FirstOrDefault();
 
             return list;
         }
@@ -145,7 +99,7 @@ namespace App.Data.Repository.ComplexRepository
             {
                 try
                 {
-                    var menthor = _context.Menthors.Where(x => x.UserId.Equals(userId)).FirstOrDefault();
+                    var menthor = _context.Menthors.FirstOrDefault(x => x.UserId.Equals(userId));
 
                     if (menthor != null)
                     {
@@ -153,7 +107,7 @@ namespace App.Data.Repository.ComplexRepository
                     }
                     else
                     {
-                        var intern = _context.Interns.Where(x => x.UserId.Equals(userId)).FirstOrDefault();
+                        var intern = _context.Interns.FirstOrDefault(x => x.UserId.Equals(userId));
                         if (intern != null)
                         {
                             _context.Interns.Remove(intern);
@@ -189,6 +143,26 @@ namespace App.Data.Repository.ComplexRepository
             
             _context.Update(oldUser);
             _context.SaveChanges();
+        }
+
+        public IList<RequestedUser> GetRequestedUsers()
+        {
+            var list = _context.RequestedUsers.AsNoTracking().ToList();
+
+            return list;
+        }
+
+        public RequestedUser GetRequestedUser(long requestedUserId)
+        {
+            var requestedUser = _context.RequestedUsers.Find(requestedUserId);
+
+            return requestedUser;
+        }
+
+        public void DeclineRequestedUser(long requestedUserId)
+        {
+            var requestedUser = _context.RequestedUsers.Find(requestedUserId);
+            _context.RequestedUsers.Remove(requestedUser);
         }
     }
 }

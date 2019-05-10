@@ -32,6 +32,18 @@ namespace App.Web.Controllers
             _mapper = mapper;
         }
 
+        //[Authorize(Roles ="Intern")]
+        //private IList<string> GetHelpLinks(IList<ThemeMarkViewModel> marks)
+        //{
+        //    IList<string> themes = new List<string>();
+
+        //    string minMark = marks.OrderByDescending(x => x.Mark).Select(x => x.ThemeName).FirstOrDefault();
+
+        //    themes.Add(minMark);
+
+        //    return themes;
+        //}
+
         [HttpGet]
         public async Task<IActionResult> GetHardThemess()
         {

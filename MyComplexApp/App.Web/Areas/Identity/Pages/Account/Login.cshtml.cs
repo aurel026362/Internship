@@ -79,10 +79,11 @@ namespace App.Web.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
-                    var currentRole = User.IsInRole("Admin");
-                    if (User.IsInRole("Admin")) return LocalRedirect("~/Admin/Index");
-                    if (User.IsInRole("Menthor")) return LocalRedirect("~/Menthor/Index");
-                    if (User.IsInRole("Intern")) return LocalRedirect("~/Intern/Index");
+                    return LocalRedirect("~/Home/Index");
+                    //var currentRole = User.IsInRole("Admin");
+                    //if (User.IsInRole("Admin")) return LocalRedirect("~/Admin/Index");
+                    //if (User.IsInRole("Menthor")) return LocalRedirect("~/Menthor/Index");
+                    //if (User.IsInRole("Intern")) return LocalRedirect("~/Intern/Index");
                     return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)

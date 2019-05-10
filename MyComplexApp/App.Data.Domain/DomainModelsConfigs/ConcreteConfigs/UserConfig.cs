@@ -18,25 +18,21 @@ namespace App.Data.Domain.DomainModelsConfigs.ConcreteConfigs
             builder.Property(e => e.Email)
                     .IsRequired()
                     .HasColumnName("EMail")
-                    .HasMaxLength(30)
+                    .HasMaxLength(50)
                     .IsUnicode(false);
 
             builder.Property(e => e.FirstName)
                     .IsRequired()
-                    .HasMaxLength(20);
+                    .HasMaxLength(50);
 
             builder.Property(e => e.LastName)
                     .IsRequired()
-                    .HasMaxLength(20);
+                    .HasMaxLength(50);
            
-            builder.Property(e => e.PhoneNumber).HasMaxLength(15);
+            builder.Property(e => e.PhoneNumber).HasMaxLength(50);
             
             builder.Property(x => x.PhoneNumber).IsRequired();
-            //builder.Property(x => x.PasswordHash).IsRequired();
             builder.Property(x => x.DateOfBirth).IsRequired();
-
-            string a = "asdsa";
-            var asd= a.GetHashCode();
 
             builder.HasData(
                 new User()

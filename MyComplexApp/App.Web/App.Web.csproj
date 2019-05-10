@@ -29,7 +29,6 @@
 
   <ItemGroup>
     <Folder Include="Models\ViewModel\RequestedUserViewModel\" />
-    <Folder Include="Views\zOther\Users\" />
     <Folder Include="wwwroot\imgs\Bacground-texture\" />
     <Folder Include="wwwroot\js\ForAdmin\" />
   </ItemGroup>

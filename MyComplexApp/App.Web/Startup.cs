@@ -38,17 +38,10 @@ namespace App.Web
         {
             Configuration = configuration;
         }
-
-
-        // This method gets called by the runtime. Use this method to add services to the container.
+        
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<DbContext, MyAppContext>();
-            //services.AddScoped<IUserService, UserService>();
-            //services.AddScoped<IRepository<App.Data.Domain.DomainModels.Concrete.Module>, 
-            //  GenericRepository<App.Data.Domain.DomainModels.Concrete.Module>>();
-            //services.AddScoped<IRepository<Group>, GenericRepository<Group>>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ICommentRepository, CommentRepository>();
             services.AddScoped<IExamMarkRepository, ExamMarkRepository>();
@@ -57,8 +50,7 @@ namespace App.Web
             services.AddScoped<IThemeMarkRepository, ThemeMarkRepository>();
             services.AddScoped<IGenericRepository<Group>, GenericRepository<Group>>();
             services.AddScoped<IGenericRepository<Module>, GenericRepository<Module>>();
-
-            //add service dependence
+            
             services.AddScoped<ICommentService, CommentService>();
             services.AddScoped<IExamMarkService, ExamMarkService>();
             services.AddScoped<IExamService, ExamService>();
@@ -71,11 +63,10 @@ namespace App.Web
 
             services.Configure<CookiePolicyOptions>(options =>
             {
-                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-            
+
             //-1-
             //services.AddAuthentication(options =>
             //{
@@ -108,7 +99,7 @@ namespace App.Web
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.AddTransient<IEmailSender, EmailSender>();
-            //NEW CODE
+
             services.AddDbContext<MyAppContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
 
@@ -127,39 +118,11 @@ namespace App.Web
                 options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
             });
 
-            //------
-            //services.addauthentication(options =>
-            //{
-            //    //options.defaultchallengescheme = facebookdefaults.authenticationscheme;
-            //    //options.defaultsigninscheme = cookieauthenticationdefaults.authenticationscheme;
-            //    //options.defaultauthenticatescheme = cookieauthenticationdefaults.authenticationscheme;
-
-            //    options.defaultauthenticatescheme = cookieauthenticationdefaults.authenticationscheme;
-            //    options.defaultchallengescheme = cookieauthenticationdefaults.authenticationscheme;
-            //    options.defaultsigninscheme = cookieauthenticationdefaults.authenticationscheme;
-            //}).addfacebook(options =>
-            //{
-            //    options.appid = "806605686400556";
-            //    options.appsecret = "72dc791ece58b9bb0a6543d43a7af3c4";
-            //}).addcookie(options =>
-            //{
-            //    options.loginpath = "/auth/signin";
-            //});
-
-
-            //services.AddAuthentication().AddGoogle(options =>
-            //{
-            //    options.ClientId = Configuration["GoogleId"];
-            //    options.ClientSecret = Configuration["GoogleSecret"];
-            //});
-
-            //using Microsoft.AspNetCore.Identity.UI.Services;
             services.AddSingleton<IEmailSender, EmailSender>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddAutoMapper();
         }
-
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
@@ -170,12 +133,9 @@ namespace App.Web
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
-            //app.UseMiddleware<CustomMiddleware>();
-
+        
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();

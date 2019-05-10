@@ -12,7 +12,7 @@ namespace App.Data.Domain.DomainModelsConfigs.ConcreteConfigs
         public void Configure(EntityTypeBuilder<Menthor> builder)
         {
             builder.HasKey(x => x.Id);
-            builder.HasOne(x => x.User).WithOne().OnDelete(DeleteBehavior.Cascade);/*.WithOne(x => x.Menthor).HasForeignKey<Menthor>(x => x.UserId)*/
+            builder.HasOne(x => x.User).WithOne().OnDelete(DeleteBehavior.Cascade);
 
             builder.HasData(
             new Menthor()

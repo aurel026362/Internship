@@ -1,4 +1,5 @@
-﻿using App.Data.Domain.DomainModels.Concrete;
+﻿using App.Data.Context;
+using App.Data.Domain.DomainModels.Concrete;
 using App.Data.Interfaces.RepositoryInterfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -12,13 +13,11 @@ namespace App.Data.Repository
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        private readonly DbContext _context;
-        //protected readonly DbSet<T> DbSet;
+        protected readonly MyAppContext _context;
 
-        public GenericRepository(DbContext context)
+        public GenericRepository(MyAppContext context)
         {
             _context = context;
-            //DbSet = _context.Set<T>();
         }
 
         public IList<T> GetAll()
@@ -28,14 +27,8 @@ namespace App.Data.Repository
 
         public IList<T> GetNext10(int page)
         {
-            return _context.Set<T>().Skip(10 * page).Take(10).ToList();
+            return _context.Set<T>().SkipTakeNext10(page);
         }
-
-        //public async List<T>> GetAll(Expression<Func<T, bool>> predicate)
-        //{
-        //    return await DbSet.AsNoTracking().Where(predicate).ToListAsync();
-        //}
-
 
         public T GetById(long id)
         {
@@ -60,18 +53,12 @@ namespace App.Data.Repository
 
         public void Delete(T element)
         {
-            //if (element == null)
-            //    throw new EntityNotFoundException(nameof(element));
-
             _context.Set<T>().Remove(element);
         }
 
         public void Delete(long id)
         {
             T element = _context.Set<T>().Find(id);
-
-            //if (element == null)
-            //    throw new EntityNotFoundException(nameof(element));
 
             _context.Set<T>().Remove(element);
         }

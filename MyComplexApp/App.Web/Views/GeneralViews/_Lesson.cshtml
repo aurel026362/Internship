@@ -33,7 +33,9 @@
                 </div>
                 <script>
                     $("#v-pills-lesson-tab").bind("click", function () {
-                        
+
+                        lettersAnimation();
+
                         $.ajax({
                             url:"/Mark/GetHardThemes",
                             type: "GET",
@@ -78,13 +80,17 @@
                 </div>
                 <script>
                     $(document).ready(function () {
+
                         $("#v-pills-lesson-tab").bind("click", function () {
+
+                            lettersAnimation();
+
                             $.ajax({
                                 url: "/Mark/GetHardThemess",
                                 type: "GET",
                                 datatype: "json",
                                 success: function (data) {
-                                    $("#table-menthor-proposals").empty();
+                                    $("#table-menthor-proposals > tbody").empty();
                                     LinkDivEmpty();
                                     $.each(data, function (i, item) {
                                         AppendLinks(item.theme.name);
@@ -132,13 +138,34 @@
     </div>
 </div>
 <script>
+
+    function go(i) {
+        i.style.transform = "rotateX(0deg) rotateY(-40deg) rotateZ(0deg)";
+    }
+
+    function goBack(i) {
+
+        i.style.transform = "rotateX(0deg) rotateY(0deg) rotateZ(0deg) "
+    }
+
+    function lettersAnimation() {
+        $('.letter').each((i, item) => setTimeout(() => {
+            go(item);
+            setTimeout(() => goBack(item), 400);
+        }, i * 90));
+
+        $($(".letter").get().reverse()).each((i, item) => setTimeout(() => {
+            go(item);
+            setTimeout(() => goBack(item), 400);
+        }, i * 90 + 8*160));
+
+    }
+
     function AppendLinks(item) {
         $("#google-link").append("<a href='https://www.google.com/search?source=hp&ei=WvPSXNa4N8L5wQLjhqXoDQ&q=" + item + "' target='_blank'>" + item + "</a><br />");
         $("#microsoft-link").append("<a href='https://www.microsoft.com/ro-md/search?q=" + item + "' target='_blank'>" + item + "</a><br />");
         $("#youtube-link").append("<a href='https://www.youtube.com/results?search_query=" + item + "' target='_blank'>" + item + "</a><br />");
         $("#stackov-link").append("<a href='https://stackoverflow.com/search?q=" + item + "' target='_blank'>" + item + "</a><br />");
-
-        variable = document.getElementsByClassName("r")[0].firstElementChild.href;
     }
 
     function LinkDivEmpty() {

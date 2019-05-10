@@ -13,7 +13,7 @@ namespace App.Web.Models.ComplexViewModel.Admin
 {
     public class UserProfileListViewModel
     {
-        public UserProfileViewModel Data { get; set; }
+        public UserProfileViewModel UserProfile { get; set; }
         public IList<UserDetailedViewModel> Users { get; set; }
     }
 }

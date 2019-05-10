@@ -28,6 +28,33 @@ namespace App.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles="Admin")]
+        public async Task<IActionResult> AddRequestedUser(long requestedUserId)
+        {
+            _userService.AddRequestedUser(requestedUserId);
+            return Ok();
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> RemoveRequestedUser(long requestedUserId)
+        {
+            _userService.DeleteRequestedUser(requestedUserId);
+            return Ok();
+        }
+
+        [HttpGet]
+        [Authorize(Roles ="Admin")]
+        public async Task<IActionResult> GetRequestedUsers()
+        {
+            var listDto = _userService.GetRequestedUsers();
+            var list = _mapper.Map<IList<RequestedUserViewModel>>(listDto);
+
+            return Json(list);
+        }
+
+
+        [HttpPost]
         public async Task<IActionResult> Edit(UserDetailedViewModel userViewModel)
         {
             if (!ModelState.IsValid)
@@ -55,15 +82,13 @@ namespace App.Web.Controllers
             user.LastName = model.LastName;
             user.DateOfBirth = model.DateOfBirth;
             user.PhoneNumber = model.PhoneNumber;
-            //_userService.Save();
             return StatusCode(200);
         }
 
         [HttpPost]
         public IActionResult DeleteUser(long userId)
         {
-            //_userService.DeleteUser(userId);
-
+            _userService.DeleteUser(userId);
             return RedirectToAction("Index", "~/Admin/Index");
         }
 

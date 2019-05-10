@@ -48,8 +48,7 @@ namespace App.Web.Controllers
 
             var comments = _commentService.GetComments(themeId);
             data.Comments = _mapper.Map<IList<CommentViewModel>>(comments);
-
-            //return PartialView("../GeneralViews/_GetComments", data);
+            
             return Json(data);
         }
 
@@ -58,8 +57,6 @@ namespace App.Web.Controllers
         {
             var commentsDto = _commentService.GetComments(pageNr, themeId);
             var comments = _mapper.Map<IList<CommentViewModel>>(commentsDto);
-            //var result = JsonConvert.SerializeObject(comments);
-            //return Content(result, "application/json");
             return Json(comments);
         }
 

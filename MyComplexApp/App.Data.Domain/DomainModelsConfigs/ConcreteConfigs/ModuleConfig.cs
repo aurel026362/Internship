@@ -13,7 +13,7 @@ namespace App.Data.Domain.DomainModelsConfigs.ConcreteConfigs
         {
             builder.ToTable("Modules");
             builder.HasKey(x => x.Id);
-            builder.Property(x => x.Name).HasColumnType("nvarchar(20)");
+            builder.Property(x => x.Name).HasColumnType("nvarchar(50)");
             builder.Property(x => x.StartDate).HasColumnType("date");
 
             builder.HasData(

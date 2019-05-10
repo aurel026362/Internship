@@ -94,7 +94,16 @@ namespace App.Web.Areas.Identity.Pages.Account
             returnUrl = returnUrl ?? Url.Content("~/Home/Index");
             if (ModelState.IsValid)
             {
-                var user = new User
+                //var user = new User
+                //{
+                //    UserName = Input.Email,
+                //    Email = Input.Email,
+                //    FirstName = Input.FirstName,
+                //    LastName = Input.LastName,
+                //    PhoneNumber = Input.PhoenNumber,
+                //    DateOfBirth = Input.DateOfBirth
+                //};
+                var user = new User()
                 {
                     UserName = Input.Email,
                     Email = Input.Email,
@@ -104,9 +113,7 @@ namespace App.Web.Areas.Identity.Pages.Account
                     DateOfBirth = Input.DateOfBirth
                 };
 
-
                 IdentityResult result;
-
                 using (var transaction = _context.Database.BeginTransaction())
                 {
                     try
@@ -115,8 +122,8 @@ namespace App.Web.Areas.Identity.Pages.Account
                         await _userManager.AddToRoleAsync(user, Input.Role);
                         switch (Input.Role)
                         {
-                            case "Menthor": { _userService.AddMenthor(new MenthorDto() { UserId = user.Id });} break;
-                            case "Intern": { _userService.AddIntern(new InternDto() { UserId = user.Id });} break;
+                            case "Menthor": { _userService.AddMenthor(new MenthorDto() { UserId = user.Id }); } break;
+                            case "Intern": { _userService.AddIntern(new InternDto() { UserId = user.Id }); } break;
                             case "Admin": break;
                             default: throw new Exception();
                         }

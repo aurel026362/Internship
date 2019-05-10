@@ -10,13 +10,11 @@ using System.Text;
 
 namespace App.Data.Repository.ComplexRepository
 {
-    public class CommentRepository : ICommentRepository
+    public class CommentRepository : GenericRepository<Comment>, ICommentRepository
     {
-        private readonly MyAppContext _context;
 
-        public CommentRepository(MyAppContext ctxt)
+        public CommentRepository(MyAppContext context) : base(context)
         {
-            _context = ctxt;
         }
 
         public IList<Comment> GetComments()
@@ -29,7 +27,7 @@ namespace App.Data.Repository.ComplexRepository
         public IList<Comment> GetComments(long themeId)
         {
             var comments = _context.Comments.Include(x=>x.User).Include(x=>x.Theme)
-                .Where(x=>x.ThemeId.Equals(themeId)).OrderByDescending(x => x.DateComment).Take(10).ToList();
+                .Where(x=>x.ThemeId.Equals(themeId)).OrderByDescending(x => x.DateComment).TakeNext10();
 
             return comments;
         }
@@ -37,7 +35,7 @@ namespace App.Data.Repository.ComplexRepository
         public IList<Comment> GetComments(int page, long themeId)
         {
             var comments = _context.Comments.Include(x=>x.Theme).Include(x=>x.User)
-                .Where(x => x.ThemeId.Equals(themeId)).OrderByDescending(x => x.DateComment).Skip(page * 10).Take(10).ToList();
+                .Where(x => x.ThemeId.Equals(themeId)).OrderByDescending(x => x.DateComment).SkipTakeNext10(page);
 
             return comments;
         }
@@ -60,11 +58,6 @@ namespace App.Data.Repository.ComplexRepository
 
             _context.Comments.Add(com);
             Save();
-        }
-
-        public void Save()
-        {
-            _context.SaveChanges();
         }
     }
 }

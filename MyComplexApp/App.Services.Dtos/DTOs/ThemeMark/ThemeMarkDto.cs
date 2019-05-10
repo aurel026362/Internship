@@ -9,7 +9,7 @@ namespace App.Services.Dtos.DTOs.ThemeMark
         public long UserId { get; set; }
         public string UserEmail { get; set; }
         public string ThemeName { get; set; }
-        public int Mark { get; set; }
+        public double Mark { get; set; }
         public string Comment { get; set; }
     }
 }

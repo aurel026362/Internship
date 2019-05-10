@@ -95,7 +95,7 @@
                 {
                     <tr>
                         <td>
-                            <a asp-action="Details" asp-controller="Admin" asp-route-id="@item.UserId"><i class="fas fa-user"></i> @item.UserEmail</a>
+                            <a asp-controller="Home" asp-action="Details" asp-route-id="@item.UserId"><i class="fas fa-user"></i> @item.UserEmail</a>
                         </td>
                         <td>
                             @item.ThemeName
@@ -147,7 +147,7 @@
                 {
                     <tr>
                         <td>
-                            <a asp-action="Details" asp-controller="Admin"><i class="fas fa-user"></i> @item.UserEmail</a>
+                            <a asp-controller="Home" asp-action="Details"><i class="fas fa-user"></i> @item.UserEmail</a>
                         </td>
                         <td>
                             @item.ModuleName
@@ -345,7 +345,7 @@
         function AppendToTable(data) {
             $.each(data, function (i, item) {
                 $('<tr>').append(
-                    $('<td>').html("<a href='/Admin/Details/" + item.userId + "' ><i class='fas fa-user'></i> " + item.userEmail + "</a>"),
+                    $('<td>').html("<a href='/Home/Details/" + item.userId + "' ><i class='fas fa-user'></i> " + item.userEmail + "</a>"),
                     $('<td>').text(item.themeName),
                     $('<td>').html("<span class='tmakrs'>" + item.mark + "</span>"),
                     $('<td>').text(item.comment)
