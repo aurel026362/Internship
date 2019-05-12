@@ -83,7 +83,9 @@ namespace App.Data.Repository.ComplexRepository
 
         public IList<ThemeMark> GetThemeMarksSorted(int page, string orderBy, bool sorting)
         {
-            IList<ThemeMark> list = null;
+            IList<ThemeMark> marks = null;
+
+            var list = _context.ThemeMarks.Include(x => x.Intern).ThenInclude(x => x.User).Include(x => x.Theme);
 
             switch (orderBy)
             {
@@ -91,13 +93,11 @@ namespace App.Data.Repository.ComplexRepository
                     {
                         if (sorting)
                         {
-                            list = _context.ThemeMarks.Include(x => x.Intern).ThenInclude(x => x.User).Include(x => x.Theme)
-                                .OrderBy(x => x.Theme.Name).SkipTakeNext10(page);
+                            marks = list.OrderBy(x => x.Theme.Name).SkipTakeNext10(page);
                         }
                         else
                         {
-                            list = _context.ThemeMarks.Include(x => x.Intern).ThenInclude(x => x.User).Include(x => x.Theme)
-                                .OrderByDescending(x => x.Theme.Name).SkipTakeNext10(page);
+                            marks = list.OrderByDescending(x => x.Theme.Name).SkipTakeNext10(page);
                         }
                     }
                     break;
@@ -105,13 +105,11 @@ namespace App.Data.Repository.ComplexRepository
                     {
                         if (sorting)
                         {
-                            list = _context.ThemeMarks.Include(x => x.Intern).ThenInclude(x => x.User).Include(x => x.Theme)
-                                .OrderBy(x => x.Mark).SkipTakeNext10(page);
+                            marks = list.OrderBy(x => x.Mark).SkipTakeNext10(page);
                         }
                         else
                         {
-                            list = _context.ThemeMarks.Include(x => x.Intern).ThenInclude(x => x.User).Include(x => x.Theme)
-                                .OrderByDescending(x => x.Mark).SkipTakeNext10(page);
+                            marks = list.OrderByDescending(x => x.Mark).SkipTakeNext10(page);
                         }
                     }
                     break;
@@ -119,19 +117,17 @@ namespace App.Data.Repository.ComplexRepository
                     {
                         if (sorting)
                         {
-                            list = _context.ThemeMarks.Include(x => x.Intern).ThenInclude(x => x.User).Include(x => x.Theme)
-                                .OrderBy(x => x.Intern.User.Email).SkipTakeNext10(page);
+                            marks = list.OrderBy(x => x.Intern.User.Email).SkipTakeNext10(page);
                         }
                         else
                         {
-                            list = _context.ThemeMarks.Include(x => x.Intern).ThenInclude(x => x.User).Include(x => x.Theme)
-                                .OrderByDescending(x => x.Intern.User.Email).SkipTakeNext10(page);
+                            marks = list.OrderByDescending(x => x.Intern.User.Email).SkipTakeNext10(page);
                         }
                     }
                     break;
                 default: { } break;
             }
-            return list;
+            return marks;
         }
 
         public IList<ThemeMark> GetTMarksByEmail(string email)

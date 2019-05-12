@@ -8,11 +8,13 @@ using App.Web.Model.ViewModel.CommentViewModel;
 using App.Web.Models.ComplexViewModel.General;
 using App.Web.Models.ViewModel.UserViewModel;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace App.Web.Controllers
 {
+    [Authorize(Roles="Intern, Menthor, Admin")]
     public class CommentController : Controller
     {
         private readonly ICommentService _commentService;

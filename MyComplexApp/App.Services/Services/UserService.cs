@@ -74,7 +74,7 @@ namespace App.Services.Services
 
         public IList<UserDetailedDto> GetUsersDetails()
         {
-            var list = _userRepository.GetUsersDetails();
+            var list = _userRepository.GetUsers();
             var listDto = _mapper.Map<IList<UserDetailedDto>>(list);
 
             return listDto;
@@ -111,71 +111,31 @@ namespace App.Services.Services
             _userRepository.UpdateUser(userEntity);
         }
 
-        public IList<RequestedUserDto> GetRequestedUsers()
+        public IList<UserDto> GetRequestedUsers()
         {
             var list = _userRepository.GetRequestedUsers();
-            var listDto = list.Select(x => new RequestedUserDto()
-            {
-                User = new UserDto()
-                {
-                    Id = x.Id,
-                    FirstName = x.FirstName,
-                    LastName = x.LastName,
-                    EMail = x.Email,
-                    PhoneNumber = x.PhoneNumber,
-                    DateOfBirth = x.DateOfBirth
-                },
-                Role = x.TypeUser
-            }).ToList();
+            var listDto = _mapper.Map<IList<UserDto>>(list);
 
             return listDto;
         }
 
-        public void AddRequestedUser(long requestedUserId)
+        public async Task AddRequestedUser(long requestedUserId, string role)
         {
-            var requestedUser = _userRepository.GetRequestedUser(requestedUserId);
+            var requestedUser = _userRepository.GetUserById(requestedUserId);
 
-            var user = new User()
+            await _userManager.AddToRoleAsync(requestedUser, role);
+            switch (role)
             {
-                FirstName = requestedUser.FirstName,
-                LastName = requestedUser.LastName,
-                Email = requestedUser.Email,
-                PhoneNumber = requestedUser.PhoneNumber,
-                DateOfBirth = requestedUser.DateOfBirth,
-                EmailConfirmed = false,
-                PhoneNumberConfirmed = false,
-                TwoFactorEnabled = false,
-                LockoutEnabled = false,
-                AccessFailedCount = 0
-            };
-            
-                try
-                {
-                    _userManager.CreateAsync(user, requestedUser.Password);
-                    _userManager.AddToRoleAsync(user, requestedUser.TypeUser);
-                    switch (requestedUser.TypeUser)
-                    {
-                        case "Menthor": { AddMenthor(new MenthorDto() { UserId = user.Id }); } break;
-                        case "Intern": { AddIntern(new InternDto() { UserId = user.Id }); } break;
-                        case "Admin": break;
-                        default: throw new Exception();
-                    }
-                }
-                catch (Exception)
-                {
-                    throw new Exception();
-                }
+                case "Menthor": { AddMenthor(new MenthorDto() { UserId = requestedUser.Id }); } break;
+                case "Intern": { AddIntern(new InternDto() { UserId = requestedUser.Id }); } break;
+                case "Admin": break;
+                default: throw new Exception();
+            }
         }
 
         public async Task AddUser(User user)
         {
             await _userManager.CreateAsync(user);
-        }
-
-        public void DeleteRequestedUser(long requestedUserId)
-        {
-            _userRepository.DeclineRequestedUser(requestedUserId);
-            _userRepository.Save();
         }
     }
 }

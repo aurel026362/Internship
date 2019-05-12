@@ -23,7 +23,6 @@ namespace App.Data.Context
         public virtual DbSet<ExamMark> ExamMarks { get; set; }
         public virtual DbSet<Group> Groups { get; set; }
         public virtual DbSet<Comment> Comments { get; set; }
-        public virtual DbSet<RequestedUser> RequestedUsers { get; set; }
 
         public MyAppContext()
         {
@@ -37,8 +36,8 @@ namespace App.Data.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Data Source=MDDSK40071\TOMANDJERRY;Initial Catalog=test;Integrated Security=True");
-            //optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-BIL3ATO\MSSQLSERVER1;Initial Catalog=test;Integrated Security=True");
+            //optionsBuilder.UseSqlServer(@"Data Source=MDDSK40071\TOMANDJERRY;Initial Catalog=test;Integrated Security=True");
+            optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-BIL3ATO\MSSQLSERVER1;Initial Catalog=test;Integrated Security=True");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -55,7 +54,6 @@ namespace App.Data.Context
             modelBuilder.ApplyConfiguration(new ExamMarkConfig());
             modelBuilder.ApplyConfiguration(new GroupConfig());
             modelBuilder.ApplyConfiguration(new CommentConfig());
-            modelBuilder.ApplyConfiguration(new RequestedUserConfig());
             modelBuilder.ApplyConfiguration(new RoleConfig());
         }
     }

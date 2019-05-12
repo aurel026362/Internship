@@ -78,8 +78,11 @@ namespace App.Web.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
+        [HttpGet]
+        [Authorize(Roles = "Intern, Menthor, Admin")]
         public IActionResult DashBoard()
         {
+            var userListProfile = new UserProfileListViewModel();
             var person = new UserProfileViewModel();
             long currentId = Convert.ToInt32(_signInManager.UserManager.GetUserId(User));
             var currentUserDto = _userService.GetUserById(currentId);
@@ -105,8 +108,9 @@ namespace App.Web.Controllers
                 var examMarksDto = _examMarkService.GetExamMarksByUserId(currentId);
                 marks.ExamMarks = _mapper.Map<IList<ExamMarkViewModel>>(examMarksDto);
                 person.Marks = marks;
+                userListProfile.UserProfile = person;
 
-                return View("../Intern/Index", person);
+                return View("../DashBoard/Index", userListProfile);
             }
             else if (User.IsInRole("Menthor") || User.IsInRole("Admin"))
             {
@@ -120,15 +124,15 @@ namespace App.Web.Controllers
                 if (User.IsInRole("Admin"))
                 {
                     var usersDto = _userService.GetUsersDetails();
+                    
+                    userListProfile.UserProfile = person;
+                    userListProfile.Users = _mapper.Map<IList<UserDetailedViewModel>>(usersDto);
 
-                    var userProfileList = new UserProfileListViewModel();
-                    userProfileList.UserProfile = person;
-                    userProfileList.Users = _mapper.Map<IList<UserDetailedViewModel>>(usersDto);
-
-                    return View("../Admin/Index", userProfileList);
+                    return View("../DashBoard/Index", userListProfile);
                 }
 
-                return View("../Menthor/Index", person);
+                userListProfile.UserProfile = person;
+                return View("../DashBoard/Index", userListProfile);
             }
             return View("Error");
         }
@@ -162,7 +166,7 @@ namespace App.Web.Controllers
                 return NotFound();
             }
 
-            return View("../Admin/Details", userdata);
+            return View("../DashBoard/Details", userdata);
         }
     }
 }

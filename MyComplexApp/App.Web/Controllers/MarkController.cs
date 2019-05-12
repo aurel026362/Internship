@@ -17,6 +17,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace App.Web.Controllers
 {
+    [Authorize]
     public class MarkController : Controller
     {
         private readonly IThemeMarkService _themeMarkService;
@@ -45,6 +46,7 @@ namespace App.Web.Controllers
         //}
 
         [HttpGet]
+        [Authorize(Roles = "Menthor, Admin")]
         public async Task<IActionResult> GetHardThemess()
         {
             var hardthemesDto = _themeMarkService.GetBadThemeMarks();
@@ -54,6 +56,7 @@ namespace App.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Intern")]
         public async Task<IActionResult> GetHardThemes(long userId)
         {
             var hardThemes = _themeMarkService.GetBadThemeMarks(userId);
@@ -153,6 +156,7 @@ namespace App.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Intern, Menthor, Admin")]
         public async Task<IActionResult> GetMarks(long moduleId)
         {
             var currentId = Convert.ToInt32(_signInManager.UserManager.GetUserId(User));
@@ -168,6 +172,7 @@ namespace App.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Intern, Menthor, Admin")]
         public async Task<IActionResult> GetThemeMarksByModuleUser(long moduleId, long userId)
         {
             var list = GetThemeMarks(moduleId, userId);
@@ -176,6 +181,7 @@ namespace App.Web.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Intern, Menthor, Admin")]
         public async Task<IActionResult> GetMarksForChart(long moduleId)
         {
             long currentId = Convert.ToInt32(_signInManager.UserManager.GetUserId(User));

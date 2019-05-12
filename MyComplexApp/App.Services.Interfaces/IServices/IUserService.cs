@@ -16,9 +16,8 @@ namespace App.Services.Interfaces.IServices
         IList<UserDto> GetMenthors();
         IList<UserDetailedDto> GetUsersDetails();
         IList<UserDetailedDto> GetInternsAndMenthors();
-        IList<RequestedUserDto> GetRequestedUsers();
-        void AddRequestedUser(long requestedUserId);
-        void DeleteRequestedUser(long requestedUserId);
+        IList<UserDto> GetRequestedUsers();
+        Task AddRequestedUser(long requestedUserId, string role);
         void AddIntern(InternDto intern);
         void AddMenthor(MenthorDto menthor);
         void DeleteUser(long UserId);

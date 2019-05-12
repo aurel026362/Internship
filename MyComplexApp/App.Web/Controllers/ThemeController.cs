@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace App.Web.Controllers
 {
+    [Authorize]
     public class ThemeController : Controller
     {
         private readonly IThemeService _themeService;

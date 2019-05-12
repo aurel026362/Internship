@@ -118,7 +118,7 @@ namespace App.Services.Services
         public IList<string> GetBadThemeMarks(long userId)
         {
             var list = _themeMarkRepository.GetThemeMarksByUserId(userId).Where(x => x.Mark < 8)
-                .OrderBy(x => x.Mark).Take(5).Select(x=>x.Theme.Name).ToList();
+                /*.OrderBy(x => x.Mark).Take(5)*/.Select(x=>x.Theme.Name).ToList();
 
             return list;
         }
@@ -135,7 +135,7 @@ namespace App.Services.Services
                 Name = x.Name,
                 StartDate = x.StartDate,
                 Source = x.Source,
-                MenthorEMail = x.Menthor.User.Email,
+                MenthorEMail = (x.Menthor!=null) ?x.Menthor.User.Email:"",
                 ModuleName = x.Module.Name
             }).ToList();
 

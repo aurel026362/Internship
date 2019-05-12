@@ -11,13 +11,10 @@ namespace App.Data.Interfaces.RepositoryInterfaces.IComplexRepository
     {
         User GetUserById(long Id);
         IList<User> GetUsers();
-        IList<User> GetUsersDetails();
         IList<User> GetInterns();
         IList<User> GetMenthors();
         IList<User> GetInternsAndMenthors();
-        IList<RequestedUser> GetRequestedUsers();
-        RequestedUser GetRequestedUser(long requestedUserId);
-        void DeclineRequestedUser(long requestedUserId);
+        IList<User> GetRequestedUsers();
         void UpdateUser(long userId, string newFName, string newLName, string nenwPhone, DateTime newdDBirth);
         void UpdateUser(User user);
         void AddIntern(Intern intern);

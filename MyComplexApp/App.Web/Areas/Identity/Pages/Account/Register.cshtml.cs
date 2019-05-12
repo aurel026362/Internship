@@ -114,28 +114,28 @@ namespace App.Web.Areas.Identity.Pages.Account
                 };
 
                 IdentityResult result;
-                using (var transaction = _context.Database.BeginTransaction())
-                {
-                    try
-                    {
+                //using (var transaction = _context.Database.BeginTransaction())
+                //{
+                //    try
+                //    {
                         result = await _userManager.CreateAsync(user, Input.Password);
-                        await _userManager.AddToRoleAsync(user, Input.Role);
-                        switch (Input.Role)
-                        {
-                            case "Menthor": { _userService.AddMenthor(new MenthorDto() { UserId = user.Id }); } break;
-                            case "Intern": { _userService.AddIntern(new InternDto() { UserId = user.Id }); } break;
-                            case "Admin": break;
-                            default: throw new Exception();
-                        }
-                        transaction.Commit();
-                    }
-                    catch (Exception)
-                    {
-                        transaction.Rollback();
-                        throw new Exception();
-                        // TODO: Handle failure
-                    }
-                }
+                        //await _userManager.AddToRoleAsync(user, Input.Role);
+                        //switch (Input.Role)
+                        //{
+                        //    case "Menthor": { _userService.AddMenthor(new MenthorDto() { UserId = user.Id }); } break;
+                        //    case "Intern": { _userService.AddIntern(new InternDto() { UserId = user.Id }); } break;
+                        //    case "Admin": break;
+                        //    default: throw new Exception();
+                        //}
+                    //    transaction.Commit();
+                    //}
+                    //catch (Exception)
+                    //{
+                    //    transaction.Rollback();
+                    //    throw new Exception();
+                    //    // TODO: Handle failure
+                    //}
+                //}
 
                 if (result.Succeeded)
                 {

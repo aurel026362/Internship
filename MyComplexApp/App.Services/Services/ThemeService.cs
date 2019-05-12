@@ -29,7 +29,7 @@ namespace App.Services.Services
                 StartDate = x.StartDate,
                 Source = x.Source,
                 ModuleName = x.Module.Name,
-                MenthorEMail = x.Menthor.User.Email
+                MenthorEMail = (x.Menthor!=null)?x.Menthor.User.Email :""
             }).ToList();
 
             return list;
@@ -44,7 +44,7 @@ namespace App.Services.Services
                 StartDate = x.StartDate,
                 Source = x.Source,
                 ModuleName = x.Module.Name,
-                MenthorEMail = x.Menthor.User.Email
+                MenthorEMail = (x.Menthor != null) ? x.Menthor.User.Email:""
             }).ToList();
 
             return list;
@@ -59,7 +59,7 @@ namespace App.Services.Services
                 StartDate = x.StartDate,
                 Source = x.Source,
                 ModuleName = x.Module.Name,
-                MenthorEMail = x.Menthor.User.Email
+                MenthorEMail = (x.Menthor != null) ? x.Menthor.User.Email:""
             }).ToList();
 
             return list;

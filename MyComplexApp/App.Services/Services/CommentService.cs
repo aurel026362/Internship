@@ -38,7 +38,7 @@ namespace App.Services.Services
                 EMail = x.User.Email,
                 ThemeName = x.Theme.Name,
                 Content = x.Content,
-                DateComment = x.DateComment.ToString("dd/mm/yyyy")
+                DateComment = x.DateComment.ToString("dd/mm/yyyy hh:mm:ss")
             }).ToList();
             
             return list;
@@ -51,7 +51,7 @@ namespace App.Services.Services
                 EMail = x.User.Email,
                 ThemeName = x.Theme.Name,
                 Content = x.Content,
-                DateComment = x.DateComment.ToString("dd/mm/yyyy")
+                DateComment = x.DateComment.ToString("dd/mm/yyyy hh:mm:ss")
             }).ToList();
             
             return list;
@@ -64,7 +64,7 @@ namespace App.Services.Services
                 EMail = x.User.Email,
                 ThemeName = x.Theme.Name,
                 Content = x.Content,
-                DateComment = x.DateComment.ToString("dd/mm/yyyy")
+                DateComment = x.DateComment.ToString("dd/mm/yyyy hh:mm:ss")
             }).ToList();
 
             return list;

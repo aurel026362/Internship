@@ -28,7 +28,22 @@ namespace App.Data.Repository.ComplexRepository
 
         public IList<User> GetUsers()
         {
-            return _context.Users.AsNoTracking().ToList();
+            var list = _context.Users.ToList();
+            var users = new List<User>();
+            foreach (var item in list)
+            {
+                var nrroles = 0;
+                foreach (var role in _context.UserRoles)
+                {
+                    if (item.Id.Equals(role.UserId))
+                    {
+                        nrroles++;
+                    }
+                }
+                if (nrroles > 0) users.Add(item);
+            }
+
+            return users;
         }
 
         public IList<User> GetInterns()
@@ -72,13 +87,6 @@ namespace App.Data.Repository.ComplexRepository
             user.DateOfBirth = newdDBirth;
             _context.Update(user);
             Save();
-        }
-
-        public IList<User> GetUsersDetails()
-        {
-            var list = _context.Users.ToList();
-
-            return list;
         }
 
         public void AddIntern(Intern intern)
@@ -145,24 +153,24 @@ namespace App.Data.Repository.ComplexRepository
             _context.SaveChanges();
         }
 
-        public IList<RequestedUser> GetRequestedUsers()
+        public IList<User> GetRequestedUsers()
         {
-            var list = _context.RequestedUsers.AsNoTracking().ToList();
+            var list = _context.Users.ToList();
+            var requestedlist = new List<User>();
+            foreach(var item in list)
+            {
+                var nrroles = 0;
+                foreach (var role in _context.UserRoles)
+                {
+                    if (item.Id.Equals(role.UserId))
+                    {
+                        nrroles++;
+                    }
+                }
+                if (nrroles.Equals(0)) requestedlist.Add(item);
+            }
 
-            return list;
-        }
-
-        public RequestedUser GetRequestedUser(long requestedUserId)
-        {
-            var requestedUser = _context.RequestedUsers.Find(requestedUserId);
-
-            return requestedUser;
-        }
-
-        public void DeclineRequestedUser(long requestedUserId)
-        {
-            var requestedUser = _context.RequestedUsers.Find(requestedUserId);
-            _context.RequestedUsers.Remove(requestedUser);
+            return requestedlist;
         }
     }
 }

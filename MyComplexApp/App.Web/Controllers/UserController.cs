@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using App.Data.Context;
 using App.Data.Domain.DomainModels.Identity;
 using App.Services.Dtos.DTOs.User;
 using App.Services.Interfaces.IServices;
@@ -11,27 +12,33 @@ using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace App.Web.Controllers
 {
+    [Authorize]
     public class UserController : Controller
     {
         private readonly IUserService _userService;
         private readonly SignInManager<User> _signInManager;
+        private readonly UserManager<User> _userManager;
+        private readonly MyAppContext _context; 
         private readonly IMapper _mapper;
 
-        public UserController(IUserService userService, SignInManager<User> signInManager, IMapper mapper)
+        public UserController(MyAppContext context, IUserService userService, UserManager<User> userManager, SignInManager<User> signInManager, IMapper mapper)
         {
+            _context = context;
             _signInManager = signInManager;
+            _userManager = userManager;
             _userService = userService;
             _mapper = mapper;
         }
 
         [HttpPost]
         [Authorize(Roles="Admin")]
-        public async Task<IActionResult> AddRequestedUser(long requestedUserId)
+        public async Task<IActionResult> AddRequestedUser(long requestedUserId, string role)
         {
-            _userService.AddRequestedUser(requestedUserId);
+            await _userService.AddRequestedUser(requestedUserId, role);
             return Ok();
         }
 
@@ -39,7 +46,7 @@ namespace App.Web.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> RemoveRequestedUser(long requestedUserId)
         {
-            _userService.DeleteRequestedUser(requestedUserId);
+            _userService.DeleteUser(requestedUserId);
             return Ok();
         }
 
@@ -48,13 +55,23 @@ namespace App.Web.Controllers
         public async Task<IActionResult> GetRequestedUsers()
         {
             var listDto = _userService.GetRequestedUsers();
-            var list = _mapper.Map<IList<RequestedUserViewModel>>(listDto);
+            var list = _mapper.Map<IList<User>>(listDto);
 
+            //var asd = _userManager.Users.Include(u => u.Roles).Where(x=>x.Roles.Count()==0).ToList();
+            //var asdd = _mapper.Map<IList<User>>(asd);
+            //foreach(var item in asdd)
+            //{
+            //    var roles = _userManager.GetRolesAsync(item);
+            //}
+
+            //var list = _context.Users.Where(x => x.Id == 6).FirstOrDefault();
+            //var roles = _userManager.GetRolesAsync(list);
             return Json(list);
         }
 
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(UserDetailedViewModel userViewModel)
         {
             if (!ModelState.IsValid)
@@ -65,10 +82,11 @@ namespace App.Web.Controllers
             var userDto = _mapper.Map<UserDetailedDto>(userViewModel);
             _userService.UpdateUser(userDto);
 
-            return Redirect("~/Admin/Index");
+            return View("~/Home/DashBoard");
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> EditPersonalData(UserViewModel model)
         {
             if (!ModelState.IsValid)
@@ -89,7 +107,7 @@ namespace App.Web.Controllers
         public IActionResult DeleteUser(long userId)
         {
             _userService.DeleteUser(userId);
-            return RedirectToAction("Index", "~/Admin/Index");
+            return View("~/Home/DashBoard");
         }
 
         [HttpGet]
