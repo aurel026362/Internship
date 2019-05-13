@@ -33,21 +33,9 @@ namespace App.Web.Controllers
             _mapper = mapper;
         }
 
-        //[Authorize(Roles ="Intern")]
-        //private IList<string> GetHelpLinks(IList<ThemeMarkViewModel> marks)
-        //{
-        //    IList<string> themes = new List<string>();
-
-        //    string minMark = marks.OrderByDescending(x => x.Mark).Select(x => x.ThemeName).FirstOrDefault();
-
-        //    themes.Add(minMark);
-
-        //    return themes;
-        //}
-
         [HttpGet]
         [Authorize(Roles = "Menthor, Admin")]
-        public async Task<IActionResult> GetHardThemess()
+        public IActionResult GetGeneralHardThemes()
         {
             var hardthemesDto = _themeMarkService.GetBadThemeMarks();
             var hardThemes = _mapper.Map<IList<HardThemeViewModel>>(hardthemesDto);
@@ -57,7 +45,7 @@ namespace App.Web.Controllers
 
         [HttpGet]
         [Authorize(Roles = "Intern")]
-        public async Task<IActionResult> GetHardThemes(long userId)
+        public IActionResult GetHardThemes(long userId)
         {
             var hardThemes = _themeMarkService.GetBadThemeMarks(userId);
 
@@ -66,7 +54,7 @@ namespace App.Web.Controllers
 
         [HttpPost]
         [Authorize(Roles ="Menthor, Admin")]
-        public async Task<IActionResult> AddOrUpdateThemeMark(AddThemeMarkViewModel model)
+        public IActionResult AddOrUpdateThemeMark(AddThemeMarkViewModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -80,7 +68,7 @@ namespace App.Web.Controllers
 
         [HttpGet]
         [Authorize(Roles = "Menthor, Admin")]
-        public async Task<IActionResult> GetThemeMarksSorted(string orderby, bool sorting)
+        public IActionResult GetThemeMarksSorted(string orderby, bool sorting)
         {
             var list = _themeMarkService.GetThemeMarksSorted(0, orderby, sorting);
             var listViewModel = _mapper.Map<IList<ThemeMarkViewModel>>(list);
@@ -90,7 +78,7 @@ namespace App.Web.Controllers
 
         [HttpGet]
         [Authorize(Roles = "Menthor, Admin")]
-        public async Task<IActionResult> GetMoreThemeMarks(int page, string orderby, bool sorting)
+        public IActionResult GetMoreThemeMarks(int page, string orderby, bool sorting)
         {
 
             var list = _themeMarkService.GetThemeMarksSorted(page, orderby, sorting);
@@ -100,7 +88,7 @@ namespace App.Web.Controllers
 
         [HttpGet]
         [Authorize(Roles = "Menthor, Admin")]
-        public async Task<IActionResult> GetThemeMarksByEmail(string email)
+        public IActionResult GetThemeMarksByEmail(string email)
         {
             var listDto = _themeMarkService.GetThemeMarksByEmail(email);
             var list = _mapper.Map<IList<ThemeMarkViewModel>>(listDto);
@@ -110,7 +98,7 @@ namespace App.Web.Controllers
 
         [HttpGet]
         [Authorize(Roles = "Menthor, Admin")]
-        public async Task<IActionResult> GetThemeMarksByModule(long moduleId, string orderby, bool sorting)
+        public IActionResult GetThemeMarksByModule(long moduleId, string orderby, bool sorting)
         {
             IList<ThemeMarkViewModel> list = null;
 
@@ -130,7 +118,7 @@ namespace App.Web.Controllers
 
         [HttpGet]
         [Authorize(Roles = "Menthor, Admin")]
-        public async Task<IActionResult> GetThemeMarksByUserId(long userId)
+        public IActionResult GetThemeMarksByUserId(long userId)
         {
             var listDto = _themeMarkService.GetThemeMarksByUserId(userId);
             var list = _mapper.Map<IList<ThemeMarkViewModel>>(listDto);
@@ -157,7 +145,7 @@ namespace App.Web.Controllers
 
         [HttpGet]
         [Authorize(Roles = "Intern, Menthor, Admin")]
-        public async Task<IActionResult> GetMarks(long moduleId)
+        public IActionResult GetMarks(long moduleId)
         {
             var currentId = Convert.ToInt32(_signInManager.UserManager.GetUserId(User));
 
@@ -168,12 +156,11 @@ namespace App.Web.Controllers
             marks.ThemeMarks = thememarks;
             marks.ExamMarks = _mapper.Map<IList<ExamMarkViewModel>>(examMarksDto);
             return Json(marks);
-            //return PartialView("_GetMarks", tmarks);
         }
 
         [HttpGet]
         [Authorize(Roles = "Intern, Menthor, Admin")]
-        public async Task<IActionResult> GetThemeMarksByModuleUser(long moduleId, long userId)
+        public IActionResult GetThemeMarksByModuleUser(long moduleId, long userId)
         {
             var list = GetThemeMarks(moduleId, userId);
 
@@ -182,7 +169,7 @@ namespace App.Web.Controllers
 
         [HttpGet]
         [Authorize(Roles = "Intern, Menthor, Admin")]
-        public async Task<IActionResult> GetMarksForChart(long moduleId)
+        public IActionResult GetMarksForChart(long moduleId)
         {
             long currentId = Convert.ToInt32(_signInManager.UserManager.GetUserId(User));
 

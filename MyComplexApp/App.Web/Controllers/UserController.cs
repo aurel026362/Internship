@@ -44,7 +44,7 @@ namespace App.Web.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> RemoveRequestedUser(long requestedUserId)
+        public IActionResult RemoveRequestedUser(long requestedUserId)
         {
             _userService.DeleteUser(requestedUserId);
             return Ok();
@@ -52,42 +52,33 @@ namespace App.Web.Controllers
 
         [HttpGet]
         [Authorize(Roles ="Admin")]
-        public async Task<IActionResult> GetRequestedUsers()
+        public IActionResult GetRequestedUsers()
         {
             var listDto = _userService.GetRequestedUsers();
             var list = _mapper.Map<IList<User>>(listDto);
-
-            //var asd = _userManager.Users.Include(u => u.Roles).Where(x=>x.Roles.Count()==0).ToList();
-            //var asdd = _mapper.Map<IList<User>>(asd);
-            //foreach(var item in asdd)
-            //{
-            //    var roles = _userManager.GetRolesAsync(item);
-            //}
-
-            //var list = _context.Users.Where(x => x.Id == 6).FirstOrDefault();
-            //var roles = _userManager.GetRolesAsync(list);
+            
             return Json(list);
         }
 
 
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Edit(UserDetailedViewModel userViewModel)
+        public IActionResult Edit(UserDetailedViewModel userViewModel)
         {
             if (!ModelState.IsValid)
             {
-                return View();
+                return BadRequest();
             }
 
             var userDto = _mapper.Map<UserDetailedDto>(userViewModel);
             _userService.UpdateUser(userDto);
 
-            return View("~/Home/DashBoard");
+            return StatusCode(200);
         }
 
         [HttpPost]
         [Authorize]
-        public async Task<IActionResult> EditPersonalData(UserViewModel model)
+        public IActionResult EditPersonalData(UserViewModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -100,6 +91,7 @@ namespace App.Web.Controllers
             user.LastName = model.LastName;
             user.DateOfBirth = model.DateOfBirth;
             user.PhoneNumber = model.PhoneNumber;
+
             return StatusCode(200);
         }
 
@@ -112,7 +104,7 @@ namespace App.Web.Controllers
 
         [HttpGet]
         [Authorize(Roles = "Menthor, Admin")]
-        public async Task<IActionResult> GetInterns()
+        public IActionResult GetInterns()
         {
             var listDto = _userService.GetInterns();
             var list = _mapper.Map<IList<UserViewModel>>(listDto);

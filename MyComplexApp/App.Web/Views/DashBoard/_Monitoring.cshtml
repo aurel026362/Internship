@@ -6,10 +6,9 @@
 <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
     <nav>
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
-            <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab" href="#divUsers" role="tab" aria-controls="nav-profile" aria-selected="false">Users</a>
-            <a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="#divTMarks" role="tab" aria-controls="nav-home" aria-selected="true">Theme Marks</a>
-            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#divEMarks" role="tab" aria-controls="nav-profile" aria-selected="false">Exam Marks</a>
-
+            <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab" href="#div-Users" role="tab" aria-controls="nav-profile" aria-selected="false">Users</a>
+            <a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="#div-ThemeMarks" role="tab" aria-controls="nav-home" aria-selected="true">Theme Marks</a>
+            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#div-ExamMarks" role="tab" aria-controls="nav-profile" aria-selected="false">Exam Marks</a>
         </div>
     </nav>
     <div class="container-fluid text-center">
@@ -21,7 +20,7 @@
         </div>
         <div class="clearfix"></div>
         <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active" role="tabpanel" aria-labelledby="profile-tab" id="divUsers">
+            <div class="tab-pane fade show active" role="tabpanel" aria-labelledby="profile-tab" id="div-Users">
                 <div class="row">
                     <div class="col-md-10 col-sm-8 col-xs-12 div-padding-vertical"></div>
                     <div class="col-md-2 col-sm-4 col-xs-12 div-padding-vertical">
@@ -115,8 +114,8 @@
             </div>
             @await Html.PartialAsync("../DashBoard/_AllMarks", Model.UserProfile)
             <script>
-                $("#divTMarks").removeClass("show");
-                $("#divTMarks").removeClass("active");
+                $("#div-ThemeMarks").removeClass("show");
+                $("#div-ThemeMarks").removeClass("active");
 
                 $(document).ready(function () {
                     $("#button-requested-users").bind("click", function () {
@@ -132,7 +131,7 @@
                                         $('<td>').text(item.firstName + " " + item.lastName),
                                         $('<td>').text(item.email),
                                         $('<td>').text(item.phoneNumber),
-                                        $('<td>').text(item.dateOfBirth),
+                                        $('<td>').text(DateFormat(item.dateOfBirth)),
                                         $('<td class="td-requested-user-role">').html("<select class='form-control role' id='role" + item.id + "'><option value='Intern'>Intern</option><option value='Menthor'>Menthor</option><option value='Admin'>Admin</option></select>"),
                                         $('<td>').html("<button class='requested-user-accept btn-sm btn-success' id='" + item.id + "'> Accept</button> "
                                             + "<button class='requested-user-decline btn-sm btn-danger' id='" + item.id + "' > Decline</button> ")
@@ -158,7 +157,6 @@
                                 });
 
                                 $(".requested-user-decline").bind("click", function () {
-                                    alert("asd");
                                     var id = $(this).attr('id');
                                     $.ajax({
                                         url: "/User/RemoveRequestedUser",
@@ -184,6 +182,15 @@
 
 
                 });
+
+                function DateFormat(stringLine) {
+                    var date = (stringLine).split("T");
+                    var dateparts = date[0].split("-");
+
+                    return (dateparts[2] + "/" +
+                        dateparts[1] + "/" +
+                        dateparts[0]);
+                }
             </script>
         </div>
     </div>

@@ -215,15 +215,7 @@ C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2
 D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\GeneralViews\_Profile.g.cshtml.cs
 D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\GeneralViews\_Settings.g.cshtml.cs
 D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\GeneralViews\_Comments.g.cshtml.cs
-D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\GeneralViews\_GetComments.g.cshtml.cs
 D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\GeneralViews\_Menu.g.cshtml.cs
-D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\Admin\Details.g.cshtml.cs
-D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\Admin\Index.g.cshtml.cs
-D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\Admin\_Monitoring.g.cshtml.cs
-D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\Intern\Index.g.cshtml.cs
-D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\Intern\_Marks.g.cshtml.cs
-D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\Menthor\Index.g.cshtml.cs
-D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\Menthor\_Marks.g.cshtml.cs
 C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\GeneralViews\_Comments.g.cshtml.cs
 C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\GeneralViews\_GetComments.g.cshtml.cs
 C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\GeneralViews\_Menu.g.cshtml.cs
@@ -236,3 +228,8 @@ C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2
 C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\DashBoard\_AllMarks.g.cshtml.cs
 C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\DashBoard\_CurrentInternMarks.g.cshtml.cs
 C:\Users\Aurel\Desktop\Got\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\DashBoard\_Monitoring.g.cshtml.cs
+D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\DashBoard\Details.g.cshtml.cs
+D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\DashBoard\Index.g.cshtml.cs
+D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\DashBoard\_AllMarks.g.cshtml.cs
+D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\DashBoard\_CurrentInternMarks.g.cshtml.cs
+D:\Git\Internship\MyComplexApp\App.Web\obj\Debug\netcoreapp2.2\Razor\Views\DashBoard\_Monitoring.g.cshtml.cs

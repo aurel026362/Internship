@@ -80,8 +80,6 @@ namespace App.Web.Areas.Identity.Pages.Account
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
 
-            [Required]
-            public string Role { get; set; }
         }
 
         public void OnGet(string returnUrl = null)
@@ -94,15 +92,6 @@ namespace App.Web.Areas.Identity.Pages.Account
             returnUrl = returnUrl ?? Url.Content("~/Home/Index");
             if (ModelState.IsValid)
             {
-                //var user = new User
-                //{
-                //    UserName = Input.Email,
-                //    Email = Input.Email,
-                //    FirstName = Input.FirstName,
-                //    LastName = Input.LastName,
-                //    PhoneNumber = Input.PhoenNumber,
-                //    DateOfBirth = Input.DateOfBirth
-                //};
                 var user = new User()
                 {
                     UserName = Input.Email,
@@ -114,28 +103,7 @@ namespace App.Web.Areas.Identity.Pages.Account
                 };
 
                 IdentityResult result;
-                //using (var transaction = _context.Database.BeginTransaction())
-                //{
-                //    try
-                //    {
-                        result = await _userManager.CreateAsync(user, Input.Password);
-                        //await _userManager.AddToRoleAsync(user, Input.Role);
-                        //switch (Input.Role)
-                        //{
-                        //    case "Menthor": { _userService.AddMenthor(new MenthorDto() { UserId = user.Id }); } break;
-                        //    case "Intern": { _userService.AddIntern(new InternDto() { UserId = user.Id }); } break;
-                        //    case "Admin": break;
-                        //    default: throw new Exception();
-                        //}
-                    //    transaction.Commit();
-                    //}
-                    //catch (Exception)
-                    //{
-                    //    transaction.Rollback();
-                    //    throw new Exception();
-                    //    // TODO: Handle failure
-                    //}
-                //}
+                result = await _userManager.CreateAsync(user, Input.Password);
 
                 if (result.Succeeded)
                 {
@@ -150,7 +118,7 @@ namespace App.Web.Areas.Identity.Pages.Account
 
                     await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
                         $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
-                    ///
+
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     return LocalRedirect(returnUrl);
                 }
@@ -159,8 +127,7 @@ namespace App.Web.Areas.Identity.Pages.Account
                     ModelState.AddModelError(string.Empty, error.Description);
                 }
             }
-
-            // If we got this far, something failed, redisplay form
+            
             return Page();
         }
     }

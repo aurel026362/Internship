@@ -57,7 +57,6 @@ namespace App.Data.Repository.ComplexRepository
             };
 
             _context.Comments.Add(com);
-            Save();
         }
     }
 }

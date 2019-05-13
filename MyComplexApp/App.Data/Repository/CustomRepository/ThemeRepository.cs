@@ -39,9 +39,5 @@ namespace App.Data.Repository.ComplexRepository
 
             return list;
         }
-        public void Save()
-        {
-            _context.SaveChanges();
-        }
     }
 }

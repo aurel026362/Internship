@@ -13,8 +13,7 @@
                 }
             </select>
         </div>
-        <div id="comment-div" class="col-md-9 col-xs-12">
-            @*@await Html.PartialAsync("../GeneralViews/_GetComments", Model)*@
+        <div id="div-comment" class="col-md-9 col-xs-12">
             <style>
                 .my-comment {
                     margin: 10px;
@@ -39,23 +38,22 @@
                     float: right;
                 }
             </style>
-            <div class="content-div">
+            <div class="div-comment-header">
                 <div class="row content-input-div div-padding-vertical">
-                    <div class="col-8 col-xs-12">
+                    <div class="col-md-8 col-sm-12">
                         <input class="form-control" id="myComment" />
                     </div>
-                    <div class="col-4 col-xs-12">
+                    <div class="col-md-4 col-sm-12">
                         <button class="btn btn-primary" id="submitComment">Add Comment</button>
                     </div>
                 </div>
-                <div class="content-comment-div">
+                <div class="div-comment-content">
                     <div>
                         <div class="form-group">
                             <br />
                             <h5>Comments</h5>
                             <hr />
                             <div class="col-12" id="allcomments">
-
                             </div>
                         </div>
                     </div>
@@ -83,14 +81,19 @@
                 pageNr = 0;
                 $("#allcomments").empty();
                 $("#MoreComments").show();
+                
                 try {
                     $("#endMarks").remove();
+                    if (data.length < 10) {
+                        $("#bottom-div").prepend("<span class='text-danger' id='endMarks'>No more comments!</span>");
+                        $("#MoreComments").hide();
+                    }
                 }
                 catch (Exception) {
 
                 }
 
-                AppendComment(data.comments);
+                AppendComment(data);
             },
             error: function (data) {
                 alert("error");
@@ -107,7 +110,7 @@
                 success: function () {
                     $("#allcomments").prepend("<div class='my-comment'>" +
                         "<i class='far fa-user-circle'></i> " +
-                        "<b>@Model.PersonalData.EMail</b><span class='text-body'> : " + $("#myComment").val() +
+                        "<b>@User.Identity.Name</b><span class='text-body'> : " + $("#myComment").val() +
                         " </span><small class='text-muted'>(@DateTime.Now.ToString())</span></div>");
                     $("#myComment").val("");
                 },
@@ -126,7 +129,7 @@
                 datatype: "application/json",
                 success: function (data) {
                     if (data.length < 10) {
-                        $("#bottom-div").prepend("<span class='text-danger' id='endMarks'>Don't exist more comments!</span>");
+                        $("#bottom-div").prepend("<span class='text-danger' id='endMarks'>No more comments!</span>");
                         $("#MoreComments").hide();
                     }
                     AppendComment(data);
@@ -135,10 +138,10 @@
         });
     });
 
-    function AppendComment(data){
+    function AppendComment(data) {
         $.each(data, function (i, item) {
             var classcomment = "";
-            if (item.eMail == '@Model.PersonalData.EMail') classcomment = "my-comment";
+            if (item.eMail == '@User.Identity.Name') classcomment = "my-comment";
             else classcomment = "other-comment";
             $('#allcomments').append("<div class='" + classcomment + "'> <i class='far fa-user-circle'></i> <b>" + item.eMail + "</b> : "
                 + item.content + " <small class='text-muted'> (" + item.dateComment + ")</span></div>");
@@ -146,21 +149,3 @@
     }
 
 </script>
-
-@*<script>
-        $("#theme").bind("change", function () {
-            $.ajax({
-                url: "/Intern/GetComments",
-                type: "Get",
-                data: ({ themeId: $('#theme').val() }),
-                datatype: "json",
-                success: function (data) {
-                    //alert("success");
-                    $("#comment-div").html(data);
-                },
-                error: function (data) {
-                    alert("error");
-                }
-            });
-        });
-    </script>*@

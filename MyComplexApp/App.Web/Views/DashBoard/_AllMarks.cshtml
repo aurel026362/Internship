@@ -2,10 +2,10 @@
 @{
     ViewData["Title"] = "_Marks";
 }
-<div class="tab-pane fade show active" role="tabpanel" aria-labelledby="profile-tab" id="divTMarks">
+<div class="tab-pane fade show active" role="tabpanel" aria-labelledby="profile-tab" id="div-ThemeMarks">
     <div class="row div-padding-vertical">
         <div class="col-9 text-left">
-            <button class="btn btn-success" data-toggle="modal" data-target="#modalAddMark" id=""><i class="fas fa-plus"></i> Add Mark</button>
+            <button class="btn btn-success" data-toggle="modal" data-target="#modalAddMark" id=""><i class="fas fa-plus"></i> Add or Update Mark</button>
         </div>
 
         <div class="modal fade" id="modalAddMark" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -42,7 +42,7 @@
                         </div>
                         <div class="md-form mb-4">
                             Mark
-                            <input type="number" class="form-control" min="1" max="10" required id="addmark" />
+                            <input type="number" step="0.1" class="form-control" min="1" max="10" required id="addmark" />
                         </div>
                         <div class="md-form mb-4">
                             Comment
@@ -56,11 +56,8 @@
                 </div>
             </div>
         </div>
-        <div class="col-1">
-            <span class="text-muted"><i class="fas fa-search"></i>Search: </span>
-        </div>
-        <div class="col-2" class="text-right">
-             <input type="text" class="form-control" id="search" />
+        <div class="col-3" class="text-right">
+            <input type="text" class="form-control" id="search" placeholder="Search" />
         </div>
     </div>
     <select id="module" class="form-control">
@@ -71,7 +68,7 @@
         <option value="0" selected>All Modules</option>
     </select>
 
-    <table class="table" id="tableBody">
+    <table class="table" id="table-ThemeMarks">
         <thead>
             <tr>
                 <th>
@@ -113,7 +110,7 @@
             else if (Model.Marks.ThemeMarks == null)
             {
                 <tr>
-                    <td colspan="3"><b>Don't exist marks!</b></td>
+                    <td colspan="3"><b>No marks!</b></td>
                 </tr>
             }
         </tbody>
@@ -122,7 +119,7 @@
         <button id="moreTMarks" class="btn btn-outline-primary">More...</button>
     </div>
 </div>
-<div class="tab-pane fade" role="tabpanel" aria-labelledby="profile-tab" id="divEMarks">
+<div class="tab-pane fade" role="tabpanel" aria-labelledby="profile-tab" id="div-ExamMarks">
     <table class="table">
         <thead>
             <tr>
@@ -165,21 +162,20 @@
             else
             {
                 <tr>
-                    <td colspan="4"><b>Don't exist marks!</b></td>
+                    <td colspan="4"><b>No marks!</b></td>
                 </tr>
             }
         </tbody>
     </table>
 </div>
 <script src="~/js/Calculate.js"></script>
-
 <script>
     $(document).ready(function () {
         var ascending = true;
         var page = 0;
         var orderbyprop = "email";
 
-        avg();
+        AverageMarks($('.tmakrs'));
 
         $("#addMarkConfirm").bind("click", function () {
             var internmark = ({
@@ -188,7 +184,6 @@
                 mark: ($("#addmark").val()).toString(2),
                 comment: $("#addmarkcomment").val()
             });
-            alert(internmark.mark);
 
             $.ajax({
                 url: "/Mark/AddOrUpdateThemeMark",
@@ -254,14 +249,9 @@
                     catch (Exception) {
 
                     }
-                    $("#tableBody > tbody").empty();
+                    $("#table-ThemeMarks > tbody").empty();
                     AppendToTable(data);
-                    avg();
-                @*$('<tr>').append(
-                    $('<td colspan="2">').html('<b>AVG Marks: </b>'),
-                    $('<td>').html('<span class= "text-muted" > <b>@Model.Marks.AvgTMarks</b></span >'),
-                    $('<td>').html('')
-                ).appendTo("#tableBody");*@
+                    AverageMarks($('.tmakrs'));
                 },
                 error: function () {
 
@@ -284,9 +274,9 @@
                     catch (Exception) {
 
                     }
-                    $("#tableBody > tbody").empty();
+                    $("#table-ThemeMarks > tbody").empty();
                     AppendToTable(data);
-                    avg();
+                    AverageMarks($('.tmakrs'));
                 },
                 error: function () {
 
@@ -313,9 +303,9 @@
                     }
                     page = 0;
                     $("#moreTMarks").show();
-                    $("#tableBody > tbody").empty();
+                    $("#table-ThemeMarks > tbody").empty();
                     AppendToTable(data);
-                    avg();
+                    AverageMarks($('.tmakrs'));
                 },
                 error: function () {
                     alert("Error");
@@ -333,10 +323,10 @@
                 success: function (data) {
                     if (data.length < 10) {
                         $("#moreTMarks").hide();
-                        $("#footerTMarks").append("<span id='warningMarks' class='text-danger'>Don't exist more Theme Mark</span>");
+                        $("#footerTMarks").append("<span id='warningMarks' class='text-danger'>No more Theme Mark</span>");
                     }
                     AppendToTable(data);
-                    avg();
+                    AverageMarks($('.tmakrs'));
                 },
                 error: function () {
                     alert("Error");
@@ -351,8 +341,27 @@
                     $('<td>').text(item.themeName),
                     $('<td>').html("<span class='tmakrs'>" + item.mark + "</span>"),
                     $('<td>').text(item.comment)
-                ).appendTo('#tableBody');
+                ).appendTo('#table-ThemeMarks');
             });
         }
     });
+
+    function AverageMarks(marks) {
+
+        var total = 0,
+            nr_marks = 0,
+            average = 0;
+
+        marks.each(function (i, item) {
+            total = total + parseFloat(item.innerHTML);
+            nr_marks = nr_marks + 1;
+        });
+
+        average = total / nr_marks;
+        $("#avgTMarks").remove();
+        $('<tr id="avgTMarks">').append(
+            $('<td colspan="2">').html('<b>AVG Marks: </b>'),
+            $('<td>').html('<span class="text-muted"> <b>' + average.toFixed(2) + '</b></span >')
+        ).appendTo("#table-ThemeMarks");
+    }
 </script>

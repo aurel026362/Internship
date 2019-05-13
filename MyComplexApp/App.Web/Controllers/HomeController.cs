@@ -92,12 +92,9 @@ namespace App.Web.Controllers
             var modules = _mapper.Map<IList<ModuleViewModel>>(modulesDto);
             var themesDto = _themeService.GetThemes();
             var themes = _mapper.Map<IList<ThemeViewModel>>(themesDto);
-            var commentsDto = _commentService.GetComments();
-            var comments = _mapper.Map<IList<CommentViewModel>>(commentsDto);
 
             person.Modules = modules;
             person.Themes = themes;
-            person.Comments = comments;
 
             var marks = new MarksViewModel();
 

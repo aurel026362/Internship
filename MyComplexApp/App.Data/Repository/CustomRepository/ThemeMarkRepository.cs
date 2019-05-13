@@ -33,7 +33,6 @@ namespace App.Data.Repository.ComplexRepository
                 _context.Add(themeMark);
                 result = "add";
             }
-            _context.SaveChanges();
             return result;
         }
 
@@ -146,11 +145,6 @@ namespace App.Data.Repository.ComplexRepository
             }
 
             return list;
-        }
-
-        public void Save()
-        {
-            _context.SaveChanges();
         }
     }
 }

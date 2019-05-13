@@ -24,7 +24,7 @@ namespace App.Web.Controllers
 
         [HttpGet]
         [Authorize(Roles = "Menthor, Admin")]
-        public async Task<IActionResult> GetThemesByModuleId(long moduleId)
+        public IActionResult GetThemesByModuleId(long moduleId)
         {
             var listDto = _themeService.GetThemesByModuleId(moduleId);
             var list = _mapper.Map<IList<ThemeViewModel>>(listDto);

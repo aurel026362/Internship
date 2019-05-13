@@ -66,26 +66,7 @@ namespace App.Web
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-
-            //-1-
-            //services.AddAuthentication(options =>
-            //{
-            //    //options.defaultchallengescheme = facebookdefaults.authenticationscheme;
-            //    //options.defaultsigninscheme = cookieauthenticationdefaults.authenticationscheme;
-            //    //options.defaultauthenticatescheme = cookieauthenticationdefaults.authenticationscheme;
-
-            //    options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-            //    options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-            //    options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-            //}).AddFacebook(options =>
-            //{
-            //    options.AppId = "806605686400556";
-            //    options.AppSecret = "72dc791ece58b9bb0a6543d43a7af3c4";
-            //}).AddCookie(options =>
-            //{
-            //    options.LoginPath = "/auth/signin";
-            //});
-
+            
             services.AddIdentity<User, Role>(opt =>
             {
                 opt.Password.RequiredLength = 6;
@@ -141,8 +122,7 @@ namespace App.Web
             app.UseCookiePolicy();
 
             app.UseAuthentication();
-
-
+            
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

@@ -55,9 +55,10 @@
             </div>
             <div>
                 <a asp-controller="Home" asp-action="DashBoard" class="btn btn-outline-primary btn-sm">Back to List</a>
-                @if (User.IsInRole("Admin")) {   
-                @:| <a asp-action="Edit" asp-route-id="@Model.PersonalData.Id" class="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target="#exampleModal">Edit</a> |
-                @: <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmation" id="">Delete</button>
+                @if (User.IsInRole("Admin"))
+                {
+                    @:| <a asp-action="Edit" asp-route-id="@Model.PersonalData.Id" class="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target="#exampleModal">Edit</a> |
+                    @: <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmation" id="">Delete</button>
                 }
             </div>
         </div>
@@ -103,17 +104,17 @@
                 @* -------------------------------------------------------- *@
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
-                    <label asp-for=PersonalData.FirstName class="control-label"></label>
+                    <label asp-for=PersonalData.FirstName class="control-label"></label> <span class="text-danger">*</span>
                     <input asp-for=PersonalData.FirstName class="form-control" id="fname" />
                     <span asp-validation-for=PersonalData.FirstName class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for=PersonalData.LastName class="control-label"></label>
+                    <label asp-for=PersonalData.LastName class="control-label"></label> <span class="text-danger">*</span>
                     <input asp-for=PersonalData.LastName class="form-control" id="lname" />
                     <span asp-validation-for=PersonalData.LastName class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for=PersonalData.DateOfBirth class="control-label"></label>
+                    <label asp-for=PersonalData.DateOfBirth class="control-label"></label> <span class="text-danger">*</span>
                     <input asp-for=PersonalData.DateOfBirth class="form-control" id="datebirth" />
                     <span asp-validation-for=PersonalData.DateOfBirth class="text-danger"></span>
                 </div>
@@ -121,7 +122,7 @@
                     <input type="hidden" asp-for=PersonalData.Id id="userId" />
                 </div>
                 <div class="form-group">
-                    <label asp-for=PersonalData.EMail class="control-label"></label>
+                    <label asp-for=PersonalData.EMail class="control-label"></label> <span class="text-danger">*</span>
                     <input asp-for=PersonalData.EMail class="form-control" id="email" />
                     <span asp-validation-for=PersonalData.EMail class="text-danger"></span>
                 </div>
@@ -131,7 +132,7 @@
                     </label>
                 </div>
                 <div class="form-group">
-                    <label asp-for=PersonalData.PhoneNumber class="control-label"></label>
+                    <label asp-for=PersonalData.PhoneNumber class="control-label"></label> <span class="text-danger">*</span>
                     <input asp-for=PersonalData.PhoneNumber class="form-control" id="phonenumber" />
                     <span asp-validation-for=PersonalData.PhoneNumber class="text-danger"></span>
                 </div>
@@ -146,7 +147,7 @@
                     </label>
                 </div>
                 <div class="form-group">
-                    <label asp-for=PersonalData.AccessFailedCount type="text" class="control-label"></label>
+                    <label asp-for=PersonalData.AccessFailedCount type="text" class="control-label"></label> <span class="text-danger">*</span>
                     <input asp-for=PersonalData.AccessFailedCount type="text" class="form-control" id="accessfailed" />
                     <span asp-validation-for=PersonalData.AccessFailedCount type="text" class="text-danger"></span>
                 </div>
@@ -154,7 +155,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-success" data-dismiss="modal" id="sendform">Save changes</button>
+                <button type="submit" class="btn btn-success" data-dismiss="modal" id="sendform">Save changes</button>
             </div>
         </div>
     </div>
@@ -208,27 +209,5 @@
                 }
             });
         });
-
-        @*$("#module").bind("change", function () {
-            $.ajax({
-                url: "/Mark/GetThemeMarksByModuleUser",
-                type: "GET",
-                data: ({ moduleId: $("#module").val(), userId:"@Model.PersonalData.Id"}),
-                datatype: "json",
-                success: function (data) {
-
-                    $("#tableBody > tbody").empty();
-                    $.each(data, function (i, item) {
-                        $('<tr>').append(
-                            $('<td>').text(item.themeName),
-                            $('<td>').html("<span class='tmakrs'>" + item.mark + "</span>"),
-                            $('<td>').text(item.comment)
-                        ).appendTo('#tableBody');
-                    });
-                    avg();
-                }
-            });
-        });*@
-
-        });
+    });
 </script>

@@ -38,20 +38,12 @@ namespace App.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetComments(long themeId)
+        public IActionResult GetComments(long themeId)
         {
-            var currentId = Convert.ToInt32(_signInManager.UserManager.GetUserId(User));
-            var currentUser = _userService.GetUserById(currentId);
-
-            var data = new UserProfileViewModel();
-
-            var personaldata = _userService.GetUserById(currentId);
-            data.PersonalData = _mapper.Map<UserDetailedViewModel>(personaldata);
-
-            var comments = _commentService.GetComments(themeId);
-            data.Comments = _mapper.Map<IList<CommentViewModel>>(comments);
+            var commentsDto = _commentService.GetComments(themeId);
+            var comments = _mapper.Map<IList<CommentViewModel>>(commentsDto);
             
-            return Json(data);
+            return Json(comments);
         }
 
         [HttpGet]
@@ -63,8 +55,12 @@ namespace App.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SubmitComment(string comment, long themeId)
-        {
+        public IActionResult SubmitComment(string comment, long themeId)
+        {   
+            if (string.IsNullOrEmpty(comment) || themeId==0)
+            {
+                return BadRequest();
+            }
             var currentId = Convert.ToInt32(_signInManager.UserManager.GetUserId(User));
             _commentService.AddComment(currentId, themeId, comment);
             return StatusCode(200);

@@ -86,19 +86,16 @@ namespace App.Data.Repository.ComplexRepository
             user.PhoneNumber = newPhone;
             user.DateOfBirth = newdDBirth;
             _context.Update(user);
-            Save();
         }
 
         public void AddIntern(Intern intern)
         {
             _context.Interns.Add(intern);
-            _context.SaveChanges();
         }
 
         public void AddMenthor(Menthor menthor)
         {
             _context.Menthors.Add(menthor);
-            _context.SaveChanges();
         }
 
         public void DeleteUser(long userId)
@@ -150,7 +147,6 @@ namespace App.Data.Repository.ComplexRepository
             oldUser.AccessFailedCount = user.AccessFailedCount;
             
             _context.Update(oldUser);
-            _context.SaveChanges();
         }
 
         public IList<User> GetRequestedUsers()

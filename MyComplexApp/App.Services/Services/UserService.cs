@@ -70,6 +70,7 @@ namespace App.Services.Services
         public void UpdateUser(long userId, string newFName, string newLName, string newPhone, DateTime newdDBirth)
         {
             _userRepository.UpdateUser(userId, newFName, newLName, newPhone, newdDBirth);
+            _userRepository.Save();
         }
 
         public IList<UserDetailedDto> GetUsersDetails()
@@ -92,12 +93,14 @@ namespace App.Services.Services
         {
             var intern = _mapper.Map<Intern>(internDto);
             _userRepository.AddIntern(intern);
+            _userRepository.Save();
         }
 
         public void AddMenthor(MenthorDto menthorDto)
         {
             var menthor = _mapper.Map<Menthor>(menthorDto);
             _userRepository.AddMenthor(menthor);
+            _userRepository.Save();
         }
 
         public void DeleteUser(long UserId)
@@ -109,6 +112,7 @@ namespace App.Services.Services
         {
             var userEntity = _mapper.Map<User>(user);
             _userRepository.UpdateUser(userEntity);
+            _userRepository.Save();
         }
 
         public IList<UserDto> GetRequestedUsers()

@@ -1,4 +1,5 @@
-﻿using App.Data.Interfaces.RepositoryInterfaces.IComplexRepository;
+﻿using App.Data.Domain.DomainModels.Concrete;
+using App.Data.Interfaces.RepositoryInterfaces.IComplexRepository;
 using App.Services.Dtos.DTOs.Comment;
 using App.Services.Interfaces.IServices;
 using AutoMapper;
@@ -22,13 +23,15 @@ namespace App.Services.Services
 
         public void AddComment(CommentDto comment)
         {
-            //var com = _mapper.Map<ComplexComment>(comment);
-            //_commentRepository.AddComment(com);
+            var com = _mapper.Map<Comment>(comment);
+            _commentRepository.AddComment(com);
+            _commentRepository.Save();
         }
 
         public void AddComment(long userId, long themeId, string content)
         {
             _commentRepository.AddComment(userId, themeId, content);
+            _commentRepository.Save();
         }
 
         public IList<CommentDto> GetComments()

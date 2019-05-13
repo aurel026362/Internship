@@ -26,7 +26,7 @@
             {
                 <div >
                     <h5>
-                        You should know
+                        You should study:
                     </h5>
                     <hr />
                 </div>
@@ -64,7 +64,7 @@
             else
             {
                 <div class="text-center">
-                    <h5>Interns have problems with the next themes:</h5>
+                    <h5>Interns have problems with these themes:</h5>
                 </div>
                 <div>
                     <table class="table table-hover table-sm" id="table-menthor-proposals">
@@ -86,7 +86,7 @@
                             lettersAnimation();
 
                             $.ajax({
-                                url: "/Mark/GetHardThemess",
+                                url: "/Mark/GetGeneralHardThemes",
                                 type: "GET",
                                 datatype: "json",
                                 success: function (data) {
@@ -99,7 +99,7 @@
                                             $('<td>').text(item.theme.moduleName),
                                             $('<td>').text(item.theme.menthorEMail),
                                             $('<td>').text(item.theme.source),
-                                            $('<td>').text(item.avgMark)
+                                            $('<td>').text(item.avgMark.toFixed(2))
                                         ).appendTo('#table-menthor-proposals');
                                     });
 

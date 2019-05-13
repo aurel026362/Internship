@@ -14,6 +14,6 @@ namespace App.Web.Models.ComplexViewModel.General
         public IList<ThemeViewModel> Themes { get; set; }
         public IList<ModuleViewModel> Modules { get; set; }
         public MarksViewModel Marks { get; set; }
-        public IList<CommentViewModel> Comments { get; set; }
+        //public IList<CommentViewModel> Comments { get; set; }
     }
 }

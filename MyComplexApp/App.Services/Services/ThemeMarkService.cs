@@ -28,6 +28,7 @@ namespace App.Services.Services
         {
             var mark = _mapper.Map<ThemeMark>(themeMark);
             var result = _themeMarkRepository.AddOrUpdateThemeMark(mark);
+            _themeMarkRepository.Save();
             return result;
         }
 
