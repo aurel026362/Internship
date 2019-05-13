@@ -391,9 +391,9 @@ namespace App.Data.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { 1L, "-24204336", "Admin", "ADMIN" },
-                    { 2L, "1456681854", "Menthor", "MENTHOR" },
-                    { 3L, "-396065016", "Intern", "INTERN" }
+                    { 1L, "-1294612392", "Admin", "ADMIN" },
+                    { 2L, "-992925297", "Menthor", "MENTHOR" },
+                    { 3L, "-1776675555", "Intern", "INTERN" }
                 });
 
             migrationBuilder.InsertData(
@@ -401,11 +401,11 @@ namespace App.Data.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "DateOfBirth", "EMail", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "RoleId", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { 1L, 0, "7031db38-fef0-4af5-bce0-e4f75f0fe5d0", new DateTime(1999, 5, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "aurel@mail.ru", false, "Aurel", "Starciuc", false, null, null, null, "883702952", "+37367620932", false, null, null, false, "aurel@mail.ru" },
-                    { 2L, 0, "4d7d997c-bb51-4c0e-a262-1386ba43d49b", new DateTime(1989, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "cristi@mail.ru", false, "Cristi", "Anghelenici", false, null, null, null, "1382654209", "+37367665467", false, null, null, false, "cristi@mail.ru" },
-                    { 3L, 0, "4d5bb5a7-463e-4751-ba80-74b0881b2270", new DateTime(1994, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), "alexandr@mail.ru", false, "Alexandr", "Racovschi", false, null, null, null, "233183240", "+37336218321", false, null, null, false, "alexandr@mail.ru" },
-                    { 4L, 0, "92014a4a-908e-41c1-aac5-6d130ef8a5a2", new DateTime(1984, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "iong@mail.ru", false, "Ion", "Gandrabura", false, null, null, null, "-2110534661", "+373954035", false, null, null, false, "iong@mail.ru" },
-                    { 5L, 0, "71f295e0-a94b-47af-8d18-5543e899270f", new DateTime(1978, 5, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "gosa@mail.ru", false, "Gosa", "Dudari", false, null, null, null, "1622138654", "+37354354398", false, null, null, false, "gosa@mail.ru" }
+                    { 1L, 0, "4cbe0015-8388-4ab4-adeb-ba0727326132", new DateTime(1999, 5, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "aurel@mail.ru", false, "Aurel", "Starciuc", false, null, null, null, "586441401", "+37367620932", false, null, null, false, "aurel@mail.ru" },
+                    { 2L, 0, "75d6628f-2e46-42a1-b571-2e3791f566d2", new DateTime(1989, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "cristi@mail.ru", false, "Cristi", "Anghelenici", false, null, null, null, "2071821470", "+37367665467", false, null, null, false, "cristi@mail.ru" },
+                    { 3L, 0, "48f2c455-4568-48cd-a75e-28141ef33dee", new DateTime(1994, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), "alexandr@mail.ru", false, "Alexandr", "Racovschi", false, null, null, null, "-1058956319", "+37336218321", false, null, null, false, "alexandr@mail.ru" },
+                    { 4L, 0, "12ff41dc-a78d-4b12-9f9d-2ffa1f3b6b49", new DateTime(1984, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "iong@mail.ru", false, "Ion", "Gandrabura", false, null, null, null, "-206538994", "+373954035", false, null, null, false, "iong@mail.ru" },
+                    { 5L, 0, "40d60dbb-76e3-474a-a2b2-76ab519a54cc", new DateTime(1978, 5, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "gosa@mail.ru", false, "Gosa", "Dudari", false, null, null, null, "-914240395", "+37354354398", false, null, null, false, "gosa@mail.ru" }
                 });
 
             migrationBuilder.InsertData(
@@ -462,15 +462,15 @@ namespace App.Data.Migrations
                 columns: new[] { "Id", "Content", "DateComment", "ThemeId", "UserId" },
                 values: new object[,]
                 {
-                    { 1L, "Nicjdsladj sal djsa dsadsa.", new DateTime(2019, 5, 10, 21, 19, 46, 698, DateTimeKind.Local).AddTicks(2006), 1L, 2L },
-                    { 3L, "qewqeqewqqewq.", new DateTime(2019, 5, 10, 21, 19, 46, 700, DateTimeKind.Local).AddTicks(3309), 1L, 4L },
-                    { 5L, "zxcxzcxz zc xz cxz z.", new DateTime(2019, 5, 10, 21, 19, 46, 700, DateTimeKind.Local).AddTicks(3317), 1L, 3L },
-                    { 8L, "N4354535 43.", new DateTime(2019, 5, 10, 21, 19, 46, 700, DateTimeKind.Local).AddTicks(3329), 1L, 4L },
-                    { 6L, "iopoipio iop io io.", new DateTime(2019, 5, 10, 21, 19, 46, 700, DateTimeKind.Local).AddTicks(3322), 2L, 1L },
-                    { 7L, "qq q q q q q q", new DateTime(2019, 5, 10, 21, 19, 46, 700, DateTimeKind.Local).AddTicks(3325), 2L, 3L },
-                    { 2L, "dsafdsda.", new DateTime(2019, 5, 10, 21, 19, 46, 700, DateTimeKind.Local).AddTicks(3290), 3L, 1L },
-                    { 9L, "po'p'l';l;l'.", new DateTime(2019, 5, 10, 21, 19, 46, 700, DateTimeKind.Local).AddTicks(3333), 3L, 2L },
-                    { 4L, "asdsadsa sadsadsa dsa.", new DateTime(2019, 5, 10, 21, 19, 46, 700, DateTimeKind.Local).AddTicks(3313), 4L, 2L }
+                    { 1L, "Nicjdsladj sal djsa dsadsa.", new DateTime(2019, 5, 13, 14, 46, 40, 380, DateTimeKind.Local).AddTicks(2313), 1L, 2L },
+                    { 3L, "qewqeqewqqewq.", new DateTime(2019, 5, 13, 14, 46, 40, 382, DateTimeKind.Local).AddTicks(4898), 1L, 4L },
+                    { 5L, "zxcxzcxz zc xz cxz z.", new DateTime(2019, 5, 13, 14, 46, 40, 382, DateTimeKind.Local).AddTicks(4905), 1L, 3L },
+                    { 8L, "N4354535 43.", new DateTime(2019, 5, 13, 14, 46, 40, 382, DateTimeKind.Local).AddTicks(4915), 1L, 4L },
+                    { 6L, "iopoipio iop io io.", new DateTime(2019, 5, 13, 14, 46, 40, 382, DateTimeKind.Local).AddTicks(4908), 2L, 1L },
+                    { 7L, "qq q q q q q q", new DateTime(2019, 5, 13, 14, 46, 40, 382, DateTimeKind.Local).AddTicks(4912), 2L, 3L },
+                    { 2L, "dsafdsda.", new DateTime(2019, 5, 13, 14, 46, 40, 382, DateTimeKind.Local).AddTicks(4877), 3L, 1L },
+                    { 9L, "po'p'l';l;l'.", new DateTime(2019, 5, 13, 14, 46, 40, 382, DateTimeKind.Local).AddTicks(4922), 3L, 2L },
+                    { 4L, "asdsadsa sadsadsa dsa.", new DateTime(2019, 5, 13, 14, 46, 40, 382, DateTimeKind.Local).AddTicks(4901), 4L, 2L }
                 });
 
             migrationBuilder.InsertData(
